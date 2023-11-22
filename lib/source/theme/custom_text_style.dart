@@ -102,7 +102,7 @@ class CustomTextStyles {
       theme.textTheme.bodySmall!.inter.copyWith(
         color: appTheme.black900.withOpacity(0.5),
       );
-  static get bodySmallInterOnPrimaryContainer =>
+  static TextStyle get bodySmallInterOnPrimaryContainer =>
       theme.textTheme.bodySmall!.inter.copyWith(
         color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
       );
@@ -137,6 +137,10 @@ class CustomTextStyles {
   static get headlineSmallInterRegular =>
       theme.textTheme.headlineSmall!.inter.copyWith(
         fontWeight: FontWeight.w400,
+      );
+  static get headlineSmallAquire => theme.textTheme.headlineSmall!.copyWith(
+        fontFamily: "Aquire",
+        fontSize: 23.fSize,
       );
   static get headlineSmallRoboto =>
       theme.textTheme.headlineSmall!.roboto.copyWith(

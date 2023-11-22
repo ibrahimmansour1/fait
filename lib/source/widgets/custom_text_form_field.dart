@@ -8,7 +8,7 @@ class CustomTextFormField extends StatelessWidget {
     this.width,
     this.controller,
     this.focusNode,
-    this.autofocus = true,
+    this.autofocus = false,
     this.textStyle,
     this.obscureText = false,
     this.textInputAction = TextInputAction.next,
@@ -87,7 +87,8 @@ class CustomTextFormField extends StatelessWidget {
           controller: controller,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
-          style: textStyle ?? theme.textTheme.bodyLarge,
+          style: textStyle ??
+              theme.textTheme.bodyLarge!.copyWith(color: Colors.black),
           obscureText: obscureText!,
           textInputAction: textInputAction,
           keyboardType: textInputType,

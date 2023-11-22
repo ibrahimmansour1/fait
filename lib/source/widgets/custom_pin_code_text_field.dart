@@ -46,7 +46,8 @@ class CustomPinCodeTextField extends StatelessWidget {
         controller: controller,
         length: 4,
         keyboardType: TextInputType.number,
-        textStyle: textStyle,
+        textStyle: textStyle ??
+            theme.textTheme.bodyLarge!.copyWith(color: Colors.black),
         hintStyle: hintStyle,
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
