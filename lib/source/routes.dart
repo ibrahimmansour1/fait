@@ -12,7 +12,7 @@ class RouteGenerator {
       //   return MaterialPageRoute(builder: (context) => const LoginScreen());
       // case 'signup':
       //   return MaterialPageRoute(builder: (context) => const SignupScreen());
-      case 'home':
+      case '/home':
         return MaterialPageRoute(builder: (context) => const HomeView());
       // case 'forgot':
       //   return MaterialPageRoute(builder: (context) => ForgotPasswordScreen());
