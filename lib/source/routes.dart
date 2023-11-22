@@ -1,4 +1,5 @@
 import 'package:fait/source/views/home/views/home_view.dart';
+import 'package:fait/source/views/register/views/log_in_screen.dart';
 import 'package:fait/source/views/register/views/on_boarding_screen.dart';
 import 'package:fait/source/views/register/views/on_boarding_sign_up_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +11,8 @@ class RouteGenerator {
       //   return MaterialPageRoute(builder: (context) => const Splash());
       // case 'onboarding':
       //   return MaterialPageRoute(builder: (context) => const OnBoarding());
-      // case 'login':
-      //   return MaterialPageRoute(builder: (context) => const LoginScreen());
+      case '/login':
+        return MaterialPageRoute(builder: (context) => LogInScreen());
       // case 'signup':
       //   return MaterialPageRoute(builder: (context) => const SignupScreen());
       case '/home':

@@ -47,6 +47,7 @@ flutter:
           weight: 700
         - asset: assets/fonts/InterSemiBold.ttf
           weight: 600
+          
     - family: Roboto
       fonts:
         - asset: assets/fonts/RobotoRomanRegular.ttf
@@ -59,10 +60,12 @@ flutter:
           weight: 700
         - asset: assets/fonts/RobotoRomanMedium.ttf
           weight: 500
+          
     - family: Cairo
       fonts:
         - asset: assets/fonts/CairoRegular.ttf
           weight: 400
+          
     - family: Aquire
       fonts:
         - asset: assets/fonts/Aquire-BW0ox.otf

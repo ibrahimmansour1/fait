@@ -12,19 +12,22 @@ class MyApp extends ConsumerWidget {
     // final themeMode = ref.watch(themeProvider).themeMode;
     // final primaryColor = ref.watch(themeProvider).primaryColor;
 
-    return MaterialApp(
-      title: 'FAIT',
-      debugShowCheckedModeBanner: false,
-      darkTheme: ThemeData.dark(),
-      theme: theme,
-      // themeMode: themeMode,
-      // locale: locale,
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ar'),
-      ],
-      initialRoute: '/on_boarding_screen',
-      onGenerateRoute: RouteGenerator.generateRoute,
+    return ProviderScope(
+      child: MaterialApp(
+        title: 'FAIT',
+        debugShowCheckedModeBanner: false,
+        darkTheme: ThemeData.dark(),
+        theme: theme,
+        // themeMode: themeMode,
+        // locale: locale,
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('ar'),
+        ],
+        initialRoute: '/home',
+        onGenerateRoute: RouteGenerator.generateRoute,
+      ),
+
     );
   }
 }

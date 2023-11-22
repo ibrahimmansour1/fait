@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
 class CustomFloatingTextField extends StatelessWidget {
-  CustomFloatingTextField({
+  const CustomFloatingTextField({
     Key? key,
     this.alignment,
     this.width,
     this.controller,
     this.focusNode,
-    this.autofocus = true,
+    this.autofocus = false,
     this.textStyle,
     this.obscureText = false,
     this.textInputAction = TextInputAction.next,
