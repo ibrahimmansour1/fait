@@ -27,6 +27,7 @@ class MyApp extends ConsumerWidget {
         initialRoute: '/home',
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
+
     );
   }
 }
