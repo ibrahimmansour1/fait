@@ -1,4 +1,6 @@
 import 'package:fait/source/views/home/views/home_view.dart';
+import 'package:fait/source/views/register/views/on_boarding_screen.dart';
+import 'package:fait/source/views/register/views/on_boarding_sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -14,10 +16,10 @@ class RouteGenerator {
       //   return MaterialPageRoute(builder: (context) => const SignupScreen());
       case '/home':
         return MaterialPageRoute(builder: (context) => const HomeView());
-      // case 'forgot':
-      //   return MaterialPageRoute(builder: (context) => ForgotPasswordScreen());
-      // case 'reset':
-      //   return MaterialPageRoute(builder: (context) => ResetPasswordScreen());
+      case '/on_boarding_screen':
+        return MaterialPageRoute(builder: (context) => OnBoardingScreen());
+      case '/on_boarding_sign_up_screen':
+        return MaterialPageRoute(builder: (context) => OnBoardingSignUpScreen());
       // case 'verification':
       //   return MaterialPageRoute(
       //       builder: (context) => const VerificationScreen());

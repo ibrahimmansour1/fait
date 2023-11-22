@@ -23,7 +23,7 @@ class MyApp extends ConsumerWidget {
         Locale('en', 'US'),
         Locale('ar'),
       ],
-      initialRoute: '/home',
+      initialRoute: '/on_boarding_screen',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
