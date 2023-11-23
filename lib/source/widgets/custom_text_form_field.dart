@@ -84,9 +84,10 @@ class CustomTextFormField extends StatelessWidget {
   Widget get textFormFieldWidget => SizedBox(
         width: width ?? double.maxFinite,
         child: TextFormField(
+          cursorColor: Colors.black,
           controller: controller,
-          focusNode: focusNode ?? FocusNode(),
-          autofocus: autofocus!,
+          // focusNode: focusNode ?? FocusNode(),
+          // autofocus: autofocus!,
           style: textStyle ??
               theme.textTheme.bodyLarge!.copyWith(color: Colors.black),
           obscureText: obscureText!,

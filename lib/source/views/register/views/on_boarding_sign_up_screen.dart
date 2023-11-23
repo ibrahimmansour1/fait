@@ -1,12 +1,20 @@
+import 'dart:io';
+
+import 'package:fait/source/views/register/widgets/pick_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_text_form_field.dart';
 
 // ignore_for_file: must_be_immutable
-class OnBoardingSignUpScreen extends StatelessWidget {
-  OnBoardingSignUpScreen({Key? key}) : super(key: key);
+class OnBoardingSignUpScreen extends StatefulWidget {
+  const OnBoardingSignUpScreen({Key? key}) : super(key: key);
 
+  @override
+  State<OnBoardingSignUpScreen> createState() => _OnBoardingSignUpScreenState();
+}
+
+class _OnBoardingSignUpScreenState extends State<OnBoardingSignUpScreen> {
   TextEditingController firstNameController = TextEditingController();
 
   TextEditingController lastNameController = TextEditingController();
@@ -20,6 +28,21 @@ class OnBoardingSignUpScreen extends StatelessWidget {
   TextEditingController confirmpasswordController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  File? _image;
+  late ImagePickerHandler _imagePickerHandler;
+
+  @override
+  void initState() {
+    super.initState();
+    _imagePickerHandler = ImagePickerHandler(onImageChanged: _onImageChanged);
+  }
+
+  void _onImageChanged(File image) {
+    setState(() {
+      _image = image;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,10 +100,25 @@ class OnBoardingSignUpScreen extends StatelessWidget {
                                             child: Text("Add your photo",
                                                 style: CustomTextStyles
                                                     .headlineSmallRobotoSemiBold)),
-                                        CustomImageView(
-                                            imagePath: ImageConstant.imgUser,
+                                        InkWell(
+                                          onTap: () => _imagePickerHandler
+                                              .showOptions(context),
+                                          child: SizedBox(
                                             height: 48.adaptSize,
-                                            width: 48.adaptSize)
+                                            width: 48.adaptSize,
+                                            // child: CustomImageView(
+                                            //   imagePath: _image?.path ??
+                                            //       ImageConstant.imgUser,
+                                            // ),
+                                            child: _image?.path == null
+                                                ? CustomImageView(
+                                                    imagePath:
+                                                        ImageConstant.imgUser,
+                                                  )
+                                                : Image.file(
+                                                    File(_image!.path)),
+                                          ),
+                                        )
                                       ])),
                               SizedBox(height: 16.v),
                               _buildName(context),
