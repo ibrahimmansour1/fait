@@ -7,14 +7,14 @@ import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_text_form_field.dart';
 
 // ignore_for_file: must_be_immutable
-class OnBoardingSignUpScreen extends StatefulWidget {
-  const OnBoardingSignUpScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<OnBoardingSignUpScreen> createState() => _OnBoardingSignUpScreenState();
+  State<SignUpScreen> createState() => _OnBoardingSignUpScreenState();
 }
 
-class _OnBoardingSignUpScreenState extends State<OnBoardingSignUpScreen> {
+class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
   TextEditingController firstNameController = TextEditingController();
 
   TextEditingController lastNameController = TextEditingController();
@@ -74,6 +74,7 @@ class _OnBoardingSignUpScreenState extends State<OnBoardingSignUpScreen> {
                         Padding(
                             padding: EdgeInsets.symmetric(horizontal: 35.h),
                             child: Column(children: [
+                              SizedBox(height: 38.v),
                               CustomImageView(
                                   imagePath: ImageConstant.imgFait128x128,
                                   height: 128.adaptSize,
@@ -83,7 +84,7 @@ class _OnBoardingSignUpScreenState extends State<OnBoardingSignUpScreen> {
                               Text("Fitness AI Trainer",
                                   style: theme.textTheme.headlineSmall)
                             ])),
-                        SizedBox(height: 96.v),
+                        SizedBox(height: 80.v),
                         Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadiusStyle.roundedBorder8),
