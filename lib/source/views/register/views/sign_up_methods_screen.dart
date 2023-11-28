@@ -1,12 +1,13 @@
-import 'package:fait/source/views/register/views/on_boarding_sign_up_screen.dart';
+import 'package:fait/source/views/register/views/log_in_screen.dart';
+import 'package:fait/source/views/register/views/sign_up_screen.dart';
 import 'package:fait/utils/transitions/Fade_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_outlined_button.dart';
 
-class OnBoardingScreen extends StatelessWidget {
-  const OnBoardingScreen({Key? key}) : super(key: key);
+class SignUpMethodsScreen extends StatelessWidget {
+  const SignUpMethodsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -123,16 +124,25 @@ class OnBoardingScreen extends StatelessWidget {
 
   /// Navigates to the onBoardingSignUpScreen when the action is triggered.
   onTapSignUpNow(BuildContext context) {
-    // Navigator.pushNamed(context, AppRoutes.onBoardingSignUpScreen);
     Navigator.push(
       context,
-      FadePageRouteBuilder(page: OnBoardingSignUpScreen()),
+      FadePageRouteBuilder(
+        page: const SignUpScreen(),
+        duration: const Duration(milliseconds: 800),
+      ),
     );
   }
 
   /// Navigates to the onBoardingLogInScreen when the action is triggered.
   onTapTxtDoyouhaveanaccount(BuildContext context) {
     // Navigator.pushNamed(context, AppRoutes.onBoardingLogInScreen);
+    Navigator.push(
+      context,
+      FadePageRouteBuilder(
+        page: LogInScreen(),
+        duration: const Duration(milliseconds: 800),
+      ),
+    );
   }
 
   /// Navigates to the onboardingoneScreen when the action is triggered.
