@@ -31,6 +31,8 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
 
   File? _image;
   late ImagePickerHandler _imagePickerHandler;
+  bool obscurePassword = true;
+  bool obscureConfirmPassword = true;
 
   @override
   void initState() {
@@ -51,19 +53,19 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
         extendBody: true,
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(
-          child: Container(
-              width: mediaQueryData.size.width,
-              height: mediaQueryData.size.height,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: const Alignment(0, 0.51),
-                      end: const Alignment(0.95, 0.66),
-                      colors: [
-                    theme.colorScheme.onPrimary,
-                    appTheme.blueGray800,
-                    appTheme.blueGray80001
-                  ])),
+        body: Container(
+            width: mediaQueryData.size.width,
+            height: mediaQueryData.size.height,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: const Alignment(0, 0.51),
+                    end: const Alignment(0.95, 0.66),
+                    colors: [
+                  theme.colorScheme.onPrimary,
+                  appTheme.blueGray800,
+                  appTheme.blueGray80001
+                ])),
+            child: SingleChildScrollView(
               child: Form(
                   key: _formKey,
                   child: Container(
@@ -135,8 +137,8 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
                               _buildSignUp(context)
                             ])),
                         SizedBox(height: 5.v)
-                      ])))),
-        ));
+                      ]))),
+            )));
   }
 
   /// Section Widget
@@ -196,24 +198,50 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
   /// Section Widget
   Widget _buildPassword(BuildContext context) {
     return CustomTextFormField(
-        controller: passwordController,
-        hintText: "Password",
-        textInputType: TextInputType.visiblePassword,
-        obscureText: true,
-        borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
-        fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1));
+      controller: passwordController,
+      hintText: "Password",
+      textInputType: TextInputType.visiblePassword,
+      obscureText: obscurePassword,
+      borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
+      fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+      suffix: IconButton(
+        icon: Icon(
+          obscurePassword ? Icons.visibility : Icons.visibility_off,
+          size: 24.adaptSize,
+          color: appTheme.black900.withOpacity(0.5),
+        ),
+        onPressed: () {
+          setState(() {
+            obscurePassword = !obscurePassword;
+          });
+        },
+      ),
+    );
   }
 
   /// Section Widget
   Widget _buildConfirmpassword(BuildContext context) {
     return CustomTextFormField(
-        controller: confirmpasswordController,
-        hintText: "Confirm Password",
-        textInputAction: TextInputAction.done,
-        textInputType: TextInputType.visiblePassword,
-        obscureText: true,
-        borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
-        fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1));
+      controller: confirmpasswordController,
+      hintText: "Confirm Password",
+      textInputAction: TextInputAction.done,
+      textInputType: TextInputType.visiblePassword,
+      obscureText: obscureConfirmPassword,
+      borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
+      fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+      suffix: IconButton(
+        icon: Icon(
+          obscureConfirmPassword ? Icons.visibility : Icons.visibility_off,
+          size: 24.adaptSize,
+          color: appTheme.black900.withOpacity(0.5),
+        ),
+        onPressed: () {
+          setState(() {
+            obscureConfirmPassword = !obscureConfirmPassword;
+          });
+        },
+      ),
+    );
   }
 
   /// Section Widget

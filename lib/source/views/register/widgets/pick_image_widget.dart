@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fait/source/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
@@ -37,19 +38,31 @@ class ImagePickerHandler {
       context: context,
       builder: (context) => CupertinoActionSheet(
         actions: [
-          CupertinoActionSheetAction(
-            child: const Text('Photo Gallery'),
-            onPressed: () {
-              Navigator.of(context).pop();
-              pickImage(context);
-            },
+          Container(
+            color: Colors.black,
+            child: CupertinoActionSheetAction(
+              child: Text(
+                'Photo Gallery',
+                style: TextStyle(color: theme.colorScheme.primary),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                pickImage(context);
+              },
+            ),
           ),
-          CupertinoActionSheetAction(
-            child: const Text('Camera'),
-            onPressed: () {
-              Navigator.of(context).pop();
-              pickImageFromCamera(context);
-            },
+          Container(
+            color: Colors.black,
+            child: CupertinoActionSheetAction(
+              child: Text(
+                'Camera',
+                style: TextStyle(color: theme.colorScheme.primary),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                pickImageFromCamera(context);
+              },
+            ),
           ),
         ],
       ),
