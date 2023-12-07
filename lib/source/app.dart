@@ -24,10 +24,9 @@ class MyApp extends ConsumerWidget {
           Locale('en', 'US'),
           Locale('ar'),
         ],
-        initialRoute: '/on_boarding_screen',
+        initialRoute: '/main_onboarding_screen',
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
-
     );
   }
 }
