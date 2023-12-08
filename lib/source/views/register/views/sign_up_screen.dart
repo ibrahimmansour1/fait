@@ -237,6 +237,6 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
 
   /// Navigates to the onboardingoneScreen when the action is triggered.
   onTapSignUp(BuildContext context) {
-    // Navigator.pushNamed(context, AppRoutes.onboardingoneScreen);
+    Navigator.pushNamed(context, '/chat_bot');
   }
 }

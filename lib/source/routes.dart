@@ -1,3 +1,4 @@
+import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
 import 'package:fait/source/views/register/views/log_in_screen.dart';
@@ -23,10 +24,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const HomeView());
       case '/on_boarding_screen':
         return MaterialPageRoute(
-
             builder: (context) => const SignUpMethodsScreen());
       case '/on_boarding_sign_up_screen':
         return MaterialPageRoute(builder: (context) => const SignUpScreen());
+      case '/chat_bot':
+        return MaterialPageRoute(builder: (context) => const ChatBotView());
       // case 'verification':
       //   return MaterialPageRoute(
       //       builder: (context) => const VerificationScreen());
