@@ -95,62 +95,90 @@ class OnboardingScreenWidget extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      Center(
-                        child: SmoothPageIndicator(
-                          controller: onboardingController,
-                          count: 3,
-                          onDotClicked: (index) {
-                            onboardingController.animateToPage(
-                              index,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                          effect: const WormEffect(
-                              activeDotColor: Color(0xff17D1E0)),
-                        ),
-                      ),
-                      SizedBox(height: 32.h),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            // END: be15d9bcejpp
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        onPressed: () {
-                          if (index == 2) {
-                            Navigator.push(
-                              context,
-                              FadePageRouteBuilder(
-                                page: const SignUpMethodsScreen(),
-                                duration: const Duration(milliseconds: 800),
-                              ),
-                            );
-                          } else {
-                            onboardingController.nextPage(
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.ease);
-                          }
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            index == 2 ? 'Get Started' : 'Next',
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
+
+                      // // SizedBox(height: 32.h),
+                      // SizedBox(height: 50.h),
+                      // Center(
+                      //   child: SmoothPageIndicator(
+                      //     controller: onboardingController,
+                      //     count: 3,
+                      //     onDotClicked: (index) {
+                      //       onboardingController.animateToPage(
+                      //         index,
+                      //         duration: const Duration(milliseconds: 500),
+                      //         curve: Curves.ease,
+                      //       );
+                      //     },
+                      //     effect: const WormEffect(
+                      //         activeDotColor: Color(0xff17D1E0)),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
               ),
             ],
+          ),
+          Positioned(
+            bottom: 40.0.adaptSize,
+            left: 16.0.adaptSize,
+            right: 16.0.adaptSize,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  // END: be15d9bcejpp
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              onPressed: () {
+                if (index == 2) {
+                  Navigator.push(
+                    context,
+                    FadePageRouteBuilder(
+                      page: const SignUpMethodsScreen(),
+                      duration: const Duration(milliseconds: 800),
+                    ),
+                  );
+                } else {
+                  onboardingController.nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.ease);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  index == 2 ? 'Get Started' : 'Next',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 120.0.adaptSize,
+            left: 0.0.adaptSize,
+            right: 0.0.adaptSize,
+            child: Center(
+              child: SmoothPageIndicator(
+                controller: onboardingController,
+                count: 3,
+                onDotClicked: (index) {
+                  onboardingController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease,
+                  );
+                },
+                effect: const WormEffect(
+                  activeDotColor: Color(0xff17D1E0),
+                ),
+              ),
+            ),
           ),
         ],
       ),
