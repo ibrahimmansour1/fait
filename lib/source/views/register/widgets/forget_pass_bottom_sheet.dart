@@ -39,13 +39,13 @@ class ForgetPassBottomSheet extends StatelessWidget {
                       style: CustomTextStyles.headlineSmallInterBlack900),
                   SizedBox(height: 21.v),
                   Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(
                           "Enter Your email for the verification process",
                           style: CustomTextStyles.bodyLargeInterBlack900)),
                   SizedBox(height: 11.v),
                   Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text("We will sent 4 digits code to your email",
                           style: CustomTextStyles.bodyLargeInterBlack900)),
                   SizedBox(height: 62.v),

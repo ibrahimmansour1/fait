@@ -39,13 +39,13 @@ class ResetPassBottomSheet extends StatelessWidget {
                       style: CustomTextStyles.headlineSmallInterBlack900),
                   SizedBox(height: 22.v),
                   Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                          width: 297.h,
-                          margin: EdgeInsets.only(right: 80.h),
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                          width: 310.h,
                           child: Text(
-                              "Set the new password for your accountto log in with it...",
+                              "Set the new password for your account to log in with it...",
                               maxLines: 2,
+                              textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: CustomTextStyles.bodyLargeInterBlack900))),
                   SizedBox(height: 44.v),
@@ -56,7 +56,7 @@ class ResetPassBottomSheet extends StatelessWidget {
                           hintText: "password",
                           hintStyle: CustomTextStyles.bodyLargeInterBlack900_1,
                           textInputType: TextInputType.visiblePassword,
-                          obscureText: true,
+                          isPassword: true,
                           borderDecoration: TextFormFieldStyleHelper.fillGray,
                           fillColor: appTheme.gray10001)),
                   SizedBox(height: 16.v),
@@ -68,7 +68,7 @@ class ResetPassBottomSheet extends StatelessWidget {
                           hintStyle: CustomTextStyles.bodyLargeInterBlack900_1,
                           textInputAction: TextInputAction.done,
                           textInputType: TextInputType.visiblePassword,
-                          obscureText: true,
+                          isPassword: true,
                           borderDecoration: TextFormFieldStyleHelper.fillGray,
                           fillColor: appTheme.gray10001)),
                   SizedBox(height: 48.v),

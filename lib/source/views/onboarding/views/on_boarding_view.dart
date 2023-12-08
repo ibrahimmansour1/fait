@@ -1,7 +1,5 @@
 import 'package:fait/source/views/onboarding/widgets/onboarding_item_widget.dart';
-import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MainOnboardingScreen extends StatelessWidget {
   const MainOnboardingScreen({super.key});

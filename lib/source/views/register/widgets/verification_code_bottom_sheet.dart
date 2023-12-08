@@ -30,13 +30,13 @@ class VerificationCodeBottomSheet extends StatelessWidget {
                   style: CustomTextStyles.headlineSmallInterBlack900),
               SizedBox(height: 23.v),
               Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                      width: 363.h,
-                      margin: EdgeInsets.only(right: 12.h),
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                      width: 370.h,
                       child: Text(
                           "Enter the 4 digit code that You recieved on Your email",
                           maxLines: 2,
+                          textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: CustomTextStyles.bodyLargeInterBlack900))),
               SizedBox(height: 75.v),

@@ -31,8 +31,6 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
 
   File? _image;
   late ImagePickerHandler _imagePickerHandler;
-  bool obscurePassword = true;
-  bool obscureConfirmPassword = true;
 
   @override
   void initState() {
@@ -53,92 +51,97 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
         extendBody: true,
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
-        body: Container(
-            width: mediaQueryData.size.width,
-            height: mediaQueryData.size.height,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: const Alignment(0, 0.51),
-                    end: const Alignment(0.95, 0.66),
-                    colors: [
-                  theme.colorScheme.onPrimary,
-                  appTheme.blueGray800,
-                  appTheme.blueGray80001
-                ])),
-            child: SingleChildScrollView(
-              child: Form(
-                  key: _formKey,
-                  child: Container(
-                      width: double.maxFinite,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 41.h, vertical: 60.v),
-                      child: Column(children: [
-                        Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 35.h),
-                            child: Column(children: [
-                              SizedBox(height: 38.v),
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgFait128x128,
-                                  height: 128.adaptSize,
-                                  width: 128.adaptSize,
-                                  radius: BorderRadius.circular(64.h)),
-                              SizedBox(height: 23.v),
-                              Text("Fitness AI Trainer",
-                                  style: theme.textTheme.headlineSmall)
-                            ])),
-                        SizedBox(height: 80.v),
-                        Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadiusStyle.roundedBorder8),
-                            child: Column(children: [
-                              Padding(
-                                  padding: EdgeInsets.only(right: 5.h),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 11.v, bottom: 7.v),
-                                            child: Text("Add your photo",
-                                                style: CustomTextStyles
-                                                    .headlineSmallRobotoSemiBold)),
-                                        InkWell(
-                                          onTap: () => _imagePickerHandler
-                                              .showOptions(context),
-                                          child: SizedBox(
-                                            height: 48.adaptSize,
-                                            width: 48.adaptSize,
-                                            // child: CustomImageView(
-                                            //   imagePath: _image?.path ??
-                                            //       ImageConstant.imgUser,
-                                            // ),
-                                            child: _image?.path == null
-                                                ? CustomImageView(
-                                                    imagePath:
-                                                        ImageConstant.imgUser,
-                                                  )
-                                                : Image.file(
-                                                    File(_image!.path)),
-                                          ),
-                                        )
-                                      ])),
-                              SizedBox(height: 16.v),
-                              _buildName(context),
-                              SizedBox(height: 16.v),
-                              _buildUserName(context),
-                              SizedBox(height: 16.v),
-                              _buildEmail(context),
-                              SizedBox(height: 16.v),
-                              _buildPassword(context),
-                              SizedBox(height: 16.v),
-                              _buildConfirmpassword(context),
-                              SizedBox(height: 48.v),
-                              _buildSignUp(context)
-                            ])),
-                        SizedBox(height: 5.v)
-                      ]))),
-            )));
+        body: Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Container(
+              width: mediaQueryData.size.width,
+              height: mediaQueryData.size.height,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: const Alignment(0, 0.51),
+                      end: const Alignment(0.95, 0.66),
+                      colors: [
+                    theme.colorScheme.onPrimary,
+                    appTheme.blueGray800,
+                    appTheme.blueGray80001
+                  ])),
+              child: SingleChildScrollView(
+                child: Form(
+                    key: _formKey,
+                    child: Container(
+                        width: double.maxFinite,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 41.h, vertical: 60.v),
+                        child: Column(children: [
+                          Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 35.h),
+                              child: Column(children: [
+                                SizedBox(height: 38.v),
+                                CustomImageView(
+                                    imagePath: ImageConstant.imgFait128x128,
+                                    height: 128.adaptSize,
+                                    width: 128.adaptSize,
+                                    radius: BorderRadius.circular(64.h)),
+                                SizedBox(height: 23.v),
+                                Text("Fitness AI Trainer",
+                                    style: theme.textTheme.headlineSmall)
+                              ])),
+                          SizedBox(height: 80.v),
+                          Container(
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadiusStyle.roundedBorder8),
+                              child: Column(children: [
+                                Padding(
+                                    padding: EdgeInsets.only(right: 5.h),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 11.v, bottom: 7.v),
+                                              child: Text("Add your photo",
+                                                  style: CustomTextStyles
+                                                      .headlineSmallRobotoSemiBold)),
+                                          InkWell(
+                                            onTap: () => _imagePickerHandler
+                                                .showOptions(context),
+                                            child: SizedBox(
+                                              height: 48.adaptSize,
+                                              width: 48.adaptSize,
+                                              // child: CustomImageView(
+                                              //   imagePath: _image?.path ??
+                                              //       ImageConstant.imgUser,
+                                              // ),
+                                              child: _image?.path == null
+                                                  ? CustomImageView(
+                                                      imagePath:
+                                                          ImageConstant.imgUser,
+                                                    )
+                                                  : Image.file(
+                                                      File(_image!.path)),
+                                            ),
+                                          )
+                                        ])),
+                                SizedBox(height: 16.v),
+                                _buildName(context),
+                                SizedBox(height: 16.v),
+                                _buildUserName(context),
+                                SizedBox(height: 16.v),
+                                _buildEmail(context),
+                                SizedBox(height: 16.v),
+                                _buildPassword(context),
+                                SizedBox(height: 16.v),
+                                _buildConfirmpassword(context),
+                                SizedBox(height: 48.v),
+                                _buildSignUp(context)
+                              ])),
+                          SizedBox(height: 5.v)
+                        ]))),
+              )),
+        ));
   }
 
   /// Section Widget
@@ -201,21 +204,9 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
       controller: passwordController,
       hintText: "Password",
       textInputType: TextInputType.visiblePassword,
-      obscureText: obscurePassword,
       borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
       fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
-      suffix: IconButton(
-        icon: Icon(
-          obscurePassword ? Icons.visibility : Icons.visibility_off,
-          size: 24.adaptSize,
-          color: appTheme.black900.withOpacity(0.5),
-        ),
-        onPressed: () {
-          setState(() {
-            obscurePassword = !obscurePassword;
-          });
-        },
-      ),
+      isPassword: true,
     );
   }
 
@@ -226,21 +217,9 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
       hintText: "Confirm Password",
       textInputAction: TextInputAction.done,
       textInputType: TextInputType.visiblePassword,
-      obscureText: obscureConfirmPassword,
       borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
       fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
-      suffix: IconButton(
-        icon: Icon(
-          obscureConfirmPassword ? Icons.visibility : Icons.visibility_off,
-          size: 24.adaptSize,
-          color: appTheme.black900.withOpacity(0.5),
-        ),
-        onPressed: () {
-          setState(() {
-            obscureConfirmPassword = !obscureConfirmPassword;
-          });
-        },
-      ),
+      isPassword: true,
     );
   }
 
