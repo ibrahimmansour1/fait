@@ -1,4 +1,6 @@
+import 'package:fait/source/views/register/views/sign_up_methods_screen.dart';
 import 'package:fait/utils/size_utils.dart';
+import 'package:fait/utils/transitions/Fade_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -118,9 +120,19 @@ class OnboardingScreenWidget extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          onboardingController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease);
+                          if (index == 2) {
+                            Navigator.push(
+                              context,
+                              FadePageRouteBuilder(
+                                page: const SignUpMethodsScreen(),
+                                duration: const Duration(milliseconds: 800),
+                              ),
+                            );
+                          } else {
+                            onboardingController.nextPage(
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.ease);
+                          }
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
-class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
+class CustomTextFormField extends StatefulWidget {
+  CustomTextFormField({
     Key? key,
     this.alignment,
     this.width,
@@ -10,7 +10,6 @@ class CustomTextFormField extends StatelessWidget {
     this.focusNode,
     this.autofocus = false,
     this.textStyle,
-    this.obscureText = false,
     this.textInputAction = TextInputAction.next,
     this.textInputType = TextInputType.text,
     this.maxLines,
@@ -25,9 +24,12 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.filled = true,
     this.validator,
+    this.isPassword = false,
   }) : super(
           key: key,
-        );
+        ) {
+    obscureText = isPassword;
+  }
 
   final Alignment? alignment;
 
@@ -41,7 +43,7 @@ class CustomTextFormField extends StatelessWidget {
 
   final TextStyle? textStyle;
 
-  final bool? obscureText;
+  bool? obscureText;
 
   final TextInputAction? textInputAction;
 
@@ -71,45 +73,66 @@ class CustomTextFormField extends StatelessWidget {
 
   final FormFieldValidator<String>? validator;
 
+  final bool isPassword;
+
+  @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
-    return alignment != null
+    return widget.alignment != null
         ? Align(
-            alignment: alignment ?? Alignment.center,
+            alignment: widget.alignment ?? Alignment.center,
             child: textFormFieldWidget,
           )
         : textFormFieldWidget;
   }
 
   Widget get textFormFieldWidget => SizedBox(
-        width: width ?? double.maxFinite,
+        width: widget.width ?? double.maxFinite,
         child: TextFormField(
           cursorColor: Colors.black,
-          controller: controller,
+          controller: widget.controller,
           // focusNode: focusNode ?? FocusNode(),
           // autofocus: autofocus!,
-          style: textStyle ??
+          style: widget.textStyle ??
               theme.textTheme.bodyLarge!.copyWith(color: Colors.black),
-          obscureText: obscureText!,
-          textInputAction: textInputAction,
-          keyboardType: textInputType,
-          maxLines: maxLines ?? 1,
+          obscureText: widget.obscureText!,
+          textInputAction: widget.textInputAction,
+          keyboardType: widget.textInputType,
+          maxLines: widget.maxLines ?? 1,
           decoration: decoration,
-          validator: validator,
+          validator: widget.validator,
         ),
       );
+
   InputDecoration get decoration => InputDecoration(
-        hintText: hintText ?? "",
-        hintStyle: hintStyle ?? CustomTextStyles.bodyLargeBlack900,
-        prefixIcon: prefix,
-        prefixIconConstraints: prefixConstraints,
-        suffixIcon: suffix,
-        suffixIconConstraints: suffixConstraints,
+        hintText: widget.hintText ?? "",
+        hintStyle: widget.hintStyle ?? CustomTextStyles.bodyLargeBlack900,
+        prefixIcon: widget.prefix,
+        prefixIconConstraints: widget.prefixConstraints,
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                icon: Icon(
+                  widget.obscureText! ? Icons.visibility : Icons.visibility_off,
+                  size: 24.adaptSize,
+                  color: appTheme.black900.withOpacity(0.5),
+                ),
+                onPressed: () {
+                  setState(() {
+                    widget.obscureText = !widget.obscureText!;
+                  });
+                },
+              )
+            : widget.suffix,
+        suffixIconConstraints: widget.suffixConstraints,
         isDense: true,
-        contentPadding: contentPadding ?? EdgeInsets.all(16.h),
-        fillColor: fillColor ?? appTheme.indigo30001,
-        filled: filled,
-        border: borderDecoration ??
+        contentPadding: widget.contentPadding ?? EdgeInsets.all(16.h),
+        fillColor: widget.fillColor ?? appTheme.indigo30001,
+        filled: widget.filled,
+        border: widget.borderDecoration ??
             OutlineInputBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(
@@ -124,7 +147,7 @@ class CustomTextFormField extends StatelessWidget {
               ),
               borderSide: BorderSide.none,
             ),
-        enabledBorder: borderDecoration ??
+        enabledBorder: widget.borderDecoration ??
             OutlineInputBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(
@@ -139,7 +162,7 @@ class CustomTextFormField extends StatelessWidget {
               ),
               borderSide: BorderSide.none,
             ),
-        focusedBorder: borderDecoration ??
+        focusedBorder: widget.borderDecoration ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.h),
               borderSide: BorderSide(
