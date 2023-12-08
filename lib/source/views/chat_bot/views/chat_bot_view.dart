@@ -26,16 +26,15 @@ class ChatBotView extends StatelessWidget {
               width: mediaQueryData.size.width,
               height: mediaQueryData.size.height,
               decoration: BoxDecoration(
-                // gradient: LinearGradient(
-                //   begin: const Alignment(0, 0.51),
-                //   end: const Alignment(0.95, 0.66),
-                //   colors: [
-                //     theme.colorScheme.onPrimary,
-                //     appTheme.blueGray800,
-                //     appTheme.blueGray80001
-                //   ],
-                // ),
-                color: Color(0xffffffff),
+                gradient: LinearGradient(
+                  begin: const Alignment(0, 0.51),
+                  end: const Alignment(0.95, 0.66),
+                  colors: [
+                    theme.colorScheme.onPrimary,
+                    appTheme.blueGray800,
+                    appTheme.blueGray80001
+                  ],
+                ),
               ),
               child: SingleChildScrollView(
                 child: Container(
