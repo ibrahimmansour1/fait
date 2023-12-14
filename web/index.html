@@ -38,7 +38,9 @@
   <script src="flutter.js" defer=""></script>
   
   
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  
+  
+  
   
   
   
@@ -72,7 +74,7 @@
         opacity: 1;
         /* animation type and duration */
         transition: opacity 0.25s;
-        background-color: #141C29;
+        background-color: #ffffff;
               -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
     }
@@ -129,6 +131,12 @@
       bottom: 0;
       right: 0;
     }
+
+    @media (prefers-color-scheme: dark) {
+      #splash {
+        background-color: #000000;
+          }
+    }
   </style>
   <script id="splash-screen-script">
     function removeSplashFromWeb() {
@@ -140,6 +148,7 @@
       }, 750 /* animation time + wait rendering and others(500ms) */);
     }
   </script>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 </head>
 <body>
   <div id="splash">
@@ -149,6 +158,7 @@
         <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
     </picture>
   </div>
+  
   
   
   

@@ -79,8 +79,8 @@ class OnboardingScreenWidget extends StatelessWidget {
                       Text(
                         titlesList[index],
                         textAlign: TextAlign.start,
-                        style: const TextStyle(
-                          fontSize: 42,
+                        style: TextStyle(
+                          fontSize: 52.fSize,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           height: 1.1,
@@ -90,8 +90,8 @@ class OnboardingScreenWidget extends StatelessWidget {
                       Text(
                         descriptionsList[index],
                         textAlign: TextAlign.start,
-                        style: const TextStyle(
-                          fontSize: 16,
+                        style: TextStyle(
+                          fontSize: 22.fSize,
                           color: Colors.white,
                         ),
                       ),
