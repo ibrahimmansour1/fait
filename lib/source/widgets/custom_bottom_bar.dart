@@ -11,33 +11,33 @@ class CustomBottomBar extends StatefulWidget {
 }
 
 class CustomBottomBarState extends State<CustomBottomBar> {
-  int selectedIndex = 0;
+  int selectedIndex = 2;
 
   List<BottomMenuModel> bottomMenuList = [
     BottomMenuModel(
-      icon: ImageConstant.imgEnglish,
-      activeIcon: ImageConstant.imgEnglish,
-      type: BottomBarEnum.English,
+      icon: ImageConstant.imgProfileIcone,
+      activeIcon: ImageConstant.imgProfileIcone,
+      type: BottomBarEnum.profile,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgImage16,
-      activeIcon: ImageConstant.imgImage16,
-      type: BottomBarEnum.Image16,
+      icon: ImageConstant.imgFitnessIcon,
+      activeIcon: ImageConstant.imgFitnessIcon,
+      type: BottomBarEnum.fitness,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgImage13,
-      activeIcon: ImageConstant.imgImage13,
-      type: BottomBarEnum.Image13,
+      icon: ImageConstant.imgHomeIcon,
+      activeIcon: ImageConstant.imgHomeIcon,
+      type: BottomBarEnum.home,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgStrongLogo,
-      activeIcon: ImageConstant.imgStrongLogo,
-      type: BottomBarEnum.Stronglogo,
+      icon: ImageConstant.imgDietIcon,
+      activeIcon: ImageConstant.imgDietIcon,
+      type: BottomBarEnum.diet,
     ),
     BottomMenuModel(
       icon: ImageConstant.imgNotify,
       activeIcon: ImageConstant.imgNotify,
-      type: BottomBarEnum.Notify,
+      type: BottomBarEnum.notifications,
     )
   ];
 
@@ -57,14 +57,24 @@ class CustomBottomBarState extends State<CustomBottomBar> {
           return BottomNavigationBarItem(
             icon: CustomImageView(
               imagePath: bottomMenuList[index].icon,
-              height: 32.adaptSize,
-              width: 32.adaptSize,
+              height: bottomMenuList[index].type == BottomBarEnum.home
+                  ? 48.adaptSize
+                  : 32.adaptSize,
+              width: bottomMenuList[index].type == BottomBarEnum.home
+                  ? 48.adaptSize
+                  : 32.adaptSize,
             ),
             activeIcon: CustomImageView(
               imagePath: bottomMenuList[index].activeIcon,
-              height: 32.adaptSize,
-              width: 32.adaptSize,
-              color: appTheme.blueGray400,
+              height: bottomMenuList[index].type == BottomBarEnum.home
+                  ? 48.adaptSize
+                  : 32.adaptSize,
+              width: bottomMenuList[index].type == BottomBarEnum.home
+                  ? 48.adaptSize
+                  : 32.adaptSize,
+              color: bottomMenuList[index].type == BottomBarEnum.home
+                  ? null
+                  : theme.colorScheme.primary,
             ),
             label: '',
           );
@@ -80,11 +90,11 @@ class CustomBottomBarState extends State<CustomBottomBar> {
 }
 
 enum BottomBarEnum {
-  English,
-  Image16,
-  Image13,
-  Stronglogo,
-  Notify,
+  profile,
+  fitness,
+  home,
+  diet,
+  notifications,
 }
 
 class BottomMenuModel {
