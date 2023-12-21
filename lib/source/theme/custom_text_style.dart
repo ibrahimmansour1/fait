@@ -84,7 +84,7 @@ class CustomTextStyles {
   static get bodyMediumBluegray40001_1 => theme.textTheme.bodyMedium!.copyWith(
         color: appTheme.blueGray40001,
       );
-  static get bodyMediumBluegray40001_2 => theme.textTheme.bodyMedium!.copyWith(
+  static TextStyle get bodyMediumBluegray40001_2 => theme.textTheme.bodyMedium!.copyWith(
         color: appTheme.blueGray40001.withOpacity(0.7),
       );
   static get bodyMediumOnPrimaryContainer =>
