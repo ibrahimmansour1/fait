@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.1.5 <4.0.0"
 
 dependencies:
+  bottom_picker: ^2.3.3
   cached_network_image: ^3.3.0
   cupertino_icons: ^1.0.2
   dio: ^5.3.3

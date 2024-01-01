@@ -1,5 +1,6 @@
 import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_birth_date.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
 import 'package:fait/source/views/register/views/log_in_screen.dart';
@@ -32,6 +33,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const ChatBotView());
       case '/chat_bot_view_body':
         return MaterialPageRoute(builder: (context) => const ChatBotViewBody());
+      case '/chat_bot_view_body_with_birth_date':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithBirthDate());
       // case 'verification':
       //   return MaterialPageRoute(
       //       builder: (context) => const VerificationScreen());

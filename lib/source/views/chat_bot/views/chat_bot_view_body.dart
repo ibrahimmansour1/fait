@@ -1,17 +1,18 @@
-import 'package:fait/source/theme/app_decoration.dart';
 import 'package:fait/source/theme/custom_button_style.dart';
 import 'package:fait/source/theme/custom_text_style.dart';
-import 'package:fait/source/theme/theme_helper.dart';
-import 'package:fait/source/views/chat_bot/widgets/build_send_message_widget.dart';
-import 'package:fait/source/views/chat_bot/widgets/custom_chat_bot_app_bar.dart';
-import 'package:fait/source/views/onboarding/widgets/onboarding_item_widget.dart';
+import 'package:fait/source/views/chat_bot/widgets/gender_widget.dart';
+import 'package:fait/source/views/chat_bot/widgets/select_gender_widget.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
-import 'package:fait/source/widgets/custom_image_view.dart';
-import 'package:fait/utils/image_constant.dart';
-import 'package:fait/utils/size_utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-final messageController = TextEditingController();
+import '../../../../utils/size_utils.dart';
+import '../../../theme/theme_helper.dart';
+import '../widgets/build_send_message_widget.dart';
+import '../widgets/chat_message_widget.dart';
+import '../widgets/custom_chat_bot_app_bar.dart';
+
+var messageController = TextEditingController();
 Future<void> showMessages() async {
   await Future.delayed(const Duration(seconds: 1));
   // Show first message
@@ -40,17 +41,6 @@ class ChatBotViewBody extends StatefulWidget {
 }
 
 class _ChatBotViewBodyState extends State<ChatBotViewBody> {
-  bool _showMessages = false;
-  @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 3)).then((value) {
-      setState(() {
-        _showMessages = true;
-      });
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -75,89 +65,72 @@ class _ChatBotViewBodyState extends State<ChatBotViewBody> {
           child: SafeArea(
             child: Container(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomChatBotAppBar(),
                   const ChatMessageWidget(
                     message: 'message',
-                    timeInSeconds: 1,
                   ),
                   const ChatMessageWidget(
                     message: 'message',
                     isReceiver: true,
-                    timeInSeconds: 1,
                   ),
                   ChatMessageWidget(
                     message: messageController.text,
                     isReceiver: false,
-                    timeInSeconds: 1,
+                  ),
+                  SizedBox(
+                    height: 10.v,
+                  ),
+                  const SelectGenderWidget(),
+                  SizedBox(
+                    height: 10.v,
+                  ),
+                  Text('My Gender :',
+                      style: theme.textTheme.bodyLarge!
+                          .copyWith(fontSize: 32.fSize)),
+                  const ChatMessageWidget(
+                    message: 'My Gender is Male',
+                    isReceiver: true,
+                  ),
+                  const ChatMessageWidget(
+                    message: "Awesome! Let's get started",
                   ),
                   const Spacer(),
-                  const BuildSendMessageWidget(
-                      // messageController: messageController,
-                      ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 32.0.h, vertical: 8.v),
+                    child: CustomElevatedButton(
+                        height: 58.v,
+                        text: "Continue",
+                        rightIcon: Row(
+                          children: [
+                            SizedBox(
+                              width: 80.v,
+                            ),
+                            const Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                        buttonStyle: CustomButtonStyles.fillPrimary,
+                        buttonTextStyle: CustomTextStyles.titleLargeInter,
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, '/chat_bot_view_body_with_birth_date');
+                        }),
+                  ),
+                  SizedBox(
+                    height: 10.v,
+                  ),
+                  BuildSendMessageWidget(
+                    messageController: messageController,
+                  ),
                 ],
               ),
             ),
           ),
         ));
-  }
-}
-
-class ChatMessageWidget extends StatelessWidget {
-  final String message;
-  final bool isReceiver;
-  final int? timeInSeconds;
-  const ChatMessageWidget({
-    Key? key,
-    required this.message,
-    this.isReceiver = false,
-    this.timeInSeconds = 1,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    timeInSeconds != 0
-        ? Future.delayed(Duration(seconds: timeInSeconds!)).then((value) {
-            return FittedBox(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  color: isReceiver
-                      ? const Color(0xFF353767)
-                      : const Color(0xFF8394CA),
-                  borderRadius: isReceiver
-                      ? const BorderRadius.only(
-                          topLeft: Radius.circular(16),
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
-                        )
-                      : const BorderRadius.only(
-                          topRight: Radius.circular(16),
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
-                        ),
-                ),
-                alignment:
-                    isReceiver ? Alignment.centerRight : Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    message,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            );
-          })
-        : const Scaffold(
-            body: Text('Empty'),
-          );
-    return const SizedBox();
   }
 }
