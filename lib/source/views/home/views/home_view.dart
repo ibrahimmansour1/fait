@@ -1,3 +1,4 @@
+import 'package:fait/source/views/home/views/nav_bar_screens/profile_screen.dart';
 import 'package:fait/source/widgets/custom_bottom_bar.dart';
 import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class HomeView extends StatelessWidget {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.profile:
-        return '/';
+        return '/profile';
       case BottomBarEnum.fitness:
         return "/";
       case BottomBarEnum.home:
@@ -58,6 +59,8 @@ class HomeView extends StatelessWidget {
         return const HomeScreen();
       case '/notifications':
         return const NotifcationsScreen();
+      case '/profile':
+        return const ProfileScreen();
       default:
         return const DefaultWidget();
     }

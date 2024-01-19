@@ -72,7 +72,7 @@ class ImageConstant {
   // profile images
   static String imgProfile = '$imagePath/img_profile.png';
 
-  static String imgReachGoal = '$imagePath/img_reach_goal.svg';
+  static String imgReachGoal = '$imagePath/img_reach_goal.png';
 
   static String imgVectorTeal40001 = '$imagePath/img_vector_teal_400_01.svg';
 
