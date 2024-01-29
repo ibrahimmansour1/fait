@@ -24,7 +24,7 @@ class MyApp extends ConsumerWidget {
           Locale('en', 'US'),
           Locale('ar'),
         ],
-        initialRoute: '/main_onboarding_screen',
+        initialRoute: '/steps_tracker_screen',
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );

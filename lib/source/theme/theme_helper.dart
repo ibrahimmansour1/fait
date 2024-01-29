@@ -193,6 +193,8 @@ class PrimaryColors {
   // Amber
   Color get amber400 => const Color(0XFFFBC11B);
   Color get amber500 => const Color(0XFFFFC107);
+  Color get amber600 => const Color(0XFFE17B08);
+  Color get amber700 => const Color(0XFF5e4c41);
 
   // Black
   Color get black900 => const Color(0XFF000000);
@@ -205,6 +207,7 @@ class PrimaryColors {
   Color get blueA400 => const Color(0XFF1877F2);
   Color get blueA40001 => const Color(0XFF1F86FE);
   Color get blueA40002 => const Color(0XFF1F86FB);
+  Color get blueA40003 => const Color(0XFF264278);
 
   // BlueGray
   Color get blueGray100 => const Color(0XFFCAC4D0);
@@ -244,9 +247,11 @@ class PrimaryColors {
   Color get deepPurple40001 => const Color(0XFF7266E3);
   Color get deepPurpleA100 => const Color(0XFFAF91FD);
   Color get deepPurpleA10001 => const Color(0XFFA98BFB);
+  Color get deepPurpleA10002 => const Color(0XFF484378);
   Color get deepPurpleA200 => const Color(0XFF9747FF);
 
   // Gray
+  Color get gray => Colors.grey;
   Color get gray100 => const Color(0XFFF5F6FA);
   Color get gray10001 => const Color(0XFFF4F4FC);
   Color get gray10002 => const Color(0XFFF5F6F8);
@@ -262,6 +267,12 @@ class PrimaryColors {
   Color get gray90002 => const Color(0XFF101533);
   Color get gray90003 => const Color(0XFF0F1521);
 
+  // White
+  Color get white => Colors.white;
+
+  // Transparent
+  Color get transparent => Colors.transparent;
+
   // Green
   Color get green400 => const Color(0XFF65C466);
   Color get green500 => const Color(0XFF54D14D);
@@ -276,6 +287,7 @@ class PrimaryColors {
   Color get indigoA10001 => const Color(0XFF9BABFF);
   Color get indigoA10002 => const Color(0XFF8B80F8);
   Color get indigoA200 => const Color(0XFF5068EC);
+  Color get sleepShapeColor => const Color(0XFF2f3154);
 
   // LightBlue
   Color get lightBlueA200 => const Color(0XFF43CCFF);
