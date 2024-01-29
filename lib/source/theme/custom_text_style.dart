@@ -84,7 +84,8 @@ class CustomTextStyles {
   static get bodyMediumBluegray40001_1 => theme.textTheme.bodyMedium!.copyWith(
         color: appTheme.blueGray40001,
       );
-  static get bodyMediumBluegray40001_2 => theme.textTheme.bodyMedium!.copyWith(
+  static TextStyle get bodyMediumBluegray40001_2 =>
+      theme.textTheme.bodyMedium!.copyWith(
         color: appTheme.blueGray40001.withOpacity(0.7),
       );
   static get bodyMediumOnPrimaryContainer =>
@@ -261,7 +262,7 @@ class CustomTextStyles {
         color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
         fontWeight: FontWeight.w600,
       );
-  static get titleMediumOnPrimaryContainer =>
+  static TextStyle get titleMediumOnPrimaryContainer =>
       theme.textTheme.titleMedium!.copyWith(
         color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
         fontSize: 18.fSize,

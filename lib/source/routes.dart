@@ -26,7 +26,7 @@ class RouteGenerator {
       // case 'signup':
       //   return MaterialPageRoute(builder: (context) => const SignupScreen());
       case '/home':
-        return MaterialPageRoute(builder: (context) => const HomeView());
+        return MaterialPageRoute(builder: (context) => HomeView());
       case '/on_boarding_screen':
         return MaterialPageRoute(
             builder: (context) => const SignUpMethodsScreen());
