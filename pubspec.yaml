@@ -17,6 +17,7 @@ dependencies:
   flutter_native_splash: ^2.3.6
   flutter_progress_hud: ^2.0.2
   flutter_riverpod: ^2.4.5
+  flutter_ruler_picker: ^1.0.6
   flutter_svg: ^2.0.9
   fluttertoast: ^8.2.4
   image_picker: ^1.0.4

@@ -1,30 +1,28 @@
 import 'package:fait/source/theme/custom_button_style.dart';
 import 'package:fait/source/theme/custom_text_style.dart';
-import 'package:fait/source/views/chat_bot/widgets/gender_widget.dart';
-import 'package:fait/source/views/chat_bot/widgets/select_gender_widget.dart';
 import 'package:fait/source/views/chat_bot/widgets/select_your_bd_widget.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/size_utils.dart';
-import '../../../theme/theme_helper.dart';
 import '../widgets/build_send_message_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
+import '../widgets/select_your_height_widget.dart';
+import '../widgets/select_your_weight_widget.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithBirthDate extends StatefulWidget {
-  const ChatBotViewBodyWithBirthDate({super.key});
+class ChatBotViewBodyWithHeightAndWeight extends StatefulWidget {
+  const ChatBotViewBodyWithHeightAndWeight({super.key});
 
   @override
-  State<ChatBotViewBodyWithBirthDate> createState() =>
-      _ChatBotViewBodyWithBirthDateState();
+  State<ChatBotViewBodyWithHeightAndWeight> createState() =>
+      _ChatBotViewBodyWithHeightAndWeightState();
 }
 
-class _ChatBotViewBodyWithBirthDateState
-    extends State<ChatBotViewBodyWithBirthDate> {
+class _ChatBotViewBodyWithHeightAndWeightState
+    extends State<ChatBotViewBodyWithHeightAndWeight> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -43,25 +41,15 @@ class _ChatBotViewBodyWithBirthDateState
                 children: [
                   const CustomChatBotAppBar(),
                   const ChatMessageWidget(
-                    message: 'Please detect your birthday Ibrahim',
+                    message: 'Please detect your Height Ibrahim',
                   ),
-                  SizedBox(
-                    height: 10.v,
-                  ),
-                  const SelectYourBirthDayWidget(),
-                  SizedBox(
-                    height: 10.v,
-                  ),
-                  Text('My Birthday is:',
-                      style: theme.textTheme.bodyLarge!
-                          .copyWith(fontSize: 32.fSize)),
+                  SizedBox(height: 10.v),
+                  const SelectYourHeightWidget(),
                   const ChatMessageWidget(
-                    message: 'My BirthDay is dd/mm/yyyy',
-                    isReceiver: true,
+                    message: "Great! Let's detect your weight",
                   ),
-                  const ChatMessageWidget(
-                    message: "Great! Let's Continue",
-                  ),
+                  SizedBox(height: 10.v),
+                  const SelectYourWeightWidget(),
                   const Spacer(),
                   Padding(
                     padding:
@@ -71,9 +59,7 @@ class _ChatBotViewBodyWithBirthDateState
                         text: "Continue",
                         rightIcon: Row(
                           children: [
-                            SizedBox(
-                              width: 80.v,
-                            ),
+                            SizedBox(width: 80.h),
                             const Icon(
                               Icons.arrow_forward,
                               color: Colors.white,

@@ -15,7 +15,6 @@ class ChatMessageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return FittedBox(
       child: Container(
-        width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.v),
         margin: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.v),
         decoration: BoxDecoration(

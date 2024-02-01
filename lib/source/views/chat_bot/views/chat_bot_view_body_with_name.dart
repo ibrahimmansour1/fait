@@ -14,17 +14,16 @@ import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
+String name = "";
 
-class ChatBotViewBodyWithBirthDate extends StatefulWidget {
-  const ChatBotViewBodyWithBirthDate({super.key});
+class ChatBotViewBodyName extends StatefulWidget {
+  const ChatBotViewBodyName({super.key});
 
   @override
-  State<ChatBotViewBodyWithBirthDate> createState() =>
-      _ChatBotViewBodyWithBirthDateState();
+  State<ChatBotViewBodyName> createState() => _ChatBotViewBodyNameState();
 }
 
-class _ChatBotViewBodyWithBirthDateState
-    extends State<ChatBotViewBodyWithBirthDate> {
+class _ChatBotViewBodyNameState extends State<ChatBotViewBodyName> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -42,26 +41,25 @@ class _ChatBotViewBodyWithBirthDateState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomChatBotAppBar(),
+                  const ChatMessageWidget(message: "Hello"),
+                  const ChatMessageWidget(message: "I'm FAIT your AI Trainer"),
                   const ChatMessageWidget(
-                    message: 'Please detect your birthday Ibrahim',
+                      message: "May I know your nick name?"),
+                  SizedBox(height: 20.v),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text('My Name:',
+                        style: theme.textTheme.bodyLarge!
+                            .copyWith(fontSize: 32.fSize)),
                   ),
-                  SizedBox(
-                    height: 10.v,
-                  ),
-                  const SelectYourBirthDayWidget(),
-                  SizedBox(
-                    height: 10.v,
-                  ),
-                  Text('My Birthday is:',
-                      style: theme.textTheme.bodyLarge!
-                          .copyWith(fontSize: 32.fSize)),
-                  const ChatMessageWidget(
-                    message: 'My BirthDay is dd/mm/yyyy',
+                  SizedBox(height: 10.v),
+                  ChatMessageWidget(
+                    message: name,
                     isReceiver: true,
                   ),
                   const ChatMessageWidget(
-                    message: "Great! Let's Continue",
-                  ),
+                      message: "Nice Name! Glad to know you"),
+                  const ChatMessageWidget(message: "Press Continue to go on"),
                   const Spacer(),
                   Padding(
                     padding:
@@ -83,14 +81,19 @@ class _ChatBotViewBodyWithBirthDateState
                         buttonStyle: CustomButtonStyles.fillPrimary,
                         buttonTextStyle: CustomTextStyles.titleLargeInter,
                         onPressed: () {
-                          Navigator.pushNamed(context,
-                              '/chat_bot_view_body_with_height_and_weight');
+                          Navigator.pushNamed(
+                              context, '/chat_bot_view_body_with_gender');
                         }),
                   ),
                   SizedBox(
                     height: 10.v,
                   ),
                   BuildSendMessageWidget(
+                    onTap: () {
+                      setState(() {
+                        name = messageController.text;
+                      });
+                    },
                     messageController: messageController,
                   ),
                 ],

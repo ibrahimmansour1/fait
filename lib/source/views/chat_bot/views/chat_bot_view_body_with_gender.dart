@@ -1,5 +1,6 @@
 import 'package:fait/source/theme/custom_button_style.dart';
 import 'package:fait/source/theme/custom_text_style.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/views/chat_bot/widgets/gender_widget.dart';
 import 'package:fait/source/views/chat_bot/widgets/select_gender_widget.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
@@ -12,11 +13,13 @@ import '../widgets/build_send_message_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
+bool isMale = false;
+bool isFemale = false;
 var messageController = TextEditingController();
 Future<void> showMessages() async {
-  await Future.delayed(const Duration(seconds: 1));
+  await Future.delayed(const Duration(seconds: 1))
+      .then((value) => const ChatMessageWidget(message: 'message'));
   // Show first message
-  const ChatMessageWidget(message: 'message');
 
   await Future.delayed(const Duration(seconds: 1));
   // Show second message
@@ -33,14 +36,15 @@ Future<void> showMessages() async {
   );
 }
 
-class ChatBotViewBody extends StatefulWidget {
-  const ChatBotViewBody({super.key});
+class ChatBotViewBodyWithGender extends StatefulWidget {
+  const ChatBotViewBodyWithGender({super.key});
 
   @override
-  State<ChatBotViewBody> createState() => _ChatBotViewBodyState();
+  State<ChatBotViewBodyWithGender> createState() =>
+      _ChatBotViewBodyWithGenderState();
 }
 
-class _ChatBotViewBodyState extends State<ChatBotViewBody> {
+class _ChatBotViewBodyWithGenderState extends State<ChatBotViewBodyWithGender> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -51,33 +55,17 @@ class _ChatBotViewBodyState extends State<ChatBotViewBody> {
         body: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: const Alignment(0, 0.51),
-              end: const Alignment(0.95, 0.66),
-              colors: [
-                theme.colorScheme.onPrimary,
-                appTheme.blueGray800,
-                appTheme.blueGray80001
-              ],
-            ),
-          ),
+          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
           child: SafeArea(
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomChatBotAppBar(),
+                  ChatMessageWidget(message: 'Then $name'),
                   const ChatMessageWidget(
-                    message: 'message',
-                  ),
-                  const ChatMessageWidget(
-                    message: 'message',
+                    message: 'Choose your gender',
                     isReceiver: true,
-                  ),
-                  ChatMessageWidget(
-                    message: messageController.text,
-                    isReceiver: false,
                   ),
                   SizedBox(
                     height: 10.v,
@@ -86,15 +74,17 @@ class _ChatBotViewBodyState extends State<ChatBotViewBody> {
                   SizedBox(
                     height: 10.v,
                   ),
-                  Text('My Gender :',
+                  Text('My Gender:',
                       style: theme.textTheme.bodyLarge!
                           .copyWith(fontSize: 32.fSize)),
-                  const ChatMessageWidget(
-                    message: 'My Gender is Male',
+                  ChatMessageWidget(
+                    message: isMale
+                        ? 'My Gender is Male'
+                        : 'My Gender is Female',
                     isReceiver: true,
                   ),
                   const ChatMessageWidget(
-                    message: "Awesome! Let's get started",
+                    message: "Awesome! Let's continue",
                   ),
                   const Spacer(),
                   Padding(
@@ -117,7 +107,7 @@ class _ChatBotViewBodyState extends State<ChatBotViewBody> {
                         buttonStyle: CustomButtonStyles.fillPrimary,
                         buttonTextStyle: CustomTextStyles.titleLargeInter,
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                               context, '/chat_bot_view_body_with_birth_date');
                         }),
                   ),

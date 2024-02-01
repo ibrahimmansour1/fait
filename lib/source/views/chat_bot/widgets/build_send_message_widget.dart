@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class BuildSendMessageWidget extends StatefulWidget {
   final TextEditingController? messageController;
-  const BuildSendMessageWidget({super.key, this.messageController});
+  final Function()? onTap;
+  const BuildSendMessageWidget({super.key, this.messageController, this.onTap});
 
   @override
   State<BuildSendMessageWidget> createState() => _BuildSendMessageWidgetState();
@@ -28,9 +29,7 @@ class _BuildSendMessageWidgetState extends State<BuildSendMessageWidget> {
                     color: const Color(0xFF121212).withOpacity(0.5),
                   ),
                   suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {});
-                    },
+                    onPressed: widget.onTap,
                     icon: Icon(
                       Icons.send_rounded,
                       color: const Color(0xFF121212).withOpacity(0.5),
