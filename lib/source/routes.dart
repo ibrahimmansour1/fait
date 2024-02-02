@@ -1,9 +1,15 @@
 import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
+import 'package:fait/source/views/fitness/views/workout_overview_screen.dart';
 import 'package:fait/source/views/register/views/log_in_screen.dart';
 import 'package:fait/source/views/register/views/sign_up_methods_screen.dart';
 import 'package:fait/source/views/register/views/sign_up_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/after_login_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/daily_intake_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/sleep_tracker_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/water_intake_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -29,11 +35,23 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const SignUpScreen());
       case '/chat_bot':
         return MaterialPageRoute(builder: (context) => const ChatBotView());
-      // case 'verification':
-      //   return MaterialPageRoute(
-      //       builder: (context) => const VerificationScreen());
-      // case 'menu':
-      //   return MaterialPageRoute(builder: (context) => const MenuScreen());
+      case '/daily_intake_screen':
+        return MaterialPageRoute(
+            builder: (context) => const DailyIntakeScreen());
+      case '/water_intake_screen':
+        return MaterialPageRoute(builder: (context) => WaterIntakeScreen());
+      case '/sleep_tracker_screen':
+        return MaterialPageRoute(
+            builder: (context) => const SleepTrackerScreen());
+      case '/after_login_screen':
+        return MaterialPageRoute(
+            builder: (context) => const AfterLoginScreen());
+      case '/steps_tracker_screen':
+        return MaterialPageRoute(
+            builder: (context) => const StepsTrackerScreen());
+      case '/workout_overview_screen':
+        return MaterialPageRoute(
+            builder: (context) => const WorkoutOverviewScreen());
 
       default:
         return MaterialPageRoute(

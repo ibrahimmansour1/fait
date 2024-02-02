@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
 class CustomIconButton extends StatelessWidget {
-  CustomIconButton({
+  const CustomIconButton({
     Key? key,
     this.alignment,
     this.height,
@@ -88,6 +88,14 @@ extension IconButtonStyleHelper on CustomIconButton {
       );
   static BoxDecoration get fillDeepOrangeAF => BoxDecoration(
         color: appTheme.deepOrangeA1003f,
+        borderRadius: BorderRadius.circular(4.h),
+      );
+  static BoxDecoration get fillRed3000 => BoxDecoration(
+        color: appTheme.red30001,
+        borderRadius: BorderRadius.circular(4.h),
+      );
+  static BoxDecoration get fillCustomPrimary => BoxDecoration(
+        color: theme.colorScheme.primary,
         borderRadius: BorderRadius.circular(4.h),
       );
 }
