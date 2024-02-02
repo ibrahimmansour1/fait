@@ -196,4 +196,17 @@ class ImageConstant {
   static String imgBack = '$imagePath/img_back.svg';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
+
+  static String imgShape1 = '$imagePath/img_shape1.png';
+
+  static String imgMindBodyBalance = '$imagePath/img_mind_body_balance.png';
+
+  static String imgFavoriteBlueGray90020x20 =
+      '$imagePath/img_favorite_blue_gray_900_20x20.svg';
+
+      static String imgCloseDeepPurpleA200 =
+      '$imagePath/img_close_deep_purple_a200.svg';
+
+  static String imgCloseOrangeA20032x32 =
+      '$imagePath/img_close_orange_a200_32x32.svg';
 }

@@ -1,7 +1,5 @@
 // import 'package:responsive_sizer/responsive_sizer.dart';
 
-const BASE_URL = "https://ladonasa.com/attendfy";
-
 // const double SCREEN_HIEGHT = 926;
 // const double SCREEN_WIDTH = 428;
 
@@ -12,3 +10,5 @@ const BASE_URL = "https://ladonasa.com/attendfy";
 // double getResponsiveWidth(double width) {
 //   return ((width * 100) / SCREEN_WIDTH).w;
 // }
+
+const animationDuration = Duration(milliseconds: 300);

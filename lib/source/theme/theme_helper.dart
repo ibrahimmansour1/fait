@@ -270,6 +270,7 @@ class PrimaryColors {
   // Indigo
   Color get indigo300 => const Color(0XFF7C89C8);
   Color get indigo30001 => const Color(0XFF8394CA);
+  Color get indigo500 => const Color(0XFF3B4EB3);
   Color get indigo700 => const Color(0XFF2F41A6);
   Color get indigo900 => const Color(0XFF303A72);
   Color get indigoA100 => const Color(0XFF91ABFF);

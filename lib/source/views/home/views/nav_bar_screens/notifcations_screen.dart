@@ -96,7 +96,7 @@ class NotifcationsScreen extends StatelessWidget {
                 },
                 itemCount: 3,
                 itemBuilder: (context, index) {
-                  return const NotifcationsItemWidget();
+                  return NotifcationsItemWidget();
                 })));
   }
 

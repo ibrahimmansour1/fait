@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class FadePageRouteBuilder extends PageRouteBuilder {
   final Widget page;
   final Duration duration;
 
   FadePageRouteBuilder({
     required this.page,
-    this.duration = const Duration(milliseconds: 300),
+    this.duration = animationDuration,
   }) : super(
           pageBuilder: (context, animation, secondaryAnimation) => page,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {

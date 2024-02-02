@@ -309,6 +309,10 @@ class CustomTextStyles {
   static get titleSmallBluegray100 => theme.textTheme.titleSmall!.copyWith(
         color: appTheme.blueGray100,
       );
+  static get titleSmallIndigo500 => theme.textTheme.titleSmall!.copyWith(
+        color: appTheme.indigo500,
+        fontWeight: FontWeight.w500,
+      );
 }
 
 extension on TextStyle {

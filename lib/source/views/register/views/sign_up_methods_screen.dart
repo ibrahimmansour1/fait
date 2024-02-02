@@ -1,6 +1,6 @@
 import 'package:fait/source/views/register/views/log_in_screen.dart';
 import 'package:fait/source/views/register/views/sign_up_screen.dart';
-import 'package:fait/utils/transitions/Fade_transition.dart';
+import 'package:fait/utils/transitions/fade_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
