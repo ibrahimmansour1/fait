@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:fait/source/localization/app_localization.dart';
+import 'package:fait/source/views/fitness/views/favourites_screen.dart';
+import 'package:fait/source/views/fitness/views/results_screen.dart';
 import 'package:fait/source/views/home/widgets/kcal1_item_widget.dart';
 import 'package:fait/source/views/home/widgets/kcal_item_widget.dart';
 import 'package:fait/source/views/home/widgets/weekcardssetdefault_item_widget.dart';
@@ -253,6 +255,11 @@ class HomeScreen extends StatelessWidget {
                   title: weekDaysNames[weekDayIndex].substring(0, 3),
                   selected: index == ref.watch(selectedDayProvider),
                   onTap: () {
+                    showModalBottomSheet(
+                        context: context,
+                        useRootNavigator: true,
+                        isScrollControlled: true,
+                        builder: (_) => const ResultsScreen());
                     ref
                         .watch(selectedDayProvider.notifier)
                         .update((state) => index);
@@ -323,89 +330,154 @@ class HomeScreen extends StatelessWidget {
   Widget _buildAllMyDayCard(BuildContext context) {
     String type = "running";
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 7,
       itemBuilder: (context, index) {
-        if (index == 0) {
-          type = "running";
-        } else if (index % 2 == 0) {
-          type = "exercise";
-        } else {
-          type = "meal";
-        }
-        return Padding(
-            padding: EdgeInsets.only(right: 20.h),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Column(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: CustomImageView(
-                        imagePath: type == "running"
-                            ? ImageConstant.imgRunningFemale
-                            : type == "meal"
-                                ? ImageConstant.nutrition
-                                : ImageConstant.exercising,
-                        height: 24.adaptSize,
-                        width: 24.adaptSize),
-                  ),
-                  SizedBox(
-                    height: 3.v,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    width: 2,
-                    height: type == "meal" ? 100.v * 3 : 105.v,
-                  )
-                ],
-              ),
-              Expanded(
-                  child: Padding(
-                      padding: EdgeInsets.only(left: 24.h, bottom: 15.v),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+        final showMyDayCardDitailsProvider = StateProvider<bool>((ref) {
+          return index == 0 ? true : false;
+        });
+        return Consumer(
+          builder: (context, ref, child) {
+            if (index == 0) {
+              type = "running";
+            } else if (index % 2 == 0) {
+              type = "exercise";
+            } else {
+              type = "meal";
+            }
+            return InkWell(
+              onTap: () {
+                ref
+                    .read(showMyDayCardDitailsProvider.notifier)
+                    .update((state) => !state);
+              },
+              child: Padding(
+                  padding: EdgeInsets.only(right: 20.h),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
                           children: [
-                            Row(children: [
-                              Padding(
-                                  padding: EdgeInsets.only(top: 1.v),
-                                  child: Text(
-                                      type == "running"
-                                          ? "lbl_running".tr
-                                          : type == "meal"
-                                              ? "lbl_breakfast".tr
-                                              : "lbl_exercising".tr,
-                                      style: CustomTextStyles
-                                          .titleMediumOnPrimaryContainerSemiBold_1)),
-                              CustomImageView(
-                                  imagePath:
-                                      ImageConstant.imgVectorOnprimarycontainer,
-                                  height: 16.adaptSize,
-                                  width: 16.adaptSize,
-                                  margin:
-                                      EdgeInsets.only(left: 14.h, bottom: 4.v))
-                            ]),
-                            SizedBox(height: 6.v),
-                            _buildTimePart(context,
-                                time: "msg_07_00_am_07_45".tr),
-                            SizedBox(height: 8.v),
-                            Container(
-                              padding: EdgeInsets.symmetric(vertical: 8.v),
-                              decoration: AppDecoration.fillBluegray80004
-                                  .copyWith(
-                                      borderRadius:
-                                          BorderRadiusStyle.roundedBorder22),
-                              child: type == "running"
-                                  ? _buildRunningInfoWidget()
-                                  : type == "meal"
-                                      ? _buildMealInfoWidget()
-                                      : _buildExerciseInfoWidget(context,
-                                          sideLegSwing: "lbl_side_leg_swing".tr,
-                                          hipAbductors: "lbl_hip_abductors".tr,
-                                          time: "lbl_5_00".tr,
-                                          kcalCounter: "lbl_8_4_kcal".tr),
+                            CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: CustomImageView(
+                                  imagePath: type == "running"
+                                      ? ImageConstant.imgRunningFemale
+                                      : type == "meal"
+                                          ? ImageConstant.nutrition
+                                          : ImageConstant.exercising,
+                                  height: 24.adaptSize,
+                                  width: 24.adaptSize),
+                            ),
+                            SizedBox(
+                              height: 3.v,
+                            ),
+                            AnimatedSize(
+                              duration: animationDuration,
+                              reverseDuration: animationDuration,
+                              child: Container(
+                                color: Colors.white,
+                                width: ref.watch(showMyDayCardDitailsProvider)
+                                    ? 2
+                                    : 0,
+                                height: ref.watch(showMyDayCardDitailsProvider)
+                                    ? type == "meal"
+                                        ? 100.v * 3
+                                        : 105.v
+                                    : 0,
+                              ),
                             )
-                          ])))
-            ]));
+                          ],
+                        ),
+                        Expanded(
+                            child: Padding(
+                                padding:
+                                    EdgeInsets.only(left: 24.h, bottom: 15.v),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(children: [
+                                        Padding(
+                                            padding: EdgeInsets.only(top: 1.v),
+                                            child: Text(
+                                                type == "running"
+                                                    ? "lbl_running".tr
+                                                    : type == "meal"
+                                                        ? "lbl_breakfast".tr
+                                                        : "lbl_exercising".tr,
+                                                style: CustomTextStyles
+                                                    .titleMediumOnPrimaryContainerSemiBold_1)),
+                                        CustomImageView(
+                                            imagePath: ImageConstant
+                                                .imgVectorOnprimarycontainer,
+                                            height: 16.adaptSize,
+                                            width: 16.adaptSize,
+                                            margin: EdgeInsets.only(
+                                                left: 14.h, bottom: 4.v)),
+                                        AnimatedCrossFade(
+                                          firstChild: const Icon(
+                                            Icons.keyboard_arrow_up_sharp,
+                                            color: Colors.white,
+                                          ),
+                                          secondChild: const Icon(
+                                            Icons.keyboard_arrow_down_sharp,
+                                            color: Colors.white,
+                                          ),
+                                          crossFadeState: ref.watch(
+                                                  showMyDayCardDitailsProvider)
+                                              ? CrossFadeState.showFirst
+                                              : CrossFadeState.showSecond,
+                                          duration: animationDuration,
+                                          reverseDuration: animationDuration,
+                                        )
+                                      ]),
+                                      SizedBox(height: 6.v),
+                                      _buildTimePart(context,
+                                          time: "msg_07_00_am_07_45".tr),
+                                      SizedBox(height: 8.v),
+                                      AnimatedOpacity(
+                                        opacity: ref.watch(
+                                                showMyDayCardDitailsProvider)
+                                            ? 1.0
+                                            : 0.0,
+                                        duration: animationDuration,
+                                        child: Visibility(
+                                          visible: ref.watch(
+                                              showMyDayCardDitailsProvider),
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 8.v),
+                                            decoration: AppDecoration
+                                                .fillBluegray80004
+                                                .copyWith(
+                                                    borderRadius:
+                                                        BorderRadiusStyle
+                                                            .roundedBorder22),
+                                            child: type == "running"
+                                                ? _buildRunningInfoWidget()
+                                                : type == "meal"
+                                                    ? _buildMealInfoWidget()
+                                                    : _buildExerciseInfoWidget(
+                                                        context,
+                                                        sideLegSwing:
+                                                            "lbl_side_leg_swing"
+                                                                .tr,
+                                                        hipAbductors:
+                                                            "lbl_hip_abductors"
+                                                                .tr,
+                                                        time: "lbl_5_00".tr,
+                                                        kcalCounter:
+                                                            "lbl_8_4_kcal".tr),
+                                          ),
+                                        ),
+                                      )
+                                    ])))
+                      ])),
+            );
+          },
+        );
       },
     );
   }
@@ -742,86 +814,90 @@ class HomeScreen extends StatelessWidget {
             radius: BorderRadius.circular(8.h),
             margin: EdgeInsets.only(left: 4.h, top: 8.v, bottom: 8.v)),
         Padding(
-            padding: EdgeInsets.only(top: 2.v),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          padding: EdgeInsets.only(top: 2.v),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Padding(
+                padding: EdgeInsets.only(left: 1.h),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(sideLegSwing,
+                                style: CustomTextStyles
+                                    .titleMediumOnPrimaryContainerSemiBold_1
+                                    .copyWith(
+                                        color: theme
+                                            .colorScheme.onPrimaryContainer
+                                            .withOpacity(1))),
+                            // SizedBox(height: 12.v),
+                            // Text(hipAbductors,
+                            //     style: CustomTextStyles.bodyMediumPrimary
+                            //         .copyWith(
+                            //             color: theme.colorScheme.primary
+                            //                 .withOpacity(0.5)))
+                          ]),
+                      // CustomImageView(
+                      //     imagePath: ImageConstant.imgChangeIcon,
+                      //     height: 16.adaptSize,
+                      //     width: 16.adaptSize,
+                      //     margin: EdgeInsets.only(
+                      //         left: 22.h, top: 3.v, bottom: 28.v)),
+                      // Container(
+                      //     height: 15.adaptSize,
+                      //     width: 15.adaptSize,
+                      //     margin: EdgeInsets.only(
+                      //         left: 13.h, top: 4.v, bottom: 28.v),
+                      //     decoration: AppDecoration.fillOnPrimaryContainer
+                      //         .copyWith(
+                      //             borderRadius:
+                      //                 BorderRadiusStyle.roundedBorder8),
+                      //     child: CustomImageView(
+                      //         imagePath: ImageConstant.imgInfo,
+                      //         height: 15.adaptSize,
+                      //         width: 15.adaptSize,
+                      //         radius: BorderRadius.circular(7.h),
+                      //         alignment: Alignment.center))
+                    ])),
+            SizedBox(height: 12.v),
+            Row(children: [
+              Container(
+                  height: 16.adaptSize,
+                  width: 16.adaptSize,
+                  margin: EdgeInsets.symmetric(vertical: 1.v),
+                  decoration: AppDecoration.fillOnPrimaryContainer
+                      .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+                  child: CustomImageView(
+                      imagePath: ImageConstant.imgClockGreen400,
+                      height: 16.adaptSize,
+                      width: 16.adaptSize,
+                      radius: BorderRadius.circular(8.h),
+                      alignment: Alignment.center)),
               Padding(
-                  padding: EdgeInsets.only(left: 1.h),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(sideLegSwing,
-                                  style: CustomTextStyles
-                                      .titleMediumOnPrimaryContainerSemiBold_1
-                                      .copyWith(
-                                          color: theme
-                                              .colorScheme.onPrimaryContainer
-                                              .withOpacity(1))),
-                              SizedBox(height: 12.v),
-                              Text(hipAbductors,
-                                  style: CustomTextStyles.bodyMediumPrimary
-                                      .copyWith(
-                                          color: theme.colorScheme.primary
-                                              .withOpacity(0.5)))
-                            ]),
-                        CustomImageView(
-                            imagePath: ImageConstant.imgChangeIcon,
-                            height: 16.adaptSize,
-                            width: 16.adaptSize,
-                            margin: EdgeInsets.only(
-                                left: 22.h, top: 3.v, bottom: 28.v)),
-                        Container(
-                            height: 15.adaptSize,
-                            width: 15.adaptSize,
-                            margin: EdgeInsets.only(
-                                left: 13.h, top: 4.v, bottom: 28.v),
-                            decoration: AppDecoration.fillOnPrimaryContainer
-                                .copyWith(
-                                    borderRadius:
-                                        BorderRadiusStyle.roundedBorder8),
-                            child: CustomImageView(
-                                imagePath: ImageConstant.imgInfo,
-                                height: 15.adaptSize,
-                                width: 15.adaptSize,
-                                radius: BorderRadius.circular(7.h),
-                                alignment: Alignment.center))
-                      ])),
-              SizedBox(height: 12.v),
-              Row(children: [
-                Container(
-                    height: 16.adaptSize,
-                    width: 16.adaptSize,
-                    margin: EdgeInsets.symmetric(vertical: 1.v),
-                    decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
-                        borderRadius: BorderRadiusStyle.roundedBorder8),
-                    child: CustomImageView(
-                        imagePath: ImageConstant.imgClockGreen400,
-                        height: 16.adaptSize,
-                        width: 16.adaptSize,
-                        radius: BorderRadius.circular(8.h),
-                        alignment: Alignment.center)),
-                Padding(
-                    padding: EdgeInsets.only(left: 8.h),
-                    child: Text(time,
-                        style: theme.textTheme.bodyLarge!.copyWith(
-                            color: theme.colorScheme.onPrimaryContainer
-                                .withOpacity(1)))),
-                CustomImageView(
-                    imagePath: ImageConstant.imgCalories16x16,
-                    height: 16.adaptSize,
-                    width: 16.adaptSize,
-                    margin: EdgeInsets.only(left: 8.h, top: 1.v, bottom: 1.v)),
-                Padding(
-                    padding: EdgeInsets.only(left: 8.h),
-                    child: Text(kcalCounter,
-                        style: theme.textTheme.bodyLarge!.copyWith(
-                            color: theme.colorScheme.onPrimaryContainer
-                                .withOpacity(1))))
-              ])
-            ]))
+                  padding: EdgeInsets.only(left: 8.h),
+                  child: Text(time,
+                      style: theme.textTheme.bodyLarge!.copyWith(
+                          color: theme.colorScheme.onPrimaryContainer
+                              .withOpacity(1)))),
+              CustomImageView(
+                  imagePath: ImageConstant.imgCalories16x16,
+                  height: 16.adaptSize,
+                  width: 16.adaptSize,
+                  margin: EdgeInsets.only(left: 8.h, top: 1.v, bottom: 1.v)),
+              Padding(
+                  padding: EdgeInsets.only(left: 8.h),
+                  child: Text(kcalCounter,
+                      style: theme.textTheme.bodyLarge!.copyWith(
+                          color: theme.colorScheme.onPrimaryContainer
+                              .withOpacity(1))))
+            ])
+          ]),
+        ),
+        SizedBox(
+          width: 1.h,
+        )
       ]),
     );
   }

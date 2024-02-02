@@ -2,6 +2,7 @@ import 'package:fait/source/localization/app_localization.dart';
 import 'package:fait/source/views/home/widgets/add_new_goal_bottom_sheet.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../../../widgets/app_bar/custom_app_bar.dart';
 import '../../../../widgets/custom_icon_button.dart';
@@ -18,56 +19,58 @@ class ProfileScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
             appBar: _buildAppBar(context),
-            body: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.symmetric(vertical: 15.v),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.only(left: 32.h),
-                          child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomImageView(
-                                    imagePath: ImageConstant.imgProfile,
-                                    height: 64.adaptSize,
-                                    width: 64.adaptSize,
-                                    margin: EdgeInsets.only(bottom: 21.v)),
-                                Padding(
-                                    padding: EdgeInsets.only(left: 24.h),
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text("lbl_zahra_a".tr,
-                                              style: CustomTextStyles
-                                                  .titleMediumOnPrimaryContainerSemiBold18),
-                                          SizedBox(height: 13.v),
-                                          Text("msg_last_sync_jan_4".tr,
-                                              style: CustomTextStyles
-                                                  .titleMediumOnPrimaryContainerSemiBold18),
-                                          SizedBox(height: 7.v),
-                                          Text("lbl_battery_87".tr,
-                                              style: CustomTextStyles
-                                                  .titleMediumOnPrimaryContainerSemiBold18)
-                                        ]))
-                              ])),
-                      SizedBox(height: 17.v),
-                      _buildThirtySeven(context),
-                      SizedBox(height: 24.v),
-                      _buildGoalsAdd(context),
-                      SizedBox(height: 11.v),
-                      Padding(
-                          padding: EdgeInsets.only(left: 32.h),
-                          child: Text("msg_3_achieved_and_7".tr,
-                              style: CustomTextStyles
-                                  .bodyLargeOnPrimaryContainer18)),
-                      SizedBox(height: 13.v),
-                      _buildGoalsCards(context),
-                      SizedBox(height: 16.v),
-                      // MyAvatarSectionWidget(),
-                    ]))));
+            body: SingleChildScrollView(
+              child: Container(
+                  width: double.maxFinite,
+                  padding: EdgeInsets.symmetric(vertical: 15.v),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.only(left: 32.h),
+                            child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomImageView(
+                                      imagePath: ImageConstant.imgProfile,
+                                      height: 64.adaptSize,
+                                      width: 64.adaptSize,
+                                      margin: EdgeInsets.only(bottom: 21.v)),
+                                  Padding(
+                                      padding: EdgeInsets.only(left: 24.h),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text("lbl_zahra_a".tr,
+                                                style: CustomTextStyles
+                                                    .titleMediumOnPrimaryContainerSemiBold18),
+                                            SizedBox(height: 13.v),
+                                            Text("msg_last_sync_jan_4".tr,
+                                                style: CustomTextStyles
+                                                    .titleMediumOnPrimaryContainerSemiBold18),
+                                            SizedBox(height: 7.v),
+                                            Text("lbl_battery_87".tr,
+                                                style: CustomTextStyles
+                                                    .titleMediumOnPrimaryContainerSemiBold18)
+                                          ]))
+                                ])),
+                        SizedBox(height: 17.v),
+                        _buildThirtySeven(context),
+                        SizedBox(height: 24.v),
+                        _buildGoalsAdd(context),
+                        SizedBox(height: 11.v),
+                        Padding(
+                            padding: EdgeInsets.only(left: 32.h),
+                            child: Text("msg_3_achieved_and_7".tr,
+                                style: CustomTextStyles
+                                    .bodyLargeOnPrimaryContainer18)),
+                        SizedBox(height: 13.v),
+                        _buildGoalsCards(context),
+                        SizedBox(height: 16.v),
+                        const _MyAvatarSectionWidget(),
+                      ])),
+            )));
   }
 
   /// Section Widget

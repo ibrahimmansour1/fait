@@ -32,6 +32,7 @@ dependencies:
   syncfusion_flutter_gauges: ^24.1.45
   table_calendar: ^3.0.9
   url_launcher: ^6.2.1
+  syncfusion_flutter_gauges: ^24.1.47
 
 dev_dependencies:
   flutter_lints: ^2.0.0

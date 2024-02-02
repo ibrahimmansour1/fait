@@ -56,6 +56,16 @@ class AppDecoration {
       );
 
   // Gradient decorations
+  static BoxDecoration get gradientGrayToGray => BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.5, 0),
+          end: Alignment(0.86, 0.95),
+          colors: [
+            appTheme.gray90002,
+            appTheme.gray90001,
+          ],
+        ),
+      );
   static BoxDecoration get gradientGrayToBlueGray => BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(0.02, 0.58),

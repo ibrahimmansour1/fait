@@ -18,7 +18,7 @@ class GoalscardsItemWidget extends StatelessWidget {
           // horizontal: 42.h,
           vertical: 28.v,
         ),
-        decoration: AppDecoration.fillGray90002.copyWith(
+        decoration: AppDecoration.fillBluegray80004.copyWith(
           borderRadius: BorderRadiusStyle.roundedBorder22,
         ),
         child: Row(

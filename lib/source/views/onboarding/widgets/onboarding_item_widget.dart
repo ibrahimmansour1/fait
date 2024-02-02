@@ -1,6 +1,6 @@
 import 'package:fait/source/views/register/views/sign_up_methods_screen.dart';
 import 'package:fait/utils/size_utils.dart';
-import 'package:fait/utils/transitions/Fade_transition.dart';
+import 'package:fait/utils/transitions/fade_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

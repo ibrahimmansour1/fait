@@ -13,7 +13,7 @@ class KcalItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomImageView(
@@ -105,23 +105,23 @@ class KcalItemWidget extends StatelessWidget {
                       style: theme.textTheme.labelLarge,
                     ),
                   ),
-                  Container(
-                    height: 20.adaptSize,
-                    width: 20.adaptSize,
-                    margin: EdgeInsets.only(left: 22.h),
-                    decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder8,
-                    ),
-                    child: CustomImageView(
-                      imagePath: ImageConstant.imgChangeIcon,
-                      height: 20.adaptSize,
-                      width: 20.adaptSize,
-                      radius: BorderRadius.circular(
-                        10.h,
-                      ),
-                      alignment: Alignment.center,
-                    ),
-                  ),
+                  // Container(
+                  //   height: 20.adaptSize,
+                  //   width: 20.adaptSize,
+                  //   margin: EdgeInsets.only(left: 22.h),
+                  //   decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
+                  //     borderRadius: BorderRadiusStyle.roundedBorder8,
+                  //   ),
+                  //   child: CustomImageView(
+                  //     imagePath: ImageConstant.imgChangeIcon,
+                  //     height: 20.adaptSize,
+                  //     width: 20.adaptSize,
+                  //     radius: BorderRadius.circular(
+                  //       10.h,
+                  //     ),
+                  //     alignment: Alignment.center,
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(height: 2.v),
