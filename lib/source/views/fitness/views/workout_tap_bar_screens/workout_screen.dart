@@ -1,6 +1,3 @@
-import 'package:fait/source/views/fitness/views/exercise_overview_screen.dart';
-import 'package:fait/source/views/fitness/views/workout_overview_screen.dart';
-import 'package:fait/source/views/fitness/views/workout_muscles_screen.dart';
 import 'package:fait/source/views/fitness/widgets/taps_program_widget.dart';
 import 'package:fait/source/views/fitness/widgets/title_date_program.dart';
 import 'package:fait/source/views/fitness/widgets/workout_card.dart';
@@ -8,6 +5,10 @@ import 'package:fait/utils/transitions/Fade_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../exercise_tap_bar_screens/exercise_overview_screen.dart';
+import 'workout_muscles_screen.dart';
+import 'workout_overview_screen.dart';
 
 // ignore_for_file: must_be_immutable
 class WorkoutScreen extends StatelessWidget {

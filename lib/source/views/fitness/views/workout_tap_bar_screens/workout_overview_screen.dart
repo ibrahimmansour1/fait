@@ -1,5 +1,3 @@
-import 'package:fait/source/views/fitness/views/workout_screen.dart';
-import 'package:fait/source/views/fitness/views/workout_muscles_screen.dart';
 import 'package:fait/source/views/fitness/widgets/taps_program_widget.dart';
 import 'package:fait/source/views/fitness/widgets/title_date_program.dart';
 import 'package:fait/source/views/fitness/widgets/overview_percentages_widget.dart';
@@ -9,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_icon_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'workout_muscles_screen.dart';
+import 'workout_screen.dart';
 
 // ignore_for_file: must_be_immutable
 class WorkoutOverviewScreen extends StatefulWidget {
