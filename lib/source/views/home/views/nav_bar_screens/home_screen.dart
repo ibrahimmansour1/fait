@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:fait/source/localization/app_localization.dart';
-import 'package:fait/source/views/fitness/views/favourites_screen.dart';
 import 'package:fait/source/views/fitness/views/results_screen.dart';
 import 'package:fait/source/views/home/widgets/kcal1_item_widget.dart';
 import 'package:fait/source/views/home/widgets/kcal_item_widget.dart';
@@ -10,7 +7,6 @@ import 'package:fait/source/widgets/app_bar/appbar_leading_image.dart';
 import 'package:fait/source/widgets/app_bar/appbar_title.dart';
 import 'package:fait/source/widgets/app_bar/appbar_title_circleimage.dart';
 import 'package:fait/source/widgets/app_bar/custom_app_bar.dart';
-import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -255,14 +251,16 @@ class HomeScreen extends StatelessWidget {
                   title: weekDaysNames[weekDayIndex].substring(0, 3),
                   selected: index == ref.watch(selectedDayProvider),
                   onTap: () {
+                    ref
+                        .watch(selectedDayProvider.notifier)
+                        .update((state) => index);
+
+                    // TODO: JUST FOR TEST
                     showModalBottomSheet(
                         context: context,
                         useRootNavigator: true,
                         isScrollControlled: true,
                         builder: (_) => const ResultsScreen());
-                    ref
-                        .watch(selectedDayProvider.notifier)
-                        .update((state) => index);
                   },
                 ),
               );

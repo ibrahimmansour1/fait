@@ -1,6 +1,5 @@
 import 'package:fait/source/localization/app_localization.dart';
 import 'package:fait/source/views/home/widgets/notifcations_item_widget.dart';
-import 'package:fait/source/widgets/custom_icon_button.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 

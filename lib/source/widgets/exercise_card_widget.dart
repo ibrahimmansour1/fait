@@ -2,11 +2,16 @@ import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../views/fitness/views/replace_with_screen/replace_with_tab_container_screen.dart';
+
+// ignore: must_be_immutable
 class ExerciseCardWidget extends StatelessWidget {
   bool favourite;
+  bool replacable;
   StateProvider<bool>? isFavouriteProvider;
 
-  ExerciseCardWidget({super.key, this.favourite = false}) {
+  ExerciseCardWidget(
+      {super.key, this.favourite = false, this.replacable = true}) {
     isFavouriteProvider = StateProvider<bool>((ref) {
       return favourite;
     });
@@ -17,7 +22,7 @@ class ExerciseCardWidget extends StatelessWidget {
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: IntrinsicWidth(
-            stepWidth: 220.h,
+            stepWidth: replacable ? 220.h : 175.h,
             child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadiusStyle.roundedBorder8),
@@ -109,37 +114,50 @@ class ExerciseCardWidget extends StatelessWidget {
                                                     vertical: 27.v)),
                                           )
                                         ])))),
-                        Container(
-                            height: 32.adaptSize,
-                            width: 32.adaptSize,
-                            margin: EdgeInsets.only(
-                                left: 16.h, top: 36.v, bottom: 36.v),
-                            decoration: AppDecoration.fillOnPrimaryContainer
-                                .copyWith(
-                                    borderRadius:
-                                        BorderRadiusStyle.circleBorder16),
-                            child: CustomImageView(
-                                imagePath: ImageConstant.imgCloseDeepPurpleA200,
+                        if (replacable)
+                          Container(
+                              height: 32.adaptSize,
+                              width: 32.adaptSize,
+                              margin: EdgeInsets.only(
+                                  left: 16.h, top: 36.v, bottom: 36.v),
+                              decoration: AppDecoration.fillOnPrimaryContainer
+                                  .copyWith(
+                                      borderRadius:
+                                          BorderRadiusStyle.circleBorder16),
+                              child: CustomImageView(
+                                  imagePath:
+                                      ImageConstant.imgCloseDeepPurpleA200,
+                                  height: 32.adaptSize,
+                                  width: 32.adaptSize,
+                                  radius: BorderRadius.circular(16.h),
+                                  alignment: Alignment.center)),
+                        if (replacable)
+                          InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  useRootNavigator: true,
+                                  isScrollControlled: true,
+                                  builder: (_) =>
+                                      const ReplaceWithTabContainerScreen());
+                            },
+                            child: Container(
                                 height: 32.adaptSize,
                                 width: 32.adaptSize,
-                                radius: BorderRadius.circular(16.h),
-                                alignment: Alignment.center)),
-                        Container(
-                            height: 32.adaptSize,
-                            width: 32.adaptSize,
-                            margin: EdgeInsets.only(
-                                left: 8.h, top: 36.v, bottom: 36.v),
-                            decoration: AppDecoration.fillOnPrimaryContainer
-                                .copyWith(
-                                    borderRadius:
-                                        BorderRadiusStyle.circleBorder16),
-                            child: CustomImageView(
-                                imagePath:
-                                    ImageConstant.imgCloseOrangeA20032x32,
-                                height: 32.adaptSize,
-                                width: 32.adaptSize,
-                                radius: BorderRadius.circular(16.h),
-                                alignment: Alignment.center))
+                                margin: EdgeInsets.only(
+                                    left: 8.h, top: 36.v, bottom: 36.v),
+                                decoration: AppDecoration.fillOnPrimaryContainer
+                                    .copyWith(
+                                        borderRadius:
+                                            BorderRadiusStyle.circleBorder16),
+                                child: CustomImageView(
+                                    imagePath:
+                                        ImageConstant.imgCloseOrangeA20032x32,
+                                    height: 32.adaptSize,
+                                    width: 32.adaptSize,
+                                    radius: BorderRadius.circular(16.h),
+                                    alignment: Alignment.center)),
+                          )
                       ]),
                 ))));
   }

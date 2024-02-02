@@ -116,6 +116,13 @@ class CustomTextStyles {
       theme.textTheme.displayMedium!.roboto.copyWith(
         color: appTheme.indigo300,
       );
+  static get displayMediumBold => theme.textTheme.displayMedium!.copyWith(
+        fontWeight: FontWeight.w700,
+      );
+  static get displayMediumbfffffff => theme.textTheme.displayMedium!.copyWith(
+        color: const Color(0XBFFFFFFF),
+        fontSize: 40.fSize,
+      );
   // Headline style
   static get headlineLargeAquire => theme.textTheme.headlineLarge!.aquire;
   static get headlineLargeRegular => theme.textTheme.headlineLarge!.copyWith(
@@ -177,6 +184,16 @@ class CustomTextStyles {
         color: theme.colorScheme.onPrimaryContainer,
         fontWeight: FontWeight.w600,
       );
+  static get headlineSmallRobotoOnPrimaryContainerRegular =>
+      theme.textTheme.headlineSmall!.roboto.copyWith(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+        fontWeight: FontWeight.w400,
+      );
+  static get headlineSmallRobotoOnPrimaryContainerSemiBold =>
+      theme.textTheme.headlineSmall!.roboto.copyWith(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+        fontWeight: FontWeight.w600,
+      );
   static get headlineSmallRobotoRed30002 =>
       theme.textTheme.headlineSmall!.roboto.copyWith(
         color: appTheme.red30002,
@@ -225,7 +242,7 @@ class CustomTextStyles {
   static get titleLargeYellow900 => theme.textTheme.titleLarge!.copyWith(
         color: appTheme.yellow900,
       );
-    static get displayMediumOnPrimaryContainerRegular =>
+  static get displayMediumOnPrimaryContainerRegular =>
       theme.textTheme.displayMedium!.copyWith(
         color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
         fontSize: 40.fSize,

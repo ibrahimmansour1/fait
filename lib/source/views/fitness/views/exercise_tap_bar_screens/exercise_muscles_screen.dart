@@ -1,11 +1,12 @@
-import 'package:fait/source/views/fitness/views/exercise_overview_screen.dart';
-import 'package:fait/source/views/fitness/views/exercise_screen.dart';
 import 'package:fait/source/views/fitness/widgets/taps_exercise_widget.dart';
 import 'package:fait/source/views/fitness/widgets/title_date_program.dart';
 import 'package:fait/utils/transitions/Fade_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'exercise_overview_screen.dart';
+import 'exercise_screen.dart';
 
 // ignore_for_file: must_be_immutable
 class ExerciseMusclesScreen extends StatelessWidget {
