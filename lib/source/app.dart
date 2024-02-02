@@ -1,4 +1,6 @@
+import 'package:fait/source/localization/app_localization.dart';
 import 'package:fait/source/theme/theme_helper.dart';
+import 'package:fait/utils/navigator_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'routes.dart';
@@ -20,11 +22,22 @@ class MyApp extends ConsumerWidget {
         theme: theme,
         // themeMode: themeMode,
         // locale: locale,
+        navigatorKey: NavigatorService.navigatorKey,
+        localizationsDelegates: const [
+          AppLocalizationDelegate(),
+          // GlobalMaterialLocalizations.delegate,
+          // GlobalWidgetsLocalizations.delegate,
+          // GlobalCupertinoLocalizations.delegate,
+        ],
         supportedLocales: const [
           Locale('en', 'US'),
           Locale('ar'),
         ],
+<<<<<<< HEAD
         initialRoute: '/workout_overview_screen',
+=======
+        initialRoute: '/home',
+>>>>>>> d79c5c761b0ac3ab241f9c8f176137ba72c5d03c
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );

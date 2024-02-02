@@ -80,7 +80,7 @@ class ImageConstant {
   // profile images
   static String imgProfile = '$imagePath/img_profile.png';
 
-  static String imgReachGoal = '$imagePath/img_reach_goal.svg';
+  static String imgReachGoal = '$imagePath/img_reach_goal.png';
 
   static String imgVectorTeal40001 = '$imagePath/img_vector_teal_400_01.svg';
 
@@ -104,6 +104,10 @@ class ImageConstant {
 
   static String imgExercising = '$imagePath/img_exercising.svg';
 
+  static String exercising = '$imagePath/exercising.svg';
+
+  static String nutrition = '$imagePath/nutrition.png';
+
   static String imgRunningFemalePrimary =
       '$imagePath/img_running_female_primary.svg';
 
@@ -122,7 +126,7 @@ class ImageConstant {
 
   static String imgMessegeSentRecord = '$imagePath/img_messege_sent_record.svg';
 
-  static String imgStrongLogo = '$imagePath/img_strong_logo.png';
+  static String imgDietIcon = '$imagePath/diet_icon.png';
 
   static String imgTrophy = '$imagePath/img_trophy.svg';
 
@@ -182,11 +186,11 @@ class ImageConstant {
 
   static String imgMeals11 = '$imagePath/img_meals_1_1.png';
 
-  static String imgEnglish = '$imagePath/img_english.svg';
+  static String imgProfileIcone = '$imagePath/profile_icon.png';
 
-  static String imgImage16 = '$imagePath/img_image_16.png';
+  static String imgFitnessIcon = '$imagePath/fitness_icon.svg';
 
-  static String imgImage13 = '$imagePath/img_image_13.png';
+  static String imgHomeIcon = '$imagePath/home_icon.png';
 
   static String imgNotify = '$imagePath/img_notify.svg';
 
