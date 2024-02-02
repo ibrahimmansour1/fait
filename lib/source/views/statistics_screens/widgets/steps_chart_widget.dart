@@ -1,5 +1,6 @@
 import 'package:fait/source/theme/theme_helper.dart';
 import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.dart';
+import 'package:fait/source/widgets/custom_line_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -69,73 +70,19 @@ class _StepsChartWidgetState extends ConsumerState<StepsChartWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return LineChart(
-      LineChartData(
-        lineTouchData: LineTouchData(
-          enabled: true,
-          handleBuiltInTouches: false,
-          mouseCursorResolver:
-              (FlTouchEvent event, LineTouchResponse? response) {
-            if (response == null || response.lineBarSpots == null) {
-              return SystemMouseCursors.basic;
-            }
-            return SystemMouseCursors.click;
-          },
-          touchTooltipData: LineTouchTooltipData(
-            tooltipBgColor: appTheme.blueA40002,
-            tooltipRoundedRadius: 20,
-            getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
-              return lineBarsSpot.map((lineBarSpot) {
-                return LineTooltipItem(
-                  "${lineBarSpot.x.toInt()} mins ago",
-                  TextStyle(
-                    color: appTheme.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                );
-              }).toList();
-            },
-          ),
-        ),
-        lineBarsData: getLineBarsData(widget.selectedTimePeriod),
-        minY: -0.5,
-        maxY: 110,
-        titlesData: FlTitlesData(
-          show: true,
-          leftTitles: const AxisTitles(),
-          topTitles: const AxisTitles(),
-          bottomTitles: AxisTitles(
-            sideTitles: bottomTitles,
-          ),
-          rightTitles: const AxisTitles(),
-        ),
-        gridData: FlGridData(
-          show: true,
-          drawHorizontalLine: false,
-          drawVerticalLine:
-              widget.selectedTimePeriod == TimePeriod.Daily ? false : true,
-          getDrawingVerticalLine: (value) {
-            return FlLine(
-              color: appTheme.white,
-              strokeWidth: 1,
-            );
-          },
-        ),
-        borderData: FlBorderData(
-          show: true,
-          border: Border.all(
-            color: appTheme.transparent,
-          ),
-        ),
-      ),
+    return CustomLineChart(
+      lineBarsData: getLineBarsData(widget.selectedTimePeriod),
+      bottomTitles: bottomTitles,
+      drawHorizontalLine: false,
+      drawVerticalLine:
+          widget.selectedTimePeriod == TimePeriod.Daily ? false : true,
     );
   }
 }
 
 LineChartBarData get lineChartBarDataWeek => LineChartBarData(
       isCurved: true,
-      gradient:  LinearGradient(colors: [
+      gradient: LinearGradient(colors: [
         appTheme.blue50001,
         appTheme.blue50001,
       ]),

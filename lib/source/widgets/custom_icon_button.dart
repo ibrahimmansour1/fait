@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
 class CustomIconButton extends StatelessWidget {
-  CustomIconButton({
+  const CustomIconButton({
     Key? key,
     this.alignment,
     this.height,
