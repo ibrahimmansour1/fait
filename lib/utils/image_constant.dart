@@ -73,8 +73,7 @@ class ImageConstant {
   static String imgLocationDeepPurpleA10001 =
       '$imagePath/img_location_vector.svg';
 
-  static String imgLightning =
-      '$imagePath/icons8-lightning-bolt-50.png';
+  static String imgLightning = '$imagePath/icons8-lightning-bolt-50.png';
 
   static String imgStepsChart = '$imagePath/img_steps_chart.svg';
 
@@ -201,4 +200,18 @@ class ImageConstant {
   static String imgBack = '$imagePath/img_back.svg';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
+
+  // Workout
+  static String imgTelevisionPrimary = '$imagePath/img_television_primary.svg';
+
+  static String imgThumbsUpOnprimarycontainer =
+      '$imagePath/img_thumbs_up_onprimarycontainer.svg';
+
+  static String imgInbox = '$imagePath/img_inbox.svg';
+
+  static String imgMusclesImage = '$imagePath/img_muscles_image.png';
+
+  static String imgDurationImage = '$imagePath/img_duration.png';
+
+  static String imgLiftedImage = '$imagePath/img_lifted.png';
 }

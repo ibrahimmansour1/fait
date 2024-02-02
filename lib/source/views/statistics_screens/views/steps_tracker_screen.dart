@@ -1,8 +1,8 @@
 import 'package:fait/source/views/statistics_screens/widgets/steps_chart_widget.dart';
+import 'package:fait/source/widgets/custome_slide_segmented_control_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
-import 'package:fait/source/widgets/app_bar/custom_app_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -24,12 +24,22 @@ class StepsTrackerScreen extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: _buildAppBar(context),
         body: Container(
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 24.v),
           child: Column(
             children: [
+              CustomImageView(
+                imagePath: ImageConstant.imgArrowLeft,
+                height: 24.v,
+                width: 16.h,
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 16.h),
+                onTap: () {
+                  onTapImgArrowLeft(context);
+                },
+              ),
+              SizedBox(height: 27.v),
               SizedBox(height: 24.v),
               Text("DAILY STEPS",
                   style: CustomTextStyles.titleMediumDeeppurple300),
@@ -240,33 +250,6 @@ class StepsTrackerScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      height: 72.v,
-      leadingWidth: double.maxFinite,
-      leading: Container(
-        height: 25.v,
-        width: 16.h,
-        margin: EdgeInsets.fromLTRB(32.h, 15.v, 380.h, 15.v),
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            CustomImageView(
-              imagePath: ImageConstant.imgArrowLeft,
-              height: 25.v,
-              width: 16.h,
-              alignment: Alignment.center,
-              onTap: () {
-                onTapImgArrowLeft(context);
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  /// Section Widget
   Widget _buildStepsInfoCard(BuildContext context) {
     return Container(
       width: 404.h,
@@ -284,7 +267,7 @@ class StepsTrackerScreen extends StatelessWidget {
               SizedBox(
                 height: 60.0.v,
                 width: 500.h,
-                child: CupertinoSlidingSegmentedControl<TimePeriod>(
+                child: CustomSlideSegmentedControl<TimePeriod>(
                   children: {
                     TimePeriod.Daily: Padding(
                       padding: EdgeInsets.symmetric(
@@ -353,11 +336,6 @@ class StepsTrackerScreen extends StatelessWidget {
 
   /// Navigates back to the previous screen.
   onTapImgArrowLeft(BuildContext context) {
-    Navigator.pop(context);
-  }
-
-  /// Navigates back to the previous screen.
-  onTapImgArrowLeft1(BuildContext context) {
     Navigator.pop(context);
   }
 }

@@ -24,7 +24,7 @@ class MyApp extends ConsumerWidget {
           Locale('en', 'US'),
           Locale('ar'),
         ],
-        initialRoute: '/steps_tracker_screen',
+        initialRoute: '/workout_overview_screen',
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );

@@ -24,14 +24,15 @@ class _SleepTrackerScreenState extends State<SleepTrackerScreen> {
           child: Column(
             children: [
               CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 24.v,
-                  width: 16.h,
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 16.h),
-                  onTap: () {
-                    onTapImgArrowLeft(context);
-                  }),
+                imagePath: ImageConstant.imgArrowLeft,
+                height: 24.v,
+                width: 16.h,
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 16.h),
+                onTap: () {
+                  onTapImgArrowLeft(context);
+                },
+              ),
               SizedBox(height: 27.v),
               Align(
                 alignment: Alignment.centerLeft,

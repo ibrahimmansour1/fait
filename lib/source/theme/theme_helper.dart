@@ -249,6 +249,7 @@ class PrimaryColors {
   Color get deepPurpleA10001 => const Color(0XFFA98BFB);
   Color get deepPurpleA10002 => const Color(0XFF484378);
   Color get deepPurpleA200 => const Color(0XFF9747FF);
+  Color get deepPurpleA2000 => const Color(0XFF502596);
 
   // Gray
   Color get gray => Colors.grey;
@@ -262,6 +263,7 @@ class PrimaryColors {
   Color get gray30002 => const Color(0XFFE3E3E7);
   Color get gray50 => const Color(0XFFFFF8F8);
   Color get gray5001 => const Color(0XFFF7F8FA);
+  Color get gray50011 => const Color(0XFFEBEBF9);
   Color get gray900 => const Color(0XFF0F1330);
   Color get gray90001 => const Color(0XFF131B28);
   Color get gray90002 => const Color(0XFF101533);
@@ -291,6 +293,8 @@ class PrimaryColors {
 
   // LightBlue
   Color get lightBlueA200 => const Color(0XFF43CCFF);
+  Color get lightBlue400 => const Color(0XFF26B1F7);
+  Color get lightBlue300 => const Color(0XFF0184C7);
 
   // Orange
   Color get orange300 => const Color(0XFFFEC356);
@@ -315,6 +319,9 @@ class PrimaryColors {
 
   // Yellowf
   Color get yellow8003f => const Color(0X3FFEB020);
+
+  // Yellow
+  Color get yellow900 => const Color(0XFFF57021);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

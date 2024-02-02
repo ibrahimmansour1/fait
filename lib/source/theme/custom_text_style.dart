@@ -218,6 +218,18 @@ class CustomTextStyles {
         color: appTheme.blueGray80004,
         fontWeight: FontWeight.w400,
       );
+  static get titleLargeLightblue400 => theme.textTheme.titleLarge!.copyWith(
+        color: appTheme.lightBlue400,
+      );
+  static get titleLargeYellow900 => theme.textTheme.titleLarge!.copyWith(
+        color: appTheme.yellow900,
+      );
+    static get displayMediumOnPrimaryContainerRegular =>
+      theme.textTheme.displayMedium!.copyWith(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+        fontSize: 40.fSize,
+        fontWeight: FontWeight.w400,
+      );
   static get titleLargeInter => theme.textTheme.titleLarge!.inter.copyWith(
         fontWeight: FontWeight.w700,
       );
