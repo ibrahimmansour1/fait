@@ -68,6 +68,12 @@ class CustomLineChart extends StatelessWidget {
               strokeWidth: 1,
             );
           },
+          getDrawingHorizontalLine: (value) {
+            return FlLine(
+              color: theme.colorScheme.primary,
+              strokeWidth: 2,
+            );
+          },
         ),
         borderData: FlBorderData(
           show: true,

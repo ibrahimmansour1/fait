@@ -1,4 +1,5 @@
 import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
+import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_group_screen.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
 import 'package:fait/source/views/register/views/log_in_screen.dart';
@@ -10,8 +11,6 @@ import 'package:fait/source/views/statistics_screens/views/sleep_tracker_screen.
 import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.dart';
 import 'package:fait/source/views/statistics_screens/views/water_intake_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'views/fitness/views/workout_tap_bar_screens/workout_overview_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -50,9 +49,9 @@ class RouteGenerator {
       case '/steps_tracker_screen':
         return MaterialPageRoute(
             builder: (context) => const StepsTrackerScreen());
-      case '/workout_overview_screen':
+      case '/workout_group_screen':
         return MaterialPageRoute(
-            builder: (context) => const WorkoutOverviewScreen());
+            builder: (context) => const WorkoutGroupScreen());
 
       default:
         return MaterialPageRoute(
