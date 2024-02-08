@@ -120,6 +120,8 @@ class ImageConstant {
 
   static String imgArrowright = '$imagePath/img_arrowright.svg';
 
+  static String imgArrowRight = '$imagePath/img_arrow_right.png';
+
   static String imgFait32x32 = '$imagePath/img_fait_32x32.png';
 
   static String imgVector = '$imagePath/img_vector.svg';
@@ -212,7 +214,7 @@ class ImageConstant {
   static String imgFavoriteBlueGray90020x20 =
       '$imagePath/img_favorite_blue_gray_900_20x20.svg';
 
-      static String imgCloseDeepPurpleA200 =
+  static String imgCloseDeepPurpleA200 =
       '$imagePath/img_close_deep_purple_a200.svg';
 
   static String imgCloseOrangeA20032x32 =
