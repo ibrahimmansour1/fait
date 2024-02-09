@@ -148,9 +148,9 @@ class _WorkoutChartWidgetState extends ConsumerState<WorkoutChartWidget> {
               insetPadding: EdgeInsets.all(20.h),
               child: Column(mainAxisSize: MainAxisSize.min, children: [
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 119.h),
+                  margin: EdgeInsets.symmetric(horizontal: 125.h),
                   padding:
-                      EdgeInsets.symmetric(horizontal: 28.h, vertical: 4.v),
+                      EdgeInsets.symmetric(horizontal: 30.h, vertical: 4.v),
                   decoration: AppDecoration.fillBluegray80004.copyWith(
                       borderRadius: BorderRadiusStyle.customBorderTL8),
                   child: Column(
