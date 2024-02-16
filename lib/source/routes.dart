@@ -12,6 +12,9 @@ import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.
 import 'package:fait/source/views/statistics_screens/views/water_intake_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'views/fitness/views/my_activity_screen.dart';
+import 'views/fitness/views/workout_tap_bar_screens/workout_overview_screen.dart';
+
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -51,7 +54,10 @@ class RouteGenerator {
             builder: (context) => const StepsTrackerScreen());
       case '/workout_group_screen':
         return MaterialPageRoute(
-            builder: (context) => const WorkoutGroupScreen());
+            builder: (context) => const WorkoutOverviewScreen());
+      case '/my_activity_screen':
+        return MaterialPageRoute(
+            builder: (context) => const MyActivityScreen());
 
       default:
         return MaterialPageRoute(

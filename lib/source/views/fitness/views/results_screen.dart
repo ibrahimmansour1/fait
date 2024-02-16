@@ -1,4 +1,4 @@
-import 'package:fait/source/widgets/exercise_card_widget.dart';
+import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +50,9 @@ class ResultsScreen extends StatelessWidget {
                     ListView.separated(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => ExerciseCardWidget(),
+                        itemBuilder: (context, index) => ExerciseCardWidget(
+                              replacable: false,
+                            ),
                         separatorBuilder: (context, index) =>
                             SizedBox(height: 32.v),
                         itemCount: 5),

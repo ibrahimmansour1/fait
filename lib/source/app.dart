@@ -33,8 +33,8 @@ class MyApp extends ConsumerWidget {
           Locale('en', 'US'),
           Locale('ar'),
         ],
-        // initialRoute: '/workout_overview_screen',
-        initialRoute: '/workout_group_screen',
+        // initialRoute: '/my_activity_screen',
+        initialRoute: '/home',
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );

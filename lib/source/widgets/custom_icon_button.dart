@@ -98,4 +98,8 @@ extension IconButtonStyleHelper on CustomIconButton {
         color: theme.colorScheme.primary,
         borderRadius: BorderRadius.circular(4.h),
       );
+  static BoxDecoration get fillGray => BoxDecoration(
+        color: appTheme.gray10001,
+        borderRadius: BorderRadius.circular(20.h),
+      );
 }
