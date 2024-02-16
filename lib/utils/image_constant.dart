@@ -163,6 +163,11 @@ class ImageConstant {
   static String imgSidebarCardOnprimarycontainer =
       '$imagePath/img_sidebar_card_onprimarycontainer.png';
 
+  static String imgClockLightBlue700 =
+      '$imagePath/img_clock_light_blue_700.svg';
+
+  static String imgClockOrange700 = '$imagePath/img_clock_orange_700.svg';
+
   static String imgMeals1 = '$imagePath/img_meals_1.png';
 
   static String imgCalories = '$imagePath/img_calories.svg';
@@ -212,7 +217,7 @@ class ImageConstant {
   static String imgFavoriteBlueGray90020x20 =
       '$imagePath/img_favorite_blue_gray_900_20x20.svg';
 
-      static String imgCloseDeepPurpleA200 =
+  static String imgCloseDeepPurpleA200 =
       '$imagePath/img_close_deep_purple_a200.svg';
 
   static String imgCloseOrangeA20032x32 =
@@ -231,4 +236,16 @@ class ImageConstant {
   static String imgDurationImage = '$imagePath/img_duration.png';
 
   static String imgLiftedImage = '$imagePath/img_lifted.png';
+
+  static String imgCheckmarkBlueGray900 =
+      '$imagePath/img_checkmark_blue_gray_900.svg';
+
+  // my activity images
+  static String imgCrossedFingers = '$imagePath/img_crossed_fingers.png';
+
+  static String imgExerciseAnimation = '$imagePath/img_exercise_animation.png';
+
+  static String imgFocus1 = '$imagePath/img_focus1.png';
+
+  static String imgFocus2 = '$imagePath/img_focus2.png';
 }

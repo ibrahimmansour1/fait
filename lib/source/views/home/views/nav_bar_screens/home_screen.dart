@@ -48,132 +48,163 @@ class HomeScreen extends StatelessWidget {
                       style: CustomTextStyles.headlineSmallRoboto_2),
                   SizedBox(height: 29.v),
                   Padding(
-                      padding: EdgeInsets.only(right: 55.h),
-                      child: Row(children: [
-                        GestureDetector(
-                            onTap: () {
-                              onTapContnet(context);
-                            },
-                            child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 28.h, vertical: 10.v),
-                                decoration: AppDecoration.fillBluegray80004
-                                    .copyWith(
-                                        borderRadius:
-                                            BorderRadiusStyle.roundedBorder8),
-                                child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text("lbl_sleep".tr,
-                                          style: CustomTextStyles.bodyLarge17),
-                                      SizedBox(height: 17.v),
-                                      CustomImageView(
-                                          imagePath:
-                                              ImageConstant.imgSleepchart,
-                                          height: 59.v,
-                                          width: 106.h),
-                                      SizedBox(height: 19.v),
-                                      RichText(
-                                          text: TextSpan(children: [
-                                            TextSpan(
-                                                text: "lbl_8".tr,
-                                                style: CustomTextStyles
-                                                    .bodyMediumOnPrimaryContainer),
-                                            TextSpan(
-                                                text: "lbl_h".tr,
-                                                style: CustomTextStyles
-                                                    .bodyMediumBluegray40001_1),
-                                            TextSpan(
-                                                text: "lbl_23m".tr,
-                                                style: CustomTextStyles
-                                                    .bodyMediumOnPrimaryContainer)
-                                          ]),
-                                          textAlign: TextAlign.left),
-                                      SizedBox(height: 10.v),
-                                      Text("lbl_last_updated_3d".tr,
-                                          style: CustomTextStyles
-                                              .bodyMediumBluegray40001_2
-                                              .copyWith(fontSize: 15.fSize))
-                                    ]))),
-                        Padding(
-                            padding: EdgeInsets.only(left: 14.h, bottom: 2.v),
-                            child: Column(children: [
-                              Container(
-                                  width: 162.h,
-                                  padding: EdgeInsets.symmetric(vertical: 10.v),
-                                  decoration: AppDecoration.fillBluegray80004
-                                      .copyWith(
-                                          borderRadius: BorderRadiusStyle
-                                              .roundedBorder12),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Padding(
-                                            padding: EdgeInsets.only(top: 2.v),
-                                            child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text("lbl_450".tr,
-                                                      style: theme.textTheme
-                                                          .titleLarge),
-                                                  SizedBox(height: 12.v),
-                                                  Text("lbl_steps".tr,
-                                                      style: CustomTextStyles
-                                                          .bodyLargeOnPrimaryContainer17)
-                                                ])),
-                                        CustomImageView(
-                                            imagePath: ImageConstant.imgSteps,
-                                            height: 52.v,
-                                            width: 38.h,
-                                            margin: EdgeInsets.only(
-                                                top: 4.v, bottom: 3.v))
-                                      ])),
-                              SizedBox(height: 15.v),
-                              Container(
-                                  width: 162.h,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.h, vertical: 12.v),
-                                  decoration: AppDecoration.fillBluegray80004
-                                      .copyWith(
-                                          borderRadius: BorderRadiusStyle
-                                              .roundedBorder12),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
+                    padding: EdgeInsetsDirectional.only(end: 32.h),
+                    child: Column(
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                    onTap: () {
+                                      onTapContnet(context);
+                                    },
+                                    child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 28.h, vertical: 10.v),
+                                        decoration: AppDecoration
+                                            .fillBluegray80004
+                                            .copyWith(
+                                                borderRadius: BorderRadiusStyle
+                                                    .roundedBorder8),
+                                        child: Column(
+                                            mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text("lbl_325".tr,
-                                                  style: theme
-                                                      .textTheme.titleLarge),
-                                              SizedBox(height: 10.v),
-                                              Text("lbl_calories".tr,
+                                              Text("lbl_sleep".tr,
                                                   style: CustomTextStyles
-                                                      .bodyLargeOnPrimaryContainer17)
-                                            ]),
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 10.v, bottom: 9.v),
-                                            child: SizedBox(
-                                                height: 39.v,
-                                                width: 39.h,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                        value: 0.75,
-                                                        color: theme.colorScheme
-                                                            .primary,
-                                                        strokeWidth: 4.h)))
-                                      ]))
-                            ]))
-                      ])),
-                  SizedBox(height: 32.v),
-                  _buildWaterCard(context),
+                                                      .bodyLarge17),
+                                              SizedBox(height: 17.v),
+                                              CustomImageView(
+                                                  imagePath: ImageConstant
+                                                      .imgSleepchart,
+                                                  height: 59.v,
+                                                  width: 106.h),
+                                              SizedBox(height: 19.v),
+                                              RichText(
+                                                  text: TextSpan(children: [
+                                                    TextSpan(
+                                                        text: "lbl_8".tr,
+                                                        style: CustomTextStyles
+                                                            .bodyMediumOnPrimaryContainer),
+                                                    TextSpan(
+                                                        text: "lbl_h".tr,
+                                                        style: CustomTextStyles
+                                                            .bodyMediumBluegray40001_1),
+                                                    TextSpan(
+                                                        text: "lbl_23m".tr,
+                                                        style: CustomTextStyles
+                                                            .bodyMediumOnPrimaryContainer)
+                                                  ]),
+                                                  textAlign: TextAlign.left),
+                                              SizedBox(height: 10.v),
+                                              Text("lbl_last_updated_3d".tr,
+                                                  style: CustomTextStyles
+                                                      .bodyMediumBluegray40001_2
+                                                      .copyWith(
+                                                          fontSize: 15.fSize))
+                                            ]))),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 14.h, bottom: 2.v),
+                                    child: Column(children: [
+                                      Container(
+                                          width: 162.h,
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 10.v),
+                                          decoration: AppDecoration
+                                              .fillBluegray80004
+                                              .copyWith(
+                                                  borderRadius:
+                                                      BorderRadiusStyle
+                                                          .roundedBorder12),
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: 2.v),
+                                                    child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text("lbl_450".tr,
+                                                              style: theme
+                                                                  .textTheme
+                                                                  .titleLarge),
+                                                          SizedBox(
+                                                              height: 12.v),
+                                                          Text("lbl_steps".tr,
+                                                              style: CustomTextStyles
+                                                                  .bodyLargeOnPrimaryContainer17)
+                                                        ])),
+                                                CustomImageView(
+                                                    imagePath:
+                                                        ImageConstant.imgSteps,
+                                                    height: 52.v,
+                                                    width: 38.h,
+                                                    margin: EdgeInsets.only(
+                                                        top: 4.v, bottom: 3.v))
+                                              ])),
+                                      SizedBox(height: 15.v),
+                                      Container(
+                                          width: 162.h,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10.h, vertical: 12.v),
+                                          decoration: AppDecoration
+                                              .fillBluegray80004
+                                              .copyWith(
+                                                  borderRadius:
+                                                      BorderRadiusStyle
+                                                          .roundedBorder12),
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text("lbl_325".tr,
+                                                          style: theme.textTheme
+                                                              .titleLarge),
+                                                      SizedBox(height: 10.v),
+                                                      Text("lbl_calories".tr,
+                                                          style: CustomTextStyles
+                                                              .bodyLargeOnPrimaryContainer17)
+                                                    ]),
+                                                Padding(
+                                                    padding: EdgeInsets
+                                                        .only(
+                                                            top: 10.v,
+                                                            bottom: 9.v),
+                                                    child: SizedBox(
+                                                        height: 39.v,
+                                                        width: 39.h,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                                value: 0.75,
+                                                                color: theme
+                                                                    .colorScheme
+                                                                    .primary,
+                                                                strokeWidth: 4
+                                                                    .adaptSize)))
+                                              ]))
+                                    ])),
+                              )
+                            ]),
+                        SizedBox(height: 32.v),
+                        _buildWaterCard(context),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 33.v),
                   Text("lbl_my_day".tr,
                       style: CustomTextStyles.headlineSmallRoboto_2),
@@ -254,13 +285,6 @@ class HomeScreen extends StatelessWidget {
                     ref
                         .watch(selectedDayProvider.notifier)
                         .update((state) => index);
-
-                    // TODO: JUST FOR TEST
-                    showModalBottomSheet(
-                        context: context,
-                        useRootNavigator: true,
-                        isScrollControlled: true,
-                        builder: (_) => const ResultsScreen());
                   },
                 ),
               );
@@ -274,7 +298,7 @@ class HomeScreen extends StatelessWidget {
           onTapWaterCard(context);
         },
         child: Container(
-            margin: EdgeInsets.only(right: 51.h),
+            // margin: EdgeInsets.only(right: 51.h),
             padding: EdgeInsets.all(16.h),
             decoration: AppDecoration.fillBluegray80004
                 .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
