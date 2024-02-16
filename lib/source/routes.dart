@@ -1,4 +1,5 @@
 import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
+import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_group_screen.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
 import 'package:fait/source/views/register/views/log_in_screen.dart';
@@ -51,7 +52,7 @@ class RouteGenerator {
       case '/steps_tracker_screen':
         return MaterialPageRoute(
             builder: (context) => const StepsTrackerScreen());
-      case '/workout_overview_screen':
+      case '/workout_group_screen':
         return MaterialPageRoute(
             builder: (context) => const WorkoutOverviewScreen());
       case '/my_activity_screen':

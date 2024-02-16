@@ -9,6 +9,7 @@ class WorkoutCard extends StatelessWidget {
   final String textKg;
   final String duration;
   final void Function()? onTap;
+  final String imagePath;
 
   const WorkoutCard({
     super.key,
@@ -18,6 +19,7 @@ class WorkoutCard extends StatelessWidget {
     required this.duration,
     this.onTap,
     required this.date,
+    required this.imagePath,
   });
 
   @override
@@ -27,10 +29,7 @@ class WorkoutCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomImageView(
-              imagePath: ImageConstant.imgThumbsUpOnprimarycontainer,
-              height: 72.v,
-              width: 20.h),
+          CustomImageView(imagePath: imagePath, height: 72.v, width: 20.h),
           Expanded(
             child: Container(
               margin: EdgeInsets.only(left: 16.h),
@@ -43,28 +42,23 @@ class WorkoutCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 2.v),
-                  Text(title, style: CustomTextStyles.titleLargeBold),
-                  SizedBox(height: 13.v),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(title, style: CustomTextStyles.titleLargeBold),
                       Padding(
                         padding: EdgeInsets.only(bottom: 1.v),
                         child: Text(date,
                             style:
                                 CustomTextStyles.titleMediumOnPrimaryContainer),
                       ),
-                      Container(
-                        height: 5.adaptSize,
-                        width: 5.adaptSize,
-                        margin: EdgeInsets.only(top: 7.v, bottom: 8.v),
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75),
-                          borderRadius: BorderRadius.circular(2.h),
-                        ),
-                      ),
+                    ],
+                  ),
+                  SizedBox(height: 13.v),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 1.v),
                         child: Text(exercises,
