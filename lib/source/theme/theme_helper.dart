@@ -264,6 +264,7 @@ class PrimaryColors {
   Color get gray50 => const Color(0XFFFFF8F8);
   Color get gray5001 => const Color(0XFFF7F8FA);
   Color get gray50011 => const Color(0XFFEBEBF9);
+  Color get gray500111 => const Color(0xAAFFFFFF);
   Color get gray900 => const Color(0XFF0F1330);
   Color get gray90001 => const Color(0XFF131B28);
   Color get gray90002 => const Color(0XFF101533);
@@ -323,6 +324,12 @@ class PrimaryColors {
 
   // Yellow
   Color get yellow900 => const Color(0XFFF57021);
+
+  // BlueGrayf
+  Color get blueGray2007f => const Color(0X7FA5ACC0);
+
+  // BlueGrayb
+  Color get blueGray3003b => const Color(0X3B9EA5B8);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();
