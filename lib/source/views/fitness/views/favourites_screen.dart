@@ -1,4 +1,4 @@
-import 'package:fait/source/widgets/exercise_card_widget.dart';
+import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 

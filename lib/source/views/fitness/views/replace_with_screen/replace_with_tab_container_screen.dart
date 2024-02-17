@@ -1,9 +1,11 @@
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
-import 'replace_with_liked_page.dart';
+import 'replace_with_page.dart';
 
 class ReplaceWithTabContainerScreen extends StatefulWidget {
-  const ReplaceWithTabContainerScreen({Key? key}) : super(key: key);
+  bool inProgressExercise;
+
+  ReplaceWithTabContainerScreen({Key? key, this.inProgressExercise = false}) : super(key: key);
 
   @override
   ReplaceWithTabContainerScreenState createState() =>
@@ -72,10 +74,10 @@ class ReplaceWithTabContainerScreenState
                         height: mediaQueryData.size.height * 0.7,
                         child: TabBarView(
                             controller: tabviewController,
-                            children: const [
-                              ReplaceWithLikedPage(),
-                              ReplaceWithLikedPage(),
-                              ReplaceWithLikedPage()
+                            children: [
+                              ReplaceWithPage(inProgressExercise: widget.inProgressExercise,),
+                              ReplaceWithPage(inProgressExercise: widget.inProgressExercise,),
+                              ReplaceWithPage(inProgressExercise: widget.inProgressExercise,)
                             ]))
                   ])),
             ],

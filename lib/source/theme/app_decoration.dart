@@ -139,6 +139,23 @@ class AppDecoration {
           ),
         ),
       );
+  static BoxDecoration get outlineSecondaryContainer => BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.secondaryContainer,
+            width: 1.h,
+          ),
+        ),
+      );
+  static BoxDecoration get outlineSecondaryContainer1 => BoxDecoration(
+        color: appTheme.blueGray900,
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.secondaryContainer,
+            width: 1.h,
+          ),
+        ),
+      );
 }
 
 class BorderRadiusStyle {
