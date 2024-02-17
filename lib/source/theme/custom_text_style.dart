@@ -72,6 +72,11 @@ class CustomTextStyles {
       theme.textTheme.bodyLarge!.copyWith(
         color: theme.colorScheme.onPrimaryContainer,
       );
+  static get titleMediumOnPrimaryContainer18 =>
+      theme.textTheme.titleMedium!.copyWith(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+        fontSize: 18.fSize,
+      );
   static get bodyLargePrimary => theme.textTheme.bodyLarge!.copyWith(
         color: theme.colorScheme.primary,
       );
@@ -126,6 +131,12 @@ class CustomTextStyles {
   // Headline style
   static get headlineLargeAquire => theme.textTheme.headlineLarge!.aquire;
   static get headlineLargeRegular => theme.textTheme.headlineLarge!.copyWith(
+        fontWeight: FontWeight.w400,
+      );
+
+  static get headlineLargeOnPrimaryContainer =>
+      theme.textTheme.headlineLarge!.copyWith(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
         fontWeight: FontWeight.w400,
       );
   static get headlineLargeRegular_1 => theme.textTheme.headlineLarge!.copyWith(
