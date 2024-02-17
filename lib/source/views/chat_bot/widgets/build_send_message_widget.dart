@@ -21,6 +21,10 @@ class _BuildSendMessageWidgetState extends State<BuildSendMessageWidget> {
           children: [
             Expanded(
               child: TextFormField(
+                style: TextStyle(
+                  fontSize: 20.fSize,
+                  color: const Color(0xFF121212),
+                ),
                 decoration: InputDecoration(
                   hintText: 'Tap here to send your message',
                   border: InputBorder.none,

@@ -19,6 +19,7 @@ dependencies:
   flutter_riverpod: ^2.4.5
   flutter_ruler_picker: ^1.0.6
   flutter_svg: ^2.0.9
+  flutter_xlider: ^3.5.0
   fluttertoast: ^8.2.4
   image_picker: ^1.0.4
   internet_connection_checker: ^1.0.0+1

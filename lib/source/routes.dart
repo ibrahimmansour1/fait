@@ -1,15 +1,22 @@
 import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_allergy.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_diseases.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_injures.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_fitness_level.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_gender.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_birth_date.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_goal.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_tools_detection.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_workout_days.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
 import 'package:fait/source/views/register/views/log_in_screen.dart';
 import 'package:fait/source/views/register/views/sign_up_methods_screen.dart';
 import 'package:fait/source/views/register/views/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'views/chat_bot/views/chat_bot_view_body_with_height_and_weight.dart';
+import 'views/fitness/views/fitness_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -32,8 +39,6 @@ class RouteGenerator {
             builder: (context) => const SignUpMethodsScreen());
       case '/on_boarding_sign_up_screen':
         return MaterialPageRoute(builder: (context) => const SignUpScreen());
-      // case '/chat_bot':
-      //   return MaterialPageRoute(builder: (context) => const ChatBotView());
       case '/chat_bot_view':
         return MaterialPageRoute(builder: (context) => const ChatBotView());
       case '/chat_bot_view_body_with_gender':
@@ -48,6 +53,29 @@ class RouteGenerator {
       case '/chat_bot_view_body_with_height_and_weight':
         return MaterialPageRoute(
             builder: (context) => const ChatBotViewBodyWithHeightAndWeight());
+      case '/chat_bot_goal_screen':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithGoal());
+      case '/chat_bot_injures':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithInjures());
+      case '/chat_bot_diseases':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithDiseases());
+      case '/chat_bot_allergy':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithAllergy());
+      case '/chat_bot_fitness_level':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithFitnessLevel());
+      case '/chat_bot_workout_days':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithWorkoutDays());
+      case '/chat_bot_workout_tools_detection':
+        return MaterialPageRoute(
+            builder: (context) => const ChatBotViewBodyWithToolsDetection());
+      case '/fitness_screen':
+        return MaterialPageRoute(builder: (context) => const FitnessScreen());
       // case 'verification':
       //   return MaterialPageRoute(
       //       builder: (context) => const VerificationScreen());

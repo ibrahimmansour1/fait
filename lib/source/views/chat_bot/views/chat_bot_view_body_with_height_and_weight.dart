@@ -1,5 +1,6 @@
 import 'package:fait/source/theme/custom_button_style.dart';
 import 'package:fait/source/theme/custom_text_style.dart';
+import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:fait/source/views/chat_bot/widgets/select_your_bd_widget.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -51,28 +52,8 @@ class _ChatBotViewBodyWithHeightAndWeightState
                   SizedBox(height: 10.v),
                   const SelectYourWeightWidget(),
                   const Spacer(),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 32.0.h, vertical: 8.v),
-                    child: CustomElevatedButton(
-                        height: 58.v,
-                        text: "Continue",
-                        rightIcon: Row(
-                          children: [
-                            SizedBox(width: 80.h),
-                            const Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                        buttonStyle: CustomButtonStyles.fillPrimary,
-                        buttonTextStyle: CustomTextStyles.titleLargeInter,
-                        onPressed: () {
-                          Navigator.pushNamed(context,
-                              '/chat_bot_view_body_with_height_and_weight');
-                        }),
-                  ),
+                  const ChatBotButtonWidget(
+                      route: 'rou/chat_bot_goal_screente'),
                   SizedBox(
                     height: 10.v,
                   ),
