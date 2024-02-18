@@ -34,8 +34,14 @@ class ImageConstant {
 
   static String imgRuler = '$imagePath/img_ruler.svg';
 
-  static String imgAddOrMinusCupOnprimarycontainer =
-      '$imagePath/img_add_or_minus_cup_onprimarycontainer.svg';
+  static String imgAddCupOnprimarycontainer =
+      '$imagePath/img_add_cup_onprimarycontainer.svg';
+
+  static String imgMinusCupOnprimarycontainer =
+      '$imagePath/img_minus_cup_onprimarycontainer.svg';
+
+  static String imgCupOnprimarycontainer =
+      '$imagePath/img_cup_onprimarycontainer.svg';
 
   static String imgVectorOnprimarycontainer18x14 =
       '$imagePath/img_vector_onprimarycontainer_18x14.svg';
@@ -65,14 +71,16 @@ class ImageConstant {
   static String imgGroup = '$imagePath/img_group.svg';
 
   static String imgLocationDeepPurpleA10001 =
-      '$imagePath/img_location_deep_purple_a100_01.svg';
+      '$imagePath/img_location_vector.svg';
+
+  static String imgLightning = '$imagePath/icons8-lightning-bolt-50.png';
 
   static String imgStepsChart = '$imagePath/img_steps_chart.svg';
 
   // profile images
   static String imgProfile = '$imagePath/img_profile.png';
 
-  static String imgReachGoal = '$imagePath/img_reach_goal.svg';
+  static String imgReachGoal = '$imagePath/img_reach_goal.png';
 
   static String imgVectorTeal40001 = '$imagePath/img_vector_teal_400_01.svg';
 
@@ -96,6 +104,10 @@ class ImageConstant {
 
   static String imgExercising = '$imagePath/img_exercising.svg';
 
+  static String exercising = '$imagePath/exercising.svg';
+
+  static String nutrition = '$imagePath/nutrition.png';
+
   static String imgRunningFemalePrimary =
       '$imagePath/img_running_female_primary.svg';
 
@@ -108,13 +120,19 @@ class ImageConstant {
 
   static String imgArrowright = '$imagePath/img_arrowright.svg';
 
+  static String imgArrowRight = '$imagePath/img_arrow_right.png';
+
+  static String imgIconArrowRight = '$imagePath/img_icon_arrow_right.svg';
+
+  static String imgClockBlack900 = '$imagePath/img_clock_black.svg';
+
   static String imgFait32x32 = '$imagePath/img_fait_32x32.png';
 
   static String imgVector = '$imagePath/img_vector.svg';
 
   static String imgMessegeSentRecord = '$imagePath/img_messege_sent_record.svg';
 
-  static String imgStrongLogo = '$imagePath/img_strong_logo.png';
+  static String imgDietIcon = '$imagePath/diet_icon.png';
 
   static String imgTrophy = '$imagePath/img_trophy.svg';
 
@@ -151,6 +169,11 @@ class ImageConstant {
   static String imgSidebarCardOnprimarycontainer =
       '$imagePath/img_sidebar_card_onprimarycontainer.png';
 
+  static String imgClockLightBlue700 =
+      '$imagePath/img_clock_light_blue_700.svg';
+
+  static String imgClockOrange700 = '$imagePath/img_clock_orange_700.svg';
+
   static String imgMeals1 = '$imagePath/img_meals_1.png';
 
   static String imgCalories = '$imagePath/img_calories.svg';
@@ -174,11 +197,11 @@ class ImageConstant {
 
   static String imgMeals11 = '$imagePath/img_meals_1_1.png';
 
-  static String imgEnglish = '$imagePath/img_english.svg';
+  static String imgProfileIcone = '$imagePath/profile_icon.png';
 
-  static String imgImage16 = '$imagePath/img_image_16.png';
+  static String imgFitnessIcon = '$imagePath/fitness_icon.svg';
 
-  static String imgImage13 = '$imagePath/img_image_13.png';
+  static String imgHomeIcon = '$imagePath/home_icon.png';
 
   static String imgNotify = '$imagePath/img_notify.svg';
 
@@ -192,4 +215,55 @@ class ImageConstant {
   static String imgBack = '$imagePath/img_back.svg';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
+
+  static String imgShape1 = '$imagePath/img_shape1.png';
+
+  static String imgMindBodyBalance = '$imagePath/img_mind_body_balance.png';
+
+  static String imgFavoriteBlueGray90020x20 =
+      '$imagePath/img_favorite_blue_gray_900_20x20.svg';
+
+  static String imgCloseDeepPurpleA200 =
+      '$imagePath/img_close_deep_purple_a200.svg';
+
+  static String imgCloseOrangeA20032x32 =
+      '$imagePath/img_close_orange_a200_32x32.svg';
+
+  // Workout
+  static String imgTelevisionPrimary = '$imagePath/img_television_primary.svg';
+
+  static String imgThumbsUpOnprimarycontainer =
+      '$imagePath/img_thumbs_up_onprimarycontainer.svg';
+
+  static String imgInbox = '$imagePath/img_inbox.svg';
+
+  static String imgMusclesImage = '$imagePath/img_muscles_image.png';
+
+  static String imgDurationImage = '$imagePath/img_duration.png';
+
+  static String imgLiftedImage = '$imagePath/img_lifted.png';
+
+  static String imgArrowProgram = '$imagePath/arrow_program.svg';
+
+  static String imgBodyBalance = '$imagePath/image_part.png';
+
+  static String imgCheckmarkBlueGray900 =
+      '$imagePath/img_checkmark_blue_gray_900.svg';
+
+  // my activity images
+  static String imgCrossedFingers = '$imagePath/img_crossed_fingers.png';
+
+  static String imgExerciseAnimation = '$imagePath/img_exercise_animation.png';
+
+  static String imgFocus1 = '$imagePath/img_focus1.png';
+
+  static String imgFocus2 = '$imagePath/img_focus2.png';
+
+  static String imgMinusIndigo100 = '$imagePath/img_minus_indigo_100.svg';
+
+  static String imgCupIcon = '$imagePath/img_cup_icon.svg';
+
+  static String imgAdd = '$imagePath/img_add.svg';
+
+  static String imgAddPrimary = '$imagePath/img_add_primary.svg';
 }

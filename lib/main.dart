@@ -1,9 +1,11 @@
 import 'package:fait/source/app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Future.delayed(const Duration(
-  //     seconds: 1));
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  
   runApp(const MyApp());
 }

@@ -1,6 +1,6 @@
 export 'package:fait/utils/constants.dart';
 export 'package:fait/utils/image_constant.dart';
-// export 'package:fait/utils/navigator_service.dart';
+export 'package:fait/utils/navigator_service.dart';
 export 'package:fait/utils/size_utils.dart';
 // export 'package:fait/localization/app_localization.dart';
 // export 'package:fait/routes/app_routes.dart';

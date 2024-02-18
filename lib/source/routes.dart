@@ -1,4 +1,5 @@
 import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
+
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_allergy.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_diseases.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_injures.dart';
@@ -9,14 +10,27 @@ import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_goal.da
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_tools_detection.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_workout_days.dart';
+
+import 'package:fait/source/views/fitness/views/open_camera_screen/open_camera_screen.dart';
+import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
+import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_group_screen.dart';
+
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
 import 'package:fait/source/views/register/views/log_in_screen.dart';
 import 'package:fait/source/views/register/views/sign_up_methods_screen.dart';
 import 'package:fait/source/views/register/views/sign_up_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/after_login_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/daily_intake_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/sleep_tracker_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/water_intake_screen.dart';
 import 'package:flutter/material.dart';
 import 'views/chat_bot/views/chat_bot_view_body_with_height_and_weight.dart';
 import 'views/fitness/views/fitness_screen.dart';
+
+import 'views/fitness/views/my_activity_screen.dart';
+import 'views/fitness/views/workout_tap_bar_screens/workout_overview_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -33,7 +47,7 @@ class RouteGenerator {
       // case 'signup':
       //   return MaterialPageRoute(builder: (context) => const SignupScreen());
       case '/home':
-        return MaterialPageRoute(builder: (context) => const HomeView());
+        return MaterialPageRoute(builder: (context) => HomeView());
       case '/on_boarding_screen':
         return MaterialPageRoute(
             builder: (context) => const SignUpMethodsScreen());
@@ -41,6 +55,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const SignUpScreen());
       case '/chat_bot_view':
         return MaterialPageRoute(builder: (context) => const ChatBotView());
+
       case '/chat_bot_view_body_with_gender':
         return MaterialPageRoute(
             builder: (context) => const ChatBotViewBodyWithGender());
@@ -76,6 +91,7 @@ class RouteGenerator {
             builder: (context) => const ChatBotViewBodyWithToolsDetection());
       case '/fitness_screen':
         return MaterialPageRoute(builder: (context) => const FitnessScreen());
+
       case '/daily_intake_screen':
         return MaterialPageRoute(
             builder: (context) => const DailyIntakeScreen());
@@ -96,11 +112,22 @@ class RouteGenerator {
       case '/my_activity_screen':
         return MaterialPageRoute(
             builder: (context) => const MyActivityScreen());
+
       // case 'verification':
       //   return MaterialPageRoute(
       //       builder: (context) => const VerificationScreen());
       // case 'menu':
       //   return MaterialPageRoute(builder: (context) => const MenuScreen());
+
+
+      case '/overview_screen':
+        return MaterialPageRoute(
+            builder: (context) => const OverviewScreen());
+
+      case '/open_camera_screen':
+        return MaterialPageRoute(
+            builder: (context) => const OpenCameraScreen());
+
 
       default:
         return MaterialPageRoute(

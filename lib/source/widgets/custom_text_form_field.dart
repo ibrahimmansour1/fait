@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
+// ignore: must_be_immutable
 class CustomTextFormField extends StatefulWidget {
   CustomTextFormField({
     Key? key,
@@ -25,6 +26,7 @@ class CustomTextFormField extends StatefulWidget {
     this.filled = true,
     this.validator,
     this.isPassword = false,
+    this.enabled = true,
   }) : super(
           key: key,
         ) {
@@ -75,6 +77,8 @@ class CustomTextFormField extends StatefulWidget {
 
   final bool isPassword;
 
+  final bool enabled;
+
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
@@ -105,6 +109,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           maxLines: widget.maxLines ?? 1,
           decoration: decoration,
           validator: widget.validator,
+          enabled: widget.enabled,
         ),
       );
 
@@ -134,32 +139,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         filled: widget.filled,
         border: widget.borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(
-                  12.h,
-                ),
-                bottomLeft: Radius.circular(
-                  12.h,
-                ),
-                bottomRight: Radius.circular(
-                  12.h,
-                ),
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(
+                12.h,
+              )),
               borderSide: BorderSide.none,
             ),
         enabledBorder: widget.borderDecoration ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(
-                  12.h,
-                ),
-                bottomLeft: Radius.circular(
-                  12.h,
-                ),
-                bottomRight: Radius.circular(
-                  12.h,
-                ),
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(
+                12.h,
+              )),
               borderSide: BorderSide.none,
             ),
         focusedBorder: widget.borderDecoration ??

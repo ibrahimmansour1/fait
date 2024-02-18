@@ -193,6 +193,8 @@ class PrimaryColors {
   // Amber
   Color get amber400 => const Color(0XFFFBC11B);
   Color get amber500 => const Color(0XFFFFC107);
+  Color get amber600 => const Color(0XFFE17B08);
+  Color get amber700 => const Color(0XFF5e4c41);
 
   // Black
   Color get black900 => const Color(0XFF000000);
@@ -205,6 +207,7 @@ class PrimaryColors {
   Color get blueA400 => const Color(0XFF1877F2);
   Color get blueA40001 => const Color(0XFF1F86FE);
   Color get blueA40002 => const Color(0XFF1F86FB);
+  Color get blueA40003 => const Color(0XFF264278);
 
   // BlueGray
   Color get blueGray100 => const Color(0XFFCAC4D0);
@@ -244,9 +247,12 @@ class PrimaryColors {
   Color get deepPurple40001 => const Color(0XFF7266E3);
   Color get deepPurpleA100 => const Color(0XFFAF91FD);
   Color get deepPurpleA10001 => const Color(0XFFA98BFB);
+  Color get deepPurpleA10002 => const Color(0XFF484378);
   Color get deepPurpleA200 => const Color(0XFF9747FF);
+  Color get deepPurpleA2000 => const Color(0XFF502596);
 
   // Gray
+  Color get gray => Colors.grey;
   Color get gray100 => const Color(0XFFF5F6FA);
   Color get gray10001 => const Color(0XFFF4F4FC);
   Color get gray10002 => const Color(0XFFF5F6F8);
@@ -257,10 +263,18 @@ class PrimaryColors {
   Color get gray30002 => const Color(0XFFE3E3E7);
   Color get gray50 => const Color(0XFFFFF8F8);
   Color get gray5001 => const Color(0XFFF7F8FA);
+  Color get gray50011 => const Color(0XFFEBEBF9);
+  Color get gray500111 => const Color(0xAAFFFFFF);
   Color get gray900 => const Color(0XFF0F1330);
   Color get gray90001 => const Color(0XFF131B28);
   Color get gray90002 => const Color(0XFF101533);
   Color get gray90003 => const Color(0XFF0F1521);
+
+  // White
+  Color get white => Colors.white;
+
+  // Transparent
+  Color get transparent => Colors.transparent;
 
   // Green
   Color get green400 => const Color(0XFF65C466);
@@ -270,15 +284,19 @@ class PrimaryColors {
   // Indigo
   Color get indigo300 => const Color(0XFF7C89C8);
   Color get indigo30001 => const Color(0XFF8394CA);
+  Color get indigo500 => const Color(0XFF3B4EB3);
   Color get indigo700 => const Color(0XFF2F41A6);
   Color get indigo900 => const Color(0XFF303A72);
   Color get indigoA100 => const Color(0XFF91ABFF);
   Color get indigoA10001 => const Color(0XFF9BABFF);
   Color get indigoA10002 => const Color(0XFF8B80F8);
   Color get indigoA200 => const Color(0XFF5068EC);
+  Color get sleepShapeColor => const Color(0XFF2f3154);
 
   // LightBlue
   Color get lightBlueA200 => const Color(0XFF43CCFF);
+  Color get lightBlue400 => const Color(0XFF26B1F7);
+  Color get lightBlue300 => const Color(0XFF0184C7);
 
   // Orange
   Color get orange300 => const Color(0XFFFEC356);
@@ -303,6 +321,15 @@ class PrimaryColors {
 
   // Yellowf
   Color get yellow8003f => const Color(0X3FFEB020);
+
+  // Yellow
+  Color get yellow900 => const Color(0XFFF57021);
+
+  // BlueGrayf
+  Color get blueGray2007f => const Color(0X7FA5ACC0);
+
+  // BlueGrayb
+  Color get blueGray3003b => const Color(0X3B9EA5B8);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

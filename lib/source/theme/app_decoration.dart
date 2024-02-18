@@ -56,10 +56,20 @@ class AppDecoration {
       );
 
   // Gradient decorations
+  static BoxDecoration get gradientGrayToGray => BoxDecoration(
+        gradient: LinearGradient(
+          begin: const Alignment(0.5, 0),
+          end: const Alignment(0.86, 0.95),
+          colors: [
+            appTheme.gray90002,
+            appTheme.gray90001,
+          ],
+        ),
+      );
   static BoxDecoration get gradientGrayToBlueGray => BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment(0.02, 0.58),
-          end: Alignment(0.93, 0.94),
+          begin: const Alignment(0.02, 0.58),
+          end: const Alignment(0.93, 0.94),
           colors: [
             appTheme.gray90001,
             appTheme.blueGray80003,
@@ -74,8 +84,8 @@ class AppDecoration {
           ),
         ),
         gradient: LinearGradient(
-          begin: Alignment(0.02, 0.58),
-          end: Alignment(0.93, 0.94),
+          begin: const Alignment(0.02, 0.58),
+          end: const Alignment(0.93, 0.94),
           colors: [
             appTheme.gray90001,
             appTheme.blueGray80003,
@@ -84,8 +94,8 @@ class AppDecoration {
       );
   static BoxDecoration get gradientOnPrimaryToBlueGray => BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment(0, 0.51),
-          end: Alignment(0.95, 0.66),
+          begin: const Alignment(0, 0.51),
+          end: const Alignment(0.95, 0.66),
           colors: [
             theme.colorScheme.onPrimary,
             appTheme.blueGray800,
@@ -129,6 +139,23 @@ class AppDecoration {
           ),
         ),
       );
+  static BoxDecoration get outlineSecondaryContainer => BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.secondaryContainer,
+            width: 1.h,
+          ),
+        ),
+      );
+  static BoxDecoration get outlineSecondaryContainer1 => BoxDecoration(
+        color: appTheme.blueGray900,
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.secondaryContainer,
+            width: 1.h,
+          ),
+        ),
+      );
 }
 
 class BorderRadiusStyle {
@@ -141,6 +168,9 @@ class BorderRadiusStyle {
       );
   static BorderRadius get circleBorder64 => BorderRadius.circular(
         64.h,
+      );
+  static BorderRadius get customBorderTL8 => BorderRadius.vertical(
+        top: Radius.circular(8.h),
       );
 
   // Custom borders
@@ -184,9 +214,9 @@ class BorderRadiusStyle {
 }
 
 // Comment/Uncomment the below code based on your Flutter SDK version.
-    
+
 // For Flutter SDK Version 3.7.2 or greater.
-    
+
 double get strokeAlignInside => BorderSide.strokeAlignInside;
 
 double get strokeAlignCenter => BorderSide.strokeAlignCenter;
