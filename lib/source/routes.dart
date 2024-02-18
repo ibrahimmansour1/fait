@@ -36,7 +36,7 @@ class RouteGenerator {
             builder: (context) => const SignUpMethodsScreen());
       case '/on_boarding_sign_up_screen':
         return MaterialPageRoute(builder: (context) => const SignUpScreen());
-      case '/chat_bot':
+      case '/chat_bot_view':
         return MaterialPageRoute(builder: (context) => const ChatBotView());
       case '/daily_intake_screen':
         return MaterialPageRoute(
@@ -61,8 +61,8 @@ class RouteGenerator {
 
       default:
         return MaterialPageRoute(
-          builder: (context) => const SizedBox(
-            child: Text("Error"),
+          builder: (context) => const Center(
+            child: Text("Undefined Route"),
           ),
         );
     }
