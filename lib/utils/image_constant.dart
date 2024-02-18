@@ -120,6 +120,8 @@ class ImageConstant {
 
   static String imgArrowright = '$imagePath/img_arrowright.svg';
 
+  static String imgArrowRight = '$imagePath/img_arrow_right.png';
+
   static String imgFait32x32 = '$imagePath/img_fait_32x32.png';
 
   static String imgVector = '$imagePath/img_vector.svg';

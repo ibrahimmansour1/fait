@@ -169,6 +169,9 @@ class BorderRadiusStyle {
   static BorderRadius get circleBorder64 => BorderRadius.circular(
         64.h,
       );
+  static BorderRadius get customBorderTL8 => BorderRadius.vertical(
+        top: Radius.circular(8.h),
+      );
 
   // Custom borders
   static BorderRadius get customBorderBL12 => BorderRadius.only(

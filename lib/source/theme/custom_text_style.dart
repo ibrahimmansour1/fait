@@ -374,6 +374,27 @@ class CustomTextStyles {
         color: appTheme.indigo500,
         fontWeight: FontWeight.w500,
       );
+  static get titleSmallffffffff => theme.textTheme.titleSmall!.copyWith(
+        color: const Color(0XFFFFFFFF),
+        fontWeight: FontWeight.w500,
+      );
+  static get labelLargeRobotobfffffff =>
+      theme.textTheme.labelLarge!.roboto.copyWith(
+        color: const Color(0XBFFFFFFF),
+        fontWeight: FontWeight.w500,
+      );
+  static get bodySmallbfffffff => theme.textTheme.bodySmall!.copyWith(
+        color: const Color(0XBFFFFFFF),
+      );
+  static get bodySmallOnPrimaryContainer => theme.textTheme.bodySmall!.copyWith(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+      );
+  static get titleSmallfff4f4fc => theme.textTheme.titleSmall!.copyWith(
+        color: const Color(0XFFF4F4FC),
+      );
+  static get bodySmallbff4f4fc => theme.textTheme.bodySmall!.copyWith(
+        color: const Color(0XBFF4F4FC),
+      );
 }
 
 extension on TextStyle {
