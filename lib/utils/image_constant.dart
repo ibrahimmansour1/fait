@@ -122,6 +122,10 @@ class ImageConstant {
 
   static String imgArrowRight = '$imagePath/img_arrow_right.png';
 
+  static String imgIconArrowRight = '$imagePath/img_icon_arrow_right.svg';
+
+  static String imgClockBlack900 = '$imagePath/img_clock_black.svg';
+
   static String imgFait32x32 = '$imagePath/img_fait_32x32.png';
 
   static String imgVector = '$imagePath/img_vector.svg';
@@ -238,6 +242,10 @@ class ImageConstant {
   static String imgDurationImage = '$imagePath/img_duration.png';
 
   static String imgLiftedImage = '$imagePath/img_lifted.png';
+
+  static String imgArrowProgram = '$imagePath/arrow_program.svg';
+
+  static String imgBodyBalance = '$imagePath/image_part.png';
 
   static String imgCheckmarkBlueGray900 =
       '$imagePath/img_checkmark_blue_gray_900.svg';

@@ -122,5 +122,5 @@ Widget _buildGoToChat(BuildContext context) {
 }
 
 onTapGoToChat(BuildContext context) {
-  Navigator.pushNamed(context, '/chat_bot');
+  Navigator.pushNamed(context, '/chat_bot_view_body_with_name');
 }
