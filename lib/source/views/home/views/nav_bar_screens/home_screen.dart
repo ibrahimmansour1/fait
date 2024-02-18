@@ -183,21 +183,24 @@ class HomeScreen extends StatelessWidget {
                                                               .bodyLargeOnPrimaryContainer17)
                                                     ]),
                                                 Padding(
-                                                    padding: EdgeInsets
-                                                        .only(
-                                                            top: 10.v,
-                                                            bottom: 9.v),
+                                                    padding: EdgeInsets.only(
+                                                        top: 10.v, bottom: 9.v),
                                                     child: SizedBox(
                                                         height: 39.v,
                                                         width: 39.h,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                                value: 0.75,
-                                                                color: theme
+                                                        child: CircularProgressIndicator(
+                                                            value: 0.75,
+                                                            color: theme
+                                                                .colorScheme
+                                                                .primary,
+                                                            backgroundColor:
+                                                                theme
                                                                     .colorScheme
-                                                                    .primary,
-                                                                strokeWidth: 4
-                                                                    .adaptSize)))
+                                                                    .primary
+                                                                    .withOpacity(
+                                                                        0.1),
+                                                            strokeWidth:
+                                                                5.adaptSize)))
                                               ]))
                                     ])),
                               )
