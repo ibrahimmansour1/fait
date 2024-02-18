@@ -86,6 +86,18 @@ extension IconButtonStyleHelper on CustomIconButton {
         color: theme.colorScheme.onError,
         borderRadius: BorderRadius.circular(12.h),
       );
+  static BoxDecoration get fillOnPrimaryContainerTL4 => BoxDecoration(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+        borderRadius: BorderRadius.circular(4.h),
+      );
+  static BoxDecoration get fillOnPrimaryContainerTL9 => BoxDecoration(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+        borderRadius: BorderRadius.circular(9.h),
+      );
+  static BoxDecoration get fillOnPrimaryContainerTL12 => BoxDecoration(
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+        borderRadius: BorderRadius.circular(12.h),
+      );
   static BoxDecoration get fillDeepOrangeAF => BoxDecoration(
         color: appTheme.deepOrangeA1003f,
         borderRadius: BorderRadius.circular(4.h),

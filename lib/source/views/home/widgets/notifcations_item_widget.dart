@@ -28,7 +28,7 @@ class NotifcationsItemWidget extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.symmetric(vertical: 14.v),
-              decoration: AppDecoration.fillGray90002.copyWith(
+              decoration: AppDecoration.fillBluegray80004.copyWith(
                 borderRadius: BorderRadiusStyle.roundedBorder8,
               ),
               child: Row(

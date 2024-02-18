@@ -134,13 +134,19 @@ class ProfileScreen extends StatelessWidget {
                       padding: EdgeInsets.only(top: 1.v, bottom: 3.v),
                       child: Text("lbl_my_goals".tr,
                           style: CustomTextStyles.headlineSmallRobotoSemiBold)),
-                  CustomImageView(
-                      imagePath: ImageConstant.imgFloatingIcon,
-                      height: 33.adaptSize,
-                      width: 33.adaptSize,
+                  CustomIconButton(
+                      height: 26.adaptSize,
+                      width: 26.adaptSize,
+                      decoration: IconButtonStyleHelper
+                          .fillOnPrimaryContainerTL12
+                          .copyWith(
+                        borderRadius: BorderRadiusStyle.circleBorder16,
+                      ),
                       onTap: () {
                         onTapImgFloatingIcon(context);
-                      })
+                      },
+                      child: CustomImageView(
+                          imagePath: ImageConstant.imgAddPrimary))
                 ])));
   }
 

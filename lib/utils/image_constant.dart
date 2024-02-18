@@ -258,4 +258,12 @@ class ImageConstant {
   static String imgFocus1 = '$imagePath/img_focus1.png';
 
   static String imgFocus2 = '$imagePath/img_focus2.png';
+
+  static String imgMinusIndigo100 = '$imagePath/img_minus_indigo_100.svg';
+
+  static String imgCupIcon = '$imagePath/img_cup_icon.svg';
+
+  static String imgAdd = '$imagePath/img_add.svg';
+
+  static String imgAddPrimary = '$imagePath/img_add_primary.svg';
 }

@@ -12,6 +12,8 @@ import 'package:fait/utils/app_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../widgets/custom_icon_button.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -320,8 +322,8 @@ class HomeScreen extends StatelessWidget {
                                           .titleMediumOnPrimaryContainerSemiBold18_1),
                                   TextSpan(
                                       text: "lbl_750_ml".tr,
-                                      style: CustomTextStyles
-                                          .titleMediumDeeppurple300SemiBold),
+                                      style:
+                                          CustomTextStyles.titleMediumff17d1e0),
                                   TextSpan(
                                       text: "lbl_of_water".tr,
                                       style: CustomTextStyles
@@ -329,12 +331,56 @@ class HomeScreen extends StatelessWidget {
                                 ]),
                                 textAlign: TextAlign.left),
                             SizedBox(height: 7.v),
-                            CustomImageView(
-                                imagePath: ImageConstant.imgAddOrMinusCup,
-                                height: 42.v,
-                                width: 117.h,
-                                alignment: Alignment.centerRight,
-                                margin: EdgeInsets.only(right: 60.h))
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 60.h),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10.v),
+                                      child: CustomIconButton(
+                                        height: 21.adaptSize,
+                                        width: 21.adaptSize,
+                                        decoration: IconButtonStyleHelper
+                                            .fillOnPrimaryContainerTL4,
+                                        child: CustomImageView(
+                                          imagePath:
+                                              ImageConstant.imgMinusIndigo100,
+                                        ),
+                                      ),
+                                    ),
+                                    CustomImageView(
+                                      imagePath: ImageConstant.imgCupIcon,
+                                      height: 42.adaptSize,
+                                      width: 42.adaptSize,
+                                      radius: BorderRadius.circular(
+                                        10.h,
+                                      ),
+                                      margin: EdgeInsets.only(left: 16.h),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 16.h,
+                                        top: 10.v,
+                                        bottom: 10.v,
+                                      ),
+                                      child: CustomIconButton(
+                                        height: 21.adaptSize,
+                                        width: 21.adaptSize,
+                                        decoration: IconButtonStyleHelper
+                                            .fillOnPrimaryContainerTL9,
+                                        child: CustomImageView(
+                                          imagePath: ImageConstant.imgAdd,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ]))),
                   Container(
                       height: 13.adaptSize,
