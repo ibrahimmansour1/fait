@@ -37,7 +37,7 @@ class GoalscardsItemWidget extends StatelessWidget {
                   value: 0.27,
                   backgroundColor: appTheme.blueGray90003,
                   color: appTheme.tealA700,
-                  strokeWidth: 5.h,
+                  strokeWidth: 12.adaptSize,
                 ),
               ),
             ),

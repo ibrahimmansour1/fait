@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../widgets/custom_elevated_button.dart';
+import '../../../widgets/custom_icon_button.dart';
 import '../../../widgets/custom_text_form_field.dart';
 
 final goalTypeProvider = StateProvider<String>((ref) {
@@ -42,20 +43,22 @@ class AddNewGoalBottomSheet extends StatelessWidget {
                     children: [
                       Text("lbl_add_new_goal".tr,
                           style: CustomTextStyles.headlineSmallRobotoSemiBold),
-                      IconButton(
-                        icon: CustomImageView(
-                          imagePath: ImageConstant.imgClose,
+                      CustomIconButton(
                           height: 24.adaptSize,
                           width: 24.adaptSize,
-                        ),
-                        onPressed: () => Navigator.pop(context),
-                      )
+                          decoration:
+                              IconButtonStyleHelper.fillOnPrimaryContainerTL12,
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: CustomImageView(
+                              imagePath: ImageConstant.imgClose))
                     ]),
                 SizedBox(height: 48.v),
                 Padding(
                     padding: EdgeInsets.only(left: 13.h),
                     child: Text("lbl_goal_type".tr,
-                        style: CustomTextStyles.bodyLargeDeeppurpleA200)),
+                        style: CustomTextStyles.titleMediumPrimary18)),
                 SizedBox(height: 14.v),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 13.h),
@@ -91,7 +94,7 @@ class AddNewGoalBottomSheet extends StatelessWidget {
                 Padding(
                     padding: EdgeInsets.only(left: 13.h),
                     child: Text("lbl_target".tr,
-                        style: CustomTextStyles.bodyLargeDeeppurpleA200)),
+                        style: CustomTextStyles.titleMediumPrimary18)),
                 SizedBox(height: 14.v),
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 13.h),
