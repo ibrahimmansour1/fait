@@ -76,6 +76,26 @@ class RouteGenerator {
             builder: (context) => const ChatBotViewBodyWithToolsDetection());
       case '/fitness_screen':
         return MaterialPageRoute(builder: (context) => const FitnessScreen());
+      case '/daily_intake_screen':
+        return MaterialPageRoute(
+            builder: (context) => const DailyIntakeScreen());
+      case '/water_intake_screen':
+        return MaterialPageRoute(builder: (context) => WaterIntakeScreen());
+      case '/sleep_tracker_screen':
+        return MaterialPageRoute(
+            builder: (context) => const SleepTrackerScreen());
+      case '/after_login_screen':
+        return MaterialPageRoute(
+            builder: (context) => const AfterLoginScreen());
+      case '/steps_tracker_screen':
+        return MaterialPageRoute(
+            builder: (context) => const StepsTrackerScreen());
+      case '/workout_group_screen':
+        return MaterialPageRoute(
+            builder: (context) => const WorkoutOverviewScreen());
+      case '/my_activity_screen':
+        return MaterialPageRoute(
+            builder: (context) => const MyActivityScreen());
       // case 'verification':
       //   return MaterialPageRoute(
       //       builder: (context) => const VerificationScreen());
