@@ -3,6 +3,7 @@ import 'package:fait/utils/app_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../widgets/exercise_card_widget.dart';
+import '../exercise_info_screen.dart';
 import 'exercise_muscles_screen.dart';
 import 'exercise_overview_screen.dart';
 
@@ -29,7 +30,17 @@ class ExerciseScreen extends StatelessWidget {
               ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => ExerciseCardWidget(),
+                  itemBuilder: (context, index) => ExerciseCardWidget(
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              useRootNavigator: true,
+                              isScrollControlled: true,
+                              builder: (_) => ExerciseInfoScreen(
+                                    tryIt: true,
+                                  ));
+                        },
+                      ),
                   separatorBuilder: (context, index) => SizedBox(height: 32.v),
                   itemCount: 2),
               SizedBox(height: 39.v),
@@ -41,7 +52,17 @@ class ExerciseScreen extends StatelessWidget {
               ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => ExerciseCardWidget(),
+                  itemBuilder: (context, index) => ExerciseCardWidget(
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              useRootNavigator: true,
+                              isScrollControlled: true,
+                              builder: (_) => ExerciseInfoScreen(
+                                    tryIt: true,
+                                  ));
+                        },
+                      ),
                   separatorBuilder: (context, index) => SizedBox(height: 32.v),
                   itemCount: 3),
             ]),

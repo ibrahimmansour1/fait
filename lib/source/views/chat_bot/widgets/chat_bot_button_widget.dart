@@ -1,14 +1,16 @@
-import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/app_export.dart';
+import '../../../../utils/transitions/fade_transition.dart';
 import '../../../widgets/custom_elevated_button.dart';
 
 class ChatBotButtonWidget extends StatelessWidget {
   final String route;
+  final Widget? page;
   const ChatBotButtonWidget({
     super.key,
     required this.route,
+    this.page,
   });
 
   @override
@@ -32,7 +34,17 @@ class ChatBotButtonWidget extends StatelessWidget {
           buttonStyle: CustomButtonStyles.fillPrimary,
           buttonTextStyle: CustomTextStyles.titleLargeInter,
           onPressed: () {
-            Navigator.pushNamed(context, route);
+            if (page != null) {
+              Navigator.push(
+                context,
+                FadePageRouteBuilder(
+                  page: page!,
+                  duration: const Duration(milliseconds: 800),
+                ),
+              );
+            } else {
+              Navigator.pushNamed(context, route);
+            }
           }),
     );
   }

@@ -167,7 +167,7 @@ class AfterLoginScreen extends StatelessWidget {
     Navigator.push(
       context,
       FadePageRouteBuilder(
-        page: HomeView(),
+        page: const HomeView(),
         duration: const Duration(milliseconds: 800),
       ),
     );

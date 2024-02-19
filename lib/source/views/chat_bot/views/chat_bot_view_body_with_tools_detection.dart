@@ -1,7 +1,7 @@
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
+import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/app_export.dart';
-import '../../../widgets/custom_elevated_button.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
@@ -257,7 +257,10 @@ class _ChatBotViewBodyWithToolsDetectionState
                           ),
                         ),
                   const Spacer(),
-                  const ChatBotButtonWidget(route: '/home'),
+                  const ChatBotButtonWidget(
+                    route: '/home',
+                    page: HomeView(),
+                  ),
                   SizedBox(
                     height: 20.v,
                   ),

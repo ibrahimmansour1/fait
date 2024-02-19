@@ -1,5 +1,4 @@
 import 'package:fait/source/localization/app_localization.dart';
-import 'package:fait/source/views/fitness/views/results_screen.dart';
 import 'package:fait/source/views/home/widgets/kcal1_item_widget.dart';
 import 'package:fait/source/views/home/widgets/kcal_item_widget.dart';
 import 'package:fait/source/views/home/widgets/weekcardssetdefault_item_widget.dart';
