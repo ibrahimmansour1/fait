@@ -1,5 +1,4 @@
 import 'package:fait/source/localization/app_localization.dart';
-import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
@@ -129,9 +128,8 @@ class KcalItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 56.h,
                     padding: EdgeInsets.symmetric(
-                      horizontal: 2.h,
+                      horizontal: 4.h,
                       vertical: 4.v,
                     ),
                     decoration: AppDecoration.fillPrimaryContainer.copyWith(
@@ -142,13 +140,21 @@ class KcalItemWidget extends StatelessWidget {
                       style: theme.textTheme.labelMedium,
                     ),
                   ),
-                  CustomElevatedButton(
-                    height: 20.v,
-                    width: 56.h,
-                    text: "lbl_151_kcal".tr,
-                    margin: EdgeInsets.only(left: 4.h),
-                    buttonStyle: CustomButtonStyles.fillPrimaryContainer,
-                    buttonTextStyle: theme.textTheme.labelMedium!,
+                  SizedBox(
+                    width: 10.h,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 4.h,
+                      vertical: 4.v,
+                    ),
+                    decoration: AppDecoration.fillPrimaryContainer.copyWith(
+                      borderRadius: BorderRadiusStyle.roundedBorder8,
+                    ),
+                    child: Text(
+                      "lbl_151_kcal".tr,
+                      style: theme.textTheme.labelMedium,
+                    ),
                   ),
                 ],
               ),

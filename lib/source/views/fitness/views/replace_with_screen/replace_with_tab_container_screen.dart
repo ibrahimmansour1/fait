@@ -5,7 +5,8 @@ import 'replace_with_page.dart';
 class ReplaceWithTabContainerScreen extends StatefulWidget {
   bool inProgressExercise;
 
-  ReplaceWithTabContainerScreen({Key? key, this.inProgressExercise = false}) : super(key: key);
+  ReplaceWithTabContainerScreen({Key? key, this.inProgressExercise = false})
+      : super(key: key);
 
   @override
   ReplaceWithTabContainerScreenState createState() =>
@@ -75,9 +76,15 @@ class ReplaceWithTabContainerScreenState
                         child: TabBarView(
                             controller: tabviewController,
                             children: [
-                              ReplaceWithPage(inProgressExercise: widget.inProgressExercise,),
-                              ReplaceWithPage(inProgressExercise: widget.inProgressExercise,),
-                              ReplaceWithPage(inProgressExercise: widget.inProgressExercise,)
+                              ReplaceWithPage(
+                                inProgressExercise: widget.inProgressExercise,
+                              ),
+                              ReplaceWithPage(
+                                inProgressExercise: widget.inProgressExercise,
+                              ),
+                              ReplaceWithPage(
+                                inProgressExercise: widget.inProgressExercise,
+                              )
                             ]))
                   ])),
             ],
@@ -99,13 +106,13 @@ class ReplaceWithTabContainerScreenState
               labelPadding: EdgeInsets.zero,
               labelColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
               labelStyle: TextStyle(
-                  fontSize: 20.fSize,
+                  fontSize: 17.fSize,
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w600),
               unselectedLabelColor:
                   theme.colorScheme.onPrimaryContainer.withOpacity(1),
               unselectedLabelStyle: TextStyle(
-                  fontSize: 20.fSize,
+                  fontSize: 17.fSize,
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w600),
               indicator: BoxDecoration(

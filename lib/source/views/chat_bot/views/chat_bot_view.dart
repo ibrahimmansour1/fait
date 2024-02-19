@@ -2,12 +2,14 @@ import 'package:fait/source/theme/app_decoration.dart';
 import 'package:fait/source/theme/custom_button_style.dart';
 import 'package:fait/source/theme/custom_text_style.dart';
 import 'package:fait/source/theme/theme_helper.dart';
-import 'package:fait/source/views/onboarding/widgets/onboarding_item_widget.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_image_view.dart';
 import 'package:fait/utils/image_constant.dart';
 import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../utils/transitions/fade_transition.dart';
 
 class ChatBotView extends StatelessWidget {
   const ChatBotView({super.key});
@@ -122,5 +124,11 @@ Widget _buildGoToChat(BuildContext context) {
 }
 
 onTapGoToChat(BuildContext context) {
-  Navigator.pushNamed(context, '/chat_bot_view_body_with_name');
+  Navigator.push(
+    context,
+    FadePageRouteBuilder(
+      page: const ChatBotViewBodyName(),
+      duration: const Duration(milliseconds: 800),
+    ),
+  );
 }

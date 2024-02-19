@@ -53,7 +53,7 @@ class GoalscardsItemWidget extends StatelessWidget {
                     "lbl_lose_20_pound".tr,
                     style: CustomTextStyles.titleMediumOnPrimaryContainer,
                   ),
-                  SizedBox(height: 15.v),
+                  SizedBox(height: 10.v),
                   Text(
                     "lbl_27_through".tr,
                     style: CustomTextStyles.titleMediumOnPrimaryContainer,
