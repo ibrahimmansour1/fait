@@ -266,4 +266,7 @@ class ImageConstant {
   static String imgAdd = '$imagePath/img_add.svg';
 
   static String imgAddPrimary = '$imagePath/img_add_primary.svg';
+
+  static String imgSearchBlueGray80004 =
+      '$imagePath/img_search_blue_gray_800_04.svg';
 }
