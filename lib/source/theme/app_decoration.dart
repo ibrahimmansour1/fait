@@ -114,6 +114,20 @@ class AppDecoration {
           ),
         ),
       );
+  static BoxDecoration get outlineBlack9001 => BoxDecoration(
+        color: appTheme.blueGray80004,
+        boxShadow: [
+          BoxShadow(
+            color: appTheme.black900.withOpacity(0.5),
+            spreadRadius: 2.h,
+            blurRadius: 2.h,
+            offset: const Offset(
+              1,
+              1,
+            ),
+          ),
+        ],
+      );
   static BoxDecoration get outlineBlueGray => BoxDecoration(
         color: appTheme.blueGray90002,
         border: Border(

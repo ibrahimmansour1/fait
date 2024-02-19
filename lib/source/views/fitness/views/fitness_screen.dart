@@ -1,5 +1,6 @@
 import 'package:fait/source/views/fitness/views/exercise_info_screen.dart';
 import 'package:fait/source/views/fitness/views/favourites_screen.dart';
+import 'package:fait/source/views/fitness/views/filter_screen/filter_screen.dart';
 import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -154,9 +155,18 @@ class FitnessScreen extends StatelessWidget {
                                           ),
                                         ),
                                         const SizedBox(width: 8),
-                                        const Icon(
-                                          Icons.filter_alt_rounded,
-                                          color: Colors.white,
+                                        InkWell(
+                                          onTap: () {
+                                            showModalBottomSheet(
+                                                context: context,
+                                                useRootNavigator: true,
+                                                isScrollControlled: true,
+                                                builder: (_) => FilterScreen());
+                                          },
+                                          child: const Icon(
+                                            Icons.filter_alt_rounded,
+                                            color: Colors.white,
+                                          ),
                                         )
                                       ],
                                     ),

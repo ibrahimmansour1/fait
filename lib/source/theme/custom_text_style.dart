@@ -22,6 +22,10 @@ class CustomTextStyles {
   static get bodyLargeBlue50 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.blue50,
       );
+  static get bodyLargeBluegray80004 => theme.textTheme.bodyLarge!.copyWith(
+        color: appTheme.blueGray80004,
+        fontSize: 18.fSize,
+      );
   static get bodyLargeDeeppurpleA200 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.deepPurpleA200,
       );
