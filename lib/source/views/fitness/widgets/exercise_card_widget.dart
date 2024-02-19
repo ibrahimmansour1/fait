@@ -62,66 +62,64 @@ class ExerciseCardWidget extends StatelessWidget {
             ),
           ],
         ),
-        child: Expanded(
-          child: GestureDetector(
-            onTap: onTap,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 27.h, vertical: 16.v),
-              decoration: AppDecoration.fillBluegray80004
-                  .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      CustomImageView(
-                          imagePath: ImageConstant.imgMindBodyBalance,
-                          height: 72.adaptSize,
-                          width: 72.adaptSize,
-                          radius: BorderRadius.circular(8.h)),
-                      SizedBox(
-                        width: 30.h,
-                      ),
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 7.v),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    height: 5.v,
-                                    width: 32.h,
-                                    decoration: BoxDecoration(
-                                        color: ref.watch(isFavouriteProvider!)
-                                            ? theme.colorScheme.primary
-                                            : Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(2.h))),
-                                SizedBox(height: 9.v),
-                                Text("Side Jump",
-                                    style: theme.textTheme.titleMedium),
-                                SizedBox(height: 6.v),
-                                Text("15 times",
-                                    style: theme.textTheme.titleSmall)
-                              ])),
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      ref
-                          .read(isFavouriteProvider!.notifier)
-                          .update((state) => !state);
-                    },
-                    child: CustomImageView(
-                        imagePath: ImageConstant.imgFavoriteBlueGray90020x20,
-                        height: 18.v,
-                        width: 20.h,
-                        color: ref.watch(isFavouriteProvider!)
-                            ? theme.colorScheme.primary
-                            : null,
-                        margin: EdgeInsets.symmetric(vertical: 27.v)),
-                  )
-                ],
-              ),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 27.h, vertical: 16.v),
+            decoration: AppDecoration.fillBluegray80004
+                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CustomImageView(
+                        imagePath: ImageConstant.imgMindBodyBalance,
+                        height: 72.adaptSize,
+                        width: 72.adaptSize,
+                        radius: BorderRadius.circular(8.h)),
+                    SizedBox(
+                      width: 30.h,
+                    ),
+                    Padding(
+                        padding: EdgeInsets.symmetric(vertical: 7.v),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  height: 5.v,
+                                  width: 32.h,
+                                  decoration: BoxDecoration(
+                                      color: ref.watch(isFavouriteProvider!)
+                                          ? theme.colorScheme.primary
+                                          : Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(2.h))),
+                              SizedBox(height: 9.v),
+                              Text("Side Jump",
+                                  style: theme.textTheme.titleMedium),
+                              SizedBox(height: 6.v),
+                              Text("15 times",
+                                  style: theme.textTheme.titleSmall)
+                            ])),
+                  ],
+                ),
+                GestureDetector(
+                  onTap: () {
+                    ref
+                        .read(isFavouriteProvider!.notifier)
+                        .update((state) => !state);
+                  },
+                  child: CustomImageView(
+                      imagePath: ImageConstant.imgFavoriteBlueGray90020x20,
+                      height: 18.v,
+                      width: 20.h,
+                      color: ref.watch(isFavouriteProvider!)
+                          ? theme.colorScheme.primary
+                          : null,
+                      margin: EdgeInsets.symmetric(vertical: 27.v)),
+                )
+              ],
             ),
           ),
         ),
