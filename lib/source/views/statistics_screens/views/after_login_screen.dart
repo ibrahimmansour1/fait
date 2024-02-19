@@ -1,8 +1,11 @@
+import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/statistics_screens/widgets/custom_circular_progress_indicator.dart';
 import 'package:fait/source/views/statistics_screens/widgets/custom_painter.dart';
 import 'package:fait/source/views/statistics_screens/widgets/info_calories_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
+
+import '../../../../utils/transitions/fade_transition.dart';
 
 class AfterLoginScreen extends StatelessWidget {
   const AfterLoginScreen({Key? key}) : super(key: key);
@@ -161,6 +164,12 @@ class AfterLoginScreen extends StatelessWidget {
 
   /// Navigates to the homeDashbordContainerScreen when the action is triggered.
   onTapGoToHome1(BuildContext context) {
-    // Navigator.pushNamed(context, AppRoutes.homeDashbordContainerScreen);
+    Navigator.push(
+      context,
+      FadePageRouteBuilder(
+        page: HomeView(),
+        duration: const Duration(milliseconds: 800),
+      ),
+    );
   }
 }

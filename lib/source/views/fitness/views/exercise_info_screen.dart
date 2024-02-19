@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/custom_outlined_button.dart';
+import 'open_camera_screen/open_camera_screen.dart';
 
 // ignore: must_be_immutable
 class ExerciseInfoScreen extends StatelessWidget {
@@ -142,6 +143,9 @@ class ExerciseInfoScreen extends StatelessWidget {
       padding: EdgeInsetsDirectional.only(end: 32.h),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         CustomElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/open_camera_screen');
+            },
             height: 48.v,
             width: 170.h,
             text: tryIt ? "Try it" : "Start",

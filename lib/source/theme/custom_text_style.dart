@@ -72,11 +72,6 @@ class CustomTextStyles {
       theme.textTheme.bodyLarge!.copyWith(
         color: theme.colorScheme.onPrimaryContainer,
       );
-  static get titleMediumOnPrimaryContainer18 =>
-      theme.textTheme.titleMedium!.copyWith(
-        color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
-        fontSize: 18.fSize,
-      );
   static get bodyLargePrimary => theme.textTheme.bodyLarge!.copyWith(
         color: theme.colorScheme.primary,
       );

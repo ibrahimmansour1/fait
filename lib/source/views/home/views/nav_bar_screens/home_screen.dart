@@ -3,6 +3,10 @@ import 'package:fait/source/views/fitness/views/results_screen.dart';
 import 'package:fait/source/views/home/widgets/kcal1_item_widget.dart';
 import 'package:fait/source/views/home/widgets/kcal_item_widget.dart';
 import 'package:fait/source/views/home/widgets/weekcardssetdefault_item_widget.dart';
+import 'package:fait/source/views/statistics_screens/views/daily_intake_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/sleep_tracker_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.dart';
+import 'package:fait/source/views/statistics_screens/views/water_intake_screen.dart';
 import 'package:fait/source/widgets/app_bar/appbar_leading_image.dart';
 import 'package:fait/source/widgets/app_bar/appbar_title.dart';
 import 'package:fait/source/widgets/app_bar/appbar_title_circleimage.dart';
@@ -12,6 +16,7 @@ import 'package:fait/utils/app_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../utils/transitions/fade_transition.dart';
 import '../../../../widgets/custom_icon_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -59,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                               Expanded(
                                 child: GestureDetector(
                                     onTap: () {
-                                      onTapContnet(context);
+                                      onTapSleepCard(context);
                                     },
                                     child: Container(
                                         padding: EdgeInsets.symmetric(
@@ -113,95 +118,109 @@ class HomeScreen extends StatelessWidget {
                                     padding: EdgeInsets.only(
                                         left: 14.h, bottom: 2.v),
                                     child: Column(children: [
-                                      Container(
-                                          width: 162.h,
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 10.v),
-                                          decoration: AppDecoration
-                                              .fillBluegray80004
-                                              .copyWith(
-                                                  borderRadius:
-                                                      BorderRadiusStyle
-                                                          .roundedBorder12),
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: [
-                                                Padding(
-                                                    padding: EdgeInsets.only(
-                                                        top: 2.v),
-                                                    child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text("lbl_450".tr,
-                                                              style: theme
-                                                                  .textTheme
-                                                                  .titleLarge),
-                                                          SizedBox(
-                                                              height: 12.v),
-                                                          Text("lbl_steps".tr,
-                                                              style: CustomTextStyles
-                                                                  .bodyLargeOnPrimaryContainer17)
-                                                        ])),
-                                                CustomImageView(
-                                                    imagePath:
-                                                        ImageConstant.imgSteps,
-                                                    height: 52.v,
-                                                    width: 38.h,
-                                                    margin: EdgeInsets.only(
-                                                        top: 4.v, bottom: 3.v))
-                                              ])),
+                                      InkWell(
+                                        onTap: () {
+                                          onTapStepsCard(context);
+                                        },
+                                        child: Container(
+                                            width: 162.h,
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 10.v),
+                                            decoration: AppDecoration
+                                                .fillBluegray80004
+                                                .copyWith(
+                                                    borderRadius:
+                                                        BorderRadiusStyle
+                                                            .roundedBorder12),
+                                            child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: 2.v),
+                                                      child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text("lbl_450".tr,
+                                                                style: theme
+                                                                    .textTheme
+                                                                    .titleLarge),
+                                                            SizedBox(
+                                                                height: 12.v),
+                                                            Text("lbl_steps".tr,
+                                                                style: CustomTextStyles
+                                                                    .bodyLargeOnPrimaryContainer17)
+                                                          ])),
+                                                  CustomImageView(
+                                                      imagePath: ImageConstant
+                                                          .imgSteps,
+                                                      height: 52.v,
+                                                      width: 38.h,
+                                                      margin: EdgeInsets.only(
+                                                          top: 4.v,
+                                                          bottom: 3.v))
+                                                ])),
+                                      ),
                                       SizedBox(height: 15.v),
-                                      Container(
-                                          width: 162.h,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 10.h, vertical: 12.v),
-                                          decoration: AppDecoration
-                                              .fillBluegray80004
-                                              .copyWith(
-                                                  borderRadius:
-                                                      BorderRadiusStyle
-                                                          .roundedBorder12),
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text("lbl_325".tr,
-                                                          style: theme.textTheme
-                                                              .titleLarge),
-                                                      SizedBox(height: 10.v),
-                                                      Text("lbl_calories".tr,
-                                                          style: CustomTextStyles
-                                                              .bodyLargeOnPrimaryContainer17)
-                                                    ]),
-                                                Padding(
-                                                    padding: EdgeInsets.only(
-                                                        top: 10.v, bottom: 9.v),
-                                                    child: SizedBox(
-                                                        height: 39.v,
-                                                        width: 39.h,
-                                                        child: CircularProgressIndicator(
-                                                            value: 0.75,
-                                                            color: theme
-                                                                .colorScheme
-                                                                .primary,
-                                                            backgroundColor:
-                                                                theme
-                                                                    .colorScheme
-                                                                    .primary
-                                                                    .withOpacity(
-                                                                        0.1),
-                                                            strokeWidth:
-                                                                5.adaptSize)))
-                                              ]))
+                                      InkWell(
+                                        onTap: () {
+                                          onTapCaloriesCard(context);
+                                        },
+                                        child: Container(
+                                            width: 162.h,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 10.h,
+                                                vertical: 12.v),
+                                            decoration: AppDecoration
+                                                .fillBluegray80004
+                                                .copyWith(
+                                                    borderRadius:
+                                                        BorderRadiusStyle
+                                                            .roundedBorder12),
+                                            child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text("lbl_325".tr,
+                                                            style: theme
+                                                                .textTheme
+                                                                .titleLarge),
+                                                        SizedBox(height: 10.v),
+                                                        Text("lbl_calories".tr,
+                                                            style: CustomTextStyles
+                                                                .bodyLargeOnPrimaryContainer17)
+                                                      ]),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: 10.v,
+                                                          bottom: 9.v),
+                                                      child: SizedBox(
+                                                          height: 39.v,
+                                                          width: 39.h,
+                                                          child: CircularProgressIndicator(
+                                                              value: 0.75,
+                                                              color: theme
+                                                                  .colorScheme
+                                                                  .primary,
+                                                              backgroundColor: theme
+                                                                  .colorScheme
+                                                                  .primary
+                                                                  .withOpacity(
+                                                                      0.1),
+                                                              strokeWidth:
+                                                                  5.adaptSize)))
+                                                ])),
+                                      )
                                     ])),
                               )
                             ]),
@@ -232,6 +251,9 @@ class HomeScreen extends StatelessWidget {
         leading: AppbarLeadingImage(
           imagePath: ImageConstant.imgMenuIcon,
           margin: EdgeInsets.only(left: 32.h, top: 29.v, bottom: 29.v),
+          onTap: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -1177,12 +1199,44 @@ class HomeScreen extends StatelessWidget {
   }
 
   /// Navigates to the sleepTrackerScreen when the action is triggered.
-  onTapContnet(BuildContext context) {
-    // Navigator.pushNamed(context, AppRoutes.sleepTrackerScreen);
+  onTapSleepCard(BuildContext context) {
+    Navigator.push(
+      context,
+      FadePageRouteBuilder(
+        page: const SleepTrackerScreen(),
+        duration: const Duration(milliseconds: 800),
+      ),
+    );
   }
 
   /// Navigates to the waterIntakeScreen when the action is triggered.
   onTapWaterCard(BuildContext context) {
-    // Navigator.pushNamed(context, AppRoutes.waterIntakeScreen);
+    Navigator.push(
+      context,
+      FadePageRouteBuilder(
+        page: WaterIntakeScreen(),
+        duration: const Duration(milliseconds: 800),
+      ),
+    );
+  }
+
+  onTapStepsCard(BuildContext context) {
+    Navigator.push(
+      context,
+      FadePageRouteBuilder(
+        page: const StepsTrackerScreen(),
+        duration: const Duration(milliseconds: 800),
+      ),
+    );
+  }
+
+  onTapCaloriesCard(BuildContext context) {
+    Navigator.push(
+      context,
+      FadePageRouteBuilder(
+        page: const DailyIntakeScreen(),
+        duration: const Duration(milliseconds: 800),
+      ),
+    );
   }
 }

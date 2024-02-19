@@ -1,9 +1,12 @@
 import 'package:fait/source/providers/bottom_sheet_provider.dart';
+import 'package:fait/source/views/statistics_screens/views/after_login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_text_form_field.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../utils/transitions/fade_transition.dart';
 
 // ignore_for_file: must_be_immutable
 class LogInScreen extends StatelessWidget {
@@ -117,6 +120,13 @@ class LogInScreen extends StatelessWidget {
   /// Navigates to the home2AfterLoginScreen when the action is triggered.
   onTapLogIn(BuildContext context) {
     // navigate
+    Navigator.push(
+      context,
+      FadePageRouteBuilder(
+        page: const AfterLoginScreen(),
+        duration: const Duration(milliseconds: 800),
+      ),
+    );
   }
 
   /// Navigates to the forgetCardoneScreen when the action is triggered.

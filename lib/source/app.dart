@@ -33,8 +33,7 @@ class MyApp extends ConsumerWidget {
           Locale('en', 'US'),
           Locale('ar'),
         ],
-        // initialRoute: '/my_activity_screen',
-        initialRoute: '/home',
+        initialRoute: '/main_onboarding_screen',
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );

@@ -2,6 +2,8 @@ import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 
+import 'exercise_info_screen.dart';
+
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({Key? key}) : super(key: key);
 
@@ -52,6 +54,13 @@ class ResultsScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) => ExerciseCardWidget(
                               replacable: false,
+                              onTap: () {
+                                showModalBottomSheet(
+                          context: context,
+                          useRootNavigator: true,
+                          isScrollControlled: true,
+                          builder: (_) => ExerciseInfoScreen(tryIt: true,));
+                              },
                             ),
                         separatorBuilder: (context, index) =>
                             SizedBox(height: 32.v),

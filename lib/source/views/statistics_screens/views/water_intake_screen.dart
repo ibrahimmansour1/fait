@@ -21,121 +21,123 @@ class WaterIntakeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SizedBox(
-          width: double.maxFinite,
-          child: Column(
-            children: [
-              SizedBox(height: 32.v),
-              CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 24.v,
-                  width: 16.h,
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 32.h),
-                  onTap: () {
-                    onTapImgArrowLeft(context);
-                  }),
-              SizedBox(height: 66.v),
-              Text("HYDRATION",
-                  style: CustomTextStyles.titleMediumDeeppurple300),
-              SizedBox(height: 9.v),
-              SizedBox(
-                  height: 72.v,
-                  width: 190.h,
-                  child: Stack(alignment: Alignment.bottomRight, children: [
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: SizedBox(
-                            width: 178.h,
-                            child: RichText(
-                                text: TextSpan(children: [
-                                  TextSpan(
-                                      text: "  Today You took ",
-                                      style:
-                                          CustomTextStyles.headlineSmallRoboto),
-                                  TextSpan(
-                                      text: "750 ml ",
-                                      style: CustomTextStyles
-                                          .headlineSmallRobotoDeeppurple300),
-                                  TextSpan(
-                                      text: "of water",
-                                      style:
-                                          CustomTextStyles.headlineSmallRoboto)
-                                ]),
-                                textAlign: TextAlign.left))),
-                    CustomImageView(
-                        imagePath: ImageConstant.imgVectorLightBlueA200,
-                        height: 20.v,
-                        width: 14.h,
-                        alignment: Alignment.bottomRight,
-                        margin: EdgeInsets.only(bottom: 22.v))
-                  ])),
-              SizedBox(height: 2.v),
-              Text("Almost there! keep hydrated",
-                  style: theme.textTheme.bodyMedium),
-              SizedBox(height: 62.v),
-              Transform.translate(
-                offset: Offset(
-                  ((360.h / 2) * 2 * adjustedProgress) - (360.h / 2),
-                  -5,
-                ),
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Container(
-                      width: 81.h,
-                      height: 100.v,
-                      padding: const EdgeInsets.only(
-                          left: 4, right: 4, top: 4, bottom: 4),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: appTheme.deepPurple400,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "${adjustedProgress * 100}%",
-                          style: TextStyle(
-                              fontSize: 24.fSize,
-                              color: Colors.white,
-                              height: 0.8),
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              children: [
+                SizedBox(height: 32.v),
+                CustomImageView(
+                    imagePath: ImageConstant.imgArrowLeft,
+                    height: 24.v,
+                    width: 16.h,
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.only(left: 32.h),
+                    onTap: () {
+                      onTapImgArrowLeft(context);
+                    }),
+                SizedBox(height: 66.v),
+                Text("HYDRATION",
+                    style: CustomTextStyles.titleMediumDeeppurple300),
+                SizedBox(height: 9.v),
+                SizedBox(
+                    height: 72.v,
+                    width: 190.h,
+                    child: Stack(alignment: Alignment.bottomRight, children: [
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: SizedBox(
+                              width: 178.h,
+                              child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                        text: "  Today You took ",
+                                        style: CustomTextStyles
+                                            .headlineSmallRoboto),
+                                    TextSpan(
+                                        text: "750 ml ",
+                                        style: CustomTextStyles
+                                            .headlineSmallRobotoDeeppurple300),
+                                    TextSpan(
+                                        text: "of water",
+                                        style: CustomTextStyles
+                                            .headlineSmallRoboto)
+                                  ]),
+                                  textAlign: TextAlign.left))),
+                      CustomImageView(
+                          imagePath: ImageConstant.imgVectorLightBlueA200,
+                          height: 20.v,
+                          width: 14.h,
+                          alignment: Alignment.bottomRight,
+                          margin: EdgeInsets.only(bottom: 22.v))
+                    ])),
+                SizedBox(height: 2.v),
+                Text("Almost there! keep hydrated",
+                    style: theme.textTheme.bodyMedium),
+                SizedBox(height: 62.v),
+                Transform.translate(
+                  offset: Offset(
+                    ((360.h / 2) * 2 * adjustedProgress) - (360.h / 2),
+                    -5,
+                  ),
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Container(
+                        width: 81.h,
+                        height: 100.v,
+                        padding: const EdgeInsets.only(
+                            left: 4, right: 4, top: 4, bottom: 4),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: appTheme.deepPurple400,
+                        ),
+                        child: Center(
+                          child: Text(
+                            "${adjustedProgress * 100}%",
+                            style: TextStyle(
+                                fontSize: 24.fSize,
+                                color: Colors.white,
+                                height: 0.8),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10.h,
-                      height: 10.v,
-                      child: CustomPaint(
-                        painter: ArrowPainter(),
-                      ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 10.h,
+                        height: 10.v,
+                        child: CustomPaint(
+                          painter: ArrowPainter(),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 65.v,
-                width: 360.h,
-                child: LiquidLinearProgressIndicator(
-                  value: adjustedProgress,
-                  valueColor: AlwaysStoppedAnimation(appTheme.cyan200),
-                  backgroundColor: appTheme.cyan300,
-                  borderColor: appTheme.cyan300,
-                  borderWidth: 5.0,
-                  borderRadius: 40.0,
-                  direction: Axis.horizontal,
+                SizedBox(
+                  height: 65.v,
+                  width: 360.h,
+                  child: LiquidLinearProgressIndicator(
+                    value: adjustedProgress,
+                    valueColor: AlwaysStoppedAnimation(appTheme.cyan200),
+                    backgroundColor: appTheme.cyan300,
+                    borderColor: appTheme.cyan300,
+                    borderWidth: 5.0,
+                    borderRadius: 40.0,
+                    direction: Axis.horizontal,
+                  ),
                 ),
-              ),
-              SizedBox(height: 20.v),
-              SizedBox(
-                height: 24.v,
-                width: 350.h,
-                child: CustomStepProgressIndicator(
-                  totalSteps: totalSteps,
-                  currentStep: (adjustedProgress * totalSteps).round(),
+                SizedBox(height: 20.v),
+                SizedBox(
+                  height: 24.v,
+                  width: 350.h,
+                  child: CustomStepProgressIndicator(
+                    totalSteps: totalSteps,
+                    currentStep: (adjustedProgress * totalSteps).round(),
+                  ),
                 ),
-              ),
-              SizedBox(height: 61.v),
-              _buildBg(context)
-            ],
+                SizedBox(height: 61.v),
+                _buildBg(context)
+              ],
+            ),
           ),
         ),
       ),

@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:fait/source/views/fitness/views/my_activity_screen.dart';
 import 'package:fait/source/views/fitness/widgets/overview_percentages_widget.dart';
 import 'package:fait/source/views/fitness/widgets/program_card_info.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
+
+import '../../../../../utils/transitions/fade_transition.dart';
 
 class OverviewScreen extends StatefulWidget {
   const OverviewScreen({Key? key}) : super(key: key);
@@ -111,8 +114,8 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           ),
                           SizedBox(height: 70.v),
                           GestureDetector(
-                            onTap: () {
-                              debugPrint("Tap"); // Will print when tapped
+                            onPanStart: (_) {
+                              Navigator.pushNamed(context, '/my_activity_screen');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

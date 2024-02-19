@@ -171,11 +171,7 @@ class ProfileScreen extends StatelessWidget {
   /// Navigates back to the previous screen.
   onTapImgArrowLeft(BuildContext context) {
     Navigator.pop(context);
-  }
-
-  /// Navigates back to the previous screen.
-  onTapImgArrowLeft1(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.pushNamed(context, '/home');
   }
 
   /// Navigates to the caloriesDetectGoalsScreen when the action is triggered.

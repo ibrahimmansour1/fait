@@ -1,3 +1,4 @@
+import 'package:fait/source/views/fitness/views/fitness_screen.dart';
 import 'package:fait/source/views/home/views/nav_bar_screens/profile_screen.dart';
 import 'package:fait/source/widgets/custom_bottom_bar.dart';
 import 'package:fait/utils/size_utils.dart';
@@ -7,62 +8,101 @@ import 'nav_bar_screens/home_screen.dart';
 import 'nav_bar_screens/notifcations_screen.dart';
 
 // ignore_for_file: must_be_immutable
-class HomeView extends StatelessWidget {
-  HomeView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key, this.pageIndex}) : super(key: key);
 
-  GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  final int? pageIndex;
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  // GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  late PageController _pageController;
+  // late int _currentIndex;
+  final List<Widget> _pages = const [
+    HomeScreen(),
+    NotifcationsScreen(),
+    FitnessScreen(),
+    ProfileScreen(),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: widget.pageIndex ?? 0);
+    // _currentIndex = widget.pageIndex ?? 0;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
-        child: Scaffold(
-            body: Navigator(
-                key: navigatorKey,
-                initialRoute: '/home',
-                onGenerateRoute: (routeSetting) => PageRouteBuilder(
-                    pageBuilder: (ctx, ani, ani1) =>
-                        getCurrentPage(routeSetting.name!),
-                    transitionDuration: const Duration(seconds: 0))),
-            bottomNavigationBar: _buildBottomBar(context)));
+      child: Scaffold(
+        key: _scaffoldKey,
+        drawer: Container(),
+        bottomNavigationBar: _buildBottomBar(context),
+        body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          children: _pages,
+        ),
+      ),
+    );
   }
 
   /// Section Widget
   Widget _buildBottomBar(BuildContext context) {
     return CustomBottomBar(onChanged: (BottomBarEnum type) {
-      Navigator.pushNamed(navigatorKey.currentContext!, getCurrentRoute(type));
+      // setState(() {
+      //         _currentIndex = index;
+      //       });
+      _pageController.jumpToPage(getCurrentindex(type));
     });
   }
 
   ///Handling route based on bottom click actions
-  String getCurrentRoute(BottomBarEnum type) {
+  int getCurrentindex(BottomBarEnum type) {
     switch (type) {
-      case BottomBarEnum.profile:
-        return '/profile';
-      case BottomBarEnum.fitness:
-        return "/";
-      case BottomBarEnum.home:
-        return "/home";
-      case BottomBarEnum.diet:
-        return "/";
       case BottomBarEnum.notifications:
-        return '/notifications';
+        return 1;
+
+      case BottomBarEnum.profile:
+        return 3;
+
+      case BottomBarEnum.fitness:
+        return 2;
+
+      case BottomBarEnum.diet:
+        return 0;
+
+      case BottomBarEnum.home:
       default:
-        return "/";
+        return 0;
     }
   }
 
   ///Handling page based on route
-  Widget getCurrentPage(String currentRoute) {
-    switch (currentRoute) {
-      case '/home':
-        return const HomeScreen();
-      case '/notifications':
-        return const NotifcationsScreen();
-      case '/profile':
-        return const ProfileScreen();
-      default:
-        return const DefaultWidget();
-    }
-  }
+  // Widget getCurrentPage(String currentRoute) {
+  //   switch (currentRoute) {
+  //     case '/home':
+  //       return const HomeScreen();
+  //     case '/notifications':
+  //       return const NotifcationsScreen();
+  //     case '/profile':
+  //       return const ProfileScreen();
+  //     case '/fitness':
+  //       return const FitnessScreen();
+  //     default:
+  //       return const DefaultWidget();
+  //   }
+  // }
 }

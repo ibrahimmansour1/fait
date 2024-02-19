@@ -13,7 +13,6 @@ import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_workout
 
 import 'package:fait/source/views/fitness/views/open_camera_screen/open_camera_screen.dart';
 import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
-import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_group_screen.dart';
 
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/onboarding/views/on_boarding_view.dart';
@@ -111,7 +110,7 @@ class RouteGenerator {
             builder: (context) => const WorkoutOverviewScreen());
       case '/my_activity_screen':
         return MaterialPageRoute(
-            builder: (context) => const MyActivityScreen());
+            builder: (context) => const MyActivityScreen(), fullscreenDialog: true);
 
       // case 'verification':
       //   return MaterialPageRoute(
@@ -119,15 +118,12 @@ class RouteGenerator {
       // case 'menu':
       //   return MaterialPageRoute(builder: (context) => const MenuScreen());
 
-
       case '/overview_screen':
-        return MaterialPageRoute(
-            builder: (context) => const OverviewScreen());
+        return MaterialPageRoute(builder: (context) => const OverviewScreen());
 
       case '/open_camera_screen':
         return MaterialPageRoute(
             builder: (context) => const OpenCameraScreen());
-
 
       default:
         return MaterialPageRoute(
