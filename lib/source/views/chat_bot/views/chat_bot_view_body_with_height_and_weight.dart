@@ -52,8 +52,7 @@ class _ChatBotViewBodyWithHeightAndWeightState
                   SizedBox(height: 10.v),
                   const SelectYourWeightWidget(),
                   const Spacer(),
-                  const ChatBotButtonWidget(
-                      route: 'rou/chat_bot_goal_screente'),
+                  const ChatBotButtonWidget(route: '/chat_bot_goal_screen'),
                   SizedBox(
                     height: 10.v,
                   ),

@@ -257,7 +257,7 @@ class _ChatBotViewBodyWithToolsDetectionState
                           ),
                         ),
                   const Spacer(),
-                  const ChatBotButtonWidget(route: '/fitness_screen'),
+                  const ChatBotButtonWidget(route: '/home'),
                   SizedBox(
                     height: 20.v,
                   ),

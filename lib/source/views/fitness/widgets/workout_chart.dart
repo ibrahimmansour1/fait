@@ -17,7 +17,7 @@ class WorkoutChartWidget extends ConsumerStatefulWidget {
 class _WorkoutChartWidgetState extends ConsumerState<WorkoutChartWidget> {
   SideTitles get bottomTitles => SideTitles(
         showTitles: true,
-        reservedSize: 57,
+        reservedSize: 65.adaptSize,
         interval: 1,
         getTitlesWidget: bottomTitleWidgets,
       );

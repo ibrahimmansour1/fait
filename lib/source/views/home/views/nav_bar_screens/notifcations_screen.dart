@@ -102,5 +102,6 @@ class NotifcationsScreen extends StatelessWidget {
   /// Navigates back to the previous screen.
   onTapImgArrowLeft(BuildContext context) {
     Navigator.pop(context);
+    Navigator.pushNamed(context, '/home');
   }
 }

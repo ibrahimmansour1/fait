@@ -2,6 +2,8 @@ import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 
+import 'exercise_info_screen.dart';
+
 class FavouritesScreen extends StatelessWidget {
   const FavouritesScreen({Key? key}) : super(key: key);
 
@@ -52,6 +54,15 @@ class FavouritesScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) => ExerciseCardWidget(
                               favourite: true,
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    useRootNavigator: true,
+                                    isScrollControlled: true,
+                                    builder: (_) => ExerciseInfoScreen(
+                                          tryIt: true,
+                                        ));
+                              },
                             ),
                         separatorBuilder: (context, index) =>
                             SizedBox(height: 32.v),

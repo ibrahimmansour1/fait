@@ -32,7 +32,7 @@ class ChatBotButtonWidget extends StatelessWidget {
           buttonStyle: CustomButtonStyles.fillPrimary,
           buttonTextStyle: CustomTextStyles.titleLargeInter,
           onPressed: () {
-            Navigator.pushNamed(context, '/chat_bot_workout_days');
+            Navigator.pushNamed(context, route);
           }),
     );
   }

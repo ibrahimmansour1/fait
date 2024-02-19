@@ -24,225 +24,227 @@ class StepsTrackerScreen extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 24.v),
-          child: Column(
-            children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgArrowLeft,
-                height: 24.v,
-                width: 16.h,
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 16.h),
-                onTap: () {
-                  onTapImgArrowLeft(context);
-                },
-              ),
-              SizedBox(height: 27.v),
-              SizedBox(height: 24.v),
-              Text("DAILY STEPS",
-                  style: CustomTextStyles.titleMediumDeeppurple300),
-              SizedBox(height: 9.v),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  width: 185.h,
-                  margin: EdgeInsets.only(left: 101.h),
-                  child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                              text: " You have walked ",
-                              style: CustomTextStyles.headlineSmallRoboto),
-                          TextSpan(
-                              text: "40% ",
-                              style: CustomTextStyles
-                                  .headlineSmallRobotoDeeppurple300),
-                          TextSpan(
-                              text: "of your goal",
-                              style: CustomTextStyles.headlineSmallRoboto),
-                        ],
-                      ),
-                      textAlign: TextAlign.left),
+        body: SingleChildScrollView(
+          child: Container(
+            width: double.maxFinite,
+            padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 24.v),
+            child: Column(
+              children: [
+                CustomImageView(
+                  imagePath: ImageConstant.imgArrowLeft,
+                  height: 24.v,
+                  width: 16.h,
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(left: 16.h),
+                  onTap: () {
+                    onTapImgArrowLeft(context);
+                  },
                 ),
-              ),
-              SizedBox(height: 45.v),
-              SizedBox(
-                height: 368.v,
-                width: 314.h,
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: SizedBox(
-                        height: 264.adaptSize,
-                        width: 264.adaptSize,
-                        child: Stack(
+                SizedBox(height: 27.v),
+                SizedBox(height: 24.v),
+                Text("DAILY STEPS",
+                    style: CustomTextStyles.titleMediumDeeppurple300),
+                SizedBox(height: 9.v),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    width: 185.h,
+                    margin: EdgeInsets.only(left: 101.h),
+                    child: RichText(
+                        text: TextSpan(
                           children: [
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: SizedBox(
-                                height: 240.adaptSize,
-                                width: 210.adaptSize,
-                                child: CustomImageView(
-                                    imagePath: ImageConstant.imgPointAround,
-                                    height: 264.adaptSize,
-                                    width: 264.adaptSize,
-                                    alignment: Alignment.center),
-                              ),
-                            ),
-                            SfRadialGauge(
-                              axes: <RadialAxis>[
-                                RadialAxis(
-                                  minimum: 0,
-                                  maximum: 1000,
-                                  showLabels: false,
-                                  showTicks: false,
-                                  axisLineStyle: AxisLineStyle(
-                                    thickness: 0.1,
-                                    cornerStyle: CornerStyle.bothCurve,
-                                    color: appTheme.white,
-                                    thicknessUnit: GaugeSizeUnit.factor,
-                                  ),
-                                  pointers: <GaugePointer>[
-                                    RangePointer(
-                                      value: progressValue,
-                                      cornerStyle: CornerStyle.bothCurve,
-                                      color: appTheme.indigoA10002,
-                                      width: 0.1,
-                                      sizeUnit: GaugeSizeUnit.factor,
-                                    )
-                                  ],
-                                  annotations: <GaugeAnnotation>[
-                                    GaugeAnnotation(
-                                      positionFactor: 0.1,
-                                      angle: 90,
-                                      widget: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 54.v,
-                                          ),
-                                          CustomImageView(
-                                            imagePath: ImageConstant
-                                                .imgRunningFemaleAmber400,
-                                            height: 64.v,
-                                            width: 80.h,
-                                          ),
-                                          SizedBox(
-                                            height: 28.v,
-                                          ),
-                                          Text(
-                                            "7,235",
-                                            style: CustomTextStyles
-                                                .headlineLargeSemiBold,
-                                          ),
-                                          Text("Steps",
-                                              style: CustomTextStyles
-                                                  .headlineSmallRobotoOnPrimaryContainer)
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 264.v,
-                            ),
-                            CircularPercentIndicator(
-                              progressColor: appTheme.amber600,
-                              backgroundColor: appTheme.amber700,
-                              radius: 30.0,
-                              lineWidth: 8.0,
-                              animation: true,
-                              percent: kclProgress,
-                              center: CustomImageView(
-                                  imagePath: ImageConstant.imgLightning,
-                                  height: 24.adaptSize,
-                                  width: 24.adaptSize,
-                                  alignment: Alignment.center),
-                              circularStrokeCap: CircularStrokeCap.round,
-                            ),
-                            SizedBox(height: 7.v),
-                            Text(
-                              "31 kcl",
-                              style: CustomTextStyles
-                                  .titleMediumOnPrimaryContainer,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 264.v,
-                            ),
-                            CircularPercentIndicator(
-                              progressColor: appTheme.blueA40002,
-                              backgroundColor: appTheme.blueA40003,
-                              radius: 30.0,
-                              lineWidth: 8.0,
-                              animation: true,
-                              percent: minProgress,
-                              center: CustomImageView(
-                                  imagePath: ImageConstant.imgGroup,
-                                  height: 24.adaptSize,
-                                  width: 24.adaptSize,
-                                  alignment: Alignment.center),
-                              circularStrokeCap: CircularStrokeCap.round,
-                            ),
-                            SizedBox(height: 7.v),
-                            Text(
-                              "50 min",
-                              style: CustomTextStyles
-                                  .titleMediumOnPrimaryContainer,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 264.v,
-                            ),
-                            CircularPercentIndicator(
-                              progressColor: appTheme.deepPurpleA10001,
-                              backgroundColor: appTheme.deepPurpleA10002,
-                              radius: 30.0,
-                              lineWidth: 8.0,
-                              animation: true,
-                              percent: kmProgress,
-                              center: CustomImageView(
-                                  imagePath:
-                                      ImageConstant.imgLocationDeepPurpleA10001,
-                                  height: 24.adaptSize,
-                                  width: 24.adaptSize,
-                                  alignment: Alignment.center),
-                              circularStrokeCap: CircularStrokeCap.round,
-                            ),
-                            SizedBox(height: 7.v),
-                            Text("2 km",
+                            TextSpan(
+                                text: " You have walked ",
+                                style: CustomTextStyles.headlineSmallRoboto),
+                            TextSpan(
+                                text: "40% ",
                                 style: CustomTextStyles
-                                    .titleMediumOnPrimaryContainer),
+                                    .headlineSmallRobotoDeeppurple300),
+                            TextSpan(
+                                text: "of your goal",
+                                style: CustomTextStyles.headlineSmallRoboto),
                           ],
                         ),
-                      ],
-                    )
-                  ],
+                        textAlign: TextAlign.left),
+                  ),
                 ),
-              ),
-              SizedBox(height: 27.v),
-              _buildStepsInfoCard(context)
-            ],
+                SizedBox(height: 45.v),
+                SizedBox(
+                  height: 368.v,
+                  width: 314.h,
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: SizedBox(
+                          height: 264.adaptSize,
+                          width: 264.adaptSize,
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: SizedBox(
+                                  height: 240.adaptSize,
+                                  width: 210.adaptSize,
+                                  child: CustomImageView(
+                                      imagePath: ImageConstant.imgPointAround,
+                                      height: 264.adaptSize,
+                                      width: 264.adaptSize,
+                                      alignment: Alignment.center),
+                                ),
+                              ),
+                              SfRadialGauge(
+                                axes: <RadialAxis>[
+                                  RadialAxis(
+                                    minimum: 0,
+                                    maximum: 1000,
+                                    showLabels: false,
+                                    showTicks: false,
+                                    axisLineStyle: AxisLineStyle(
+                                      thickness: 0.1,
+                                      cornerStyle: CornerStyle.bothCurve,
+                                      color: appTheme.white,
+                                      thicknessUnit: GaugeSizeUnit.factor,
+                                    ),
+                                    pointers: <GaugePointer>[
+                                      RangePointer(
+                                        value: progressValue,
+                                        cornerStyle: CornerStyle.bothCurve,
+                                        color: appTheme.indigoA10002,
+                                        width: 0.1,
+                                        sizeUnit: GaugeSizeUnit.factor,
+                                      )
+                                    ],
+                                    annotations: <GaugeAnnotation>[
+                                      GaugeAnnotation(
+                                        positionFactor: 0.1,
+                                        angle: 90,
+                                        widget: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 54.v,
+                                            ),
+                                            CustomImageView(
+                                              imagePath: ImageConstant
+                                                  .imgRunningFemaleAmber400,
+                                              height: 64.v,
+                                              width: 80.h,
+                                            ),
+                                            SizedBox(
+                                              height: 28.v,
+                                            ),
+                                            Text(
+                                              "7,235",
+                                              style: CustomTextStyles
+                                                  .headlineLargeSemiBold,
+                                            ),
+                                            Text("Steps",
+                                                style: CustomTextStyles
+                                                    .headlineSmallRobotoOnPrimaryContainer)
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 264.v,
+                              ),
+                              CircularPercentIndicator(
+                                progressColor: appTheme.amber600,
+                                backgroundColor: appTheme.amber700,
+                                radius: 30.0,
+                                lineWidth: 8.0,
+                                animation: true,
+                                percent: kclProgress,
+                                center: CustomImageView(
+                                    imagePath: ImageConstant.imgLightning,
+                                    height: 24.adaptSize,
+                                    width: 24.adaptSize,
+                                    alignment: Alignment.center),
+                                circularStrokeCap: CircularStrokeCap.round,
+                              ),
+                              SizedBox(height: 7.v),
+                              Text(
+                                "31 kcl",
+                                style: CustomTextStyles
+                                    .titleMediumOnPrimaryContainer,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 264.v,
+                              ),
+                              CircularPercentIndicator(
+                                progressColor: appTheme.blueA40002,
+                                backgroundColor: appTheme.blueA40003,
+                                radius: 30.0,
+                                lineWidth: 8.0,
+                                animation: true,
+                                percent: minProgress,
+                                center: CustomImageView(
+                                    imagePath: ImageConstant.imgGroup,
+                                    height: 24.adaptSize,
+                                    width: 24.adaptSize,
+                                    alignment: Alignment.center),
+                                circularStrokeCap: CircularStrokeCap.round,
+                              ),
+                              SizedBox(height: 7.v),
+                              Text(
+                                "50 min",
+                                style: CustomTextStyles
+                                    .titleMediumOnPrimaryContainer,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 264.v,
+                              ),
+                              CircularPercentIndicator(
+                                progressColor: appTheme.deepPurpleA10001,
+                                backgroundColor: appTheme.deepPurpleA10002,
+                                radius: 30.0,
+                                lineWidth: 8.0,
+                                animation: true,
+                                percent: kmProgress,
+                                center: CustomImageView(
+                                    imagePath: ImageConstant
+                                        .imgLocationDeepPurpleA10001,
+                                    height: 24.adaptSize,
+                                    width: 24.adaptSize,
+                                    alignment: Alignment.center),
+                                circularStrokeCap: CircularStrokeCap.round,
+                              ),
+                              SizedBox(height: 7.v),
+                              Text("2 km",
+                                  style: CustomTextStyles
+                                      .titleMediumOnPrimaryContainer),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: 27.v),
+                _buildStepsInfoCard(context)
+              ],
+            ),
           ),
         ),
       ),
