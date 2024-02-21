@@ -54,11 +54,13 @@ class ImageConstant {
   // notifcations images
   static String imgAchievementIcon = '$imagePath/img_achievement_icon.svg';
 
-  static String imgRunningFemale = '$imagePath/img_running_female.svg';
 
   static String imgTwitter = '$imagePath/img_twitter.svg';
 
   static String imgNotifyPrimary = '$imagePath/img_notify_primary.svg';
+  // After login images
+  static String imgRunningFemale = '$imagePath/img_running_female.svg';
+  static String imgRunningIcon = '$imagePath/img_running_icon.svg';
 
   // steps tracker images
   static String imgRunningFemaleAmber400 =

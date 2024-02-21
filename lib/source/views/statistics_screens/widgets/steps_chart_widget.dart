@@ -83,10 +83,10 @@ class _StepsChartWidgetState extends ConsumerState<StepsChartWidget> {
 LineChartBarData get lineChartBarDataWeek => LineChartBarData(
       isCurved: true,
       gradient: LinearGradient(colors: [
-        appTheme.blue50001,
-        appTheme.blue50001,
+        theme.colorScheme.primary,
+        theme.colorScheme.primary,
       ]),
-      barWidth: 2,
+      barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: true,
@@ -94,7 +94,7 @@ LineChartBarData get lineChartBarDataWeek => LineChartBarData(
           radius: index == 6 ? 5 : 3,
           color: appTheme.white,
           strokeWidth: 2,
-          strokeColor: appTheme.blue50001,
+          strokeColor: theme.colorScheme.primary,
         ),
       ),
       belowBarData: BarAreaData(show: false),

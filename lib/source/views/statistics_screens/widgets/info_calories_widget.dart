@@ -17,7 +17,7 @@ class infoCaloriesWidget extends StatelessWidget {
         "text": "260",
       },
       {
-        "icon": ImageConstant.imgRunningFemale,
+        "icon": ImageConstant.imgRunningIcon,
         "decoration": IconButtonStyleHelper.fillCustomPrimary,
         "text": "260",
       },

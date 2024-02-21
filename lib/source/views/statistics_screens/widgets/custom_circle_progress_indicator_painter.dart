@@ -20,7 +20,7 @@ class CustomCircularProgressIndicatorPainter extends CustomPainter {
 
     // Draw white outer circle
     final outerCirclePaint = Paint()
-      ..color = Colors.white
+      ..color = appTheme.white
       ..style = PaintingStyle.stroke
       ..strokeWidth = 20
       ..strokeCap = StrokeCap.round;
@@ -62,7 +62,7 @@ class CustomCircularProgressIndicatorPainter extends CustomPainter {
       radius,
       startAngle + math.pi * 2 * ((tealSweepAngle + orangeSweepAngle) / 360),
       redSweepAngle,
-      appTheme.red300,
+      theme.colorScheme.primary,
       redPercentage,
     );
 
@@ -96,10 +96,10 @@ class CustomCircularProgressIndicatorPainter extends CustomPainter {
   void drawWhiteCircleAtEnd(
       Canvas canvas, Offset center, double radius, double endAngle) {
     final whiteCirclePaint = Paint()
-      ..color = Colors.white
+      ..color = appTheme.white
       ..style = PaintingStyle.fill;
 
-    final whiteCircleRadius = radius; 
+    final whiteCircleRadius = radius;
 
     final whiteCircleX = center.dx + whiteCircleRadius * math.cos(endAngle);
     final whiteCircleY = center.dy + whiteCircleRadius * math.sin(endAngle);
