@@ -26,7 +26,7 @@ class CustomStepProgressIndicator extends StatelessWidget {
                 height: stepHeight,
                 decoration: BoxDecoration(
                   color: index <= currentStep - 1
-                      ? appTheme.deepPurpleA200
+                      ? theme.colorScheme.primary
                       : appTheme.blueGray10001,
                   borderRadius: BorderRadius.circular(5.0),
                 ),

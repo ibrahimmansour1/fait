@@ -130,7 +130,7 @@ class AfterLoginScreen extends StatelessWidget {
                             margin: EdgeInsets.only(bottom: 2.v),
                             padding: EdgeInsets.symmetric(
                                 horizontal: 18.h, vertical: 32.v),
-                            decoration: AppDecoration.fillRed.copyWith(
+                            decoration: AppDecoration.fillPrimary.copyWith(
                                 borderRadius:
                                     BorderRadiusStyle.roundedBorder12),
                             child: CustomImageView(

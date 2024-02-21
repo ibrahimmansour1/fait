@@ -144,6 +144,11 @@ class CustomTextStyles {
         color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
         fontWeight: FontWeight.w400,
       );
+      static get headlineSmallRobotoff17d1e0 =>
+      theme.textTheme.headlineSmall!.roboto.copyWith(
+        color: Color(0XFF17D1E0),
+        fontWeight: FontWeight.w600,
+      );
   static get headlineLargeRegular_1 => theme.textTheme.headlineLarge!.copyWith(
         fontWeight: FontWeight.w400,
       );

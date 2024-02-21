@@ -43,7 +43,7 @@ class StepsTrackerScreen extends StatelessWidget {
                 SizedBox(height: 27.v),
                 SizedBox(height: 24.v),
                 Text("DAILY STEPS",
-                    style: CustomTextStyles.titleMediumDeeppurple300),
+                    style: CustomTextStyles.titleMediumPrimary18),
                 SizedBox(height: 9.v),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -57,9 +57,9 @@ class StepsTrackerScreen extends StatelessWidget {
                                 text: " You have walked ",
                                 style: CustomTextStyles.headlineSmallRoboto),
                             TextSpan(
-                                text: "40% ",
+                                text: "90% ",
                                 style: CustomTextStyles
-                                    .headlineSmallRobotoDeeppurple300),
+                                    .headlineSmallRobotoff17d1e0),
                             TextSpan(
                                 text: "of your goal",
                                 style: CustomTextStyles.headlineSmallRoboto),
@@ -111,7 +111,7 @@ class StepsTrackerScreen extends StatelessWidget {
                                       RangePointer(
                                         value: progressValue,
                                         cornerStyle: CornerStyle.bothCurve,
-                                        color: appTheme.indigoA10002,
+                                        color: theme.colorScheme.primary,
                                         width: 0.1,
                                         sizeUnit: GaugeSizeUnit.factor,
                                       )
@@ -126,8 +126,8 @@ class StepsTrackerScreen extends StatelessWidget {
                                               height: 54.v,
                                             ),
                                             CustomImageView(
-                                              imagePath: ImageConstant
-                                                  .imgRunningFemaleAmber400,
+                                              imagePath:
+                                                  ImageConstant.imgRunningIcon,
                                               height: 64.v,
                                               width: 80.h,
                                             ),
@@ -159,7 +159,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 264.v,
+                                height: 274.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.amber600,
@@ -175,7 +175,7 @@ class StepsTrackerScreen extends StatelessWidget {
                                     alignment: Alignment.center),
                                 circularStrokeCap: CircularStrokeCap.round,
                               ),
-                              SizedBox(height: 7.v),
+                              SizedBox(height: 2.v),
                               Text(
                                 "31 kcl",
                                 style: CustomTextStyles
@@ -186,7 +186,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 264.v,
+                                height: 274.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.blueA40002,
@@ -202,7 +202,7 @@ class StepsTrackerScreen extends StatelessWidget {
                                     alignment: Alignment.center),
                                 circularStrokeCap: CircularStrokeCap.round,
                               ),
-                              SizedBox(height: 7.v),
+                              SizedBox(height: 2.v),
                               Text(
                                 "50 min",
                                 style: CustomTextStyles
@@ -213,7 +213,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 264.v,
+                                height: 274.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.deepPurpleA10001,
@@ -230,7 +230,7 @@ class StepsTrackerScreen extends StatelessWidget {
                                     alignment: Alignment.center),
                                 circularStrokeCap: CircularStrokeCap.round,
                               ),
-                              SizedBox(height: 7.v),
+                              SizedBox(height: 2.v),
                               Text("2 km",
                                   style: CustomTextStyles
                                       .titleMediumOnPrimaryContainer),
@@ -241,7 +241,7 @@ class StepsTrackerScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 27.v),
+                SizedBox(height: 40.v),
                 _buildStepsInfoCard(context)
               ],
             ),
@@ -257,7 +257,7 @@ class StepsTrackerScreen extends StatelessWidget {
       width: 404.h,
       height: 236.v,
       padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 17.v),
-      decoration: AppDecoration.fillIndigoA
+      decoration: AppDecoration.fillBluegray80004
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder22),
       child: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {

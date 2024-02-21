@@ -29,7 +29,7 @@ class InfoCaloriesItemWidget extends StatelessWidget {
       width: 122.h,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CustomIconButton(
             height: 32.adaptSize,
