@@ -112,10 +112,10 @@ LineChartBarData get lineChartBarDataWeek => LineChartBarData(
 LineChartBarData get lineChartBarDataDaily => LineChartBarData(
       isCurved: true,
       gradient: LinearGradient(colors: [
-        appTheme.blue50001,
-        appTheme.blue50001,
+        theme.colorScheme.primary,
+        theme.colorScheme.primary,
       ]),
-      barWidth: 2,
+      barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: true,
@@ -129,7 +129,7 @@ LineChartBarData get lineChartBarDataDaily => LineChartBarData(
                 : 0, // Set radius to 5 only for the current day
             color: appTheme.white,
             strokeWidth: 2,
-            strokeColor: appTheme.blueA40002,
+            strokeColor: theme.colorScheme.primary,
           );
         },
       ),
@@ -148,10 +148,10 @@ LineChartBarData get lineChartBarDataDaily => LineChartBarData(
 LineChartBarData get lineChartBarDataMonth => LineChartBarData(
       isCurved: true,
       gradient: LinearGradient(colors: [
-        appTheme.blue50001,
-        appTheme.blue50001,
+        theme.colorScheme.primary,
+        theme.colorScheme.primary,
       ]),
-      barWidth: 2,
+      barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: true,
@@ -159,7 +159,7 @@ LineChartBarData get lineChartBarDataMonth => LineChartBarData(
           radius: index == 6 ? 5 : 3,
           color: appTheme.white,
           strokeWidth: 2,
-          strokeColor: appTheme.blueA40002,
+          strokeColor: theme.colorScheme.primary,
         ),
       ),
       belowBarData: BarAreaData(show: false),
