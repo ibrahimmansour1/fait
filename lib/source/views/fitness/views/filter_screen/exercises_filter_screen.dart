@@ -1,4 +1,4 @@
-import 'package:fait/source/views/fitness/views/results_screen.dart';
+import 'package:fait/source/views/fitness/views/exercises_results_screen.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,8 +9,8 @@ import '../../../../widgets/custom_search_view.dart';
 import '../../../../widgets/custom_tap_widget.dart';
 
 // ignore_for_file: must_be_immutable
-class FilterScreen extends StatelessWidget {
-  FilterScreen({Key? key}) : super(key: key);
+class ExercisesFilterScreen extends StatelessWidget {
+  ExercisesFilterScreen({Key? key}) : super(key: key);
 
   TextEditingController searchController = TextEditingController();
 
@@ -316,6 +316,6 @@ class FilterScreen extends StatelessWidget {
         context: context,
         useRootNavigator: true,
         isScrollControlled: true,
-        builder: (_) => const ResultsScreen());
+        builder: (_) => const ExercisesResultsScreen());
   }
 }

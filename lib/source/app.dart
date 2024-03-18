@@ -1,5 +1,6 @@
 import 'package:fait/source/localization/app_localization.dart';
 import 'package:fait/source/theme/theme_helper.dart';
+import 'package:fait/utils/app_export.dart';
 import 'package:fait/utils/navigator_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,26 +16,30 @@ class MyApp extends ConsumerWidget {
     // final primaryColor = ref.watch(themeProvider).primaryColor;
 
     return ProviderScope(
-      child: MaterialApp(
-        title: 'FAIT',
-        debugShowCheckedModeBanner: false,
-        darkTheme: ThemeData.dark(),
-        theme: theme,
-        // themeMode: themeMode,
-        // locale: locale,
-        navigatorKey: NavigatorService.navigatorKey,
-        localizationsDelegates: const [
-          AppLocalizationDelegate(),
-          // GlobalMaterialLocalizations.delegate,
-          // GlobalWidgetsLocalizations.delegate,
-          // GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('en', 'US'),
-          Locale('ar'),
-        ],
-        initialRoute: '/main_onboarding_screen',
-        onGenerateRoute: RouteGenerator.generateRoute,
+      child: Sizer(
+        builder: (context, orientation, deviceType) {
+          return MaterialApp(
+            title: 'FAIT',
+            debugShowCheckedModeBanner: false,
+            darkTheme: ThemeData.dark(),
+            theme: theme,
+            // themeMode: themeMode,
+            // locale: locale,
+            navigatorKey: NavigatorService.navigatorKey,
+            localizationsDelegates: const [
+              AppLocalizationDelegate(),
+              // GlobalMaterialLocalizations.delegate,
+              // GlobalWidgetsLocalizations.delegate,
+              // GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en', 'US'),
+              Locale('ar'),
+            ],
+            initialRoute: '/main_onboarding_screen',
+            onGenerateRoute: RouteGenerator.generateRoute,
+          );
+        },
       ),
     );
   }

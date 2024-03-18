@@ -26,6 +26,8 @@ import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.
 import 'package:fait/source/views/statistics_screens/views/water_intake_screen.dart';
 import 'package:flutter/material.dart';
 import 'views/chat_bot/views/chat_bot_view_body_with_height_and_weight.dart';
+import 'views/diet/views/diet_plans_screen.dart';
+import 'views/diet/views/diet_screen.dart';
 import 'views/fitness/views/fitness_screen.dart';
 
 import 'views/fitness/views/my_activity_screen.dart';
@@ -46,7 +48,7 @@ class RouteGenerator {
       // case 'signup':
       //   return MaterialPageRoute(builder: (context) => const SignupScreen());
       case '/home':
-        return MaterialPageRoute(builder: (context) => HomeView());
+        return MaterialPageRoute(builder: (context) => const HomeView());
       case '/on_boarding_screen':
         return MaterialPageRoute(
             builder: (context) => const SignUpMethodsScreen());
@@ -89,7 +91,13 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (context) => const ChatBotViewBodyWithToolsDetection());
       case '/fitness_screen':
-        return MaterialPageRoute(builder: (context) => const FitnessScreen());
+        return MaterialPageRoute(builder: (context) => FitnessScreen());
+
+      case '/diet_screen':
+        return MaterialPageRoute(builder: (context) => DietScreen());
+
+      case '/diet_plans_screen':
+        return MaterialPageRoute(builder: (context) => DietPlansScreen());
 
       case '/daily_intake_screen':
         return MaterialPageRoute(
@@ -110,7 +118,8 @@ class RouteGenerator {
             builder: (context) => const WorkoutOverviewScreen());
       case '/my_activity_screen':
         return MaterialPageRoute(
-            builder: (context) => const MyActivityScreen(), fullscreenDialog: true);
+            builder: (context) => const MyActivityScreen(),
+            fullscreenDialog: true);
 
       // case 'verification':
       //   return MaterialPageRoute(

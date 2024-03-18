@@ -1,7 +1,5 @@
 import 'package:fait/source/views/fitness/views/exercise_info_screen.dart';
 import 'package:fait/source/views/fitness/views/exercises_favourites_screen.dart';
-import 'package:fait/source/views/fitness/views/filter_screen/exercises_filter_screen.dart';
-import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,10 +8,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../utils/app_export.dart';
 import '../../../widgets/custom_search_view.dart';
 import '../../../widgets/info_popup.dart';
-import '../widgets/exercises_program_widget.dart';
+import '../widgets/diet_program_widget.dart';
+import '../widgets/recipe_card_widget.dart';
+import 'recipes_filter_screen.dart';
 
-class FitnessScreen extends StatelessWidget {
-  FitnessScreen({super.key});
+class DietScreen extends StatelessWidget {
+  DietScreen({super.key});
 
   final TextEditingController searchController = TextEditingController();
   final isProgramsTabProvider = StateProvider<bool>((ref) {
@@ -48,9 +48,7 @@ class FitnessScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          isProgramsTab
-                              ? 'Exercise Program'
-                              : 'Select Exercises',
+                          isProgramsTab ? 'Diet Program' : 'Select Recipes',
                           style: TextStyle(
                             fontSize: 32.fSize,
                             color: Colors.white,
@@ -75,7 +73,8 @@ class FitnessScreen extends StatelessWidget {
                                   context: context,
                                   useRootNavigator: true,
                                   isScrollControlled: true,
-                                  builder: (_) => const ExercisesFavouritesScreen());
+                                  builder: (_) =>
+                                      const ExercisesFavouritesScreen()); // TODO: Navigate to recipes fav screen
                             }
                           },
                           child: Stack(
@@ -131,7 +130,7 @@ class FitnessScreen extends StatelessWidget {
                                           : null,
                                       child: Center(
                                         child: Text(
-                                          'Exercises',
+                                          'Recipes',
                                           style: CustomTextStyles
                                               .headlineSmallRoboto
                                               .copyWith(
@@ -198,8 +197,16 @@ class FitnessScreen extends StatelessWidget {
                                                     context: context,
                                                     useRootNavigator: true,
                                                     isScrollControlled: true,
-                                                    builder: (_) =>
-                                                        ExercisesFilterScreen());
+                                                    builder:
+                                                        (context) => Padding(
+                                                              padding: EdgeInsets.only(
+                                                                  bottom: MediaQuery.of(
+                                                                          context)
+                                                                      .viewInsets
+                                                                      .bottom),
+                                                              child:
+                                                                  RecipesFilterScreen(),
+                                                            ));
                                               },
                                               child: const Icon(
                                                 Icons.filter_alt_rounded,
@@ -209,16 +216,16 @@ class FitnessScreen extends StatelessWidget {
                                           ],
                                         ),
                                         SizedBox(height: 20.h),
-                                        Text("Exercises",
+                                        Text("Recipes",
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 32.fSize,
                                             )),
                                         SizedBox(height: 20.h),
-                                        const ExerciseItemWidget(),
+                                        const RecipeItemWidget(),
                                       ],
                                     ),
-                                    const ExercisesProgramWidget(),
+                                    const DietProgramWidget(),
                                   ],
                                 ),
                               ),
@@ -238,8 +245,8 @@ class FitnessScreen extends StatelessWidget {
   }
 }
 
-class ExerciseItemWidget extends StatelessWidget {
-  const ExerciseItemWidget({
+class RecipeItemWidget extends StatelessWidget {
+  const RecipeItemWidget({
     super.key,
   });
 
@@ -250,8 +257,7 @@ class ExerciseItemWidget extends StatelessWidget {
         itemCount: 6,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: ExerciseCardWidget(
-            replacable: false,
+          child: RecipeCardWidget(
             onTap: () {
               showModalBottomSheet(
                   context: context,
@@ -259,7 +265,7 @@ class ExerciseItemWidget extends StatelessWidget {
                   isScrollControlled: true,
                   builder: (_) => ExerciseInfoScreen(
                         tryIt: true,
-                      ));
+                      )); // TODO: Navigate to recipes info screen
             },
           ),
         ),

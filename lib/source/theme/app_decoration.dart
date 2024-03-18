@@ -3,6 +3,9 @@ import 'package:fait/utils/app_export.dart';
 
 class AppDecoration {
   // Fill decorations
+  static BoxDecoration get fillBlack => BoxDecoration(
+        color: appTheme.black900.withOpacity(0.25),
+      );
   static BoxDecoration get fillBlueGray => BoxDecoration(
         color: appTheme.blueGray900,
       );
@@ -29,6 +32,9 @@ class AppDecoration {
       );
   static BoxDecoration get fillGray900 => BoxDecoration(
         color: appTheme.gray900,
+      );
+  static BoxDecoration get fillGray10001 => BoxDecoration(
+        color: appTheme.gray10001,
       );
   static BoxDecoration get fillGray90002 => BoxDecoration(
         color: appTheme.gray90002,
@@ -150,6 +156,24 @@ class AppDecoration {
           bottom: BorderSide(
             color: theme.colorScheme.primary.withOpacity(0.25),
             width: 1.h,
+          ),
+        ),
+      );
+  static BoxDecoration get outlinePrimary2 => BoxDecoration(
+        color: appTheme.blueGray80004,
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.primary,
+            width: 1.h,
+          ),
+        ),
+      );
+  static BoxDecoration get outlinePrimary3 => BoxDecoration(
+        color: appTheme.blueGray900,
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.primary.withOpacity(0.25),
+            width: 2.h,
           ),
         ),
       );
