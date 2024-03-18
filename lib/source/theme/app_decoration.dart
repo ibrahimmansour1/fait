@@ -153,6 +153,24 @@ class AppDecoration {
           ),
         ),
       );
+  static BoxDecoration get outlinePrimary2 => BoxDecoration(
+        color: appTheme.blueGray80004,
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.primary,
+            width: 1.h,
+          ),
+        ),
+      );
+  static BoxDecoration get outlinePrimary3 => BoxDecoration(
+        color: appTheme.blueGray900,
+        border: Border(
+          bottom: BorderSide(
+            color: theme.colorScheme.primary.withOpacity(0.25),
+            width: 2.h,
+          ),
+        ),
+      );
   static BoxDecoration get outlineSecondaryContainer => BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -193,6 +211,7 @@ class BorderRadiusStyle {
         bottomLeft: Radius.circular(12.h),
         bottomRight: Radius.circular(12.h),
       );
+
   static BorderRadius get customBorderBL22 => BorderRadius.vertical(
         bottom: Radius.circular(22.h),
       );
