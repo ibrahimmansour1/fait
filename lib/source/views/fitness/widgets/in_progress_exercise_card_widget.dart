@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../views/replace_with_screen/replace_with_tab_container_screen.dart';
+import '../../../widgets/replace_with_screen/replace_with_tab_container_screen.dart';
 
 // ignore: must_be_immutable
 class InProgressExerciseCardWidget extends StatelessWidget {

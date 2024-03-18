@@ -32,6 +32,9 @@ class CustomTextStyles {
   static get bodyLargeErrorContainer => theme.textTheme.bodyLarge!.copyWith(
         color: theme.colorScheme.errorContainer,
       );
+  static get bodyLargeGray10001 => theme.textTheme.bodyLarge!.copyWith(
+        color: appTheme.gray10001.withOpacity(0.75),
+      );
   static get bodyLargeIndigo700 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.indigo700,
       );
@@ -82,6 +85,8 @@ class CustomTextStyles {
   static get bodyLargeTealA70001 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.tealA70001,
       );
+  static get bodyLargebff4f4fc => theme.textTheme.bodyLarge!.copyWith(
+        color: const Color(0XBFF4F4FC),
   static get bodyLargeGray10001 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.gray10001.withOpacity(0.75),
       );
@@ -229,6 +234,11 @@ class CustomTextStyles {
         color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
         fontWeight: FontWeight.w600,
       );
+  static get headlineSmallRobotoPrimary =>
+      theme.textTheme.headlineSmall!.roboto.copyWith(
+        color: theme.colorScheme.primary,
+        fontWeight: FontWeight.w600,
+      );
   static get headlineSmallRobotoRed30002 =>
       theme.textTheme.headlineSmall!.roboto.copyWith(
         color: appTheme.red30002,
@@ -248,6 +258,11 @@ class CustomTextStyles {
       );
   static get headlineSmallRoboto_1 => theme.textTheme.headlineSmall!.roboto;
   static get headlineSmallRoboto_2 => theme.textTheme.headlineSmall!.roboto;
+  static get headlineSmallRobotofff4f4fc =>
+      theme.textTheme.headlineSmall!.roboto.copyWith(
+        color: const Color(0XFFF4F4FC),
+        fontWeight: FontWeight.w500,
+      );
   // Label text style
   static get labelLargeRobotoOnPrimaryContainer =>
       theme.textTheme.labelLarge!.roboto.copyWith(

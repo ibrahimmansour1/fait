@@ -193,4 +193,9 @@ extension TextFormFieldStyleHelper on CustomTextFormField {
         borderRadius: BorderRadius.circular(32.h),
         borderSide: BorderSide.none,
       );
+
+  static OutlineInputBorder get fillBlueGrayTL8 => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.h),
+        borderSide: BorderSide.none,
+      );
 }

@@ -1,14 +1,11 @@
-import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
-import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_group_screen.dart';
-import 'package:fait/utils/size_utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/app_export.dart';
 import '../../../../utils/transitions/fade_transition.dart';
+import '../views/diet_plans_screen.dart';
 
-class ExercisesProgramWidget extends StatelessWidget {
-  const ExercisesProgramWidget({
+class DietProgramWidget extends StatelessWidget {
+  const DietProgramWidget({
     super.key,
   });
 
@@ -32,9 +29,11 @@ class ExercisesProgramWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               child: Stack(
                 children: [
-                  Image.network(
-                    "https://www.eatthis.com/wp-content/uploads/sites/4/2023/04/muscular-man-lifting-weights-1.jpg?quality=82&strip=1",
+                  CustomImageView(
+                    imagePath: ImageConstant.imgImage80x80,
                     fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width * .95,
+                    height: MediaQuery.of(context).size.height * .33,
                   ),
                   Positioned.fill(
                     child: Container(
@@ -66,14 +65,14 @@ class ExercisesProgramWidget extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            '5 Workout',
+                            '5 Days',
                             style: TextStyle(
                               fontSize: 20.fSize,
                               color: Colors.white,
                             ),
                           ),
                           Text(
-                            '15 Exercise',
+                            '30 Recipes',
                             style: TextStyle(
                               fontSize: 18.fSize,
                               color: Colors.white.withOpacity(0.75),
@@ -82,24 +81,25 @@ class ExercisesProgramWidget extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 160.h),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            FadePageRouteBuilder(
-                              page: const WorkoutGroupScreen(),
-                              duration: const Duration(milliseconds: 800),
-                            ),
-                          );
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.menu_rounded,
-                            color: Colors.black,
-                          ),
-                        ),
-                      )
+                      SizedBox(height: 60.h),
+                      // InkWell(
+                      //   onTap: () {
+                      //     Navigator.push(
+                      //       context,
+                      //       FadePageRouteBuilder(
+                      //         page: const WorkoutGroupScreen(),
+                      //         duration: const Duration(milliseconds: 800),
+                      //       ),
+                      //     );
+                      //   },
+                      //   child: const CircleAvatar(
+                      //     backgroundColor: Colors.white,
+                      //     child: Icon(
+                      //       Icons.menu_rounded,
+                      //       color: Colors.black,
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                   Column(
@@ -117,7 +117,8 @@ class ExercisesProgramWidget extends StatelessWidget {
                           Navigator.push(
                             context,
                             FadePageRouteBuilder(
-                              page: const OverviewScreen(),
+                              page:
+                                  DietPlansScreen(), // TODO: Navigate to recipes overView screen
                               duration: const Duration(milliseconds: 800),
                             ),
                           );

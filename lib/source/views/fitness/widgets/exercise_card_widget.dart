@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../views/replace_with_screen/replace_with_tab_container_screen.dart';
+import '../../../widgets/replace_with_screen/replace_with_tab_container_screen.dart';
 
 // ignore: must_be_immutable
 class ExerciseCardWidget extends StatelessWidget {
