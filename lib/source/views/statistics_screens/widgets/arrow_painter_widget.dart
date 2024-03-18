@@ -5,7 +5,7 @@ class ArrowPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = appTheme.deepPurple400
+      ..color = theme.colorScheme.primary
       ..style = PaintingStyle.fill;
 
     final Path path = Path()

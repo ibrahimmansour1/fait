@@ -37,8 +37,7 @@ class WaterIntakeScreen extends StatelessWidget {
                       onTapImgArrowLeft(context);
                     }),
                 SizedBox(height: 66.v),
-                Text("HYDRATION",
-                    style: CustomTextStyles.titleMediumDeeppurple300),
+                Text("HYDRATION", style: CustomTextStyles.titleMediumPrimary18),
                 SizedBox(height: 9.v),
                 SizedBox(
                     height: 72.v,
@@ -57,7 +56,7 @@ class WaterIntakeScreen extends StatelessWidget {
                                     TextSpan(
                                         text: "750 ml ",
                                         style: CustomTextStyles
-                                            .headlineSmallRobotoDeeppurple300),
+                                            .headlineSmallRobotoff17d1e0),
                                     TextSpan(
                                         text: "of water",
                                         style: CustomTextStyles
@@ -90,14 +89,14 @@ class WaterIntakeScreen extends StatelessWidget {
                             left: 4, right: 4, top: 4, bottom: 4),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: appTheme.deepPurple400,
+                          color: theme.colorScheme.primary,
                         ),
                         child: Center(
                           child: Text(
                             "${adjustedProgress * 100}%",
                             style: TextStyle(
                                 fontSize: 24.fSize,
-                                color: Colors.white,
+                                color: appTheme.white,
                                 height: 0.8),
                           ),
                         ),
@@ -200,7 +199,7 @@ class WaterIntakeScreen extends StatelessWidget {
                       imagePath: ImageConstant.imgVectorOnprimarycontainer18x14,
                       height: 18.v,
                       width: 14.h)),
-              buttonStyle: CustomButtonStyles.fillDeepPurple,
+              buttonStyle: CustomButtonStyles.fillPrimary2,
               buttonTextStyle: CustomTextStyles.titleLargeBold),
           SizedBox(height: 10.v)
         ]));

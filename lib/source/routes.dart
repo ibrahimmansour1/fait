@@ -10,6 +10,8 @@ import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_goal.da
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_tools_detection.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_workout_days.dart';
+import 'package:fait/source/views/diet/views/bookmark_screen.dart';
+import 'package:fait/source/views/diet/views/recipe_info_screen.dart';
 
 import 'package:fait/source/views/fitness/views/open_camera_screen/open_camera_screen.dart';
 import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
@@ -133,6 +135,14 @@ class RouteGenerator {
       case '/open_camera_screen':
         return MaterialPageRoute(
             builder: (context) => const OpenCameraScreen());
+
+      case '/bookmark_screen':
+        return MaterialPageRoute(
+            builder: (context) =>  BookmarkScreen());
+
+      case '/recipe_info_screen':
+        return MaterialPageRoute(
+            builder: (context) =>  RecipeInfoScreen());
 
       default:
         return MaterialPageRoute(

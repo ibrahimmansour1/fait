@@ -32,7 +32,7 @@ class DailyIntakeScreen extends StatelessWidget {
                 Align(
                     alignment: Alignment.center,
                     child: Text("DAILY INTAKE",
-                        style: CustomTextStyles.titleMediumDeeppurple300)),
+                        style: CustomTextStyles.titleMediumPrimary18)),
                 SizedBox(height: 9.v),
                 Container(
                     width: 197.h,
@@ -45,8 +45,8 @@ class DailyIntakeScreen extends StatelessWidget {
                           const TextSpan(text: " "),
                           TextSpan(
                               text: "500 cal",
-                              style: CustomTextStyles
-                                  .headlineSmallRobotoDeeppurple300)
+                              style:
+                                  CustomTextStyles.headlineSmallRobotoff17d1e0)
                         ]),
                         textAlign: TextAlign.left)),
                 Align(
