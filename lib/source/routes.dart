@@ -137,12 +137,11 @@ class RouteGenerator {
             builder: (context) => const OpenCameraScreen());
 
       case '/bookmark_screen':
-        return MaterialPageRoute(
-            builder: (context) =>  BookmarkScreen());
+        return MaterialPageRoute(builder: (context) => const BookmarkScreen());
 
       case '/recipe_info_screen':
         return MaterialPageRoute(
-            builder: (context) =>  RecipeInfoScreen());
+            builder: (context) => const RecipeInfoScreen());
 
       default:
         return MaterialPageRoute(

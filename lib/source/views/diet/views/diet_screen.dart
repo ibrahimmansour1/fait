@@ -1,4 +1,4 @@
-import 'package:fait/source/views/fitness/views/exercise_info_screen.dart';
+import 'package:fait/source/views/diet/views/bookmark_screen.dart';
 import 'package:fait/source/views/fitness/views/exercises_favourites_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../utils/app_export.dart';
+import '../../../../utils/transitions/fade_transition.dart';
 import '../../../widgets/custom_search_view.dart';
 import '../../../widgets/info_popup.dart';
 import '../widgets/diet_program_widget.dart';
 import '../widgets/recipe_card_widget.dart';
+import 'recipe_info_screen.dart';
 import 'recipes_filter_screen.dart';
 
 class DietScreen extends StatelessWidget {
@@ -69,12 +71,13 @@ class DietScreen extends StatelessWidget {
                                                 'Add program manually, Coming Soon...'),
                                       ));
                             } else {
-                              showModalBottomSheet(
-                                  context: context,
-                                  useRootNavigator: true,
-                                  isScrollControlled: true,
-                                  builder: (_) =>
-                                      const ExercisesFavouritesScreen()); // TODO: Navigate to recipes fav screen
+                              Navigator.push(
+                                context,
+                                FadePageRouteBuilder(
+                                  page: const BookmarkScreen(),
+                                  duration: const Duration(milliseconds: 800),
+                                ),
+                              );
                             }
                           },
                           child: Stack(
@@ -263,9 +266,7 @@ class RecipeItemWidget extends StatelessWidget {
                   context: context,
                   useRootNavigator: true,
                   isScrollControlled: true,
-                  builder: (_) => ExerciseInfoScreen(
-                        tryIt: true,
-                      )); // TODO: Navigate to recipes info screen
+                  builder: (_) => const RecipeInfoScreen());
             },
           ),
         ),
