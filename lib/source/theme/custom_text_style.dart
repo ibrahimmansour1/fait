@@ -87,8 +87,6 @@ class CustomTextStyles {
       );
   static get bodyLargebff4f4fc => theme.textTheme.bodyLarge!.copyWith(
         color: const Color(0XBFF4F4FC),
-  static get bodyLargeGray10001 => theme.textTheme.bodyLarge!.copyWith(
-        color: appTheme.gray10001.withOpacity(0.75),
       );
   static get bodyLargeOnPrimaryContainer_3 =>
       theme.textTheme.bodyLarge!.copyWith(

@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fait/source/widgets/custom_icon_button.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
+
+import '../widgets/dietcards_item_widget.dart';
+import 'recipe_info_screen.dart';
 
 final isFavoriteProvider = StateProvider<bool>((ref) {
   return true;
@@ -28,7 +30,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
           child: Column(
             children: [
               Container(
-                height: 556.v,
+                // height: 556.v,
                 width: 425.h,
                 padding: EdgeInsets.symmetric(horizontal: 22.h, vertical: 32.v),
                 decoration: AppDecoration.fillBluegray80004.copyWith(
@@ -119,7 +121,11 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                             margin: EdgeInsets.only(left: 24.h),
                             buttonStyle: CustomButtonStyles.fillPrimary,
                             onPressed: () {
-                              onTapLetsTry(context);
+                              showModalBottomSheet(
+                                  context: context,
+                                  useRootNavigator: true,
+                                  isScrollControlled: true,
+                                  builder: (_) => const RecipeInfoScreen());
                             },
                           ),
                         ],
@@ -128,15 +134,52 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 71.v),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 22.h, vertical: 32.v),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 32.h),
-                    child:
+                    padding: EdgeInsets.symmetric(horizontal: 22.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text("Favorites", style: theme.textTheme.headlineLarge),
+                        SizedBox(
+                          height: 22.v,
+                        ),
+                        Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 32.h, vertical: 30.v),
+                            decoration: AppDecoration.fillBluegray80004
+                                .copyWith(
+                                    borderRadius:
+                                        BorderRadiusStyle.roundedBorder8),
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ListView.separated(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemBuilder: (context, index) =>
+                                          DietcardsItemWidget(
+                                            favourite: true,
+                                            onTap: () {
+                                              showModalBottomSheet(
+                                                  context: context,
+                                                  useRootNavigator: true,
+                                                  isScrollControlled: true,
+                                                  builder: (_) =>
+                                                      const RecipeInfoScreen());
+                                            },
+                                          ),
+                                      separatorBuilder: (context, index) =>
+                                          SizedBox(height: 8.v),
+                                      itemCount: 7),
+                                ]))
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -206,10 +249,5 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
   /// Navigates back to the previous screen.
   onTapImgArrowLeft(BuildContext context) {
     Navigator.pop(context);
-  }
-
-  /// Navigates to the recipeInfoScreen when the action is triggered.
-  onTapLetsTry(BuildContext context) {
-    // Navigator.pushNamed(context, AppRoutes.recipeInfoScreen);
   }
 }

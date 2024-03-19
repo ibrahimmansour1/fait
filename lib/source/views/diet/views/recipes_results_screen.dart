@@ -2,7 +2,7 @@ import 'package:fait/source/views/diet/widgets/recipe_card_widget.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 
-import '../../fitness/views/exercise_info_screen.dart';
+import 'recipe_info_screen.dart';
 
 class RecipesResultsScreen extends StatelessWidget {
   const RecipesResultsScreen({Key? key}) : super(key: key);
@@ -58,9 +58,7 @@ class RecipesResultsScreen extends StatelessWidget {
                                     context: context,
                                     useRootNavigator: true,
                                     isScrollControlled: true,
-                                    builder: (_) => ExerciseInfoScreen(
-                                          tryIt: true,
-                                        )); // TODO: Navigate to recipes info screen
+                                    builder: (_) => const RecipeInfoScreen());
                               },
                             ),
                         separatorBuilder: (context, index) =>

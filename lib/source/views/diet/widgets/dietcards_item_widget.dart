@@ -9,7 +9,7 @@ import '../../../widgets/replace_with_screen/replace_with_tab_container_screen.d
 class DietcardsItemWidget extends StatelessWidget {
   DietcardsItemWidget({
     Key? key,
-    this.onTapDietCard,
+    this.onTap,
     this.replacable = true,
     this.favourite = false,
   }) : super(
@@ -20,7 +20,7 @@ class DietcardsItemWidget extends StatelessWidget {
     });
   }
 
-  VoidCallback? onTapDietCard;
+  VoidCallback? onTap;
   bool replacable;
   bool favourite;
   StateProvider<bool>? isFavouriteProvider;
@@ -69,9 +69,7 @@ class DietcardsItemWidget extends StatelessWidget {
           ],
         ),
         child: GestureDetector(
-          onTap: () {
-            onTapDietCard!.call();
-          },
+          onTap: onTap,
           child: Container(
             padding: EdgeInsets.fromLTRB(8.h, 7.v, 8.h, 6.v),
             decoration: AppDecoration.outlinePrimary2,

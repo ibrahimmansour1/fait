@@ -4,6 +4,7 @@ import 'package:fait/source/views/fitness/widgets/in_progress_exercise_card_widg
 import 'package:flutter/material.dart';
 
 import '../../../utils/app_export.dart';
+import '../../views/diet/views/recipe_info_screen.dart';
 
 class ReplaceWithPage extends StatefulWidget {
   final bool inProgressExercise;

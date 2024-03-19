@@ -6,6 +6,7 @@ import '../../../../utils/app_export.dart';
 import '../../../localization/app_localization.dart';
 import '../../../widgets/custom_icon_button.dart';
 import '../widgets/dietcards_item_widget.dart';
+import 'recipe_info_screen.dart';
 
 // ignore_for_file: must_be_immutable
 class DietPlansScreen extends StatelessWidget {
@@ -66,7 +67,13 @@ class DietPlansScreen extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) => DietcardsItemWidget(
-                        onTapDietCard: onTapDietCard(context),
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              useRootNavigator: true,
+                              isScrollControlled: true,
+                              builder: (_) => const RecipeInfoScreen());
+                        },
                       ),
                   separatorBuilder: (context, index) => SizedBox(height: 8.v),
                   itemCount: 3),
@@ -267,11 +274,6 @@ class DietPlansScreen extends StatelessWidget {
                 )
               ])),
     );
-  }
-
-  /// Navigates to the recipeInfoScreen when the action is triggered.
-  onTapDietCard(BuildContext context) {
-    // Navigator.pushNamed(context, AppRoutes.recipeInfoScreen);
   }
 
   /// Navigates back to the previous screen.
