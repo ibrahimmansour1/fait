@@ -163,7 +163,7 @@ class RecipeInfoScreen extends StatelessWidget {
                                           .bodyLargeOnPrimaryContainer_3))
                             ])),
                         Container(
-                          width: 170.h,
+                          width: 176.h,
                           margin: EdgeInsets.only(left: 8.h),
                           child: Row(
                             children: [
