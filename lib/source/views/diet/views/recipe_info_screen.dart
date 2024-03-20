@@ -209,14 +209,17 @@ class RecipeInfoScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomImageView(
-                    imagePath: ImageConstant.imgArrowLeft,
-                    height: 24.v,
-                    width: 16.h,
-                    margin: EdgeInsets.only(bottom: 24.v),
-                    onTap: () {
-                      onTapImgArrowLeft(context);
-                    }),
+                Padding(
+                  padding: EdgeInsets.only(top: 25.v),
+                  child: CustomImageView(
+                      imagePath: ImageConstant.imgArrowLeft,
+                      height: 24.v,
+                      width: 16.h,
+                      margin: EdgeInsets.only(bottom: 24.v),
+                      onTap: () {
+                        onTapImgArrowLeft(context);
+                      }),
+                ),
                 Padding(
                     padding: EdgeInsets.only(left: 85.h, top: 10.v),
                     child: Text("Recipe Info",

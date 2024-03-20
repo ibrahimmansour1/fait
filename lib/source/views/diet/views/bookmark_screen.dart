@@ -8,7 +8,7 @@ import 'package:fait/utils/app_export.dart';
 import '../widgets/dietcards_item_widget.dart';
 import 'recipe_info_screen.dart';
 
-final isFavoriteProvider = StateProvider<bool>((ref) {
+final isFavoriteDietProvider = StateProvider<bool>((ref) {
   return true;
 });
 
@@ -30,7 +30,6 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
           child: Column(
             children: [
               Container(
-                // height: 556.v,
                 width: 425.h,
                 padding: EdgeInsets.symmetric(horizontal: 22.h, vertical: 32.v),
                 decoration: AppDecoration.fillBluegray80004.copyWith(
@@ -83,7 +82,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                               child: GestureDetector(
                                 onTap: () {
                                   ref
-                                      .read(isFavoriteProvider.notifier)
+                                      .read(isFavoriteDietProvider.notifier)
                                       .update((state) => !state);
                                 },
                                 child: Stack(
@@ -103,9 +102,10 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                                               .imgFavoriteBlueGray90020x20,
                                           height: 18.v,
                                           width: 20.h,
-                                          color: ref.watch(isFavoriteProvider)
-                                              ? theme.colorScheme.primary
-                                              : null,
+                                          color:
+                                              ref.watch(isFavoriteDietProvider)
+                                                  ? theme.colorScheme.primary
+                                                  : null,
                                           margin: EdgeInsets.symmetric(
                                               vertical: 27.v)),
                                     ),
@@ -202,31 +202,26 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
           imagePath: ImageConstant.img02,
           height: 176.adaptSize,
           width: 176.adaptSize,
-          radius: BorderRadius.circular(88.h),
-          margin: EdgeInsets.only(left: 64.h)),
+          radius: BorderRadius.circular(100.h)),
       CustomImageView(
           imagePath: ImageConstant.img03,
           height: 176.adaptSize,
           width: 176.adaptSize,
-          radius: BorderRadius.circular(88.h),
-          margin: EdgeInsets.only(left: 64.h)),
+          radius: BorderRadius.circular(100.h)),
       CustomImageView(
           imagePath: ImageConstant.img04,
           height: 176.adaptSize,
           width: 176.adaptSize,
-          radius: BorderRadius.circular(88.h),
-          margin: EdgeInsets.only(left: 64.h)),
+          radius: BorderRadius.circular(100.h)),
       CustomImageView(
           imagePath: ImageConstant.img05,
           height: 176.adaptSize,
           width: 176.adaptSize,
-          radius: BorderRadius.circular(88.h),
-          margin: EdgeInsets.only(left: 64.h)),
+          radius: BorderRadius.circular(100.h)),
     ];
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        // Other widgets
         CarouselSlider(
           items: carouselItems,
           options: CarouselOptions(
