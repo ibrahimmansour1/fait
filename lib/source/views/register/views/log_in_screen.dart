@@ -1,4 +1,4 @@
-import 'package:fait/source/providers/bottom_sheet_provider.dart';
+import 'package:fait/source/providers/register/bottom_sheet_provider.dart';
 import 'package:fait/source/views/statistics_screens/views/after_login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';

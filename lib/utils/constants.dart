@@ -1,5 +1,7 @@
 // import 'package:responsive_sizer/responsive_sizer.dart';
 
+const String baseUrl = "http://fait2024-001-site1.gtempurl.com/api/v1/";
+
 // const double SCREEN_HIEGHT = 926;
 // const double SCREEN_WIDTH = 428;
 
