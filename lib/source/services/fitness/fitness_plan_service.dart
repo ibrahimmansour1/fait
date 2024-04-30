@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:fait/source/api/api_response.dart';
 import 'package:fait/source/models/fitness/fitness_plan_model.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
@@ -9,33 +11,37 @@ import '../../../utils/constants.dart';
 
 class FitnessPlanService {
   final intenetChecker = InternetConnectionChecker();
+  final dio = Dio();
 
-  getFitnessPlan() async {
+  Future<ApiResponse<FitnessPlanModel>> getFitnessPlan() async {
     try {
       if (await intenetChecker.hasConnection) {
-        final dio = Dio();
         final response = await dio.get(
           "${baseUrl}FitnessPlan",
-          options: Options(headers: {
-            "Content-Type": "application/json",
-          }),
+          options: Options(
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization":
+                  "Basic ${base64Encode(utf8.encode("$authUsername:$authPassword"))}",
+            },
+          ),
         );
         if (response.statusCode == 200 || response.statusCode == 201) {
-          final data = jsonDecode(response.data);
-          if (data.isEmpty) {
-            return "No data found";
+          if (response.data.isEmpty) {
+            return ApiResponse.error("No data found", response.statusCode);
           }
+          final data = jsonDecode(response.data);
           final fitnessPlanModel = FitnessPlanModel.fromJson(data[0]);
-          return fitnessPlanModel;
+          return ApiResponse.completed(fitnessPlanModel);
         } else {
-          return "Failed to load data";
+          return ApiResponse.error("Failed to load data", response.statusCode);
         }
       } else {
-        return "No Internet Connection";
+        return ApiResponse.error("No Internet Connection", 503);
       }
     } catch (e) {
       log(e.toString());
-      return "Something went wrong";
+      return ApiResponse.error(e.toString(), 0);
     }
   }
 }
