@@ -3,6 +3,7 @@ import 'package:fait/source/services/fitness/fitness_plan_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../utils/toast_message.dart';
 import '../../api/api_response.dart';
 
 final fitnessPlanProvider = ChangeNotifierProvider<FitnessPlanNotifier>((ref) {
@@ -17,12 +18,19 @@ class FitnessPlanNotifier extends ChangeNotifier {
     fitnessPlanResponse = ApiResponse.loading("Loading");
   }
 
-  getFitnessPlan() {
+  ApiResponse<FitnessPlanModel> getFitnessPlan() {
+    fitnessPlanResponse = ApiResponse.loading("Loading");
+    notifyListeners();
     fitnessPlanService.getFitnessPlan().then((value) {
-      if (value is FitnessPlanModel) {
-        fitnessPlanResponse = ApiResponse.completed(value);
+      if (value.status == Status.completed) {
+        fitnessPlanResponse = value;
       } else {
-        fitnessPlanResponse = ApiResponse.error(value, 404);
+        ToastMessage(
+          bgColor: Colors.red,
+          message:
+              "Error! ${value.message.toString()} || Status Code: ${value.errorCode.toString()}",
+        ).show();
+        fitnessPlanResponse = value;
       }
       notifyListeners();
     });

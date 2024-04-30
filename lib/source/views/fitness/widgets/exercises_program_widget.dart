@@ -1,7 +1,6 @@
 import 'package:fait/source/api/api_response.dart';
 import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
 import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_group_screen.dart';
-import 'package:fait/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,26 +21,30 @@ class ExercisesProgramWidget extends ConsumerStatefulWidget {
 class _ExercisesProgramWidgetState
     extends ConsumerState<ExercisesProgramWidget> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.watch(fitnessPlanProvider).getFitnessPlan();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final fitnessPlanViewModel = ref.watch(fitnessPlanProvider);
-    fitnessPlanViewModel.getFitnessPlan();
-    if (fitnessPlanViewModel.fitnessPlanResponse.status == Status.error) {
-      ToastMessage(bgColor: Colors.red, message: fitnessPlanViewModel.fitnessPlanResponse.message.toString()).show();
-    }
-    return fitnessPlanViewModel.fitnessPlanResponse.status == Status.completed
-        ? Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 20.h),
-              Text(
-                'My Program',
-                style: TextStyle(
-                  fontSize: 32.fSize,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 20.h),
+        Text(
+          'My Program',
+          style: TextStyle(
+            fontSize: 32.fSize,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 20),
+        fitnessPlanViewModel.fitnessPlanResponse.status == Status.completed
+            ? Stack(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -168,11 +171,11 @@ class _ExercisesProgramWidgetState
                     ),
                   ),
                 ],
+              )
+            : const Center(
+                child: CircularProgressIndicator(),
               ),
-            ],
-          )
-        : const Center(
-            child: CircularProgressIndicator(),
-          );
+      ],
+    );
   }
 }
