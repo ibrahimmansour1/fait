@@ -1,4 +1,6 @@
 import 'package:fait/source/models/fitness/fitness_plan_model.dart';
+import 'package:fait/source/models/fitness/fitness_plan_workout_model.dart';
+import 'package:fait/source/models/fitness/muscle_model.dart';
 import 'package:fait/source/services/fitness/fitness_plan_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,10 +16,14 @@ class FitnessPlanNotifier extends ChangeNotifier {
   final Ref ref;
   late ApiResponse<FitnessPlanModel> fitnessPlanResponse;
   late ApiResponse<FitnessPlanModel> fitnessPlanOverviewResponse;
+  late ApiResponse<List<MuscleModel>> fitnessPlanMusclesResponse;
+  late ApiResponse<List<FitnessPlanWorkoutModel>> fitnessPlanWorkoutsResponse;
   final _fitnessPlanService = FitnessPlanService();
   FitnessPlanNotifier(this.ref) {
     fitnessPlanResponse = ApiResponse.loading("Loading");
     fitnessPlanOverviewResponse = ApiResponse.loading("Loading");
+    fitnessPlanMusclesResponse = ApiResponse.loading("Loading");
+    fitnessPlanWorkoutsResponse = ApiResponse.loading("Loading");
   }
 
   ApiResponse<FitnessPlanModel> getFitnessPlan() {
@@ -56,5 +62,44 @@ class FitnessPlanNotifier extends ChangeNotifier {
       notifyListeners();
     });
     return fitnessPlanOverviewResponse;
+  }
+
+  ApiResponse<List<MuscleModel>> getFitnessPlanMuscles(int fitnessPlanId) {
+    fitnessPlanMusclesResponse = ApiResponse.loading("Loading");
+    notifyListeners();
+    _fitnessPlanService.getFitnessPlanMuscles(fitnessPlanId).then((value) {
+      if (value.status == Status.completed) {
+        fitnessPlanMusclesResponse = value;
+      } else {
+        ToastMessage(
+          bgColor: Colors.red,
+          message:
+              "Error! ${value.message.toString()} || Status Code: ${value.errorCode.toString()}",
+        ).show();
+        fitnessPlanMusclesResponse = value;
+      }
+      notifyListeners();
+    });
+    return fitnessPlanMusclesResponse;
+  }
+
+  ApiResponse<List<FitnessPlanWorkoutModel>> getFitnessPlanWorkouts(
+      int fitnessPlanId) {
+    fitnessPlanWorkoutsResponse = ApiResponse.loading("Loading");
+    notifyListeners();
+    _fitnessPlanService.getFitnessPlanWorkouts(fitnessPlanId).then((value) {
+      if (value.status == Status.completed) {
+        fitnessPlanWorkoutsResponse = value;
+      } else {
+        ToastMessage(
+          bgColor: Colors.red,
+          message:
+              "Error! ${value.message.toString()} || Status Code: ${value.errorCode.toString()}",
+        ).show();
+        fitnessPlanWorkoutsResponse = value;
+      }
+      notifyListeners();
+    });
+    return fitnessPlanWorkoutsResponse;
   }
 }

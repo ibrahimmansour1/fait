@@ -21,29 +21,29 @@ class _WorkoutOverviewScreenState extends ConsumerState<WorkoutOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final fitnessPlanViewModel = ref.watch(fitnessPlanProvider);
+    final fitnessPlanOverviewViewModel = ref.watch(fitnessPlanProvider).fitnessPlanOverviewResponse;
     return Column(
       children: [
         OverviewPercentagesWidget(
           cardioText: "Cardio",
           cardioPercentageText:
-              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.cardio} %",
+              "${fitnessPlanOverviewViewModel.data?.cardio} %",
           strengthText: "Strength",
           strengthPercentageText:
-              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.strength} %",
+              "${fitnessPlanOverviewViewModel.data?.strength} %",
           stretchText: "Stretch",
           stretchPercentageText:
-              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.stretch} %",
-          cardioPercentageIndicator: fitnessPlanViewModel
-                  .fitnessPlanOverviewResponse.data?.cardio!
+              "${fitnessPlanOverviewViewModel.data?.stretch} %",
+          cardioPercentageIndicator: fitnessPlanOverviewViewModel
+                  .data?.cardio!
                   .toDouble() ??
               0,
-          strengthPercentageIndicator: fitnessPlanViewModel
-                  .fitnessPlanOverviewResponse.data?.strength!
+          strengthPercentageIndicator: fitnessPlanOverviewViewModel
+                  .data?.strength!
                   .toDouble() ??
               0,
-          stretchPercentageIndicator: fitnessPlanViewModel
-                  .fitnessPlanOverviewResponse.data?.stretch!
+          stretchPercentageIndicator: fitnessPlanOverviewViewModel
+                  .data?.stretch!
                   .toDouble() ??
               0,
         ),
@@ -96,7 +96,7 @@ class _WorkoutOverviewScreenState extends ConsumerState<WorkoutOverviewScreen> {
                                   children: [
                                     TextSpan(
                                       text:
-                                          "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.caloriesBurned}",
+                                          "${fitnessPlanOverviewViewModel.data?.caloriesBurned}",
                                       style: CustomTextStyles.titleLargeBold,
                                     ),
                                     const TextSpan(text: " "),
@@ -123,7 +123,7 @@ class _WorkoutOverviewScreenState extends ConsumerState<WorkoutOverviewScreen> {
                                     children: [
                                       TextSpan(
                                           text:
-                                              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.weightLifted}",
+                                              "${fitnessPlanOverviewViewModel.data?.weightLifted}",
                                           style:
                                               CustomTextStyles.titleLargeBold),
                                       const TextSpan(text: " "),
@@ -169,7 +169,7 @@ class _WorkoutOverviewScreenState extends ConsumerState<WorkoutOverviewScreen> {
                       text: TextSpan(children: [
                         TextSpan(
                             text:
-                                "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.duration}",
+                                "${fitnessPlanOverviewViewModel.data?.duration}",
                             style: CustomTextStyles.titleLargeBold),
                         const TextSpan(text: " "),
                         TextSpan(

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../utils/toast_message.dart';
 import '../../api/api_response.dart';
+import '../../models/fitness/muscle_model.dart';
 import '../../models/workout/workout_response_body/workout_response_body.dart';
 import '../../services/workout/workout_service.dart';
 
@@ -19,15 +20,17 @@ final workoutExerciseProvider =
 class WorkoutNotifier extends ChangeNotifier {
   final Ref ref;
   late ApiResponse<WorkoutResponseBody> workoutResponse;
-  final workoutService = WorkoutService();
+  late ApiResponse<List<MuscleModel>> workoutMusclesResponse;
+  final _workoutService = WorkoutService();
   WorkoutNotifier(this.ref) {
     workoutResponse = ApiResponse.loading("Loading");
+    workoutMusclesResponse = ApiResponse.loading("Loading");
   }
 
   ApiResponse<WorkoutResponseBody> getWorkoutById({int? id}) {
     workoutResponse = ApiResponse.loading("Loading");
     notifyListeners();
-    workoutService.getWorkoutById(id: id).then((value) {
+    _workoutService.getWorkoutById(id: id).then((value) {
       if (value.status == Status.completed) {
         workoutResponse = value;
       } else {
@@ -42,12 +45,31 @@ class WorkoutNotifier extends ChangeNotifier {
     });
     return workoutResponse;
   }
+
+  ApiResponse<List<MuscleModel>> getWorkoutMuscles(int workoutId) {
+    workoutMusclesResponse = ApiResponse.loading("Loading");
+    notifyListeners();
+    _workoutService.getWorkoutMuscles(workoutId).then((value) {
+      if (value.status == Status.completed) {
+        workoutMusclesResponse = value;
+      } else {
+        ToastMessage(
+          bgColor: Colors.red,
+          message:
+              "Error! ${value.message.toString()} || Status Code: ${value.errorCode.toString()}",
+        ).show();
+        workoutMusclesResponse = value;
+      }
+      notifyListeners();
+    });
+    return workoutMusclesResponse;
+  }
 }
 
 class WorkoutExerciseNotifier extends ChangeNotifier {
   final Ref ref;
   late ApiResponse<WorkoutExercisesBody> workoutExerciseResponse;
-  final workoutService = WorkoutService();
+  final _workoutService = WorkoutService();
   WorkoutExerciseNotifier(this.ref) {
     workoutExerciseResponse = ApiResponse.loading("Loading");
   }
@@ -55,7 +77,7 @@ class WorkoutExerciseNotifier extends ChangeNotifier {
   ApiResponse<WorkoutExercisesBody> getWorkoutExercisesById({int? id}) {
     workoutExerciseResponse = ApiResponse.loading("Loading");
     notifyListeners();
-    workoutService.getWorkoutExercisesById(id: id).then((value) {
+    _workoutService.getWorkoutExercisesById(id: id).then((value) {
       if (value.status == Status.completed) {
         workoutExerciseResponse = value;
       } else {

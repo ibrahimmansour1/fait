@@ -1,4 +1,3 @@
-import 'package:fait/source/theme/custom_text_style.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/cupertino.dart';
 
