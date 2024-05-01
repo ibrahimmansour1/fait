@@ -1,10 +1,13 @@
+import 'package:fait/source/models/fitness/muscle_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/app_export.dart';
 
 class MuscleWidget extends StatelessWidget {
+  final MuscleModel muscleModel;
   const MuscleWidget({
     super.key,
+    required this.muscleModel,
   });
 
   @override
@@ -17,12 +20,13 @@ class MuscleWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           CustomImageView(
-              imagePath: ImageConstant.imgMuscleImage,
-              color: "isMain" == true ? appTheme.yellow900 : appTheme.brown900,
+              imagePath: muscleModel.image ?? ImageConstant.imgMuscleImage,
+              color:
+                  muscleModel.isMain! ? appTheme.yellow900 : appTheme.brown900,
               height: 70.adaptSize,
               width: 70.adaptSize),
-          Text("Name",
-              style: "isMain" == true
+          Text(muscleModel.name?? "Name",
+              style: muscleModel.isMain!
                   ? CustomTextStyles.titleLargeYellow900
                   : CustomTextStyles.titleLargeBrown900),
         ],
