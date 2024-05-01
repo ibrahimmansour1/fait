@@ -6,7 +6,8 @@ class ReplaceWithTabContainerScreen extends StatefulWidget {
   bool inProgressExercise;
   bool isDiet;
 
-  ReplaceWithTabContainerScreen({Key? key, this.inProgressExercise = false, this.isDiet = false})
+  ReplaceWithTabContainerScreen(
+      {Key? key, this.inProgressExercise = false, this.isDiet = false})
       : super(key: key);
 
   @override

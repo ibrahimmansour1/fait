@@ -56,10 +56,12 @@ class ExercisesResultsScreen extends StatelessWidget {
                               replacable: false,
                               onTap: () {
                                 showModalBottomSheet(
-                          context: context,
-                          useRootNavigator: true,
-                          isScrollControlled: true,
-                          builder: (_) => ExerciseInfoScreen(tryIt: true,));
+                                    context: context,
+                                    useRootNavigator: true,
+                                    isScrollControlled: true,
+                                    builder: (_) => ExerciseInfoScreen(
+                                          tryIt: true,
+                                        ));
                               },
                             ),
                         separatorBuilder: (context, index) =>

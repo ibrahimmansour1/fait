@@ -42,10 +42,12 @@ class InProgressExerciseCardWidget extends StatelessWidget {
         GestureDetector(
           onTap: () {
             showModalBottomSheet(
-                    context: context,
-                    useRootNavigator: true,
-                    isScrollControlled: true,
-                    builder: (_) => ReplaceWithTabContainerScreen(inProgressExercise: true,));
+                context: context,
+                useRootNavigator: true,
+                isScrollControlled: true,
+                builder: (_) => ReplaceWithTabContainerScreen(
+                      inProgressExercise: true,
+                    ));
           },
           child: Container(
             height: 32.adaptSize,
