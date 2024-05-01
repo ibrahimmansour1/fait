@@ -51,6 +51,8 @@ class _ExercisesProgramWidgetState
                     child: Stack(
                       children: [
                         Image.network(
+                          height: 310.v,
+                          width: 500.h,
                           fitnessPlanViewModel.fitnessPlanResponse.data!.image!,
                           fit: BoxFit.cover,
                         ),
@@ -105,7 +107,10 @@ class _ExercisesProgramWidgetState
                                 Navigator.push(
                                   context,
                                   FadePageRouteBuilder(
-                                    page: const WorkoutGroupScreen(),
+                                    page: WorkoutGroupScreen(
+                                      fitnessPlanId: fitnessPlanViewModel
+                                          .fitnessPlanResponse.data!.id!,
+                                    ),
                                     duration: const Duration(milliseconds: 800),
                                   ),
                                 );

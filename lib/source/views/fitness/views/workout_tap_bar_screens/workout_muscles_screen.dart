@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
+import '../../widgets/muscle_widget.dart';
+
 // ignore_for_file: must_be_immutable
 class WorkoutMusclesScreen extends StatelessWidget {
-  WorkoutMusclesScreen({Key? key}) : super(key: key);
+  final int fitnessPlanId;
+
+  WorkoutMusclesScreen({super.key, required this.fitnessPlanId});
 
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
@@ -11,22 +15,48 @@ class WorkoutMusclesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomImageView(
-            imagePath: ImageConstant.imgMusclesImage,
-            height: 424.v,
-            width: 224.h),
-        SizedBox(height: 30.v),
         Padding(
-          padding: EdgeInsets.only(left: 34.h, right: 40.h),
+          padding: EdgeInsets.only(left: 60.h, right: 40.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Rested", style: CustomTextStyles.titleLargeLightblue400),
-              Text("Tired", style: CustomTextStyles.titleLargeYellow900),
+              Text("Main", style: CustomTextStyles.titleLargeYellow900),
+              Text(
+                "Secondary",
+                style: CustomTextStyles.titleLargeBrown900,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 30.v),
+        SizedBox(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildMusclesList(),
+              Container(
+                width: 1.h,
+                height: mediaQueryData.size.height * 0.5,
+                decoration: const BoxDecoration(color: Colors.white),
+              ),
+              _buildMusclesList(),
             ],
           ),
         ),
       ],
+    );
+  }
+
+  SizedBox _buildMusclesList() {
+    return SizedBox(
+      width: mediaQueryData.size.width * 0.4,
+      child: ListView.separated(
+          shrinkWrap: true,
+          itemBuilder: (context, index) => SizedBox(height: 10.h),
+          separatorBuilder: (context, index) {
+            return const MuscleWidget();
+          },
+          itemCount: 5),
     );
   }
 }

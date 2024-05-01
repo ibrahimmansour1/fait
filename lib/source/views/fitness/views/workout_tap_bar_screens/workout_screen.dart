@@ -7,7 +7,8 @@ import 'package:fait/utils/app_export.dart';
 
 // ignore_for_file: must_be_immutable
 class WorkoutScreen extends StatelessWidget {
-  const WorkoutScreen({Key? key}) : super(key: key);
+  final int fitnessPlanId;
+  const WorkoutScreen({super.key, required this.fitnessPlanId});
 
   @override
   Widget build(BuildContext context) {
