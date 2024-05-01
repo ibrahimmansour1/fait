@@ -10,8 +10,6 @@ import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_goal.da
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_tools_detection.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_workout_days.dart';
-import 'package:fait/source/views/diet/views/bookmark_screen.dart';
-import 'package:fait/source/views/diet/views/recipe_info_screen.dart';
 
 import 'package:fait/source/views/fitness/views/open_camera_screen/open_camera_screen.dart';
 import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
@@ -28,8 +26,6 @@ import 'package:fait/source/views/statistics_screens/views/steps_tracker_screen.
 import 'package:fait/source/views/statistics_screens/views/water_intake_screen.dart';
 import 'package:flutter/material.dart';
 import 'views/chat_bot/views/chat_bot_view_body_with_height_and_weight.dart';
-import 'views/diet/views/diet_plans_screen.dart';
-import 'views/diet/views/diet_screen.dart';
 import 'views/fitness/views/fitness_screen.dart';
 
 import 'views/fitness/views/my_activity_screen.dart';
@@ -95,12 +91,6 @@ class RouteGenerator {
       case '/fitness_screen':
         return MaterialPageRoute(builder: (context) => FitnessScreen());
 
-      case '/diet_screen':
-        return MaterialPageRoute(builder: (context) => DietScreen());
-
-      case '/diet_plans_screen':
-        return MaterialPageRoute(builder: (context) => DietPlansScreen());
-
       case '/daily_intake_screen':
         return MaterialPageRoute(
             builder: (context) => const DailyIntakeScreen());
@@ -135,13 +125,6 @@ class RouteGenerator {
       case '/open_camera_screen':
         return MaterialPageRoute(
             builder: (context) => const OpenCameraScreen());
-
-      case '/bookmark_screen':
-        return MaterialPageRoute(builder: (context) => const BookmarkScreen());
-
-      case '/recipe_info_screen':
-        return MaterialPageRoute(
-            builder: (context) => const RecipeInfoScreen());
 
       default:
         return MaterialPageRoute(
