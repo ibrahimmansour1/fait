@@ -75,7 +75,8 @@ class FitnessScreen extends StatelessWidget {
                                   context: context,
                                   useRootNavigator: true,
                                   isScrollControlled: true,
-                                  builder: (_) => const ExercisesFavouritesScreen());
+                                  builder: (_) =>
+                                      const ExercisesFavouritesScreen());
                             }
                           },
                           child: Stack(

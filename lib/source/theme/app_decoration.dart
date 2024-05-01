@@ -269,4 +269,3 @@ double get strokeAlignOutside => BorderSide.strokeAlignOutside;
 // StrokeAlign get strokeAlignCenter => StrokeAlign.center;
 //
 // StrokeAlign get strokeAlignOutside => StrokeAlign.outside;
-    

@@ -3,10 +3,6 @@ import 'dart:math' as math;
 import 'package:fait/source/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 
-
-
-
-
 class CustomCircularProgressIndicator extends StatelessWidget {
   const CustomCircularProgressIndicator({
     Key? key,
