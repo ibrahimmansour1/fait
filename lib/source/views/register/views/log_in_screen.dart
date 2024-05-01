@@ -21,68 +21,65 @@ class LogInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-        child: Scaffold(
-            extendBody: true,
-            extendBodyBehindAppBar: true,
-            resizeToAvoidBottomInset: false,
-            body: Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: Container(
-                  width: mediaQueryData.size.width,
-                  height: mediaQueryData.size.height,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: const Alignment(0, 0.51),
-                          end: const Alignment(0.95, 0.66),
-                          colors: [
-                        theme.colorScheme.onPrimary,
-                        appTheme.blueGray800,
-                        appTheme.blueGray80001
-                      ])),
-                  child: SingleChildScrollView(
-                    child: Form(
-                        key: _formKey,
-                        child: Container(
-                            width: double.maxFinite,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 41.h, vertical: 60.v),
-                            child: Column(children: [
-                              Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 43.h),
-                                  child: Column(children: [
-                                    CustomImageView(
-                                        imagePath: ImageConstant.imgFait128x128,
-                                        height: 128.adaptSize,
-                                        width: 128.adaptSize,
-                                        radius: BorderRadius.circular(64.h)),
-                                    SizedBox(height: 23.v),
-                                    Text("Fitness AI Trainer",
-                                        style: CustomTextStyles
-                                            .headlineSmallAquire)
-                                  ])),
-                              SizedBox(height: 96.v),
-                              _buildFilledInfoUnfilled(context),
-                              SizedBox(height: 37.v),
-                              Consumer(
-                                builder: (context, ref, child) => InkWell(
-                                    onTap: () {
-                                      onTapTxtForgotPassword(context, ref);
-                                    },
-                                    child: Text(" Forgot  password ? ",
-                                        style: CustomTextStyles
-                                            .bodySmallInterOnPrimaryContainer
-                                            .copyWith(
-                                                decorationColor: Colors.white,
-                                                decoration:
-                                                    TextDecoration.underline))),
-                              ),
-                              SizedBox(height: 5.v)
-                            ]))),
-                  )),
-            )));
+    return Scaffold(
+        // extendBody: true,
+        // extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: false,
+        body: Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Container(
+              width: mediaQueryData.size.width,
+              height: mediaQueryData.size.height,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: const Alignment(0, 0.51),
+                      end: const Alignment(0.95, 0.66),
+                      colors: [
+                    theme.colorScheme.onPrimary,
+                    appTheme.blueGray800,
+                    appTheme.blueGray80001
+                  ])),
+              child: SingleChildScrollView(
+                child: Form(
+                    key: _formKey,
+                    child: Container(
+                        width: double.maxFinite,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 41.h, vertical: 60.v),
+                        child: Column(children: [
+                          Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 43.h),
+                              child: Column(children: [
+                                CustomImageView(
+                                    imagePath: ImageConstant.imgFait128x128,
+                                    height: 128.adaptSize,
+                                    width: 128.adaptSize,
+                                    radius: BorderRadius.circular(64.h)),
+                                SizedBox(height: 23.v),
+                                Text("Fitness AI Trainer",
+                                    style: CustomTextStyles.headlineSmallAquire)
+                              ])),
+                          SizedBox(height: 96.v),
+                          _buildFilledInfoUnfilled(context),
+                          SizedBox(height: 37.v),
+                          Consumer(
+                            builder: (context, ref, child) => InkWell(
+                                onTap: () {
+                                  onTapTxtForgotPassword(context, ref);
+                                },
+                                child: Text(" Forgot  password ? ",
+                                    style: CustomTextStyles
+                                        .bodySmallInterOnPrimaryContainer
+                                        .copyWith(
+                                            decorationColor: Colors.white,
+                                            decoration:
+                                                TextDecoration.underline))),
+                          ),
+                          SizedBox(height: 5.v)
+                        ]))),
+              )),
+        ));
   }
 
   /// Section Widget

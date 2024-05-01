@@ -25,6 +25,7 @@ class FitnessScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          forceMaterialTransparency: true,
           iconTheme: const IconThemeData(color: Colors.white),
           elevation: 0,
           backgroundColor: Colors.transparent,
@@ -75,7 +76,8 @@ class FitnessScreen extends StatelessWidget {
                                   context: context,
                                   useRootNavigator: true,
                                   isScrollControlled: true,
-                                  builder: (_) => const ExercisesFavouritesScreen());
+                                  builder: (_) =>
+                                      const ExercisesFavouritesScreen());
                             }
                           },
                           child: Stack(

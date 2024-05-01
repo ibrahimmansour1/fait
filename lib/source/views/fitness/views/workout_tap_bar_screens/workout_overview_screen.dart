@@ -3,32 +3,49 @@ import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_icon_button.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../providers/fitness/fitness_plan_provider.dart';
 
 // ignore_for_file: must_be_immutable
-class WorkoutOverviewScreen extends StatefulWidget {
+class WorkoutOverviewScreen extends ConsumerStatefulWidget {
   const WorkoutOverviewScreen({Key? key}) : super(key: key);
 
   @override
-  State<WorkoutOverviewScreen> createState() => _WorkoutOverviewScreenState();
+  ConsumerState<WorkoutOverviewScreen> createState() =>
+      _WorkoutOverviewScreenState();
 }
 
-class _WorkoutOverviewScreenState extends State<WorkoutOverviewScreen> {
-  bool isButtonSelect = false;
+class _WorkoutOverviewScreenState extends ConsumerState<WorkoutOverviewScreen> {
+  bool isButtonSelect = true;
 
   @override
   Widget build(BuildContext context) {
+    final fitnessPlanViewModel = ref.watch(fitnessPlanProvider);
     return Column(
       children: [
-        const OverviewPercentagesWidget(
+        OverviewPercentagesWidget(
           cardioText: "Cardio",
-          cardioPercentageText: "18 %",
+          cardioPercentageText:
+              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.cardio} %",
           strengthText: "Strength",
-          strengthPercentageText: "53 %",
+          strengthPercentageText:
+              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.strength} %",
           stretchText: "Stretch",
-          stretchPercentageText: "35 %",
-          cardioPercentageIndicator: 18,
-          strengthPercentageIndicator: 53,
-          stretchPercentageIndicator: 35,
+          stretchPercentageText:
+              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.stretch} %",
+          cardioPercentageIndicator: fitnessPlanViewModel
+                  .fitnessPlanOverviewResponse.data?.cardio!
+                  .toDouble() ??
+              0,
+          strengthPercentageIndicator: fitnessPlanViewModel
+                  .fitnessPlanOverviewResponse.data?.strength!
+                  .toDouble() ??
+              0,
+          stretchPercentageIndicator: fitnessPlanViewModel
+                  .fitnessPlanOverviewResponse.data?.stretch!
+                  .toDouble() ??
+              0,
         ),
         SizedBox(height: 73.v),
         Padding(
@@ -78,7 +95,8 @@ class _WorkoutOverviewScreenState extends State<WorkoutOverviewScreen> {
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: "450",
+                                      text:
+                                          "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.caloriesBurned}",
                                       style: CustomTextStyles.titleLargeBold,
                                     ),
                                     const TextSpan(text: " "),
@@ -104,7 +122,8 @@ class _WorkoutOverviewScreenState extends State<WorkoutOverviewScreen> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                          text: "148",
+                                          text:
+                                              "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.weightLifted}",
                                           style:
                                               CustomTextStyles.titleLargeBold),
                                       const TextSpan(text: " "),
@@ -149,7 +168,9 @@ class _WorkoutOverviewScreenState extends State<WorkoutOverviewScreen> {
                   RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: "50", style: CustomTextStyles.titleLargeBold),
+                            text:
+                                "${fitnessPlanViewModel.fitnessPlanOverviewResponse.data?.duration}",
+                            style: CustomTextStyles.titleLargeBold),
                         const TextSpan(text: " "),
                         TextSpan(
                             text: "min", style: CustomTextStyles.titleLargeBold)
@@ -166,9 +187,9 @@ class _WorkoutOverviewScreenState extends State<WorkoutOverviewScreen> {
         SizedBox(height: 70.v),
         CustomElevatedButton(
             onPressed: () {
-              setState(() {
-                isButtonSelect = !isButtonSelect;
-              });
+              // setState(() {
+              //   isButtonSelect = !isButtonSelect;
+              // });
             },
             height: 48.v,
             width: 256.h,
