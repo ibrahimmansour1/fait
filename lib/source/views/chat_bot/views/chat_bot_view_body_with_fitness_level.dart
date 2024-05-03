@@ -1,8 +1,10 @@
+import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
 import '../../../../utils/app_export.dart';
 import '../../../widgets/custom_elevated_button.dart';
+import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
@@ -28,6 +30,8 @@ class _ChatBotViewBodyWithFitnessLevelState
 
   double _powerValue = 1;
   double _fitnessValue = 1;
+  bool isPowerChanged = false;
+  bool isFitnessChanged = false;
 
   final List<String> _powerLevel = [
     'Very Low',
@@ -60,53 +64,92 @@ class _ChatBotViewBodyWithFitnessLevelState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomChatBotAppBar(),
-                  const ChatMessageWidget(message: 'Awesome'),
-                  const ChatMessageWidget(
-                    message: 'Choose your Power Level',
+                  CustomFutureAnimatedOpacityWidget(
+                      waitingDurationInMilliSeconds: 1000,
+                      child: const ChatMessageWidget(message: 'Awesome')),
+                  CustomFutureAnimatedOpacityWidget(
+                    waitingDurationInMilliSeconds: 2000,
+                    child: const ChatMessageWidget(
+                      message: 'Choose your Power Level',
+                    ),
                   ),
                   SizedBox(height: 10.v),
-                  Slider(
-                    value: _powerValue,
-                    min: 1,
-                    max: 5,
-                    divisions: 4,
-                    onChanged: (value) {
-                      setState(() {
-                        _powerValue = value;
-                      });
-                    },
-                    label: _powerLevel[(_powerValue.toInt() - 1)],
+                  CustomFutureAnimatedOpacityWidget(
+                    waitingDurationInMilliSeconds: 3000,
+                    child: Slider(
+                      value: _powerValue,
+                      min: 1,
+                      max: 5,
+                      divisions: 4,
+                      onChanged: (value) {
+                        setState(() {
+                          _powerValue = value;
+                          isPowerChanged = true;
+                        });
+                      },
+                      label: _powerLevel[(_powerValue.toInt() - 1)],
+                    ),
                   ),
                   const SizedBox(height: 20),
-                  ChatMessageWidget(
-                    message:
-                        "Your Fitness Level is ${_powerLevel[_powerValue.toInt() - 1]}",
-                  ),
-                  const ChatMessageWidget(
-                    message: 'Choose your Fitness Level',
-                  ),
+                  isPowerChanged
+                      ? CustomFutureAnimatedOpacityWidget(
+                          waitingDurationInMilliSeconds: 1000,
+                          child: ChatMessageWidget(
+                            message:
+                                "Your Power Level is ${_powerLevel[_powerValue.toInt() - 1]}",
+                          ),
+                        )
+                      : const SizedBox(),
+                  isPowerChanged
+                      ? CustomFutureAnimatedOpacityWidget(
+                          waitingDurationInMilliSeconds: 2000,
+                          child: const ChatMessageWidget(
+                            message: 'Choose your Fitness Level',
+                          ),
+                        )
+                      : const SizedBox(),
                   SizedBox(height: 10.v),
-                  Slider(
-                    value: _fitnessValue,
-                    min: 1,
-                    max: 5,
-                    divisions: 4,
-                    onChanged: (value) {
-                      setState(() {
-                        _fitnessValue = value;
-                      });
-                    },
-                    label: _fitnessLevel[(_fitnessValue.toInt() - 1)],
-                  ),
+                  isPowerChanged
+                      ? CustomFutureAnimatedOpacityWidget(
+                          waitingDurationInMilliSeconds: 3000,
+                          child: Slider(
+                            value: _fitnessValue,
+                            min: 1,
+                            max: 5,
+                            divisions: 4,
+                            onChanged: (value) {
+                              setState(() {
+                                _fitnessValue = value;
+                                isFitnessChanged = true;
+                              });
+                            },
+                            label: _fitnessLevel[(_fitnessValue.toInt() - 1)],
+                          ),
+                        )
+                      : const SizedBox(),
                   const SizedBox(height: 20),
-                  ChatMessageWidget(
-                    message:
-                        "Your Fitness Level is ${_fitnessLevel[_fitnessValue.toInt() - 1]}",
-                  ),
-                  const ChatMessageWidget(
-                      message: "Nice Choice! Let's move on"),
-                  const Spacer(),
-                  const ChatBotButtonWidget(route: '/chat_bot_injures'),
+                  isFitnessChanged
+                      ? CustomFutureAnimatedOpacityWidget(
+                          waitingDurationInMilliSeconds: 1000,
+                          child: ChatMessageWidget(
+                            message:
+                                "Your Fitness Level is ${_fitnessLevel[_fitnessValue.toInt() - 1]}",
+                          ),
+                        )
+                      : const SizedBox(),
+                  isFitnessChanged
+                      ? CustomFutureAnimatedOpacityWidget(
+                          waitingDurationInMilliSeconds: 2000,
+                          child: const ChatMessageWidget(
+                              message: "Nice Choice! Let's move on"),
+                        )
+                      : const SizedBox(),
+                  isFitnessChanged ? const Spacer() : const SizedBox(),
+                  if (isFitnessChanged && isPowerChanged)
+                    CustomFutureAnimatedOpacityWidget(
+                        waitingDurationInMilliSeconds: 3000,
+                        child: const ChatBotButtonWidget(
+                            route: AppRoutes.chatBotInjures)),
                   SizedBox(
                     height: 20.v,
                   ),

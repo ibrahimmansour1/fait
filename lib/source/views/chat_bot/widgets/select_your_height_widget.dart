@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 
 class SelectYourHeightWidget extends StatefulWidget {
+  final VoidCallback onHeightSelected;
   const SelectYourHeightWidget({
     Key? key,
+    required this.onHeightSelected,
   }) : super(key: key);
   @override
   _SelectYourHeightWidgetState createState() => _SelectYourHeightWidgetState();
@@ -65,6 +67,7 @@ class _SelectYourHeightWidgetState extends State<SelectYourHeightWidget> {
               setState(() {
                 height = value;
               });
+                widget.onHeightSelected();
             },
             width: MediaQuery.of(context).size.width,
             height: 80,

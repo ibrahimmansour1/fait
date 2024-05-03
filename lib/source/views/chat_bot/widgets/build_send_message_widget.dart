@@ -4,7 +4,15 @@ import 'package:flutter/material.dart';
 class BuildSendMessageWidget extends StatefulWidget {
   final TextEditingController? messageController;
   final Function()? onTap;
-  const BuildSendMessageWidget({super.key, this.messageController, this.onTap});
+  // final bool? autoFocus;
+  // final FocusNode? myFocusNode;
+  const BuildSendMessageWidget({
+    super.key,
+    this.messageController,
+    this.onTap,
+    // this.autoFocus = false,
+    // this.myFocusNode,
+  });
 
   @override
   State<BuildSendMessageWidget> createState() => _BuildSendMessageWidgetState();
@@ -21,6 +29,8 @@ class _BuildSendMessageWidgetState extends State<BuildSendMessageWidget> {
           children: [
             Expanded(
               child: TextFormField(
+                // autofocus: widget.autoFocus!,
+                // focusNode: widget.myFocusNode,
                 style: TextStyle(
                   fontSize: 20.fSize,
                   color: const Color(0xFF121212),
@@ -34,6 +44,10 @@ class _BuildSendMessageWidgetState extends State<BuildSendMessageWidget> {
                   ),
                   suffixIcon: IconButton(
                     onPressed: widget.onTap,
+                    //  () {
+                    //   // widget.onTap!();
+                    //   // widget.myFocusNode?.unfocus();
+                    // },
                     icon: Icon(
                       Icons.send_rounded,
                       color: const Color(0xFF121212).withOpacity(0.5),
