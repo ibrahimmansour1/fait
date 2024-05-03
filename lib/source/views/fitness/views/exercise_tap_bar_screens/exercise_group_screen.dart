@@ -161,7 +161,9 @@ class _ExerciseGroupScreenState extends ConsumerState<ExerciseGroupScreen>
               curve: Curves.easeInOut,
             ),
           ),
-          child: const ExerciseMusclesScreen(),
+          child: const ExerciseMusclesScreen(
+            workoutId: 1,
+          ),
         );
       default:
         return Container();

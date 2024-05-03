@@ -1,12 +1,9 @@
-import 'package:fait/source/theme/custom_button_style.dart';
-import 'package:fait/source/theme/custom_text_style.dart';
+import 'package:fait/source/routes.dart';
+import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
-import 'package:fait/source/views/chat_bot/widgets/select_your_bd_widget.dart';
-import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../utils/size_utils.dart';
-import '../widgets/build_send_message_widget.dart';
+import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 import '../widgets/select_your_height_widget.dart';
@@ -24,6 +21,8 @@ class ChatBotViewBodyWithHeightAndWeight extends StatefulWidget {
 
 class _ChatBotViewBodyWithHeightAndWeightState
     extends State<ChatBotViewBodyWithHeightAndWeight> {
+  bool isHeightSelected = false;
+  bool isWeightSelected = false;
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -41,24 +40,58 @@ class _ChatBotViewBodyWithHeightAndWeightState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomChatBotAppBar(),
-                  const ChatMessageWidget(
-                    message: 'Please detect your Height Ibrahim',
+                  SizedBox(height: 10.v),
+                  CustomFutureAnimatedOpacityWidget(
+                    waitingDurationInMilliSeconds: 1000,
+                    child: ChatMessageWidget(
+                      message: 'Please detect your Height $name',
+                    ),
                   ),
                   SizedBox(height: 10.v),
-                  const SelectYourHeightWidget(),
-                  const ChatMessageWidget(
-                    message: "Great! Let's detect your weight",
+                  CustomFutureAnimatedOpacityWidget(
+                    waitingDurationInMilliSeconds: 2000,
+                    child: SelectYourHeightWidget(
+                      onHeightSelected: () {
+                        setState(() {
+                          isHeightSelected = true;
+                        });
+                      },
+                    ),
                   ),
+                  isHeightSelected
+                      ? CustomFutureAnimatedOpacityWidget(
+                          waitingDurationInMilliSeconds: 1000,
+                          child: const ChatMessageWidget(
+                            message: "Great! Let's detect your weight",
+                          ),
+                        )
+                      : const SizedBox(),
                   SizedBox(height: 10.v),
-                  const SelectYourWeightWidget(),
+                  isHeightSelected
+                      ? CustomFutureAnimatedOpacityWidget(
+                          waitingDurationInMilliSeconds: 2000,
+                          child: SelectYourWeightWidget(
+                            onWeightSelected: () {
+                              setState(() {
+                                isWeightSelected = true;
+                              });
+                            },
+                          ),
+                        )
+                      : const SizedBox(),
                   const Spacer(),
-                  const ChatBotButtonWidget(route: '/chat_bot_goal_screen'),
+                  if (isHeightSelected && isWeightSelected)
+                    CustomFutureAnimatedOpacityWidget(
+                        waitingDurationInMilliSeconds: 1000,
+                        child: const ChatBotButtonWidget(
+                          route: AppRoutes.chatBotGoalScreen,
+                        )),
                   SizedBox(
                     height: 10.v,
                   ),
-                  BuildSendMessageWidget(
-                    messageController: messageController,
-                  ),
+                  // BuildSendMessageWidget(
+                  //   messageController: messageController,
+                  // ),
                 ],
               ),
             ),

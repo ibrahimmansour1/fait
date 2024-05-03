@@ -240,6 +240,8 @@ class ImageConstant {
 
   static String imgMusclesImage = '$imagePath/img_muscles_image.png';
 
+  static String imgMuscleImage = '$imagePath/muscle_image.png';
+
   static String imgDurationImage = '$imagePath/img_duration.png';
 
   static String imgLiftedImage = '$imagePath/img_lifted.png';

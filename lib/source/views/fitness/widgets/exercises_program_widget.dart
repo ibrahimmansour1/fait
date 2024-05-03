@@ -30,7 +30,8 @@ class _ExercisesProgramWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final fitnessPlanViewModel = ref.watch(fitnessPlanProvider);
+    final fitnessPlanViewModel =
+        ref.watch(fitnessPlanProvider).fitnessPlanResponse;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,7 +44,7 @@ class _ExercisesProgramWidgetState
           ),
         ),
         const SizedBox(height: 20),
-        fitnessPlanViewModel.fitnessPlanResponse.status == Status.completed
+        fitnessPlanViewModel.status == Status.completed
             ? Stack(
                 children: [
                   ClipRRect(
@@ -51,7 +52,9 @@ class _ExercisesProgramWidgetState
                     child: Stack(
                       children: [
                         Image.network(
-                          fitnessPlanViewModel.fitnessPlanResponse.data!.image!,
+                          height: 310.v,
+                          width: 500.h,
+                          fitnessPlanViewModel.data!.image!,
                           fit: BoxFit.cover,
                         ),
                         Positioned.fill(
@@ -84,14 +87,14 @@ class _ExercisesProgramWidgetState
                             Column(
                               children: [
                                 Text(
-                                  '${fitnessPlanViewModel.fitnessPlanResponse.data!.numberOfWorkouts} Workout',
+                                  '${fitnessPlanViewModel.data!.numberOfWorkouts} Workout',
                                   style: TextStyle(
                                     fontSize: 20.fSize,
                                     color: Colors.white,
                                   ),
                                 ),
                                 Text(
-                                  '${fitnessPlanViewModel.fitnessPlanResponse.data!.numberOfExercises} Exercise',
+                                  '${fitnessPlanViewModel.data!.numberOfExercises} Exercise',
                                   style: TextStyle(
                                     fontSize: 18.fSize,
                                     color: Colors.white.withOpacity(0.75),
@@ -105,7 +108,10 @@ class _ExercisesProgramWidgetState
                                 Navigator.push(
                                   context,
                                   FadePageRouteBuilder(
-                                    page: const WorkoutGroupScreen(),
+                                    page: WorkoutGroupScreen(
+                                      fitnessPlanId:
+                                          fitnessPlanViewModel.data!.id!,
+                                    ),
                                     duration: const Duration(milliseconds: 800),
                                   ),
                                 );

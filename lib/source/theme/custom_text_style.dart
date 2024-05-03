@@ -295,6 +295,9 @@ class CustomTextStyles {
   static get titleLargeYellow900 => theme.textTheme.titleLarge!.copyWith(
         color: appTheme.yellow900,
       );
+  static get titleLargeBrown900 => theme.textTheme.titleLarge!.copyWith(
+        color: appTheme.brown900,
+      );
   static get titleLargeInter => theme.textTheme.titleLarge!.inter.copyWith(
         fontWeight: FontWeight.w700,
       );
