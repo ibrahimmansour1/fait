@@ -1,3 +1,5 @@
+import 'package:fait/source/models/fitness/exercise_response_body_by_name_or_id/exercise_response_body_by_name_or_id.dart';
+import 'package:fait/source/providers/exercise/exercise_provider.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +10,12 @@ import 'open_camera_screen/open_camera_screen.dart';
 // ignore: must_be_immutable
 class ExerciseInfoScreen extends StatelessWidget {
   bool tryIt;
-  ExerciseInfoScreen({super.key, this.tryIt = false});
+  ExerciseResponseBodyByNameOrId? exercise;
+  ExerciseInfoScreen({
+    super.key,
+    this.tryIt = false,
+    this.exercise,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +37,7 @@ class ExerciseInfoScreen extends StatelessWidget {
                   ),
                   Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("JUMPING JACKS 20s",
+                      child: Text(exercise!.name!,
                           style: CustomTextStyles.headlineSmallRoboto_2)),
                   SizedBox(height: 46.v),
                   _buildExerciseInfoItemsSection(context),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 import '../../widgets/exercise_card_widget.dart';
 import '../exercise_info_screen.dart';
+
 // ignore_for_file: must_be_immutable
 class ExerciseScreen extends StatelessWidget {
   ExerciseScreen({Key? key}) : super(key: key);

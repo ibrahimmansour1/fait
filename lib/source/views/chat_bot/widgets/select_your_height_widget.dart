@@ -67,7 +67,7 @@ class _SelectYourHeightWidgetState extends State<SelectYourHeightWidget> {
               setState(() {
                 height = value;
               });
-                widget.onHeightSelected();
+              widget.onHeightSelected();
             },
             width: MediaQuery.of(context).size.width,
             height: 80,

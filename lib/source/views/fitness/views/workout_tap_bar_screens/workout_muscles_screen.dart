@@ -39,38 +39,42 @@ class _WorkoutMusclesScreenState extends ConsumerState<WorkoutMusclesScreen> {
         ? const Center(
             child: CircularProgressIndicator(),
           )
-        :  Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: 60.h, right: 40.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        : Column(
             children: [
-              Text("Main", style: CustomTextStyles.titleLargeYellow900),
-              Text(
-                "Secondary",
-                style: CustomTextStyles.titleLargeBrown900,
+              Padding(
+                padding: EdgeInsets.only(left: 60.h, right: 40.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Main", style: CustomTextStyles.titleLargeYellow900),
+                    Text(
+                      "Secondary",
+                      style: CustomTextStyles.titleLargeBrown900,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 30.v),
+              SizedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildMusclesList(fitnessPlanMusclesViewModel.data!
+                        .where((element) => element.isMain!)
+                        .toList()),
+                    Container(
+                      width: 1.h,
+                      height: mediaQueryData.size.height * 0.5,
+                      decoration: const BoxDecoration(color: Colors.white),
+                    ),
+                    _buildMusclesList(fitnessPlanMusclesViewModel.data!
+                        .where((element) => !element.isMain!)
+                        .toList()),
+                  ],
+                ),
               ),
             ],
-          ),
-        ),
-        SizedBox(height: 30.v),
-        SizedBox(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildMusclesList(fitnessPlanMusclesViewModel.data!.where((element) => element.isMain!).toList()),
-              Container(
-                width: 1.h,
-                height: mediaQueryData.size.height * 0.5,
-                decoration: const BoxDecoration(color: Colors.white),
-              ),
-              _buildMusclesList(fitnessPlanMusclesViewModel.data!.where((element) => !element.isMain!).toList()),
-            ],
-          ),
-        ),
-      ],
-    );
+          );
   }
 
   SizedBox _buildMusclesList(List<MuscleModel> muscles) {

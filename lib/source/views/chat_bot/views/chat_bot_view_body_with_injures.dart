@@ -123,7 +123,8 @@ class _ChatBotViewBodyWithInjuresState
                     ? CustomFutureAnimatedOpacityWidget(
                         waitingDurationInMilliSeconds: 2000,
                         child: const ChatBotButtonWidget(
-                            route: AppRoutes.chatBotAllergy,))
+                          route: AppRoutes.chatBotAllergy,
+                        ))
                     : const SizedBox(),
                 SizedBox(
                   height: 20.v,
