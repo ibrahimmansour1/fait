@@ -32,6 +32,11 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Just for testing
+    if (ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse.message ==
+        "No data found") {
+      ref.read(fitnessPlanProvider).generateWorkoutsDummyData();
+    }
     final fitnessPlanWorkoutsViewModel =
         ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse;
     return fitnessPlanWorkoutsViewModel.status != Status.completed
@@ -102,6 +107,7 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
                         SizedBox(height: 24.v),
                         ListView.separated(
                             shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               final FitnessPlanWorkoutModel workout =
                                   fitnessPlanWorkoutsViewModel.data![index];

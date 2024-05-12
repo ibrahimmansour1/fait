@@ -102,4 +102,34 @@ class FitnessPlanNotifier extends ChangeNotifier {
     });
     return fitnessPlanWorkoutsResponse;
   }
+
+  // TODO: Just for testing
+  generateWorkoutsDummyData() {
+    fitnessPlanWorkoutsResponse = ApiResponse.completed(
+      List.generate(
+        8,
+        (index) => FitnessPlanWorkoutModel(
+          name: "Workout $index",
+          playDate: "2024-05-02T15:47:53.006Z",
+          numberOfExercises: 3,
+          weightLifted: 10,
+          durationInMinutes: 32,
+        ),
+      ),
+    );
+    notifyListeners();
+  }
+
+  // TODO: Just for testing
+  generateMusclesDummyData() {
+    fitnessPlanMusclesResponse = ApiResponse.completed(
+      List.generate(
+        10,
+        (index) => index % 2 == 0
+            ? MuscleModel(name: "Muscle $index", isMain: true)
+            : MuscleModel(name: "Muscle $index", isMain: false),
+      ),
+    );
+    notifyListeners();
+  }
 }

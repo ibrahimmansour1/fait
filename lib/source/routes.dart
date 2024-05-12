@@ -71,7 +71,7 @@ class AppRoutes {
 }
 
 class RouteGenerator {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       // case AppRoutes.splash:
       //   return MaterialPageRoute(builder: (context) => const Splash());
@@ -165,12 +165,13 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (context) => const OpenCameraScreen());
 
-      default:
-        return MaterialPageRoute(
-          builder: (context) => const Center(
-            child: Text("Undefined Route"),
-          ),
-        );
+      // default:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const Center(
+      //       child: Text("Undefined Route"),
+      //     ),
+      //   );
     }
+    return null;
   }
 }
