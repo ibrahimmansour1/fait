@@ -54,7 +54,6 @@ class ImageConstant {
   // notifcations images
   static String imgAchievementIcon = '$imagePath/img_achievement_icon.svg';
 
-
   static String imgTwitter = '$imagePath/img_twitter.svg';
 
   static String imgNotifyPrimary = '$imagePath/img_notify_primary.svg';
@@ -241,6 +240,8 @@ class ImageConstant {
 
   static String imgMusclesImage = '$imagePath/img_muscles_image.png';
 
+  static String imgMuscleImage = '$imagePath/muscle_image.png';
+
   static String imgDurationImage = '$imagePath/img_duration.png';
 
   static String imgLiftedImage = '$imagePath/img_lifted.png';
@@ -271,4 +272,28 @@ class ImageConstant {
 
   static String imgSearchBlueGray80004 =
       '$imagePath/img_search_blue_gray_800_04.svg';
+
+  static String imgImage80x80 = '$imagePath/img_image_80x80.png';
+
+  // Bookmark images
+  static String imgFavoritePrimary36x36 =
+      '$imagePath/img_favorite_primary_36x36.svg';
+
+  static String imgImage4 = '$imagePath/img_image_4.png';
+
+  static String img01 = '$imagePath/img_01.png';
+
+  static String img02 = '$imagePath/img_02.png';
+
+  static String img03 = '$imagePath/img_03.png';
+
+  static String img04 = '$imagePath/img_04.png';
+
+  static String img05 = '$imagePath/img_05.png';
+
+  // static String imgImage7 = '$imagePath/img_image_7.png';
+
+  // static String imgImage9 = '$imagePath/img_image_9.png';
+
+  // static String imgImage10 = '$imagePath/img_image_10.png';
 }

@@ -325,6 +325,8 @@ class PrimaryColors {
   // Yellow
   Color get yellow900 => const Color(0XFFF57021);
 
+  Color get brown900 => const Color(0xFFC88551);
+
   // BlueGrayf
   Color get blueGray2007f => const Color(0X7FA5ACC0);
 

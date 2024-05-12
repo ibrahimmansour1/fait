@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
+import 'package:fait/source/views/home/views/home_view.dart';
+import 'package:fait/source/views/home/views/nav_bar_screens/home_screen.dart';
 import 'package:fait/source/views/register/widgets/pick_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
@@ -51,8 +53,8 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
-        extendBody: true,
-        extendBodyBehindAppBar: true,
+        // extendBody: true,
+        // extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         body: Padding(
           padding:
@@ -243,7 +245,9 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
     Navigator.push(
       context,
       FadePageRouteBuilder(
-        page: const ChatBotView(),
+        page: const HomeView(),
+        // TODO: replace this after linking sign up
+        // page: const ChatBotView(),
         duration: const Duration(milliseconds: 800),
       ),
     );

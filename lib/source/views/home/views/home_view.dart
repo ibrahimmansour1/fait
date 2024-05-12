@@ -4,6 +4,7 @@ import 'package:fait/source/widgets/custom_bottom_bar.dart';
 import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
+import '../../diet/views/diet_screen.dart';
 import 'nav_bar_screens/home_screen.dart';
 import 'nav_bar_screens/notifcations_screen.dart';
 
@@ -22,11 +23,12 @@ class _HomeViewState extends State<HomeView> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   late PageController _pageController;
   // late int _currentIndex;
-  final List<Widget> _pages = const [
-    HomeScreen(),
-    NotifcationsScreen(),
+  final List<Widget> _pages = [
+    const HomeScreen(),
+    const NotifcationsScreen(),
     FitnessScreen(),
-    ProfileScreen(),
+    const ProfileScreen(),
+    DietScreen(),
   ];
 
   @override
@@ -82,7 +84,7 @@ class _HomeViewState extends State<HomeView> {
         return 2;
 
       case BottomBarEnum.diet:
-        return 0;
+        return 4;
 
       case BottomBarEnum.home:
       default:

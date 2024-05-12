@@ -128,7 +128,7 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (context) => const ChatBotViewBodyWithToolsDetection());
       case AppRoutes.fitnessScreen:
-        return MaterialPageRoute(builder: (context) => const FitnessScreen());
+        return MaterialPageRoute(builder: (context) => FitnessScreen());
 
       case AppRoutes.dailyIntakeScreen:
         return MaterialPageRoute(

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../widgets/exercise_card_widget.dart';
 import '../exercise_info_screen.dart';
-import 'exercise_muscles_screen.dart';
-import 'exercise_overview_screen.dart';
 
 // ignore_for_file: must_be_immutable
 class ExerciseScreen extends StatelessWidget {

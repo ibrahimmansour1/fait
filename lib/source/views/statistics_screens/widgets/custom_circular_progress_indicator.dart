@@ -2,7 +2,6 @@ import 'package:fait/source/views/statistics_screens/widgets/custom_circle_progr
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomCircularProgressIndicator extends StatelessWidget {
   const CustomCircularProgressIndicator({
     Key? key,

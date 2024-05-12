@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'exercise_info_screen.dart';
 
-class FavouritesScreen extends StatelessWidget {
-  const FavouritesScreen({Key? key}) : super(key: key);
+class ExercisesResultsScreen extends StatelessWidget {
+  const ExercisesResultsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class FavouritesScreen extends StatelessWidget {
                     child: Align(
                       alignment: AlignmentDirectional.center,
                       child: Text(
-                        "Favourites",
+                        "Results",
                         style: CustomTextStyles.titleLargeBold
                             .copyWith(fontSize: 24.fSize),
                       ),
@@ -53,7 +53,7 @@ class FavouritesScreen extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) => ExerciseCardWidget(
-                              favourite: true,
+                              replacable: false,
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,

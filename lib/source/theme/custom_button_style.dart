@@ -44,6 +44,18 @@ class CustomButtonStyles {
           borderRadius: BorderRadius.circular(16.h),
         ),
       );
+  static ButtonStyle get fillOnPrimaryContainerTL8 => ElevatedButton.styleFrom(
+        backgroundColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.h),
+        ),
+      );
+  static ButtonStyle get fillBlueGrayTL8 => ElevatedButton.styleFrom(
+        backgroundColor: appTheme.blueGray80004,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.h),
+        ),
+      );
   static ButtonStyle get fillPrimary => ElevatedButton.styleFrom(
         backgroundColor: theme.colorScheme.primary,
         shape: RoundedRectangleBorder(
