@@ -1,7 +1,8 @@
+import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/app_export.dart';
-import '../../../widgets/custom_elevated_button.dart';
+import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
@@ -28,7 +29,7 @@ class _ChatBotViewBodyWithWorkoutDaysState
     'Saturday',
     'Sunday'
   ];
-
+  bool isDaysSelected = false;
   void toggleDays(String day) {
     setState(() {
       if (selectedDays.contains(day)) {
@@ -37,6 +38,7 @@ class _ChatBotViewBodyWithWorkoutDaysState
         selectedDays.add(day);
       }
     });
+    isDaysSelected = true;
   }
 
   @override
@@ -59,46 +61,69 @@ class _ChatBotViewBodyWithWorkoutDaysState
               children: [
                 const CustomChatBotAppBar(),
                 // const ChatMessageWidget(message: 'then $name'),
-                const ChatMessageWidget(
-                  message: 'Which days do you workout?',
-                ),
-                SizedBox(height: 10.v),
-                Text(
-                  '  🗓️  Days',
-                  style: CustomTextStyles.titleLargeInter
-                      .copyWith(color: Colors.white),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  child: ListView.builder(
-                    itemCount: daysOfTheWeek.length,
-                    itemBuilder: (context, index) {
-                      final vegetable = daysOfTheWeek[index];
-                      final isSelected = selectedDays.contains(vegetable);
-                      return ListTile(
-                          title: Text(
-                            vegetable,
-                            style: isSelected
-                                ? CustomTextStyles.titleLargeInter
-                                : CustomTextStyles.titleLargeInter
-                                    .copyWith(color: Colors.white),
-                          ),
-                          trailing: isSelected
-                              ? const Icon(Icons.check_circle,
-                                  color: Colors.white)
-                              : null,
-                          onTap: () {
-                            toggleDays(vegetable);
-                          });
-                    },
+                CustomFutureAnimatedOpacityWidget(
+                  waitingDurationInMilliSeconds: 1000,
+                  child: const ChatMessageWidget(
+                    message: 'Which days do you workout?',
                   ),
                 ),
                 SizedBox(height: 10.v),
-                const ChatMessageWidget(message: "Ok! Let's continue"),
+                CustomFutureAnimatedOpacityWidget(
+                  waitingDurationInMilliSeconds: 2000,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '  🗓️  Days',
+                        style: CustomTextStyles.titleLargeInter
+                            .copyWith(color: Colors.white),
+                      ),
+                      SizedBox(height: 10.v),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.2,
+                        child: Wrap(
+                          spacing: 8.0,
+                          runSpacing: 8.0,
+                          children: daysOfTheWeek.map((day) {
+                            final isSelected = selectedDays.contains(day);
+                            return ChoiceChip(
+                              label: Text(
+                                day,
+                                style: isSelected
+                                    ? CustomTextStyles.titleLargeInter
+                                        .copyWith(color: Colors.white)
+                                    : CustomTextStyles.titleLargeInter
+                                        .copyWith(color: Colors.white),
+                              ),
+                              selected: isSelected,
+                              selectedColor: const Color(0xFF8394CA),
+                              backgroundColor: const Color(0xFF353767),
+                              onSelected: (_) {
+                                toggleDays(day);
+                              },
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10.v),
+                isDaysSelected
+                    ? CustomFutureAnimatedOpacityWidget(
+                        waitingDurationInMilliSeconds: 1000,
+                        child: const ChatMessageWidget(
+                            message: "Ok! Let's continue"))
+                    : const SizedBox(),
                 const Spacer(),
 
-                const ChatBotButtonWidget(
-                    route: '/chat_bot_workout_tools_detection'),
+                isDaysSelected
+                    ? CustomFutureAnimatedOpacityWidget(
+                        waitingDurationInMilliSeconds: 2000,
+                        child: const ChatBotButtonWidget(
+                            route: AppRoutes.chatBotWorkoutToolsDetection),
+                      )
+                    : const SizedBox(),
                 SizedBox(
                   height: 20.v,
                 ),

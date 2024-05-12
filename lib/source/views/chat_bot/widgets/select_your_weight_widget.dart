@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 
 class SelectYourWeightWidget extends StatefulWidget {
+  final VoidCallback onWeightSelected;
   const SelectYourWeightWidget({
     Key? key,
+    required this.onWeightSelected,
   }) : super(key: key);
   @override
   _SelectYourWeightWidgetState createState() => _SelectYourWeightWidgetState();
@@ -65,6 +67,7 @@ class _SelectYourWeightWidgetState extends State<SelectYourWeightWidget> {
               setState(() {
                 weight = value;
               });
+              widget.onWeightSelected();
             },
             width: MediaQuery.of(context).size.width,
             height: 80,

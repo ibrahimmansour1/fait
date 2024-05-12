@@ -1,6 +1,7 @@
+import 'package:fait/source/routes.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/app_export.dart';
-import '../../../widgets/custom_elevated_button.dart';
+import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_bot_button_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
@@ -101,161 +102,185 @@ class _ChatBotViewBodyWithAllergyState
                 children: [
                   const CustomChatBotAppBar(),
                   // const ChatMessageWidget(message: 'then $name'),
-                  const ChatMessageWidget(
-                    message: 'Do you have any Allergy?',
-                  ),
-                  SizedBox(height: 10.v),
-                  Text("Daily Food",
-                      style: CustomTextStyles.titleLargeInter
-                          .copyWith(color: Colors.white)),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: ListView.builder(
-                      itemCount: diaryFood.length,
-                      itemBuilder: (context, index) {
-                        final vegetable = diaryFood[index];
-                        final isSelected =
-                            selectedAllergies.contains(vegetable);
-                        return ListTile(
-                            title: Text(
-                              vegetable,
-                              style: isSelected
-                                  ? CustomTextStyles.titleLargeInter
-                                  : CustomTextStyles.titleLargeInter
-                                      .copyWith(color: Colors.white),
-                            ),
-                            trailing: isSelected
-                                ? const Icon(Icons.check_circle,
-                                    color: Colors.white)
-                                : null,
-                            onTap: () {
-                              toggleAllergy(vegetable);
-                            });
-                      },
+                  CustomFutureAnimatedOpacityWidget(
+                    waitingDurationInMilliSeconds: 1000,
+                    child: const ChatMessageWidget(
+                      message: 'Do you have any Allergy?',
                     ),
                   ),
                   SizedBox(height: 10.v),
-                  Text("Vegetables",
-                      style: CustomTextStyles.titleLargeInter
-                          .copyWith(color: Colors.white)),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: ListView.builder(
-                      itemCount: vegetables.length,
-                      itemBuilder: (context, index) {
-                        final vegetable = vegetables[index];
-                        final isSelected =
-                            selectedAllergies.contains(vegetable);
-                        return ListTile(
-                            title: Text(
-                              vegetable,
-                              style: isSelected
-                                  ? CustomTextStyles.titleLargeInter
-                                  : CustomTextStyles.titleLargeInter
-                                      .copyWith(color: Colors.white),
-                            ),
-                            trailing: isSelected
-                                ? const Icon(Icons.check_circle,
-                                    color: Colors.white)
-                                : null,
-                            onTap: () {
-                              toggleAllergy(vegetable);
-                            });
-                      },
+                  CustomFutureAnimatedOpacityWidget(
+                    waitingDurationInMilliSeconds: 2000,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Daily Food",
+                            style: CustomTextStyles.titleLargeInter
+                                .copyWith(color: Colors.white)),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: diaryFood.map((vegetable) {
+                              final isSelected =
+                                  selectedAllergies.contains(vegetable);
+                              return ChoiceChip(
+                                label: Text(
+                                  vegetable,
+                                  style: isSelected
+                                      ? CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white)
+                                      : CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white),
+                                ),
+                                selected: isSelected,
+                                selectedColor: const Color(0xFF8394CA),
+                                backgroundColor: const Color(0xFF353767),
+                                onSelected: (_) {
+                                  toggleAllergy(vegetable);
+                                },
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        SizedBox(height: 10.v),
+                        Text("Vegetables",
+                            style: CustomTextStyles.titleLargeInter
+                                .copyWith(color: Colors.white)),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: vegetables.map((vegetable) {
+                              final isSelected =
+                                  selectedAllergies.contains(vegetable);
+                              return ChoiceChip(
+                                label: Text(
+                                  vegetable,
+                                  style: isSelected
+                                      ? CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white)
+                                      : CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white),
+                                ),
+                                selected: isSelected,
+                                selectedColor: const Color(0xFF8394CA),
+                                backgroundColor: const Color(0xFF353767),
+                                onSelected: (_) {
+                                  toggleAllergy(vegetable);
+                                },
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        SizedBox(height: 10.v),
+                        Text("Fruits",
+                            style: CustomTextStyles.titleLargeInter
+                                .copyWith(color: Colors.white)),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: fruits.map((fruit) {
+                              final isSelected =
+                                  selectedAllergies.contains(fruit);
+                              return ChoiceChip(
+                                label: Text(
+                                  fruit,
+                                  style: isSelected
+                                      ? CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white)
+                                      : CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white),
+                                ),
+                                selected: isSelected,
+                                selectedColor: const Color(0xFF8394CA),
+                                backgroundColor: const Color(0xFF353767),
+                                onSelected: (_) {
+                                  toggleAllergy(fruit);
+                                },
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        SizedBox(height: 10.v),
+                        Text("Grains",
+                            style: CustomTextStyles.titleLargeInter
+                                .copyWith(color: Colors.white)),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: grains.map((grain) {
+                              final isSelected =
+                                  selectedAllergies.contains(grain);
+                              return ChoiceChip(
+                                label: Text(
+                                  grain,
+                                  style: isSelected
+                                      ? CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white)
+                                      : CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white),
+                                ),
+                                selected: isSelected,
+                                selectedColor: const Color(0xFF8394CA),
+                                backgroundColor: const Color(0xFF353767),
+                                onSelected: (_) {
+                                  toggleAllergy(grain);
+                                },
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        SizedBox(height: 10.v),
+                        Text("Meat",
+                            style: CustomTextStyles.titleLargeInter
+                                .copyWith(color: Colors.white)),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: meat.map((meatItem) {
+                              final isSelected =
+                                  selectedAllergies.contains(meatItem);
+                              return ChoiceChip(
+                                label: Text(
+                                  meatItem,
+                                  style: isSelected
+                                      ? CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white)
+                                      : CustomTextStyles.titleLargeInter
+                                          .copyWith(color: Colors.white),
+                                ),
+                                selected: isSelected,
+                                selectedColor: const Color(0xFF8394CA),
+                                backgroundColor: const Color(0xFF353767),
+                                onSelected: (_) {
+                                  toggleAllergy(meatItem);
+                                },
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-
                   SizedBox(height: 10.v),
-                  Text("Fruits",
-                      style: CustomTextStyles.titleLargeInter
-                          .copyWith(color: Colors.white)),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: ListView.builder(
-                      itemCount: fruits.length,
-                      itemBuilder: (context, index) {
-                        final fruit = fruits[index];
-                        final isSelected = selectedAllergies.contains(fruit);
-                        return ListTile(
-                            title: Text(
-                              fruit,
-                              style: isSelected
-                                  ? CustomTextStyles.titleLargeInter
-                                  : CustomTextStyles.titleLargeInter
-                                      .copyWith(color: Colors.white),
-                            ),
-                            trailing: isSelected
-                                ? const Icon(Icons.check_circle,
-                                    color: Colors.white)
-                                : null,
-                            onTap: () {
-                              toggleAllergy(fruit);
-                            });
-                      },
+                  CustomFutureAnimatedOpacityWidget(
+                      waitingDurationInMilliSeconds: 4000,
+                      child: const ChatMessageWidget(
+                          message: "Ok! Let's continue")),
+                  CustomFutureAnimatedOpacityWidget(
+                    waitingDurationInMilliSeconds: 5000,
+                    child: const ChatBotButtonWidget(
+                      route: AppRoutes.chatBotWorkoutDays,
                     ),
-                  ),
-                  SizedBox(height: 10.v),
-                  Text("Grains",
-                      style: CustomTextStyles.titleLargeInter
-                          .copyWith(color: Colors.white)),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: ListView.builder(
-                      itemCount: grains.length,
-                      itemBuilder: (context, index) {
-                        final grain = grains[index];
-                        final isSelected = selectedAllergies.contains(grain);
-                        return ListTile(
-                            title: Text(
-                              grain,
-                              style: isSelected
-                                  ? CustomTextStyles.titleLargeInter
-                                  : CustomTextStyles.titleLargeInter
-                                      .copyWith(color: Colors.white),
-                            ),
-                            trailing: isSelected
-                                ? const Icon(Icons.check_circle,
-                                    color: Colors.white)
-                                : null,
-                            onTap: () {
-                              toggleAllergy(grain);
-                            });
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 10.v),
-                  Text("Meat",
-                      style: CustomTextStyles.titleLargeInter
-                          .copyWith(color: Colors.white)),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: ListView.builder(
-                      itemCount: meat.length,
-                      itemBuilder: (context, index) {
-                        final meatItem = meat[index];
-                        final isSelected = selectedAllergies.contains(meatItem);
-                        return ListTile(
-                            title: Text(
-                              meatItem,
-                              style: isSelected
-                                  ? CustomTextStyles.titleLargeInter
-                                  : CustomTextStyles.titleLargeInter
-                                      .copyWith(color: Colors.white),
-                            ),
-                            trailing: isSelected
-                                ? const Icon(Icons.check_circle,
-                                    color: Colors.white)
-                                : null,
-                            onTap: () {
-                              toggleAllergy(meatItem);
-                            });
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 10.v),
-                  const ChatMessageWidget(message: "Ok! Let's continue"),
-                  const ChatBotButtonWidget(
-                    route: '/chat_bot_workout_days',
                   ),
                   SizedBox(
                     height: 20.v,
