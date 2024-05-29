@@ -34,13 +34,53 @@ class DietPlansScreen extends StatelessWidget {
                             borderRadius: BorderRadiusStyle.customBorderTL24),
                         child: ListView(children: [
                           SizedBox(height: SizeUtils.height * .28),
-                          _buildMealSection(context, 'Breakfast'),
+                          _buildMealSection(
+                            context,
+                            'Breakfast',
+                            mealNames: breakFastMealNames,
+                            mealPictures: breakFastMealPictures,
+                            mealCalories: breakFastMealCalories,
+                            totalCalories: breakFastMealCalories.fold(
+                                0,
+                                (previousValue, element) =>
+                                    previousValue! + element),
+                          ),
                           SizedBox(height: 32.v),
-                          _buildMealSection(context, 'Lunch'),
+                          _buildMealSection(
+                            context,
+                            'Lunch',
+                            mealNames: lunchMealNames,
+                            mealPictures: lunchMealPictures,
+                            mealCalories: lunchMealCalories,
+                            totalCalories: lunchMealCalories.fold(
+                                0,
+                                (previousValue, element) =>
+                                    previousValue! + element),
+                          ),
                           SizedBox(height: 32.v),
-                          _buildMealSection(context, 'Snack'),
+                          _buildMealSection(
+                            context,
+                            'Snack',
+                            mealNames: snackMealNames,
+                            mealPictures: snackMealPictures,
+                            mealCalories: snackMealCalories,
+                            totalCalories: snackMealCalories.fold(
+                                0,
+                                (previousValue, element) =>
+                                    previousValue! + element),
+                          ),
                           SizedBox(height: 32.v),
-                          _buildMealSection(context, 'Dinner'),
+                          _buildMealSection(
+                            context,
+                            'Dinner',
+                            mealNames: dinnerMealNames,
+                            mealPictures: dinnerMealPictures,
+                            mealCalories: dinnerMealCalories,
+                            totalCalories: dinnerMealCalories.fold(
+                                0,
+                                (previousValue, element) =>
+                                    previousValue! + element),
+                          ),
                           SizedBox(height: 32.v)
                         ]))),
                 _buildTopPart(context),
@@ -48,8 +88,53 @@ class DietPlansScreen extends StatelessWidget {
     ));
   }
 
+  List<String> breakFastMealNames = [
+    '2 fried eggs',
+    '3/4 wheat bread',
+    'cucumber '
+  ];
+  List<String> breakFastMealPictures = [
+    "https://images.pexels.com/photos/5276991/pexels-photo-5276991.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+    "https://images.pexels.com/photos/1586947/pexels-photo-1586947.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/17975573/pexels-photo-17975573/free-photo-of-a-bunch-of-cucumbers.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  ];
+  List<int> breakFastMealCalories = [180, 120, 16];
+  List<String> lunchMealNames = [
+    'A quarter grilled chicken',
+    '7 tablespoons white rice',
+    '3 tablespoons cooked spinach',
+  ];
+  List<String> lunchMealPictures = [
+    "https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://asassyspoon.com/wp-content/uploads/cuban-white-rice-1.jpg",
+    "https://static01.nyt.com/images/2023/11/28/multimedia/PF-Sauteed-Spinach-zvkm/PF-Sauteed-Spinach-zvkm-articleLarge.jpg?width=1280&quality=75&auto=webp",
+  ];
+  List<int> lunchMealCalories = [230, 140, 9];
+
+  List<String> snackMealNames = [
+    'coffee with sugar',
+  ];
+  List<String> snackMealPictures = [
+    "https://images.pexels.com/photos/2456429/pexels-photo-2456429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  ];
+  List<int> snackMealCalories = [16];
+
+  List<String> dinnerMealNames = [
+    'Low-fat yogurt',
+    'banana',
+  ];
+  List<String> dinnerMealPictures = [
+    "https://littlespoonfarm.com/wp-content/uploads/2023/01/homemade-raw-yogurt-in-a-bowl.jpg",
+    "https://images.pexels.com/photos/20605001/pexels-photo-20605001/free-photo-of-a-banana-and-a-piece-of-fruit-on-a-green-cutting-board.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  ];
+  List<int> dinnerMealCalories = [143, 163];
+
   /// Section Widget
-  Widget _buildMealSection(BuildContext context, String mealName) {
+  Widget _buildMealSection(BuildContext context, String mealName,
+      {List<String>? mealNames,
+      List<String>? mealPictures,
+      List<int>? mealCalories,
+      int? totalCalories}) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 32.h, vertical: 30.v),
         decoration: AppDecoration.fillBluegray80004
@@ -60,59 +145,70 @@ class DietPlansScreen extends StatelessWidget {
             children: [
               Padding(
                   padding: EdgeInsets.only(right: 8.h),
-                  child: _buildMealSectionTitlePart(context,
-                      lunch: mealName, kcalKcal: "450 kcal /450 kcal")),
+                  child: _buildMealSectionTitlePart(
+                    context,
+                    lunch: mealName,
+                    kcalKcal: "300",
+                    mealCalories: mealCalories,
+                    totalCalories: totalCalories,
+                  )),
               SizedBox(height: 24.v),
               ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => DietcardsItemWidget(
-                        onTap: () {
-                          showModalBottomSheet(
-                              context: context,
-                              useRootNavigator: true,
-                              isScrollControlled: true,
-                              builder: (_) => const RecipeInfoScreen());
-                        },
-                      ),
-                  separatorBuilder: (context, index) => SizedBox(height: 8.v),
-                  itemCount: 3),
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) => DietcardsItemWidget(
+                  mealName: mealNames[index],
+                  mealPicture: mealPictures?[index],
+                  mealCalory: mealCalories?[index],
+                  onTap: () {
+                    showModalBottomSheet(
+                        context: context,
+                        useRootNavigator: true,
+                        isScrollControlled: true,
+                        builder: (_) => const RecipeInfoScreen());
+                  },
+                ),
+                separatorBuilder: (context, index) => SizedBox(height: 8.v),
+                itemCount: mealNames!.length,
+              ),
             ]));
   }
 
   /// Section Widget
   Widget _buildTopPart(BuildContext context) {
     return Align(
-        alignment: Alignment.topCenter,
-        child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 32.v),
-            decoration: AppDecoration.fillBluegray80004,
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                      padding: EdgeInsets.only(left: 13.h),
-                      child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomImageView(
-                                imagePath: ImageConstant.imgArrowLeft,
-                                height: 24.v,
-                                width: 16.h,
-                                margin: EdgeInsets.only(bottom: 24.v),
-                                onTap: () {
-                                  onTapImgArrowLeft(context);
-                                }),
-                            Padding(
-                                padding:
-                                    EdgeInsets.only(left: 102.h, top: 10.v),
-                                child: Text("Diet plan",
-                                    style: theme.textTheme.headlineLarge))
-                          ])),
-                  SizedBox(height: 29.v),
-                  _buildTopCalendar(context),
-                ])));
+      alignment: Alignment.topCenter,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 32.v),
+        decoration: AppDecoration.fillBluegray80004,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+                padding: EdgeInsets.only(left: 13.h),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomImageView(
+                          imagePath: ImageConstant.imgArrowLeft,
+                          height: 24.v,
+                          width: 16.h,
+                          margin: EdgeInsets.only(bottom: 24.v),
+                          onTap: () {
+                            onTapImgArrowLeft(context);
+                          }),
+                      Padding(
+                          padding: EdgeInsets.only(left: 102.h, top: 10.v),
+                          child: Text("Diet plan",
+                              style: theme.textTheme.headlineLarge))
+                    ])),
+            SizedBox(height: 29.v),
+            _buildTopCalendar(context),
+          ],
+        ),
+      ),
+    );
   }
 
   Padding _buildTopCalendar(BuildContext context) {
@@ -160,10 +256,13 @@ class DietPlansScreen extends StatelessWidget {
     BuildContext context, {
     required String lunch,
     required String kcalKcal,
+    List<int>? mealCalories,
+    int? totalCalories,
   }) {
     final isDoneStatusProvider = StateProvider<bool>((ref) {
       return false;
     });
+
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,7 +285,7 @@ class DietPlansScreen extends StatelessWidget {
                   child: RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: "450",
+                            text: "$totalCalories",
                             style:
                                 CustomTextStyles.headlineSmallRobotofff4f4fc),
                         const TextSpan(text: " "),

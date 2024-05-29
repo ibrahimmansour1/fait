@@ -87,14 +87,16 @@ class _ExercisesProgramWidgetState
                             Column(
                               children: [
                                 Text(
-                                  '${fitnessPlanViewModel.data!.numberOfWorkouts} Workout',
+                                  '1 Workout',
+                                  // '${fitnessPlanViewModel.data!.numberOfWorkouts} Workout',
                                   style: TextStyle(
                                     fontSize: 20.fSize,
                                     color: Colors.white,
                                   ),
                                 ),
                                 Text(
-                                  '${fitnessPlanViewModel.data!.numberOfExercises} Exercise',
+                                  '1 Exercise',
+                                  // '${fitnessPlanViewModel.data!.numberOfExercises} Exercise',
                                   style: TextStyle(
                                     fontSize: 18.fSize,
                                     color: Colors.white.withOpacity(0.75),

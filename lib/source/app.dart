@@ -36,7 +36,7 @@ class MyApp extends ConsumerWidget {
               Locale('en', 'US'),
               Locale('ar'),
             ],
-            initialRoute: '/main_onboarding_screen',
+            initialRoute: AppRoutes.mainOnboardingScreen,
             onGenerateRoute: RouteGenerator.generateRoute,
           );
         },

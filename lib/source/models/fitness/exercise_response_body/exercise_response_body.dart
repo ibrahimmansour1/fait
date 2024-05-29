@@ -8,8 +8,10 @@ class ExerciseResponseBody {
   String? name;
   String? image;
   bool? isInFavorite;
+  int? steps;
 
-  ExerciseResponseBody({this.id, this.name, this.image, this.isInFavorite});
+  ExerciseResponseBody(
+      {this.id, this.name, this.image, this.isInFavorite, this.steps});
 
   factory ExerciseResponseBody.fromJson(Map<String, dynamic> json) {
     return _$ExerciseResponseBodyFromJson(json);

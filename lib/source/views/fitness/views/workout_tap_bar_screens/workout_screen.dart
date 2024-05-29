@@ -12,8 +12,12 @@ import 'package:intl/intl.dart';
 
 // ignore_for_file: must_be_immutable
 class WorkoutScreen extends ConsumerStatefulWidget {
-  final int fitnessPlanId;
-  const WorkoutScreen({super.key, required this.fitnessPlanId});
+  final List<FitnessPlanWorkoutModel> workouts;
+  // final int fitnessPlanId;
+  const WorkoutScreen({
+    required this.workouts,
+    super.key,
+  });
 
   @override
   ConsumerState<WorkoutScreen> createState() => _WorkoutScreenState();
@@ -21,115 +25,111 @@ class WorkoutScreen extends ConsumerStatefulWidget {
 
 class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref
-          .watch(fitnessPlanProvider)
-          .getFitnessPlanWorkouts(widget.fitnessPlanId);
-    });
-    super.initState();
-  }
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //     ref
+  //         .watch(fitnessPlanProvider)
+  //         .getFitnessPlanWorkouts(widget.fitnessPlanId);
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    final fitnessPlanWorkoutsViewModel =
-        ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse;
-    return fitnessPlanWorkoutsViewModel.status != Status.completed
-        ? const Center(
-            child: CircularProgressIndicator(),
-          )
-        : Column(
-            children: [
-              SizedBox(
-                child: SingleChildScrollView(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 22.h),
-                    child: Column(
+    // final fitnessPlanWorkoutsViewModel =
+    //     ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse;
+    // return fitnessPlanWorkoutsViewModel.status != Status.completed
+    //     ? const Center(
+    //         child: CircularProgressIndicator(),
+    //       )
+    //     :
+
+    return Column(
+      children: [
+        SizedBox(
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 22.h),
+              child: Column(
+                children: [
+                  _buildChart(context),
+                  SizedBox(height: 31.v),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
                       children: [
-                        _buildChart(context),
-                        SizedBox(height: 31.v),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Row(
-                            children: [
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgTelevisionPrimary,
-                                  height: 24.adaptSize,
-                                  width: 24.adaptSize,
-                                  margin:
-                                      EdgeInsets.only(top: 1.v, bottom: 3.v)),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10.h),
-                                child: Text("Current Workout",
-                                    style: CustomTextStyles
-                                        .headlineSmallRobotoSemiBold),
-                              ),
-                            ],
-                          ),
+                        CustomImageView(
+                            imagePath: ImageConstant.imgTelevisionPrimary,
+                            height: 24.adaptSize,
+                            width: 24.adaptSize,
+                            margin: EdgeInsets.only(top: 1.v, bottom: 3.v)),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.h),
+                          child: Text("Current Workout",
+                              style:
+                                  CustomTextStyles.headlineSmallRobotoSemiBold),
                         ),
-                        SizedBox(height: 32.v),
-                        WorkoutCard(
-                          onTap: () {
-                            onTapWorkoutCard(context);
-                          },
-                          imagePath:
-                              ImageConstant.imgThumbsUpOnprimarycontainer,
-                          title: "Full Body A",
-                          date: "Nov 16",
-                          exercises: "3 exercises",
-                          textKg: "3 281 kg",
-                          duration: "32 min",
-                        ),
-                        SizedBox(height: 32.v),
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text("Program Workouts",
-                                style: CustomTextStyles
-                                    .headlineSmallRobotoSemiBold)),
-                        SizedBox(height: 30.v),
-                        WorkoutCard(
-                          onTap: () {
-                            onTapWorkoutCard(context);
-                          },
-                          imagePath:
-                              ImageConstant.imgThumbsUpOnprimarycontainer,
-                          title: "Full Body A",
-                          date: "Nov 16",
-                          exercises: "3 exercises",
-                          textKg: "3 281 kg",
-                          duration: "32 min",
-                        ),
-                        SizedBox(height: 24.v),
-                        ListView.separated(
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              final FitnessPlanWorkoutModel workout =
-                                  fitnessPlanWorkoutsViewModel.data![index];
-                              return WorkoutCard(
-                                onTap: () {
-                                  onTapWorkoutCard(context);
-                                },
-                                imagePath: ImageConstant.imgInbox,
-                                title: workout.name!,
-                                date: DateFormat('MMM dd')
-                                    .format(DateTime.parse(workout.playDate!)),
-                                exercises:
-                                    "${workout.numberOfExercises} exercise",
-                                textKg: "${workout.weightLifted} kg",
-                                duration: "${workout.durationInMinutes} min",
-                              );
-                            },
-                            separatorBuilder: (context, index) =>
-                                SizedBox(height: 24.v),
-                            itemCount:
-                                fitnessPlanWorkoutsViewModel.data!.length),
                       ],
                     ),
                   ),
-                ),
+                  SizedBox(height: 32.v),
+                  WorkoutCard(
+                    onTap: () {
+                      onTapWorkoutCard(context);
+                    },
+                    imagePath: ImageConstant.imgThumbsUpOnprimarycontainer,
+                    title: "Pull/Push/Press/Core 2",
+                    date: "June 9",
+                    exercises: "9 exercises",
+                    textKg: "3,5 kg",
+                    duration: "67 min",
+                  ),
+                  SizedBox(height: 32.v),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Program Workouts",
+                          style: CustomTextStyles.headlineSmallRobotoSemiBold)),
+                  SizedBox(height: 30.v),
+                  WorkoutCard(
+                    onTap: () {
+                      onTapWorkoutCard(context);
+                    },
+                    imagePath: ImageConstant.imgThumbsUpOnprimarycontainer,
+                    title: "Pull/Push/Press/Core 2",
+                    date: "June 9",
+                    exercises: "9 exercises",
+                    textKg: "3,5 kg",
+                    duration: "67 min",
+                  ),
+                  SizedBox(height: 24.v),
+                  // ListView.separated(
+                  //     shrinkWrap: true,
+                  //     itemBuilder: (context, index) {
+                  //       final FitnessPlanWorkoutModel workout =
+                  //           widget.workouts[index];
+                  //       return WorkoutCard(
+                  //         onTap: () {
+                  //           onTapWorkoutCard(context);
+                  //         },
+                  //         imagePath: ImageConstant.imgInbox,
+                  //         title: workout.name!,
+                  //         date: DateFormat('MMM dd')
+                  //             .format(DateTime.parse(workout.playDate!)),
+                  //         exercises: "${workout.numberOfExercises} exercise",
+                  //         textKg: "${workout.weightLifted} kg",
+                  //         duration: "${workout.durationInMinutes} min",
+                  //       );
+                  //     },
+                  //     separatorBuilder: (context, index) =>
+                  //         SizedBox(height: 24.v),
+                  //     itemCount: widget.workouts.length),
+                ],
               ),
-            ],
-          );
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   /// Section Widget

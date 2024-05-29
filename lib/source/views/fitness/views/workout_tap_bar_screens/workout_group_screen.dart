@@ -1,4 +1,5 @@
 import 'package:fait/source/api/api_response.dart';
+import 'package:fait/source/models/fitness/fitness_plan_workout_model.dart';
 import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_muscles_screen.dart';
 import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_overview_screen.dart';
 import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_screen.dart';
@@ -190,7 +191,8 @@ class _WorkoutGroupScreenState extends ConsumerState<WorkoutGroupScreen>
             ),
           ),
           child: WorkoutScreen(
-            fitnessPlanId: fitnessPlanId,
+            // fitnessPlanId: fitnessPlanId,
+            workouts: workouts,
           ),
         );
       case ProgramView.Muscles:
@@ -215,3 +217,15 @@ class _WorkoutGroupScreenState extends ConsumerState<WorkoutGroupScreen>
     Navigator.pop(context);
   }
 }
+
+List<FitnessPlanWorkoutModel> workouts = [
+  FitnessPlanWorkoutModel(
+    workoutId: 1,
+    name: "Workout 1",
+    numberOfExercises: 5,
+    // playDate: "09-04-2024",
+    calories: 350,
+    durationInMinutes: 40,
+    image: "https://cdn.jefit.com/uc/file/c9cdcb837c0ed515/1.jpg",
+  ),
+];

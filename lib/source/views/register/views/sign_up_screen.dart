@@ -1,8 +1,5 @@
 import 'dart:io';
-
-import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
-import 'package:fait/source/views/home/views/nav_bar_screens/home_screen.dart';
 import 'package:fait/source/views/register/widgets/pick_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
@@ -10,6 +7,7 @@ import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_text_form_field.dart';
 
 import '../../../../utils/transitions/fade_transition.dart';
+import '../../chat_bot/views/chat_bot_view.dart';
 
 // ignore_for_file: must_be_immutable
 class SignUpScreen extends StatefulWidget {
@@ -245,9 +243,10 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
     Navigator.push(
       context,
       FadePageRouteBuilder(
-        page: const HomeView(),
+        // TODO: replace with chat bot view
+        // page: const HomeView(),
         // TODO: replace this after linking sign up
-        // page: const ChatBotView(),
+        page: const ChatBotView(),
         duration: const Duration(milliseconds: 800),
       ),
     );

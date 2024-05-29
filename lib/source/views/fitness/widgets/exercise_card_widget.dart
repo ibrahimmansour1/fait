@@ -82,9 +82,11 @@ class ExerciseCardWidget extends StatelessWidget {
                 Row(
                   children: [
                     CustomImageView(
+                        fit: BoxFit.cover,
                         imagePath:
                             // exerciseModel!.image
-                            ImageConstant.imgMindBodyBalance,
+                            exerciseModel?.image ??
+                                ImageConstant.imgMindBodyBalance,
                         height: 72.adaptSize,
                         width: 72.adaptSize,
                         radius: BorderRadius.circular(8.h)),
@@ -107,11 +109,10 @@ class ExerciseCardWidget extends StatelessWidget {
                                           BorderRadius.circular(2.h))),
                               SizedBox(height: 9.v),
                               Text(exerciseModel!.name!,
-                                  style: theme.textTheme.titleMedium),
+                                  style: theme.textTheme.titleSmall),
                               SizedBox(height: 6.v),
-                              Text(
-                                  // exerciseModel!.steps
-                                  "null",
+                              Text(exerciseModel!.steps.toString(),
+                                  // "null",
                                   style: theme.textTheme.titleSmall)
                             ])),
                   ],

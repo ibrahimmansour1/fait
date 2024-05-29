@@ -4,6 +4,7 @@ import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/app_export.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
+import '../../loading_screen.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
@@ -276,14 +277,14 @@ class _ChatBotViewBodyWithToolsDetectionState
                         ),
                   // : const SizedBox(),
                   const SizedBox(height: 10),
-                  trainingStatus ? SizedBox(height: 280.v) : const SizedBox(),
+                  trainingStatus ? SizedBox(height: 20.v) : const SizedBox(),
 
                   trainingStatus
                       ? CustomFutureAnimatedOpacityWidget(
                           waitingDurationInMilliSeconds: 4000,
                           child: const ChatBotButtonWidget(
-                            route: AppRoutes.home,
-                            page: HomeView(),
+                            route: AppRoutes.loadingScreen,
+                            page: LoadingScreen(),
                           ),
                         )
                       : const SizedBox(),

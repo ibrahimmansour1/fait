@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/fitness/views/my_activity_screen.dart';
 import 'package:fait/source/views/fitness/widgets/overview_percentages_widget.dart';
 import 'package:fait/source/views/fitness/widgets/program_card_info.dart';
@@ -116,7 +117,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           GestureDetector(
                             onPanStart: (_) {
                               Navigator.pushNamed(
-                                  context, '/my_activity_screen');
+                                  context, AppRoutes.myActivityScreen);
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

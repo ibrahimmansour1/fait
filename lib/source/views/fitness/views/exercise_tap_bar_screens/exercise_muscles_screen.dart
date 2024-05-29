@@ -18,13 +18,13 @@ class ExerciseMusclesScreen extends ConsumerStatefulWidget {
 }
 
 class _ExerciseMusclesScreenState extends ConsumerState<ExerciseMusclesScreen> {
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.watch(workoutProvider).getWorkoutMuscles(widget.workoutId);
-    });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //     ref.watch(workoutProvider).getWorkoutMuscles(widget.workoutId);
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
