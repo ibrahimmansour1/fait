@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:fait/source/localization/app_localization.dart';
+import 'package:fait/source/providers/theme/theme_provider.dart';
 import 'package:fait/source/views/home/widgets/add_new_goal_bottom_sheet.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../../../widgets/app_bar/custom_app_bar.dart';
@@ -10,12 +14,13 @@ import '../../widgets/goalscards_item_widget.dart';
 
 part '../../widgets/my_avatar_section_widget.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     mediaQueryData = MediaQuery.of(context);
+    final themeNotifier = ref.read(themeNotifierProvider.notifier);
     return SafeArea(
         child: Scaffold(
             appBar: _buildAppBar(context),
@@ -26,6 +31,14 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // IconButton(
+                        //   icon: const Icon(Icons.brightness_6),
+                        //   onPressed: () {
+                        //     log("Before Changing the theme");
+                        //     themeNotifier.changeTheme();
+                        //     log("After Changing the theme");
+                        //   },
+                        // ),
                         Padding(
                             padding: EdgeInsets.only(left: 32.h),
                             child: Row(

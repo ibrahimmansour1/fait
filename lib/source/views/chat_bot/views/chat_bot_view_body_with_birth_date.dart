@@ -1,36 +1,33 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
 import 'package:fait/source/routes.dart';
-import 'package:fait/source/theme/custom_button_style.dart';
-import 'package:fait/source/theme/custom_text_style.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
-import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-
 import '../../../../utils/size_utils.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../../../theme/theme_helper.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
-import '../widgets/build_send_message_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithBirthDate extends StatefulWidget {
+class ChatBotViewBodyWithBirthDate extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithBirthDate({super.key});
 
   @override
-  State<ChatBotViewBodyWithBirthDate> createState() =>
+  ConsumerState<ChatBotViewBodyWithBirthDate> createState() =>
       _ChatBotViewBodyWithBirthDateState();
 }
 
 bool isDateSubmitted = false;
 
 class _ChatBotViewBodyWithBirthDateState
-    extends State<ChatBotViewBodyWithBirthDate> {
+    extends ConsumerState<ChatBotViewBodyWithBirthDate> {
   void openDatePicker(BuildContext context) {
     BottomPicker.date(
       title: 'Set your Birthday',
@@ -69,6 +66,7 @@ class _ChatBotViewBodyWithBirthDateState
   dynamic date = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
         extendBody: true,
@@ -77,7 +75,9 @@ class _ChatBotViewBodyWithBirthDateState
         body: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+          decoration: BoxDecoration(
+            color: themeHelper.getThemeData().colorScheme.background,
+          ),
           child: SafeArea(
             child: Container(
               child: Column(

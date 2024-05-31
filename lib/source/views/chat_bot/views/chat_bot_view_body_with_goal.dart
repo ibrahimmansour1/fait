@@ -1,22 +1,25 @@
 import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithGoal extends StatefulWidget {
+class ChatBotViewBodyWithGoal extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithGoal({super.key});
 
   @override
-  State<ChatBotViewBodyWithGoal> createState() =>
+  ConsumerState<ChatBotViewBodyWithGoal> createState() =>
       _ChatBotViewBodyWithGoalState();
 }
 
-class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
+class _ChatBotViewBodyWithGoalState
+    extends ConsumerState<ChatBotViewBodyWithGoal> {
   String selectedGoal = '';
   bool isGoalSelected = false;
   void selectGoal(String goal) {
@@ -28,6 +31,7 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
         extendBody: true,
@@ -36,7 +40,9 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
         body: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+          decoration:  BoxDecoration(
+            color: themeHelper.getThemeData().colorScheme.background,
+          ),
           child: SafeArea(
             child: Container(
               child: Column(
@@ -79,8 +85,11 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                   side: BorderSide(
                                     width: 3,
                                     color: selectedGoal == "Weight Loss"
-                                        ? const Color(0xFF17D1E0)
-                                        : const Color(0xFF4C5A81),
+                                        ? themeHelper.themeColor().blueGray80004
+                                        : themeHelper
+                                            .getThemeData()
+                                            .colorScheme
+                                            .primary,
                                   ),
                                   borderRadius:
                                       BorderRadius.circular(16.adaptSize),
@@ -93,8 +102,13 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                     height: 62.v,
                                     decoration: ShapeDecoration(
                                       color: selectedGoal == "Weight Loss"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(100),
@@ -113,8 +127,13 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                     "Weight Loss",
                                     style: TextStyle(
                                       color: selectedGoal == "Weight Loss"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       fontSize: 16.fSize,
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,
@@ -144,8 +163,11 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                   side: BorderSide(
                                     width: 3,
                                     color: selectedGoal == "Muscle Gain"
-                                        ? const Color(0xFF17D1E0)
-                                        : const Color(0xFF4C5A81),
+                                        ? themeHelper.themeColor().blueGray80004
+                                        : themeHelper
+                                            .getThemeData()
+                                            .colorScheme
+                                            .primary,
                                   ),
                                   borderRadius:
                                       BorderRadius.circular(16.adaptSize),
@@ -158,8 +180,13 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                     height: 62.v,
                                     decoration: ShapeDecoration(
                                       color: selectedGoal == "Muscle Gain"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(100),
@@ -178,8 +205,13 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                     "Muscle Gain",
                                     style: TextStyle(
                                       color: selectedGoal == "Muscle Gain"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       fontSize: 16.fSize,
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,
@@ -209,8 +241,11 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                   side: BorderSide(
                                     width: 3,
                                     color: selectedGoal == "Health Life Style"
-                                        ? const Color(0xFF17D1E0)
-                                        : const Color(0xFF4C5A81),
+                                        ? themeHelper.themeColor().blueGray80004
+                                        : themeHelper
+                                            .getThemeData()
+                                            .colorScheme
+                                            .primary,
                                   ),
                                   borderRadius:
                                       BorderRadius.circular(16.adaptSize),
@@ -223,8 +258,13 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                     height: 62.v,
                                     decoration: ShapeDecoration(
                                       color: selectedGoal == "Health Life Style"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(100),
@@ -243,8 +283,13 @@ class _ChatBotViewBodyWithGoalState extends State<ChatBotViewBodyWithGoal> {
                                     "Health Life Style",
                                     style: TextStyle(
                                       color: selectedGoal == "Health Life Style"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       fontSize: 16.fSize,
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,

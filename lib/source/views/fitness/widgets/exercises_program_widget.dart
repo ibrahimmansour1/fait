@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
 import '../../../../utils/transitions/fade_transition.dart';
 import '../../../providers/fitness/fitness_plan_provider.dart';
+import '../../../providers/theme/theme_provider.dart';
 
 class ExercisesProgramWidget extends ConsumerStatefulWidget {
   const ExercisesProgramWidget({
@@ -30,6 +31,7 @@ class _ExercisesProgramWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     final fitnessPlanViewModel =
         ref.watch(fitnessPlanProvider).fitnessPlanResponse;
     return Column(
@@ -150,7 +152,8 @@ class _ExercisesProgramWidgetState
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: const Color(0xff17D1E0),
+                                    color:
+                                        themeHelper.themeColor().blueGray80004,
                                     borderRadius: BorderRadius.circular(35)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),

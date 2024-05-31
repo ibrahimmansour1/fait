@@ -2,7 +2,9 @@ import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../../loading_screen.dart';
 import '../widgets/chat_message_widget.dart';
@@ -10,16 +12,16 @@ import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithToolsDetection extends StatefulWidget {
+class ChatBotViewBodyWithToolsDetection extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithToolsDetection({super.key});
 
   @override
-  State<ChatBotViewBodyWithToolsDetection> createState() =>
+  ConsumerState<ChatBotViewBodyWithToolsDetection> createState() =>
       _ChatBotViewBodyWithToolsDetectionState();
 }
 
 class _ChatBotViewBodyWithToolsDetectionState
-    extends State<ChatBotViewBodyWithToolsDetection> {
+    extends ConsumerState<ChatBotViewBodyWithToolsDetection> {
   List<String> toolsList = [];
 
   final List<String> tools = [
@@ -68,6 +70,7 @@ class _ChatBotViewBodyWithToolsDetectionState
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
         extendBody: true,
@@ -76,7 +79,9 @@ class _ChatBotViewBodyWithToolsDetectionState
         body: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+          decoration:  BoxDecoration(
+            color: themeHelper.getThemeData().colorScheme.background,
+          ),
           child: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -116,8 +121,11 @@ class _ChatBotViewBodyWithToolsDetectionState
                                   side: BorderSide(
                                     width: 3,
                                     color: selectedOption == "With Tools"
-                                        ? const Color(0xFF17D1E0)
-                                        : const Color(0xFF4C5A81),
+                                        ? themeHelper.themeColor().blueGray80004
+                                        : themeHelper
+                                            .getThemeData()
+                                            .colorScheme
+                                            .primary,
                                   ),
                                   borderRadius:
                                       BorderRadius.circular(16.adaptSize),
@@ -130,8 +138,13 @@ class _ChatBotViewBodyWithToolsDetectionState
                                     height: 62.v,
                                     decoration: ShapeDecoration(
                                       color: selectedOption == "With Tools"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(100),
@@ -150,8 +163,13 @@ class _ChatBotViewBodyWithToolsDetectionState
                                     "With Tools",
                                     style: TextStyle(
                                       color: selectedOption == "With Tools"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       fontSize: 16.fSize,
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,
@@ -181,8 +199,11 @@ class _ChatBotViewBodyWithToolsDetectionState
                                   side: BorderSide(
                                     width: 3,
                                     color: selectedOption == "Without Tools"
-                                        ? const Color(0xFF17D1E0)
-                                        : const Color(0xFF4C5A81),
+                                        ? themeHelper.themeColor().blueGray80004
+                                        : themeHelper
+                                            .getThemeData()
+                                            .colorScheme
+                                            .primary,
                                   ),
                                   borderRadius:
                                       BorderRadius.circular(16.adaptSize),
@@ -195,8 +216,13 @@ class _ChatBotViewBodyWithToolsDetectionState
                                     height: 62.v,
                                     decoration: ShapeDecoration(
                                       color: selectedOption == "Without Tools"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(100),
@@ -215,8 +241,13 @@ class _ChatBotViewBodyWithToolsDetectionState
                                     "Without Tools",
                                     style: TextStyle(
                                       color: selectedOption == "Without Tools"
-                                          ? const Color(0xFF17D1E0)
-                                          : const Color(0xFF4C5A81),
+                                          ? themeHelper
+                                              .themeColor()
+                                              .blueGray80004
+                                          : themeHelper
+                                              .getThemeData()
+                                              .colorScheme
+                                              .primary,
                                       fontSize: 16.fSize,
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,

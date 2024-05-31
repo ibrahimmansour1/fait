@@ -1,23 +1,25 @@
 import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithWorkoutDays extends StatefulWidget {
+class ChatBotViewBodyWithWorkoutDays extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithWorkoutDays({super.key});
 
   @override
-  State<ChatBotViewBodyWithWorkoutDays> createState() =>
+  ConsumerState<ChatBotViewBodyWithWorkoutDays> createState() =>
       _ChatBotViewBodyWithWorkoutDaysState();
 }
 
 class _ChatBotViewBodyWithWorkoutDaysState
-    extends State<ChatBotViewBodyWithWorkoutDays> {
+    extends ConsumerState<ChatBotViewBodyWithWorkoutDays> {
   List<String> selectedDays = [];
 
   final List<String> daysOfTheWeek = [
@@ -43,6 +45,7 @@ class _ChatBotViewBodyWithWorkoutDaysState
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
@@ -52,7 +55,9 @@ class _ChatBotViewBodyWithWorkoutDaysState
         body: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+          decoration: BoxDecoration(
+            color: themeHelper.getThemeData().colorScheme.background,
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

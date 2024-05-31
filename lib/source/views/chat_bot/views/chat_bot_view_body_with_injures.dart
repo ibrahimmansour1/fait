@@ -1,24 +1,25 @@
 import 'package:fait/source/routes.dart';
-import 'package:fait/source/theme/app_colors.freezed.dart';
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithInjures extends StatefulWidget {
+class ChatBotViewBodyWithInjures extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithInjures({super.key});
 
   @override
-  State<ChatBotViewBodyWithInjures> createState() =>
+  ConsumerState<ChatBotViewBodyWithInjures> createState() =>
       _ChatBotViewBodyWithInjuresState();
 }
 
 class _ChatBotViewBodyWithInjuresState
-    extends State<ChatBotViewBodyWithInjures> {
+    extends ConsumerState<ChatBotViewBodyWithInjures> {
   List<String> selectedInjuries = [];
 
   final List<String> availableInjuries = [
@@ -57,6 +58,7 @@ class _ChatBotViewBodyWithInjuresState
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       extendBody: true,
@@ -65,7 +67,9 @@ class _ChatBotViewBodyWithInjuresState
       body: Container(
         width: mediaQueryData.size.width,
         height: mediaQueryData.size.height,
-        decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+        decoration:  BoxDecoration(
+          color: themeHelper.getThemeData().colorScheme.background,
+        ),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(

@@ -1,21 +1,19 @@
-import 'package:fait/source/theme/app_decoration.dart';
-import 'package:fait/source/theme/custom_button_style.dart';
-import 'package:fait/source/theme/custom_text_style.dart';
-import 'package:fait/source/theme/theme_helper.dart';
+import 'dart:developer';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/widgets/custom_elevated_button.dart';
-import 'package:fait/source/widgets/custom_image_view.dart';
-import 'package:fait/utils/image_constant.dart';
-import 'package:fait/utils/size_utils.dart';
+import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/transitions/fade_transition.dart';
+import '../../../providers/theme/theme_provider.dart';
 
-class ChatBotView extends StatelessWidget {
+class ChatBotView extends ConsumerWidget {
   const ChatBotView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeHelper = ref.watch(themeNotifierProvider);
+
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
         extendBody: true,
@@ -28,15 +26,7 @@ class ChatBotView extends StatelessWidget {
               width: mediaQueryData.size.width,
               height: mediaQueryData.size.height,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: const Alignment(0, 0.51),
-                  end: const Alignment(0.95, 0.66),
-                  colors: [
-                    theme.colorScheme.onPrimary,
-                    appTheme.blueGray800,
-                    appTheme.blueGray80001
-                  ],
-                ),
+                color: themeHelper.getThemeData().colorScheme.background,
               ),
               child: SingleChildScrollView(
                 child: Container(
@@ -47,6 +37,24 @@ class ChatBotView extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.symmetric(horizontal: 35.h),
                           child: Column(children: [
+                            IconButton(
+                              icon: Icon(
+                                themeHelper.currentTheme == 'light'
+                                    ? Icons.dark_mode
+                                    : Icons.light_mode,
+                              ),
+                              onPressed: () {
+                                final newTheme =
+                                    themeHelper.currentTheme == 'light'
+                                        ? 'dark'
+                                        : 'light';
+                                log("Before Change Theme: ${themeHelper.currentTheme}");
+                                ref
+                                    .read(themeNotifierProvider.notifier)
+                                    .changeTheme(newTheme);
+                                log("After Change Theme: ${themeHelper.currentTheme}");
+                              },
+                            ),
                             SizedBox(height: 38.v),
                             CustomImageView(
                                 imagePath: ImageConstant.imgFait128x128,
@@ -92,7 +100,7 @@ class ChatBotView extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [])),
                             SizedBox(height: 16.v),
-                            _buildGoToChat(context)
+                            _buildGoToChat(context, themeHelper)
                           ])),
                       SizedBox(height: 5.v)
                     ])),
@@ -102,7 +110,7 @@ class ChatBotView extends StatelessWidget {
 }
 
 /// Section Widget
-Widget _buildGoToChat(BuildContext context) {
+Widget _buildGoToChat(BuildContext context, ThemeHelper themeHelper) {
   return CustomElevatedButton(
       height: 56.v,
       width: 260.h,
@@ -111,9 +119,9 @@ Widget _buildGoToChat(BuildContext context) {
       rightIcon: Row(
         children: [
           SizedBox(width: 30.h),
-          const Icon(
+          Icon(
             Icons.arrow_forward_rounded,
-            color: Colors.white,
+            color: themeHelper.getThemeData().colorScheme.onPrimaryContainer,
           ),
         ],
       ),

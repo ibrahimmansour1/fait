@@ -1,37 +1,36 @@
 import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
 import '../../utils/size_utils.dart';
-import 'home/views/nav_bar_screens/home_screen.dart'; // Import the home screen
+import '../providers/theme/theme_provider.dart';
 
-class LoadingScreen extends StatefulWidget {
+class LoadingScreen extends ConsumerStatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoadingScreen> createState() => _LoadingScreenState();
+  ConsumerState<LoadingScreen> createState() => _LoadingScreenState();
 }
 
-class _LoadingScreenState extends State<LoadingScreen> {
+class _LoadingScreenState extends ConsumerState<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    navigateToHomeScreenAfterDelay(); // Call the method to navigate after delay
+    navigateToHomeScreenAfterDelay();
   }
 
   void navigateToHomeScreenAfterDelay() {
     Future.delayed(const Duration(seconds: 10), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-            builder: (context) =>
-                const HomeView()), // Replace HomeScreen with your actual home screen widget
+        MaterialPageRoute(builder: (context) => const HomeView()),
       );
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
@@ -39,7 +38,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: Container(
         width: mediaQueryData.size.width,
         height: mediaQueryData.size.height,
-        decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+        decoration: BoxDecoration(
+          color: themeHelper.getThemeData().colorScheme.background,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

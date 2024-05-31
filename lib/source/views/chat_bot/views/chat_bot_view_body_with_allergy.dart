@@ -1,5 +1,7 @@
+import 'package:fait/source/providers/theme/theme_provider.dart';
 import 'package:fait/source/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_bot_button_widget.dart';
@@ -8,16 +10,16 @@ import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithAllergy extends StatefulWidget {
+class ChatBotViewBodyWithAllergy extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithAllergy({super.key});
 
   @override
-  State<ChatBotViewBodyWithAllergy> createState() =>
+  ConsumerState<ChatBotViewBodyWithAllergy> createState() =>
       _ChatBotViewBodyWithAllergyState();
 }
 
 class _ChatBotViewBodyWithAllergyState
-    extends State<ChatBotViewBodyWithAllergy> {
+    extends ConsumerState<ChatBotViewBodyWithAllergy> {
   List<String> selectedAllergies = [];
 
   final List<String> diaryFood = [
@@ -83,6 +85,7 @@ class _ChatBotViewBodyWithAllergyState
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
@@ -92,7 +95,9 @@ class _ChatBotViewBodyWithAllergyState
         body: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+          decoration: BoxDecoration(
+            color: themeHelper.getThemeData().colorScheme.background,
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SingleChildScrollView(
