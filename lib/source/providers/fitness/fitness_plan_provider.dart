@@ -18,7 +18,9 @@ class FitnessPlanNotifier extends ChangeNotifier {
   late ApiResponse<FitnessPlanModel> fitnessPlanOverviewResponse;
   late ApiResponse<List<MuscleModel>> fitnessPlanMusclesResponse;
   late ApiResponse<List<FitnessPlanWorkoutModel>> fitnessPlanWorkoutsResponse;
+
   final _fitnessPlanService = FitnessPlanService();
+  
   FitnessPlanNotifier(this.ref) {
     fitnessPlanResponse = ApiResponse.loading("Loading");
     fitnessPlanOverviewResponse = ApiResponse.loading("Loading");

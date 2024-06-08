@@ -1,9 +1,9 @@
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/custom_outlined_button.dart';
-import 'open_camera_screen/open_camera_screen.dart';
 
 // ignore: must_be_immutable
 class ExerciseInfoScreen extends StatelessWidget {
@@ -144,7 +144,16 @@ class ExerciseInfoScreen extends StatelessWidget {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         CustomElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/open_camera_screen');
+              getPermissionStatus(context, Permission.microphone, "Microphone")
+                  .then((microphonePermission) {
+                getPermissionStatus(
+                        context, Permission.camera, "Camera")
+                    .then((cameraPermission) {
+                  if (microphonePermission && cameraPermission) {
+                    Navigator.pushNamed(context, '/open_camera_screen');
+                  }
+                });
+              });
             },
             height: 48.v,
             width: 170.h,

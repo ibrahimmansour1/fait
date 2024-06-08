@@ -1,25 +1,33 @@
+import 'package:fait/source/providers/fitness/listen_and_speak_provider.dart';
 import 'package:fait/source/views/fitness/widgets/arrow_bottom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:fait/utils/app_export.dart';
 
-class OpenCameraScreen extends StatefulWidget {
+import '../wrong_exercises_steps_screen/wrong_exercises_step_screen.dart';
+
+class OpenCameraScreen extends ConsumerStatefulWidget {
   const OpenCameraScreen({Key? key}) : super(key: key);
 
   @override
-  _OpenCameraScreenState createState() => _OpenCameraScreenState();
+  ConsumerState createState() => _OpenCameraScreenState();
 }
 
-class _OpenCameraScreenState extends State<OpenCameraScreen> {
+class _OpenCameraScreenState extends ConsumerState<OpenCameraScreen> {
   late CameraController _cameraController;
   late Future<void> _initializeControllerFuture;
+  late final ListenAndSpeakNotifier listenAndSpeakViewModel;
 
   @override
   void initState() {
     super.initState();
     getPermissionStatus(Permission.camera); // Request camera permission
     _initializeControllerFuture = initializeCamera();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      listenAndSpeakViewModel = ref.watch(listenAndSpeakProvider);
+    });
   }
 
   Future<void> initializeCamera() async {
@@ -72,7 +80,87 @@ class _OpenCameraScreenState extends State<OpenCameraScreen> {
                       ),
                       SizedBox(height: 20.v),
                       _buildTopPart(context),
-                      SizedBox(height: 550.v),
+                      SizedBox(height: 40.v),
+                      Align(
+                        alignment: Alignment.center,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: appTheme.red500,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.h),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.h, vertical: 8.v),
+                            child: Text(
+                              'Wrong Step',
+                              style: CustomTextStyles.headlineSmallInter,
+                            ),
+                          ),
+                          onPressed: () {
+                            listenAndSpeakViewModel.stopListen();
+                            listenAndSpeakViewModel.stopSpeak();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const WrongExercisesStepScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 20.v),
+                      Align(
+                        alignment: Alignment.center,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: appTheme.amber400,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.h),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.h, vertical: 8.v),
+                            child: Text(
+                              'Speak',
+                              style: CustomTextStyles.headlineSmallInter,
+                            ),
+                          ),
+                          onPressed: () {
+                            listenAndSpeakViewModel
+                                .speak("Good job! keep stretching");
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 20.v),
+                      Align(
+                        alignment: Alignment.center,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: appTheme.blue50001,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.h),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.h, vertical: 8.v),
+                            child: Text(
+                              'listen',
+                              style: CustomTextStyles.headlineSmallInter,
+                            ),
+                          ),
+                          onPressed: () {
+                            listenAndSpeakViewModel.listen();
+                          },
+                        ),
+                      ),
+                      const Spacer(
+                        flex: 10,
+                      ),
                       Container(
                         width: 205.h,
                         margin: EdgeInsets.only(left: 40.h),
@@ -85,6 +173,9 @@ class _OpenCameraScreenState extends State<OpenCameraScreen> {
                               .copyWith(height: 1.50),
                         ),
                       ),
+                      const Spacer(
+                        flex: 2,
+                      )
                     ],
                   ),
                 ),
@@ -105,26 +196,27 @@ class _OpenCameraScreenState extends State<OpenCameraScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 12.v),
+          padding: EdgeInsets.symmetric(horizontal: 13.h, vertical: 3.v),
           decoration: AppDecoration.fillPrimary
               .copyWith(borderRadius: BorderRadiusStyle.roundedBorder32),
           child: Row(
             children: [
               Container(
-                  height: 48.adaptSize,
-                  width: 48.adaptSize,
+                  height: 40.adaptSize,
+                  width: 40.adaptSize,
                   decoration: AppDecoration.fillPrimary.copyWith(
                       borderRadius: BorderRadiusStyle.roundedBorder22),
                   child: CustomImageView(
                       imagePath: ImageConstant.imgClockBlack900,
-                      height: 48.adaptSize,
-                      width: 48.adaptSize,
+                      height: 40.adaptSize,
+                      width: 40.adaptSize,
                       alignment: Alignment.center)),
               Padding(
-                  padding: EdgeInsets.only(left: 16.h, top: 8.v, bottom: 10.v),
-                  child: Text("9 sec",
-                      style: CustomTextStyles
-                          .headlineSmallRobotoOnPrimaryContainerRegular))
+                padding: EdgeInsets.only(left: 16.h, top: 8.v, bottom: 10.v),
+                child: Text("9 sec",
+                    style: CustomTextStyles
+                        .headlineSmallRobotoOnPrimaryContainerRegular),
+              ),
             ],
           ),
         ),
@@ -132,8 +224,8 @@ class _OpenCameraScreenState extends State<OpenCameraScreen> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30.h),
               color: appTheme.blueGray80004),
-          height: 64.v,
-          width: 112.h,
+          height: 55.v,
+          width: 100.h,
           child: Center(
             child: Text(
               '75%',
