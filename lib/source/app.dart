@@ -23,7 +23,7 @@ class MyApp extends ConsumerWidget {
             debugShowCheckedModeBanner: false,
             darkTheme: ThemeData.dark(),
             theme: theme,
-            // themeMode: themeMode,
+            themeMode: ThemeMode.light,
             locale: locale,
             navigatorKey: NavigatorService.navigatorKey,
             localizationsDelegates: const [

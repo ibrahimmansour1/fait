@@ -30,6 +30,7 @@ import 'views/fitness/views/fitness_screen.dart';
 
 import 'views/fitness/views/my_activity_screen.dart';
 import 'views/fitness/views/workout_tap_bar_screens/workout_overview_screen.dart';
+import 'views/fitness/views/wrong_exercises_steps_screen/wrong_exercises_step_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -68,6 +69,8 @@ class AppRoutes {
   static const String menu = 'menu';
   static const String overviewScreen = '/overview_screen';
   static const String openCameraScreen = '/open_camera_screen';
+  static const String wrongExercisesStepsScreen =
+      '/wrong_exercises_steps_screen';
 }
 
 class RouteGenerator {
@@ -164,6 +167,9 @@ class RouteGenerator {
       case AppRoutes.openCameraScreen:
         return MaterialPageRoute(
             builder: (context) => const OpenCameraScreen());
+      case AppRoutes.wrongExercisesStepsScreen:
+        return MaterialPageRoute(
+            builder: (context) => const WrongExercisesStepScreen());
 
       // default:
       //   return MaterialPageRoute(
