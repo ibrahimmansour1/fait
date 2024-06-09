@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:fait/source/models/fitness/wrong_step_model.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,10 @@ class WrongStepNotifier extends ChangeNotifier {
     wrongStepResponse = ApiResponse.loading("Loading");
   }
 
-  ApiResponse<WrongStepModel> getWrongStepData({int? id}) {
+  ApiResponse<WrongStepModel> getWrongStepData({required Uint8List image}) {
     wrongStepResponse = ApiResponse.loading("Loading");
     notifyListeners();
-    _wrongStepService.getWrongStepData(id: id).then((value) async {
+    _wrongStepService.getWrongStepData(image: image).then((value) async {
       if (value.status == Status.completed) {
         final tempDir = await getTemporaryDirectory();
 
