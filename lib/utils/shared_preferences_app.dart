@@ -1,6 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class AppSharedPreference {
   static late SharedPreferences sharedPreference;
 
@@ -14,8 +13,6 @@ class AppSharedPreference {
   static Future init() async {
     sharedPreference = await SharedPreferences.getInstance();
   }
-
-
 
   static void savePrimaryColor(String colorName) {
     sharedPreference.setString(_PRIMARY_COLOR_KEY, colorName);

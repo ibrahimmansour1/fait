@@ -115,7 +115,8 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           SizedBox(height: 70.v),
                           GestureDetector(
                             onPanStart: (_) {
-                              Navigator.pushNamed(context, '/my_activity_screen');
+                              Navigator.pushNamed(
+                                  context, '/my_activity_screen');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

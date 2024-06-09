@@ -22,6 +22,5 @@ class FadePageRouteBuilder extends PageRouteBuilder {
             );
           },
           transitionDuration: duration,
-          
         );
 }

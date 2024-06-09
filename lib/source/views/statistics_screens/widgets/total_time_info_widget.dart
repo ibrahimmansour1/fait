@@ -6,7 +6,7 @@ class TotalTimeInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
