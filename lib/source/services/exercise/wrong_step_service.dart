@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -13,16 +14,21 @@ class WrongStepService {
   final _dio = Dio();
 
   Future<ApiResponse<WrongStepModel>> getWrongStepData(
-      {int? id}) async {
+      {required Uint8List image}) async {
     try {
       if (await _internetChecker.hasConnection) {
-        final response = await _dio.get(
-          "${baseUrl}WrongStep/$id",
+        final formData = FormData.fromMap({
+          "image": MultipartFile.fromBytes(image.toList(), filename: "image.jpg")
+        });
+        final response = await _dio.post(
+          // "${baseUrl}/process_image",
+          "http://192.168.227.137:5000/process_image",
+          data: formData,
           options: Options(
             headers: {
               "Content-Type": "application/json",
-              "Authorization":
-                  "Basic ${base64Encode(utf8.encode("$authUsername:$authPassword"))}",
+              // "Authorization":
+              //     "Basic ${base64Encode(utf8.encode("$authUsername:$authPassword"))}",
             },
           ),
         );

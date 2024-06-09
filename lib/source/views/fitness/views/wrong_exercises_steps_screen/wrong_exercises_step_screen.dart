@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:fait/source/api/api_response.dart';
 import 'package:fait/source/providers/exercise/wrong_step_provider.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class _WrongExercisesStepScreenState
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(wrongStepProvider).getWrongStepData(id: 0);
+      ref.read(wrongStepProvider).getWrongStepData(image: Uint8List(0));
     });
     super.initState();
   }
