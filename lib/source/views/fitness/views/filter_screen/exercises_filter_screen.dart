@@ -1,3 +1,4 @@
+import 'package:fait/source/providers/exercise/exercises_filter_provider.dart';
 import 'package:fait/source/views/fitness/views/exercises_results_screen.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
@@ -9,134 +10,120 @@ import '../../../../widgets/custom_search_view.dart';
 import '../../../../widgets/custom_tap_widget.dart';
 
 // ignore_for_file: must_be_immutable
-class ExercisesFilterScreen extends StatelessWidget {
-  ExercisesFilterScreen({Key? key}) : super(key: key);
+class ExercisesFilterScreen extends ConsumerStatefulWidget {
+  const ExercisesFilterScreen({Key? key}) : super(key: key);
 
+  @override
+  ConsumerState<ExercisesFilterScreen> createState() =>
+      _ExercisesFilterScreenState();
+}
+
+class _ExercisesFilterScreenState extends ConsumerState<ExercisesFilterScreen> {
   TextEditingController searchController = TextEditingController();
-
-  final musclesProvider = StateProvider<List<String>>((ref) {
-    return [];
-  });
-  final equipmentsProvider = StateProvider<List<String>>((ref) {
-    return [];
-  });
-  final typeProvider = StateProvider<List<String>>((ref) {
-    return [];
-  });
-  final difficultyProvider = StateProvider<List<String>>((ref) {
-    return [];
-  });
 
   @override
   Widget build(BuildContext context) {
+    final exercisesFilterViewModel = ref.watch(exercisesFilterProvider);
     return SingleChildScrollView(
       child: Container(
-          decoration: AppDecoration.fillBlueGray.copyWith(
-              borderRadius: BorderRadiusStyle.roundedBorder22
-                  .copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero)),
-          padding: const EdgeInsets.all(8),
-          child: Consumer(builder: (context, ref, child) {
-            List<String> muscles = ref.watch(musclesProvider);
-            List<String> equipments = ref.watch(equipmentsProvider);
-            List<String> types = ref.watch(typeProvider);
-            List<String> difficulty = ref.watch(difficultyProvider);
-
-            return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional.centerStart,
-                        child: IconButton(
-                          onPressed: () => onTapArrowLeft(context),
-                          icon: const Icon(
-                            Icons.arrow_back_ios_new,
-                            color: Colors.white,
-                            size: 24,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.v),
-                        child: Align(
-                          alignment: AlignmentDirectional.center,
-                          child: Text(
-                            "Filters",
-                            style: CustomTextStyles.titleLargeBold
-                                .copyWith(fontSize: 24.fSize),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: AppbarSubtitleThree(
-                            text: "Rest",
-                            margin: EdgeInsets.fromLTRB(32.h, 15.v, 32.h, 23.v),
-                            onTap: () {
-                              onTapReset(context, muscles, equipments, types,
-                                  difficulty);
-                            }),
-                      )
-                    ],
+        decoration: AppDecoration.fillBlueGray.copyWith(
+            borderRadius: BorderRadiusStyle.roundedBorder22
+                .copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero)),
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: IconButton(
+                    onPressed: () => onTapArrowLeft(context),
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.white,
+                      size: 24,
+                    ),
                   ),
-                  SizedBox(
-                    height: 22.v,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10.v),
+                  child: Align(
+                    alignment: AlignmentDirectional.center,
+                    child: Text(
+                      "Filters",
+                      style: CustomTextStyles.titleLargeBold
+                          .copyWith(fontSize: 24.fSize),
+                    ),
                   ),
-                  Align(
-                      alignment: Alignment.center,
-                      child: CustomSearchView(
-                          width: 280.h,
-                          controller: searchController,
-                          hintText: "Search",
-                          autofocus: false,
-                          alignment: Alignment.center)),
-                  SizedBox(height: 30.v),
-                  Padding(
-                      padding: EdgeInsets.only(left: 32.h),
-                      child:
-                          Text("Muscles", style: theme.textTheme.titleLarge)),
-                  SizedBox(height: 32.v),
-                  _buildMusclesSet(context, muscles),
-                  SizedBox(height: 32.v),
-                  Padding(
-                      padding: EdgeInsets.only(left: 32.h),
-                      child: Text("Equipments",
-                          style: theme.textTheme.titleLarge)),
-                  SizedBox(height: 30.v),
-                  _buildEquipmentSet(context, equipments),
-                  SizedBox(height: 33.v),
-                  Padding(
-                      padding: EdgeInsets.only(left: 32.h),
-                      child: Text("Type", style: theme.textTheme.titleLarge)),
-                  SizedBox(height: 29.v),
-                  _buildTypeSet(context, types),
-                  SizedBox(height: 32.v),
-                  Padding(
-                      padding: EdgeInsets.only(left: 32.h),
-                      child: Text("Difficulty",
-                          style: theme.textTheme.titleLarge)),
-                  SizedBox(height: 30.v),
-                  _buildDifficiltySet(context, difficulty),
-                  SizedBox(height: 20.v),
-                  Padding(
-                    padding: EdgeInsets.all(30.adaptSize),
-                    child: CustomElevatedButton(
-                        height: 48.v,
-                        text: "See Results",
-                        buttonStyle: CustomButtonStyles.fillPrimaryTL12,
-                        buttonTextStyle: theme.textTheme.titleLarge!,
-                        onPressed: () {
-                          onTapSeeResults(context);
-                        }),
-                  ),
-                ]);
-          })),
+                ),
+                Align(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: AppbarSubtitleThree(
+                      text: "Rest",
+                      margin: EdgeInsets.fromLTRB(32.h, 15.v, 32.h, 23.v),
+                      onTap: () {
+                        onTapReset(exercisesFilterViewModel);
+                      }),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 22.v,
+            ),
+            Align(
+                alignment: Alignment.center,
+                child: CustomSearchView(
+                    width: 280.h,
+                    controller: searchController,
+                    hintText: "Search",
+                    autofocus: false,
+                    alignment: Alignment.center)),
+            SizedBox(height: 30.v),
+            Padding(
+                padding: EdgeInsets.only(left: 32.h),
+                child: Text("Muscles", style: theme.textTheme.titleLarge)),
+            SizedBox(height: 32.v),
+            _buildMusclesSet(context, exercisesFilterViewModel),
+            SizedBox(height: 32.v),
+            Padding(
+                padding: EdgeInsets.only(left: 32.h),
+                child: Text("Equipments", style: theme.textTheme.titleLarge)),
+            SizedBox(height: 30.v),
+            _buildEquipmentSet(context, exercisesFilterViewModel),
+            SizedBox(height: 33.v),
+            Padding(
+                padding: EdgeInsets.only(left: 32.h),
+                child: Text("Type", style: theme.textTheme.titleLarge)),
+            SizedBox(height: 29.v),
+            _buildTypeSet(context, exercisesFilterViewModel),
+            SizedBox(height: 32.v),
+            Padding(
+                padding: EdgeInsets.only(left: 32.h),
+                child: Text("Difficulty", style: theme.textTheme.titleLarge)),
+            SizedBox(height: 30.v),
+            _buildDifficiltySet(context, exercisesFilterViewModel),
+            SizedBox(height: 20.v),
+            Padding(
+              padding: EdgeInsets.all(30.adaptSize),
+              child: CustomElevatedButton(
+                  height: 48.v,
+                  text: "See Results",
+                  buttonStyle: CustomButtonStyles.fillPrimaryTL12,
+                  buttonTextStyle: theme.textTheme.titleLarge!,
+                  onPressed: () {
+                    onTapSeeResults(context);
+                  }),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
   /// Section Widget
-  Widget _buildMusclesSet(BuildContext context, List<String> muscles) {
+  Widget _buildMusclesSet(
+      BuildContext context, ExercisesFilterNotifier exercisesFilterViewModel) {
     return Align(
         alignment: Alignment.centerRight,
         child: SizedBox(
@@ -152,33 +139,27 @@ class ExercisesFilterScreen extends StatelessWidget {
                   if (index == 0) {
                     return CustomTapWidget(
                       label: 'All',
-                      selected: muscles.contains('All'),
+                      selected:
+                          exercisesFilterViewModel.muscles.contains('All'),
                       onSelected: (value) {
-                        if (value) {
-                          muscles.remove('All');
-                        } else {
-                          muscles.clear();
-                          muscles.add('All');
-                        }
+                        exercisesFilterViewModel.toggleMuscle("All");
                       },
                     );
                   }
                   return CustomTapWidget(
                     label: 'Glutes',
-                    selected: muscles.contains('Glutes$index'),
+                    selected: exercisesFilterViewModel.muscles
+                        .contains('Glutes$index'),
                     onSelected: (value) {
-                      if (value) {
-                        muscles.remove('Glutes$index');
-                      } else {
-                        muscles.add('Glutes$index');
-                      }
+                      exercisesFilterViewModel.toggleMuscle('Glutes$index');
                     },
                   );
                 })));
   }
 
   /// Section Widget
-  Widget _buildEquipmentSet(BuildContext context, List<String> equipments) {
+  Widget _buildEquipmentSet(
+      BuildContext context, ExercisesFilterNotifier exercisesFilterViewModel) {
     return Align(
         alignment: Alignment.centerRight,
         child: SizedBox(
@@ -194,33 +175,27 @@ class ExercisesFilterScreen extends StatelessWidget {
                   if (index == 0) {
                     return CustomTapWidget(
                       label: 'All',
-                      selected: equipments.contains('All'),
+                      selected:
+                          exercisesFilterViewModel.equipments.contains('All'),
                       onSelected: (value) {
-                        if (value) {
-                          equipments.remove('All');
-                        } else {
-                          equipments.clear();
-                          equipments.add('All');
-                        }
+                        exercisesFilterViewModel.toggleEquipment("All");
                       },
                     );
                   }
                   return CustomTapWidget(
                     label: 'Bands',
-                    selected: equipments.contains('Bands$index'),
+                    selected: exercisesFilterViewModel.equipments
+                        .contains('Bands$index'),
                     onSelected: (value) {
-                      if (value) {
-                        equipments.remove('Bands$index');
-                      } else {
-                        equipments.add('Bands$index');
-                      }
+                      exercisesFilterViewModel.toggleEquipment('Bands$index');
                     },
                   );
                 })));
   }
 
   /// Section Widget
-  Widget _buildTypeSet(BuildContext context, List<String> types) {
+  Widget _buildTypeSet(
+      BuildContext context, ExercisesFilterNotifier exercisesFilterViewModel) {
     return Align(
         alignment: Alignment.centerRight,
         child: SizedBox(
@@ -235,20 +210,18 @@ class ExercisesFilterScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return CustomTapWidget(
                     label: 'Strength',
-                    selected: types.contains('Strength$index'),
+                    selected: exercisesFilterViewModel.types
+                        .contains('Strength$index'),
                     onSelected: (value) {
-                      if (value) {
-                        types.remove('Strength$index');
-                      } else {
-                        types.add('Strength$index');
-                      }
+                      exercisesFilterViewModel.toggleType('Strength$index');
                     },
                   );
                 })));
   }
 
   /// Section Widget
-  Widget _buildDifficiltySet(BuildContext context, List<String> difficulty) {
+  Widget _buildDifficiltySet(
+      BuildContext context, ExercisesFilterNotifier exercisesFilterViewModel) {
     return Align(
         alignment: Alignment.centerRight,
         child: SizedBox(
@@ -259,37 +232,28 @@ class ExercisesFilterScreen extends StatelessWidget {
                 children: [
                   CustomTapWidget(
                     label: 'Beginner',
-                    selected: difficulty.contains('Beginner'),
+                    selected: exercisesFilterViewModel.difficulty
+                        .contains('Beginner'),
                     onSelected: (value) {
-                      if (value) {
-                        difficulty.remove('Beginner');
-                      } else {
-                        difficulty.add('Beginner');
-                      }
+                      exercisesFilterViewModel.toggleDifficulty('Beginner');
                     },
                   ),
                   SizedBox(width: 16.h),
                   CustomTapWidget(
                     label: 'Intermediate',
-                    selected: difficulty.contains('Intermediate'),
+                    selected: exercisesFilterViewModel.difficulty
+                        .contains('Intermediate'),
                     onSelected: (value) {
-                      if (value) {
-                        difficulty.remove('Intermediate');
-                      } else {
-                        difficulty.add('Intermediate');
-                      }
+                      exercisesFilterViewModel.toggleDifficulty('Intermediate');
                     },
                   ),
                   SizedBox(width: 16.h),
                   CustomTapWidget(
                     label: 'Expert',
-                    selected: difficulty.contains('Expert'),
+                    selected:
+                        exercisesFilterViewModel.difficulty.contains('Expert'),
                     onSelected: (value) {
-                      if (value) {
-                        difficulty.remove('Expert');
-                      } else {
-                        difficulty.add('Expert');
-                      }
+                      exercisesFilterViewModel.toggleDifficulty('Expert');
                     },
                   ),
                   SizedBox(width: 16.h),
@@ -302,12 +266,8 @@ class ExercisesFilterScreen extends StatelessWidget {
   }
 
   /// Navigates to the filterOneScreen when the action is triggered.
-  onTapReset(BuildContext context, List<String> muscles,
-      List<String> equipments, List<String> types, List<String> difficulty) {
-    muscles.clear();
-    equipments.clear();
-    types.clear();
-    difficulty.clear();
+  onTapReset(ExercisesFilterNotifier exercisesFilterViewModel) {
+    exercisesFilterViewModel.reset();
   }
 
   /// Navigates to the resultsScreen when the action is triggered.
