@@ -41,7 +41,7 @@ Future<bool> getPermissionStatus(
               children: <Widget>[
                 Text(
                   'You need to give the $permissionName permission to the app. Please go to the app settings.',
-                  style: const TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 18, color: Colors.black),
                 ),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
