@@ -1,6 +1,7 @@
 import 'package:fait/source/providers/theme/theme_provider.dart';
 import 'package:fait/source/theme/extended_color_schemes.dart';
 import 'package:fait/source/theme/theme_helper.dart';
+import 'package:fait/utils/app_export.dart';
 import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -52,9 +53,11 @@ class _ChatMessageWidgetState extends ConsumerState<ChatMessageWidget> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.message,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
-                color: Colors.white,
+                color: !widget.isReceiver
+                    ? Colors.white
+                    : ThemeHelper().getThemeData().colorScheme.tertiary,
               ),
             ),
           ),

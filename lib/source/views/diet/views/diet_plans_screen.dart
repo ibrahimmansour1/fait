@@ -270,8 +270,7 @@ class DietPlansScreen extends StatelessWidget {
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(lunch,
                 style: CustomTextStyles.titleLargeBold.copyWith(
-                    color:
-                        theme.colorScheme.onPrimaryContainer.withOpacity(1))),
+                    color: theme.colorScheme.onPrimary.withOpacity(1))),
             SizedBox(height: 10.v),
             Row(children: [
               CustomImageView(
@@ -348,8 +347,7 @@ class DietPlansScreen extends StatelessWidget {
                   day,
                   style: CustomTextStyles.titleMediumOnPrimaryContainer
                       .copyWith(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75)),
+                          color: theme.colorScheme.onPrimary.withOpacity(0.75)),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 12.v),
@@ -366,8 +364,7 @@ class DietPlansScreen extends StatelessWidget {
                     style: selected
                         ? CustomTextStyles.headlineSmallRobotoPrimary
                         : CustomTextStyles.titleMedium18.copyWith(
-                            color: theme.colorScheme.onPrimaryContainer
-                                .withOpacity(1)),
+                            color: theme.colorScheme.onPrimary.withOpacity(1)),
                     textAlign: TextAlign.center,
                   ),
                 )

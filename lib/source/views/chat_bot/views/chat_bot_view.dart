@@ -63,7 +63,11 @@ class ChatBotView extends ConsumerWidget {
                                 radius: BorderRadius.circular(64.h)),
                             SizedBox(height: 38.v),
                             Text("Fitness AI Trainer",
-                                style: theme.textTheme.headlineSmall)
+                                style: theme.textTheme.headlineSmall!.copyWith(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black))
                           ])),
                       SizedBox(height: 160.v),
                       Row(
@@ -71,12 +75,20 @@ class ChatBotView extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Welcome in",
-                              style: theme.textTheme.bodyLarge!
-                                  .copyWith(fontSize: 36.fSize)),
+                              style: theme.textTheme.bodyLarge!.copyWith(
+                                  fontSize: 36.fSize,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : Colors.black)),
                           SizedBox(width: 10.v),
                           Text("FAIT",
-                              style: theme.textTheme.headlineSmall!
-                                  .copyWith(fontSize: 36.fSize)),
+                              style: theme.textTheme.headlineSmall!.copyWith(
+                                  fontSize: 36.fSize,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : Colors.black)),
                         ],
                       ),
                       SizedBox(height: 20.v),
@@ -85,8 +97,12 @@ class ChatBotView extends ConsumerWidget {
                         child: Text(
                             "Let's start with a simple chat to know you better",
                             textAlign: TextAlign.center,
-                            style: theme.textTheme.bodyMedium!
-                                .copyWith(fontSize: 16)),
+                            style: theme.textTheme.bodyMedium!.copyWith(
+                                fontSize: 16,
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black)),
                       ),
                       SizedBox(height: 220.v),
                       Container(
@@ -119,9 +135,9 @@ Widget _buildGoToChat(BuildContext context, ThemeHelper themeHelper) {
       rightIcon: Row(
         children: [
           SizedBox(width: 30.h),
-          Icon(
+          const Icon(
             Icons.arrow_forward_rounded,
-            color: themeHelper.getThemeData().colorScheme.onPrimaryContainer,
+            color: Colors.white,
           ),
         ],
       ),

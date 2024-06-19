@@ -80,8 +80,12 @@ class _ChatBotViewBodyWithWorkoutDaysState
                     children: [
                       Text(
                         '  🗓️  Days',
-                        style: CustomTextStyles.titleLargeInter
-                            .copyWith(color: Colors.white),
+                        style: CustomTextStyles.titleLargeInter!.copyWith(
+                            fontSize: 32.fSize,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black),
                       ),
                       SizedBox(height: 10.v),
                       SizedBox(

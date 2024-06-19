@@ -24,7 +24,7 @@ class CustomTapWidget extends StatelessWidget {
       label: Text(
         label,
         style: TextStyle(
-          color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+          color: theme.colorScheme.onPrimary.withOpacity(1),
           fontSize: 18.fSize,
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w400,

@@ -176,7 +176,7 @@ class ExerciseInfoScreen extends StatelessWidget {
         Text(
           name,
           style: TextStyle(
-            color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+            color: theme.colorScheme.onPrimary.withOpacity(1),
             fontSize: 20.fSize,
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w600,
@@ -214,7 +214,7 @@ class ExerciseInfoScreen extends StatelessWidget {
               Text(
                 value,
                 style: TextStyle(
-                  color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+                  color: theme.colorScheme.onPrimary.withOpacity(1),
                   fontSize: 16.fSize,
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w400,

@@ -153,14 +153,14 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
           Text(
             dynamicText1,
             style: CustomTextStyles.titleMediumBlack900.copyWith(
-              color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+              color: theme.colorScheme.onPrimary.withOpacity(1),
             ),
           ),
           SizedBox(height: 7.v),
           Text(
             dynamicText2,
             style: CustomTextStyles.bodyLargeOnPrimaryContainer_2.copyWith(
-              color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+              color: theme.colorScheme.onPrimary.withOpacity(0.75),
             ),
           ),
         ],

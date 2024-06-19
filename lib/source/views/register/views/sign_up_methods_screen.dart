@@ -20,14 +20,8 @@ class SignUpMethodsScreen extends StatelessWidget {
                 width: mediaQueryData.size.width,
                 height: mediaQueryData.size.height,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: const Alignment(0, 0.51),
-                        end: const Alignment(0.95, 0.66),
-                        colors: [
-                      theme.colorScheme.onPrimary,
-                      appTheme.blueGray800,
-                      appTheme.blueGray80001
-                    ])),
+                  color: theme.colorScheme.onPrimaryContainer,
+                ),
                 child: Container(
                     width: double.maxFinite,
                     padding:
@@ -42,8 +36,14 @@ class SignUpMethodsScreen extends StatelessWidget {
                                 width: 128.adaptSize,
                                 radius: BorderRadius.circular(64.h)),
                             SizedBox(height: 23.v),
-                            Text("Fitness AI Trainer",
-                                style: theme.textTheme.headlineSmall)
+                            Text(
+                              "Fitness AI Trainer",
+                              style: theme.textTheme.headlineSmall!.copyWith(
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : Colors.black),
+                            )
                           ])),
                       SizedBox(height: 80.v),
                       CustomElevatedButton(
@@ -65,13 +65,18 @@ class SignUpMethodsScreen extends StatelessWidget {
                               text: TextSpan(children: [
                                 TextSpan(
                                     text: "Do You have an account ? ",
-                                    style: theme.textTheme.bodyLarge),
+                                    style: theme.textTheme.bodyLarge!.copyWith(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black)),
                                 TextSpan(
                                     text: "Login",
                                     style: theme.textTheme.bodyLarge!.copyWith(
-                                        decorationColor:
-                                            theme.textTheme.bodyLarge!.color,
-                                        decoration: TextDecoration.underline))
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black)),
                               ]),
                               textAlign: TextAlign.left)),
                       SizedBox(height: 21.v),
@@ -115,7 +120,12 @@ class SignUpMethodsScreen extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(top: 14.v, bottom: 12.v),
               child: SizedBox(width: 127.h, child: const Divider())),
-          Text("Or", style: CustomTextStyles.headlineSmallRobotoRegular),
+          Text("Or",
+              style: CustomTextStyles.headlineSmallRobotoRegular.copyWith(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : Colors.black,
+              )),
           Padding(
               padding: EdgeInsets.only(top: 14.v, bottom: 12.v),
               child: SizedBox(width: 127.h, child: const Divider()))

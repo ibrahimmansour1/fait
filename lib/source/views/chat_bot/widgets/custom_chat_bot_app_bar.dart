@@ -1,13 +1,16 @@
+import 'package:fait/source/providers/theme/theme_provider.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomChatBotAppBar extends StatelessWidget {
+class CustomChatBotAppBar extends ConsumerWidget {
   const CustomChatBotAppBar({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     return Padding(
       padding: EdgeInsets.all(12.h),
       child: Row(
@@ -16,9 +19,9 @@ class CustomChatBotAppBar extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-            child: const Icon(
+            child: Icon(
               Icons.arrow_back_ios,
-              color: Colors.white,
+              color: themeHelper.getThemeData().colorScheme.tertiary,
             ),
           ),
           SizedBox(
@@ -33,8 +36,9 @@ class CustomChatBotAppBar extends StatelessWidget {
             width: 30.v,
           ),
           Text("FAIT",
-              style:
-                  theme.textTheme.headlineSmall!.copyWith(fontSize: 36.fSize)),
+              style: theme.textTheme.headlineSmall!.copyWith(
+                  fontSize: 36.fSize,
+                  color: themeHelper.getThemeData().colorScheme.tertiary)),
         ],
       ),
     );

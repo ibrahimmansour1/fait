@@ -1,4 +1,5 @@
 import 'package:fait/source/localization/app_localization.dart';
+import 'package:fait/source/views/gemini_chat/gemini_chat_screen.dart';
 import 'package:fait/source/views/home/widgets/kcal1_item_widget.dart';
 import 'package:fait/source/views/home/widgets/kcal_item_widget.dart';
 import 'package:fait/source/views/home/widgets/weekcardssetdefault_item_widget.dart';
@@ -811,9 +812,7 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 10.h),
           child: Text(time,
               style: CustomTextStyles.titleMediumOnPrimaryContainerSemiBold_1
-                  .copyWith(
-                      color:
-                          theme.colorScheme.onPrimaryContainer.withOpacity(1))))
+                  .copyWith(color: theme.colorScheme.onPrimary.withOpacity(1))))
     ]);
   }
 
@@ -834,7 +833,7 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 4.h, top: 1.v, bottom: 3.v),
           child: Text(sixThousandThreeHundredSevente,
               style: theme.textTheme.labelLarge!
-                  .copyWith(color: theme.colorScheme.onPrimaryContainer))),
+                  .copyWith(color: theme.colorScheme.onPrimary))),
       CustomImageView(
           imagePath: ImageConstant.imgSettings,
           height: 16.adaptSize,
@@ -844,7 +843,7 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 4.h, top: 1.v, bottom: 3.v),
           child: Text(zero,
               style: theme.textTheme.labelLarge!
-                  .copyWith(color: theme.colorScheme.onPrimaryContainer))),
+                  .copyWith(color: theme.colorScheme.onPrimary))),
       CustomImageView(
           imagePath: ImageConstant.imgProtiens,
           height: 16.adaptSize,
@@ -854,7 +853,7 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 4.h, top: 1.v, bottom: 3.v),
           child: Text(oneThousandEightHundredNinetyF,
               style: theme.textTheme.labelLarge!
-                  .copyWith(color: theme.colorScheme.onPrimaryContainer))),
+                  .copyWith(color: theme.colorScheme.onPrimary))),
       Container(
           height: 20.adaptSize,
           width: 20.adaptSize,
@@ -878,8 +877,7 @@ class HomeScreen extends StatelessWidget {
     return Row(children: [
       Text(exercising,
           style: CustomTextStyles.titleMediumOnPrimaryContainerSemiBold_1
-              .copyWith(
-                  color: theme.colorScheme.onPrimaryContainer.withOpacity(1))),
+              .copyWith(color: theme.colorScheme.onPrimary.withOpacity(1))),
       CustomImageView(
           imagePath: ImageConstant.imgVectorOnprimarycontainer,
           height: 16.adaptSize,
@@ -921,8 +919,7 @@ class HomeScreen extends StatelessWidget {
                                 style: CustomTextStyles
                                     .titleMediumOnPrimaryContainerSemiBold_1
                                     .copyWith(
-                                        color: theme
-                                            .colorScheme.onPrimaryContainer
+                                        color: theme.colorScheme.onPrimary
                                             .withOpacity(1))),
                             // SizedBox(height: 12.v),
                             // Text(hipAbductors,
@@ -971,8 +968,7 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 8.h),
                   child: Text(time,
                       style: theme.textTheme.bodyLarge!.copyWith(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(1)))),
+                          color: theme.colorScheme.onPrimary.withOpacity(1)))),
               CustomImageView(
                   imagePath: ImageConstant.imgCalories16x16,
                   height: 16.adaptSize,
@@ -982,8 +978,7 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 8.h),
                   child: Text(kcalCounter,
                       style: theme.textTheme.bodyLarge!.copyWith(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(1))))
+                          color: theme.colorScheme.onPrimary.withOpacity(1))))
             ])
           ]),
         ),
@@ -1020,7 +1015,7 @@ class HomeScreen extends StatelessWidget {
                           style: CustomTextStyles
                               .titleMediumOnPrimaryContainerSemiBold_1
                               .copyWith(
-                                  color: theme.colorScheme.onPrimaryContainer
+                                  color: theme.colorScheme.onPrimary
                                       .withOpacity(1))),
                       CustomImageView(
                           imagePath: ImageConstant.imgVectorOnprimarycontainer,
@@ -1049,8 +1044,7 @@ class HomeScreen extends StatelessWidget {
                               style: CustomTextStyles
                                   .titleMediumOnPrimaryContainerSemiBold_1
                                   .copyWith(
-                                      color: theme
-                                          .colorScheme.onPrimaryContainer
+                                      color: theme.colorScheme.onPrimary
                                           .withOpacity(1))))
                     ]),
                     SizedBox(height: 8.v),
@@ -1090,7 +1084,7 @@ class HomeScreen extends StatelessWidget {
                                                                 .copyWith(
                                                                     color: theme
                                                                         .colorScheme
-                                                                        .onPrimaryContainer
+                                                                        .onPrimary
                                                                         .withOpacity(
                                                                             1))),
                                                         SizedBox(height: 12.v),
@@ -1167,7 +1161,7 @@ class HomeScreen extends StatelessWidget {
                                                       .copyWith(
                                                           color: theme
                                                               .colorScheme
-                                                              .onPrimaryContainer
+                                                              .onPrimary
                                                               .withOpacity(
                                                                   1)))),
                                           CustomImageView(
@@ -1188,7 +1182,7 @@ class HomeScreen extends StatelessWidget {
                                                       .copyWith(
                                                           color: theme
                                                               .colorScheme
-                                                              .onPrimaryContainer
+                                                              .onPrimary
                                                               .withOpacity(1))))
                                         ])
                                       ]))

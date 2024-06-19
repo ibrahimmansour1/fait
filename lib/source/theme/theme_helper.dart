@@ -158,8 +158,9 @@ class ColorSchemes {
       errorContainer: Color(0XFF4F67EB),
       onError: Color(0XFF58B8FB),
       onErrorContainer: Color(0XFF121212),
-      onPrimary: Color(0XFFFFFFFF),
-      onPrimaryContainer: Color.fromARGB(126, 0, 0, 0),
+      tertiary: Colors.black,
+      onPrimary: Color.fromARGB(255, 0, 0, 0),
+      onPrimaryContainer: Color(0XFFF4F4FC),
     ),
   );
 
@@ -173,6 +174,7 @@ class ColorSchemes {
       errorContainer: Color(0XFF4F67EB),
       onError: Color(0XFF58B8FB),
       onErrorContainer: Color(0XFF121212),
+      tertiary: Colors.white,
       onPrimary: Color(0XFF101533),
       onPrimaryContainer: Color(0XFF353767),
     ),

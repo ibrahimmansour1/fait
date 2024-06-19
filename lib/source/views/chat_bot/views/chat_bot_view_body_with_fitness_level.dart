@@ -84,6 +84,7 @@ class _ChatBotViewBodyWithFitnessLevelState
                       min: 1,
                       max: 5,
                       divisions: 4,
+                      inactiveColor: Colors.grey,
                       onChanged: (value) {
                         setState(() {
                           _powerValue = value;
@@ -120,6 +121,7 @@ class _ChatBotViewBodyWithFitnessLevelState
                             min: 1,
                             max: 5,
                             divisions: 4,
+                            inactiveColor: Colors.grey,
                             onChanged: (value) {
                               setState(() {
                                 _fitnessValue = value;

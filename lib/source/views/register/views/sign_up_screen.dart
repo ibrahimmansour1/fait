@@ -61,14 +61,8 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
               width: mediaQueryData.size.width,
               height: mediaQueryData.size.height,
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: const Alignment(0, 0.51),
-                      end: const Alignment(0.95, 0.66),
-                      colors: [
-                    theme.colorScheme.onPrimary,
-                    appTheme.blueGray800,
-                    appTheme.blueGray80001
-                  ])),
+                color: theme.colorScheme.onPrimaryContainer,
+              ),
               child: SingleChildScrollView(
                 child: Form(
                     key: _formKey,
@@ -88,7 +82,13 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
                                     radius: BorderRadius.circular(64.h)),
                                 SizedBox(height: 23.v),
                                 Text("Fitness AI Trainer",
-                                    style: theme.textTheme.headlineSmall)
+                                    style: theme.textTheme.headlineSmall!
+                                        .copyWith(
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.dark
+                                                    ? Colors.white
+                                                    : Colors.black)),
                               ])),
                           SizedBox(height: 80.v),
                           Container(
@@ -107,7 +107,14 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
                                                   top: 11.v, bottom: 7.v),
                                               child: Text("Add your photo",
                                                   style: CustomTextStyles
-                                                      .headlineSmallRobotoSemiBold)),
+                                                      .headlineSmallRobotoSemiBold!
+                                                      .copyWith(
+                                                          color: Theme.of(context)
+                                                                      .brightness ==
+                                                                  Brightness
+                                                                      .dark
+                                                              ? Colors.white
+                                                              : Colors.black))),
                                           InkWell(
                                             onTap: () => _imagePickerHandler
                                                 .showOptions(context),

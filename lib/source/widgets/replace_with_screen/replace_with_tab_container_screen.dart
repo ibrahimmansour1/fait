@@ -109,13 +109,12 @@ class ReplaceWithTabContainerScreenState
           child: TabBar(
               controller: tabviewController,
               labelPadding: EdgeInsets.zero,
-              labelColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+              labelColor: theme.colorScheme.onPrimary.withOpacity(1),
               labelStyle: TextStyle(
                   fontSize: 17.fSize,
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w600),
-              unselectedLabelColor:
-                  theme.colorScheme.onPrimaryContainer.withOpacity(1),
+              unselectedLabelColor: theme.colorScheme.onPrimary.withOpacity(1),
               unselectedLabelStyle: TextStyle(
                   fontSize: 17.fSize,
                   fontFamily: 'Roboto',

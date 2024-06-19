@@ -41,16 +41,20 @@ class _SelectYourWeightWidgetState extends State<SelectYourWeightWidget> {
             children: [
               Text(
                 weight!.toStringAsFixed(1),
-                style: const TextStyle(
-                    color: Colors.white,
+                style: TextStyle(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 40),
               ),
               SizedBox(width: 5.h),
-              const Text(
+              Text(
                 'kg',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 20),
               ),
@@ -76,7 +80,9 @@ class _SelectYourWeightWidgetState extends State<SelectYourWeightWidget> {
                 width: 2,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.grey,
                     borderRadius: BorderRadius.circular(5))),
           ),
         ],

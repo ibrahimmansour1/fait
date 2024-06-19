@@ -50,7 +50,7 @@ class CustomIconButton extends StatelessWidget {
             padding: padding ?? EdgeInsets.zero,
             decoration: decoration ??
                 BoxDecoration(
-                  color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+                  color: theme.colorScheme.onPrimary.withOpacity(1),
                   borderRadius: BorderRadius.circular(32.h),
                 ),
             child: child,
@@ -87,15 +87,15 @@ extension IconButtonStyleHelper on CustomIconButton {
         borderRadius: BorderRadius.circular(12.h),
       );
   static BoxDecoration get fillOnPrimaryContainerTL4 => BoxDecoration(
-        color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+        color: theme.colorScheme.onPrimary.withOpacity(1),
         borderRadius: BorderRadius.circular(4.h),
       );
   static BoxDecoration get fillOnPrimaryContainerTL9 => BoxDecoration(
-        color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+        color: theme.colorScheme.onPrimary.withOpacity(1),
         borderRadius: BorderRadius.circular(9.h),
       );
   static BoxDecoration get fillOnPrimaryContainerTL12 => BoxDecoration(
-        color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+        color: theme.colorScheme.onPrimary.withOpacity(1),
         borderRadius: BorderRadius.circular(12.h),
       );
   static BoxDecoration get fillDeepOrangeAF => BoxDecoration(

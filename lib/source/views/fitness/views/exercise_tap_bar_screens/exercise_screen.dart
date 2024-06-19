@@ -74,16 +74,15 @@ class ExerciseScreen extends StatelessWidget {
   }) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Text(setText,
-          style: CustomTextStyles.headlineLargeSemiBold.copyWith(
-              color: theme.colorScheme.onPrimaryContainer.withOpacity(1))),
+          style: CustomTextStyles.headlineLargeSemiBold
+              .copyWith(color: theme.colorScheme.onPrimary.withOpacity(1))),
       Padding(
           padding: EdgeInsets.only(top: 9.v),
           child: Text(setText1,
               style: CustomTextStyles
                   .headlineSmallRobotoOnPrimaryContainerRegular
                   .copyWith(
-                      color: theme.colorScheme.onPrimaryContainer
-                          .withOpacity(0.75))))
+                      color: theme.colorScheme.onPrimary.withOpacity(0.75))))
     ]);
   }
 }

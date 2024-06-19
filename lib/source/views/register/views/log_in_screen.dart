@@ -32,14 +32,8 @@ class LogInScreen extends StatelessWidget {
               width: mediaQueryData.size.width,
               height: mediaQueryData.size.height,
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: const Alignment(0, 0.51),
-                      end: const Alignment(0.95, 0.66),
-                      colors: [
-                    theme.colorScheme.onPrimary,
-                    appTheme.blueGray800,
-                    appTheme.blueGray80001
-                  ])),
+                color: theme.colorScheme.onPrimaryContainer,
+              ),
               child: SingleChildScrollView(
                 child: Form(
                     key: _formKey,
@@ -58,7 +52,13 @@ class LogInScreen extends StatelessWidget {
                                     radius: BorderRadius.circular(64.h)),
                                 SizedBox(height: 23.v),
                                 Text("Fitness AI Trainer",
-                                    style: CustomTextStyles.headlineSmallAquire)
+                                    style: CustomTextStyles.headlineSmallAquire!
+                                        .copyWith(
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.dark
+                                                    ? Colors.white
+                                                    : Colors.black))
                               ])),
                           SizedBox(height: 96.v),
                           _buildFilledInfoUnfilled(context),
@@ -85,33 +85,32 @@ class LogInScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildFilledInfoUnfilled(BuildContext context) {
     return Container(
-        decoration: AppDecoration.gradientOnPrimaryToBlueGray,
         child: Column(children: [
-          CustomTextFormField(
-              controller: userNameController,
-              hintText: "E-mail or User name",
-              textInputType: TextInputType.emailAddress,
-              borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
-              fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1)),
-          SizedBox(height: 16.v),
-          CustomTextFormField(
-              controller: passwordController,
-              hintText: "Password",
-              textInputAction: TextInputAction.done,
-              textInputType: TextInputType.visiblePassword,
-              isPassword: true,
-              borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
-              fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1)),
-          SizedBox(height: 49.v),
-          CustomElevatedButton(
-              height: 48.v,
-              text: "Log in",
-              buttonStyle: CustomButtonStyles.fillPrimary,
-              buttonTextStyle: CustomTextStyles.headlineSmallRobotoSemiBold,
-              onPressed: () {
-                onTapLogIn(context);
-              })
-        ]));
+      CustomTextFormField(
+          controller: userNameController,
+          hintText: "E-mail or User name",
+          textInputType: TextInputType.emailAddress,
+          borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
+          fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1)),
+      SizedBox(height: 16.v),
+      CustomTextFormField(
+          controller: passwordController,
+          hintText: "Password",
+          textInputAction: TextInputAction.done,
+          textInputType: TextInputType.visiblePassword,
+          isPassword: true,
+          borderDecoration: TextFormFieldStyleHelper.fillOnPrimaryContainer,
+          fillColor: theme.colorScheme.onPrimaryContainer.withOpacity(1)),
+      SizedBox(height: 49.v),
+      CustomElevatedButton(
+          height: 48.v,
+          text: "Log in",
+          buttonStyle: CustomButtonStyles.fillPrimary,
+          buttonTextStyle: CustomTextStyles.headlineSmallRobotoSemiBold,
+          onPressed: () {
+            onTapLogIn(context);
+          })
+    ]));
   }
 
   /// Navigates to the home2AfterLoginScreen when the action is triggered.

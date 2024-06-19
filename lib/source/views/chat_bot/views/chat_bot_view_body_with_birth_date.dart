@@ -144,8 +144,12 @@ class _ChatBotViewBodyWithBirthDateState
                             CustomFutureAnimatedOpacityWidget(
                               waitingDurationInMilliSeconds: 1000,
                               child: Text('  My Birthday is:',
-                                  style: theme.textTheme.bodyLarge!
-                                      .copyWith(fontSize: 32.fSize)),
+                                  style: theme.textTheme.bodyLarge!.copyWith(
+                                      fontSize: 32.fSize,
+                                      color: Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Colors.white
+                                          : Colors.black)),
                             ),
                             CustomFutureAnimatedOpacityWidget(
                               waitingDurationInMilliSeconds: 2000,

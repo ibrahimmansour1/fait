@@ -427,14 +427,14 @@ class RecipeInfoScreen extends StatelessWidget {
               child: Text(protein,
                   style: CustomTextStyles.titleMediumOnPrimaryContainer18
                       .copyWith(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75)))),
+                          color:
+                              theme.colorScheme.onPrimary.withOpacity(0.75)))),
           Padding(
             padding: EdgeInsets.only(top: 3.v),
             child: Text(
               weight,
               style: CustomTextStyles.titleMedium18.copyWith(
-                color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+                color: theme.colorScheme.onPrimary.withOpacity(1),
               ),
             ),
           ),
