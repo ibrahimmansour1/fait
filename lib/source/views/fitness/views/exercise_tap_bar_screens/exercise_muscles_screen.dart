@@ -28,6 +28,11 @@ class _ExerciseMusclesScreenState extends ConsumerState<ExerciseMusclesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Just for testing
+    if (ref.watch(workoutProvider).workoutMusclesResponse.message ==
+        "No data found") {
+      ref.read(workoutProvider).generateMusclesDummyData();
+    }
     final workoutMusclesViewModel =
         ref.watch(workoutProvider).workoutMusclesResponse;
     return workoutMusclesViewModel.status != Status.completed
@@ -77,6 +82,7 @@ class _ExerciseMusclesScreenState extends ConsumerState<ExerciseMusclesScreen> {
       width: mediaQueryData.size.width * 0.4,
       child: ListView.separated(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => SizedBox(height: 10.h),
           separatorBuilder: (context, index) {
             return MuscleWidget(muscleModel: muscles[index]);

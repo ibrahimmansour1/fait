@@ -64,6 +64,19 @@ class WorkoutNotifier extends ChangeNotifier {
     });
     return workoutMusclesResponse;
   }
+
+  // TODO: Just for testing
+  generateMusclesDummyData() {
+    workoutMusclesResponse = ApiResponse.completed(
+      List.generate(
+        10,
+        (index) => index % 2 == 0
+            ? MuscleModel(name: "Muscle $index", isMain: true)
+            : MuscleModel(name: "Muscle $index", isMain: false),
+      ),
+    );
+    notifyListeners();
+  }
 }
 
 class WorkoutExerciseNotifier extends ChangeNotifier {
