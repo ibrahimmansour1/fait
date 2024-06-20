@@ -10,6 +10,7 @@ import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_goal.da
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_tools_detection.dart';
 import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_workout_days.dart';
+import 'package:fait/source/views/diet/views/diet_info_screen.dart';
 
 import 'package:fait/source/views/fitness/views/open_camera_screen/open_camera_screen.dart';
 import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
@@ -71,6 +72,10 @@ class AppRoutes {
   static const String openCameraScreen = '/open_camera_screen';
   static const String wrongExercisesStepsScreen =
       '/wrong_exercises_steps_screen';
+
+  static const String dietInfoScreen =
+      '/diet_info_screen';
+
 }
 
 class RouteGenerator {
@@ -170,6 +175,9 @@ class RouteGenerator {
       case AppRoutes.wrongExercisesStepsScreen:
         return MaterialPageRoute(
             builder: (context) => const WrongExercisesStepScreen());
+      case AppRoutes.dietInfoScreen:
+        return MaterialPageRoute(
+            builder: (context) => const DietInfoScreen());
 
       // default:
       //   return MaterialPageRoute(
