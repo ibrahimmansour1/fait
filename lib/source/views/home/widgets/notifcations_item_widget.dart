@@ -30,6 +30,7 @@ class NotifcationsItemWidget extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 14.v),
               decoration: AppDecoration.fillBluegray80004.copyWith(
                 borderRadius: BorderRadiusStyle.roundedBorder8,
+                color: theme.colorScheme.onPrimaryContainer,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -53,13 +54,17 @@ class NotifcationsItemWidget extends StatelessWidget {
                         padding: EdgeInsets.only(left: 2.h),
                         child: Text(
                           "lbl_drink_more".tr,
-                          style: theme.textTheme.titleLarge,
+                          style: theme.textTheme.titleLarge!.copyWith(
+                            color: theme.colorScheme.tertiary,
+                          ),
                         ),
                       ),
                       SizedBox(height: 23.v),
                       Text(
                         "msg_you_drink_less_than".tr,
-                        style: CustomTextStyles.titleMediumSemiBold,
+                        style: CustomTextStyles.titleMediumSemiBold.copyWith(
+                          color: theme.colorScheme.tertiary,
+                        ),
                       ),
                     ],
                   ),

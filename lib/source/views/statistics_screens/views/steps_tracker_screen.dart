@@ -30,15 +30,17 @@ class StepsTrackerScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 24.v),
             child: Column(
               children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 24.v,
-                  width: 16.h,
+                Align(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 16.h),
-                  onTap: () {
-                    onTapImgArrowLeft(context);
-                  },
+                  child: InkWell(
+                    onTap: () {
+                      onTapImgArrowLeft(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: theme.colorScheme.tertiary,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 27.v),
                 SizedBox(height: 24.v),

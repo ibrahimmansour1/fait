@@ -8,8 +8,10 @@ class _MyAvatarSectionWidget extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       padding: EdgeInsets.symmetric(horizontal: 1.h, vertical: 9.v),
-      decoration: AppDecoration.gradientGrayToGray
-          .copyWith(borderRadius: BorderRadiusStyle.customBorderTL24),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.onPrimaryContainer,
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: Padding(
         padding: const EdgeInsetsDirectional.only(start: 32, bottom: 16),
         child: Column(

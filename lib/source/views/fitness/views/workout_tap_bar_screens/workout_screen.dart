@@ -12,8 +12,12 @@ import 'package:intl/intl.dart';
 
 // ignore_for_file: must_be_immutable
 class WorkoutScreen extends ConsumerStatefulWidget {
-  final int fitnessPlanId;
-  const WorkoutScreen({super.key, required this.fitnessPlanId});
+  final List<FitnessPlanWorkoutModel> workouts;
+  // final int fitnessPlanId;
+  const WorkoutScreen({
+    required this.workouts,
+    super.key,
+  });
 
   @override
   ConsumerState<WorkoutScreen> createState() => _WorkoutScreenState();
@@ -21,17 +25,18 @@ class WorkoutScreen extends ConsumerStatefulWidget {
 
 class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref
-          .watch(fitnessPlanProvider)
-          .getFitnessPlanWorkouts(widget.fitnessPlanId);
-    });
-    super.initState();
-  }
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //     ref
+  //         .watch(fitnessPlanProvider)
+  //         .getFitnessPlanWorkouts(widget.fitnessPlanId);
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+
     // TODO: Just for testing
     if (ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse.message ==
         "No data found") {
@@ -51,40 +56,18 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 22.h),
                     child: Column(
                       children: [
-                        _buildChart(context),
-                        SizedBox(height: 31.v),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Row(
-                            children: [
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgTelevisionPrimary,
-                                  height: 24.adaptSize,
-                                  width: 24.adaptSize,
-                                  margin:
-                                      EdgeInsets.only(top: 1.v, bottom: 3.v)),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10.h),
-                                child: Text("Current Workout",
-                                    style: CustomTextStyles
-                                        .headlineSmallRobotoSemiBold),
-                              ),
-                            ],
-                          ),
+                        CustomImageView(
+                            imagePath: ImageConstant.imgTelevisionPrimary,
+                            height: 24.adaptSize,
+                            width: 24.adaptSize,
+                            margin: EdgeInsets.only(top: 1.v, bottom: 3.v)),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.h),
+                          child: Text("Current Workout",
+                              style:
+                                  CustomTextStyles.headlineSmallRobotoSemiBold),
                         ),
-                        SizedBox(height: 32.v),
-                        WorkoutCard(
-                          onTap: () {
-                            onTapWorkoutCard(context);
-                          },
-                          imagePath:
-                              ImageConstant.imgThumbsUpOnprimarycontainer,
-                          title: "Full Body A",
-                          date: "Nov 16",
-                          exercises: "3 exercises",
-                          textKg: "3 281 kg",
-                          duration: "32 min",
-                        ),
+
                         SizedBox(height: 32.v),
                         Align(
                             alignment: Alignment.centerLeft,
@@ -132,10 +115,64 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
                       ],
                     ),
                   ),
-                ),
+                  SizedBox(height: 32.v),
+                  WorkoutCard(
+                    onTap: () {
+                      onTapWorkoutCard(context);
+                    },
+                    imagePath: ImageConstant.imgThumbsUpOnprimarycontainer,
+                    title: "Pull/Push/Press/Core 2",
+                    date: "June 9",
+                    exercises: "9 exercises",
+                    textKg: "3,5 kg",
+                    duration: "67 min",
+                  ),
+                  SizedBox(height: 32.v),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Program Workouts",
+                          style: CustomTextStyles.headlineSmallRobotoSemiBold)),
+                  SizedBox(height: 30.v),
+                  WorkoutCard(
+                    onTap: () {
+                      onTapWorkoutCard(context);
+                    },
+                    imagePath: ImageConstant.imgThumbsUpOnprimarycontainer,
+                    title: "Pull/Push/Press/Core 2",
+                    date: "June 9",
+                    exercises: "9 exercises",
+                    textKg: "3,5 kg",
+                    duration: "67 min",
+                  ),
+                  SizedBox(height: 24.v),
+                  // ListView.separated(
+                  //     shrinkWrap: true,
+                  //     itemBuilder: (context, index) {
+                  //       final FitnessPlanWorkoutModel workout =
+                  //           widget.workouts[index];
+                  //       return WorkoutCard(
+                  //         onTap: () {
+                  //           onTapWorkoutCard(context);
+                  //         },
+                  //         imagePath: ImageConstant.imgInbox,
+                  //         title: workout.name!,
+                  //         date: DateFormat('MMM dd')
+                  //             .format(DateTime.parse(workout.playDate!)),
+                  //         exercises: "${workout.numberOfExercises} exercise",
+                  //         textKg: "${workout.weightLifted} kg",
+                  //         duration: "${workout.durationInMinutes} min",
+                  //       );
+                  //     },
+                  //     separatorBuilder: (context, index) =>
+                  //         SizedBox(height: 24.v),
+                  //     itemCount: widget.workouts.length),
+                ],
               ),
-            ],
-          );
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   /// Section Widget
@@ -159,14 +196,14 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
           Text(
             dynamicText1,
             style: CustomTextStyles.titleMediumBlack900.copyWith(
-              color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+              color: theme.colorScheme.onPrimary.withOpacity(1),
             ),
           ),
           SizedBox(height: 7.v),
           Text(
             dynamicText2,
             style: CustomTextStyles.bodyLargeOnPrimaryContainer_2.copyWith(
-              color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+              color: theme.colorScheme.onPrimary.withOpacity(0.75),
             ),
           ),
         ],

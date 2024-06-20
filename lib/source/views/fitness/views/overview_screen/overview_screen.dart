@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/fitness/views/my_activity_screen.dart';
 import 'package:fait/source/views/fitness/widgets/overview_percentages_widget.dart';
 import 'package:fait/source/views/fitness/widgets/program_card_info.dart';
@@ -96,6 +97,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                     bottom: 30.v,
                     left: 0.h,
                     right: 0.h,
+
                     child: GestureDetector(
                       onVerticalDragUpdate: (details) {
                         int sensitivity = 8;

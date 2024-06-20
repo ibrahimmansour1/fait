@@ -24,9 +24,9 @@ class ExercisesFavouritesScreen extends StatelessWidget {
                     alignment: AlignmentDirectional.centerStart,
                     child: IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios_new,
-                        color: Colors.white,
+                        color: theme.colorScheme.tertiary,
                         size: 24,
                       ),
                     ),

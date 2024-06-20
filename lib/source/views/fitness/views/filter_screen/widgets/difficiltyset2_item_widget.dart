@@ -21,7 +21,7 @@ class Difficiltyset2ItemWidget extends StatelessWidget {
       label: Text(
         "Beginner",
         style: TextStyle(
-          color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+          color: theme.colorScheme.onPrimary.withOpacity(1),
           fontSize: 18.fSize,
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w400,

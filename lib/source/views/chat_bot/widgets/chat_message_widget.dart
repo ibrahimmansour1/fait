@@ -1,7 +1,12 @@
+import 'package:fait/source/providers/theme/theme_provider.dart';
+import 'package:fait/source/theme/extended_color_schemes.dart';
+import 'package:fait/source/theme/theme_helper.dart';
+import 'package:fait/utils/app_export.dart';
 import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChatMessageWidget extends StatefulWidget {
+class ChatMessageWidget extends ConsumerStatefulWidget {
   final String message;
   final bool isReceiver;
   // final int? timeInSeconds;
@@ -12,12 +17,15 @@ class ChatMessageWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ChatMessageWidget> createState() => _ChatMessageWidgetState();
+  ConsumerState<ChatMessageWidget> createState() => _ChatMessageWidgetState();
 }
 
-class _ChatMessageWidgetState extends State<ChatMessageWidget> {
+class _ChatMessageWidgetState extends ConsumerState<ChatMessageWidget> {
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.read(themeNotifierProvider);
+    final senderColor = ColorSchemes.senderMessage;
+    final receiverColor = ColorSchemes.receiverMessage;
     return Align(
       alignment:
           widget.isReceiver ? Alignment.centerRight : Alignment.centerLeft,
@@ -26,9 +34,7 @@ class _ChatMessageWidgetState extends State<ChatMessageWidget> {
           padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.v),
           margin: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.v),
           decoration: BoxDecoration(
-            color: widget.isReceiver
-                ? const Color(0xFF353767)
-                : const Color(0xFF8394CA),
+            color: widget.isReceiver ? receiverColor : senderColor,
             borderRadius: widget.isReceiver
                 ? const BorderRadius.only(
                     topLeft: Radius.circular(16),
@@ -47,9 +53,11 @@ class _ChatMessageWidgetState extends State<ChatMessageWidget> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.message,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
-                color: Colors.white,
+                color: !widget.isReceiver
+                    ? Colors.white
+                    : ThemeHelper().getThemeData().colorScheme.tertiary,
               ),
             ),
           ),

@@ -1,15 +1,12 @@
-import 'package:fait/source/views/fitness/views/exercise_info_screen.dart';
+import 'package:fait/source/theme/theme_helper.dart';
 import 'package:fait/source/views/fitness/views/exercises_favourites_screen.dart';
-import 'package:fait/source/views/fitness/views/filter_screen/exercises_filter_screen.dart';
-import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../utils/app_export.dart';
-import '../../../widgets/custom_search_view.dart';
 import '../../../widgets/info_popup.dart';
+import '../widgets/exercise_tab_bar_widget.dart';
 import '../widgets/exercises_program_widget.dart';
 
 class FitnessScreen extends StatelessWidget {
@@ -54,7 +51,7 @@ class FitnessScreen extends StatelessWidget {
                               : 'Select Exercises',
                           style: TextStyle(
                             fontSize: 32.fSize,
-                            color: Colors.white,
+                            color: theme.colorScheme.tertiary,
                           ),
                         ),
                         InkWell(
@@ -137,8 +134,9 @@ class FitnessScreen extends StatelessWidget {
                                           style: CustomTextStyles
                                               .headlineSmallRoboto
                                               .copyWith(
-                                                  fontWeight:
-                                                      FontWeight.normal),
+                                            fontWeight: FontWeight.normal,
+                                            color: theme.colorScheme.background,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -159,8 +157,9 @@ class FitnessScreen extends StatelessWidget {
                                           style: CustomTextStyles
                                               .headlineSmallRoboto
                                               .copyWith(
-                                                  fontWeight:
-                                                      FontWeight.normal),
+                                            fontWeight: FontWeight.normal,
+                                            color: theme.colorScheme.background,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -180,46 +179,8 @@ class FitnessScreen extends StatelessWidget {
                                   physics: const NeverScrollableScrollPhysics(),
                                   controller: tabController,
                                   children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 20.h),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                                child: CustomSearchView(
-                                                    autofocus: false,
-                                                    controller:
-                                                        searchController,
-                                                    hintText: "Search")),
-                                            const SizedBox(width: 8),
-                                            InkWell(
-                                              onTap: () {
-                                                showModalBottomSheet(
-                                                    context: context,
-                                                    useRootNavigator: true,
-                                                    isScrollControlled: true,
-                                                    builder: (_) =>
-                                                        ExercisesFilterScreen());
-                                              },
-                                              child: const Icon(
-                                                Icons.filter_alt_rounded,
-                                                color: Colors.white,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(height: 20.h),
-                                        Text("Exercises",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 32.fSize,
-                                            )),
-                                        SizedBox(height: 20.h),
-                                        const ExerciseItemWidget(),
-                                      ],
-                                    ),
+                                    ExerciseTabBarWidget(
+                                        searchController: searchController),
                                     const ExercisesProgramWidget(),
                                   ],
                                 ),
@@ -232,36 +193,6 @@ class FitnessScreen extends StatelessWidget {
                   ],
                 ),
               );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ExerciseItemWidget extends StatelessWidget {
-  const ExerciseItemWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 6,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: ExerciseCardWidget(
-            replacable: false,
-            onTap: () {
-              showModalBottomSheet(
-                  context: context,
-                  useRootNavigator: true,
-                  isScrollControlled: true,
-                  builder: (_) => ExerciseInfoScreen(
-                        tryIt: true,
-                      ));
             },
           ),
         ),

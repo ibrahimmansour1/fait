@@ -160,7 +160,7 @@ class AppDecoration {
         ),
       );
   static BoxDecoration get outlinePrimary2 => BoxDecoration(
-        color: appTheme.blueGray80004,
+        color: theme.colorScheme.onPrimaryContainer,
         border: Border(
           bottom: BorderSide(
             color: theme.colorScheme.primary,
@@ -169,10 +169,10 @@ class AppDecoration {
         ),
       );
   static BoxDecoration get outlinePrimary3 => BoxDecoration(
-        color: appTheme.blueGray900,
+        color: theme.colorScheme.onPrimaryContainer,
         border: Border(
           bottom: BorderSide(
-            color: theme.colorScheme.primary.withOpacity(0.25),
+            color: theme.colorScheme.background,
             width: 2.h,
           ),
         ),

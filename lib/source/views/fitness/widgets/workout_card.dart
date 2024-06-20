@@ -69,8 +69,7 @@ class WorkoutCard extends StatelessWidget {
                         width: 5.adaptSize,
                         margin: EdgeInsets.only(top: 7.v, bottom: 8.v),
                         decoration: BoxDecoration(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75),
+                          color: theme.colorScheme.onPrimary.withOpacity(0.75),
                           borderRadius: BorderRadius.circular(2.h),
                         ),
                       ),
@@ -85,8 +84,7 @@ class WorkoutCard extends StatelessWidget {
                         width: 5.adaptSize,
                         margin: EdgeInsets.only(top: 7.v, bottom: 8.v),
                         decoration: BoxDecoration(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75),
+                          color: theme.colorScheme.onPrimary.withOpacity(0.75),
                           borderRadius: BorderRadius.circular(2.h),
                         ),
                       ),

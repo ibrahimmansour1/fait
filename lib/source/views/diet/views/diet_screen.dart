@@ -1,18 +1,13 @@
 import 'package:fait/source/views/diet/views/bookmark_screen.dart';
-import 'package:fait/source/views/fitness/views/exercises_favourites_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../utils/app_export.dart';
 import '../../../../utils/transitions/fade_transition.dart';
-import '../../../widgets/custom_search_view.dart';
 import '../../../widgets/info_popup.dart';
 import '../widgets/diet_program_widget.dart';
-import '../widgets/recipe_card_widget.dart';
-import 'recipe_info_screen.dart';
-import 'recipes_filter_screen.dart';
+import '../widgets/recipes_widget.dart';
 
 class DietScreen extends StatelessWidget {
   DietScreen({super.key});
@@ -54,7 +49,7 @@ class DietScreen extends StatelessWidget {
                           isProgramsTab ? 'Diet Program' : 'Select Recipes',
                           style: TextStyle(
                             fontSize: 32.fSize,
-                            color: Colors.white,
+                            color: theme.colorScheme.tertiary,
                           ),
                         ),
                         InkWell(
@@ -181,54 +176,8 @@ class DietScreen extends StatelessWidget {
                                   physics: const NeverScrollableScrollPhysics(),
                                   controller: tabController,
                                   children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 20.h),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                                child: CustomSearchView(
-                                                    autofocus: false,
-                                                    controller:
-                                                        searchController,
-                                                    hintText: "Search")),
-                                            const SizedBox(width: 8),
-                                            InkWell(
-                                              onTap: () {
-                                                showModalBottomSheet(
-                                                    context: context,
-                                                    useRootNavigator: true,
-                                                    isScrollControlled: true,
-                                                    builder:
-                                                        (context) => Padding(
-                                                              padding: EdgeInsets.only(
-                                                                  bottom: MediaQuery.of(
-                                                                          context)
-                                                                      .viewInsets
-                                                                      .bottom),
-                                                              child:
-                                                                  RecipesFilterScreen(),
-                                                            ));
-                                              },
-                                              child: const Icon(
-                                                Icons.filter_alt_rounded,
-                                                color: Colors.white,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(height: 20.h),
-                                        Text("Recipes",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 32.fSize,
-                                            )),
-                                        SizedBox(height: 20.h),
-                                        const RecipeItemWidget(),
-                                      ],
-                                    ),
+                                    RecipesWidget(
+                                        searchController: searchController),
                                     const DietProgramWidget(),
                                   ],
                                 ),
@@ -241,33 +190,6 @@ class DietScreen extends StatelessWidget {
                   ],
                 ),
               );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class RecipeItemWidget extends StatelessWidget {
-  const RecipeItemWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 6,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: RecipeCardWidget(
-            onTap: () {
-              showModalBottomSheet(
-                  context: context,
-                  useRootNavigator: true,
-                  isScrollControlled: true,
-                  builder: (_) => const RecipeInfoScreen());
             },
           ),
         ),

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../utils/app_export.dart';
 import '../../../../utils/transitions/fade_transition.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../views/diet_plans_screen.dart';
 
-class DietProgramWidget extends StatelessWidget {
+class DietProgramWidget extends ConsumerWidget {
   const DietProgramWidget({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,7 +22,7 @@ class DietProgramWidget extends StatelessWidget {
           'My Program',
           style: TextStyle(
             fontSize: 32.fSize,
-            color: Colors.white,
+            color: theme.colorScheme.tertiary,
           ),
         ),
         const SizedBox(height: 20),
@@ -125,7 +128,7 @@ class DietProgramWidget extends StatelessWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              color: const Color(0xff17D1E0),
+                              color: themeHelper.themeColor().blueGray80004,
                               borderRadius: BorderRadius.circular(35)),
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
