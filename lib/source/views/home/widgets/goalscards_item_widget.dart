@@ -20,6 +20,7 @@ class GoalscardsItemWidget extends StatelessWidget {
         ),
         decoration: AppDecoration.fillBluegray80004.copyWith(
           borderRadius: BorderRadiusStyle.roundedBorder22,
+          color: theme.colorScheme.onPrimaryContainer,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Opacity(
-                      opacity: 0.6,
+                      opacity: 0.8,
                       child: Text("msg_sat_nov_1_2023".tr,
                           style:
                               CustomTextStyles.bodyLargeOnPrimaryContainer_1)),
@@ -73,7 +73,9 @@ class HomeScreen extends StatelessWidget {
                                             .fillBluegray80004
                                             .copyWith(
                                                 borderRadius: BorderRadiusStyle
-                                                    .roundedBorder8),
+                                                    .roundedBorder8,
+                                                color: theme.colorScheme
+                                                    .onPrimaryContainer),
                                         child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
@@ -129,9 +131,11 @@ class HomeScreen extends StatelessWidget {
                                             decoration: AppDecoration
                                                 .fillBluegray80004
                                                 .copyWith(
-                                                    borderRadius:
-                                                        BorderRadiusStyle
-                                                            .roundedBorder12),
+                                              borderRadius: BorderRadiusStyle
+                                                  .roundedBorder12,
+                                              color: theme.colorScheme
+                                                  .onPrimaryContainer,
+                                            ),
                                             child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -148,7 +152,12 @@ class HomeScreen extends StatelessWidget {
                                                             Text("lbl_450".tr,
                                                                 style: theme
                                                                     .textTheme
-                                                                    .titleLarge),
+                                                                    .titleLarge!
+                                                                    .copyWith(
+                                                                  color: theme
+                                                                      .colorScheme
+                                                                      .tertiary,
+                                                                )),
                                                             SizedBox(
                                                                 height: 12.v),
                                                             Text("lbl_steps".tr,
@@ -178,9 +187,11 @@ class HomeScreen extends StatelessWidget {
                                             decoration: AppDecoration
                                                 .fillBluegray80004
                                                 .copyWith(
-                                                    borderRadius:
-                                                        BorderRadiusStyle
-                                                            .roundedBorder12),
+                                              borderRadius: BorderRadiusStyle
+                                                  .roundedBorder12,
+                                              color: theme.colorScheme
+                                                  .onPrimaryContainer,
+                                            ),
                                             child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -194,7 +205,12 @@ class HomeScreen extends StatelessWidget {
                                                         Text("lbl_325".tr,
                                                             style: theme
                                                                 .textTheme
-                                                                .titleLarge),
+                                                                .titleLarge!
+                                                                .copyWith(
+                                                              color: theme
+                                                                  .colorScheme
+                                                                  .tertiary,
+                                                            )),
                                                         SizedBox(height: 10.v),
                                                         Text("lbl_calories".tr,
                                                             style: CustomTextStyles
@@ -248,12 +264,14 @@ class HomeScreen extends StatelessWidget {
     return CustomAppBar(
         height: 82.v,
         leadingWidth: 68.h,
-        leading: AppbarLeadingImage(
-          imagePath: ImageConstant.imgMenuIcon,
-          margin: EdgeInsets.only(left: 32.h, top: 29.v, bottom: 29.v),
+        leading: InkWell(
           onTap: () {
             Scaffold.of(context).openDrawer();
           },
+          child: Icon(
+            Icons.menu_rounded,
+            color: theme.colorScheme.tertiary,
+          ),
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -327,8 +345,10 @@ class HomeScreen extends StatelessWidget {
         child: Container(
             // margin: EdgeInsets.only(right: 51.h),
             padding: EdgeInsets.all(16.h),
-            decoration: AppDecoration.fillBluegray80004
-                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
+            decoration: AppDecoration.fillBluegray80004.copyWith(
+              borderRadius: BorderRadiusStyle.roundedBorder12,
+              color: theme.colorScheme.onPrimaryContainer,
+            ),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -545,9 +565,11 @@ class HomeScreen extends StatelessWidget {
                                             decoration: AppDecoration
                                                 .fillBluegray80004
                                                 .copyWith(
-                                                    borderRadius:
-                                                        BorderRadiusStyle
-                                                            .roundedBorder22),
+                                              borderRadius: BorderRadiusStyle
+                                                  .roundedBorder22,
+                                              color: theme.colorScheme
+                                                  .onPrimaryContainer,
+                                            ),
                                             child: type == "running"
                                                 ? _buildRunningInfoWidget()
                                                 : type == "meal"
@@ -592,7 +614,10 @@ class HomeScreen extends StatelessWidget {
                   style:
                       CustomTextStyles.titleMediumOnPrimaryContainerSemiBold_1),
               SizedBox(height: 6.v),
-              Text("lbl_kilometers".tr, style: theme.textTheme.bodyMedium)
+              Text("lbl_kilometers".tr,
+                  style: theme.textTheme.bodyMedium!.copyWith(
+                    color: theme.colorScheme.tertiary,
+                  ))
             ])),
         Padding(
             padding: EdgeInsets.symmetric(vertical: 2.v),
@@ -616,7 +641,10 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 6.v),
               Align(
                   alignment: Alignment.center,
-                  child: Text("lbl_min".tr, style: theme.textTheme.bodyMedium))
+                  child: Text("lbl_min".tr,
+                      style: theme.textTheme.bodyMedium!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      )))
             ])),
         Padding(
             padding: EdgeInsets.only(right: 21.h),
@@ -631,7 +659,10 @@ class HomeScreen extends StatelessWidget {
                   style:
                       CustomTextStyles.titleMediumOnPrimaryContainerSemiBold_1),
               SizedBox(height: 6.v),
-              Text("lbl_speed".tr, style: theme.textTheme.bodyMedium)
+              Text("lbl_speed".tr,
+                  style: theme.textTheme.bodyMedium!.copyWith(
+                    color: theme.colorScheme.tertiary,
+                  ))
             ]))
       ]),
     );

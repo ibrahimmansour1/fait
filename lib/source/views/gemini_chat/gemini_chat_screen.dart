@@ -93,7 +93,9 @@ class _MyHomePageState extends ConsumerState<GeminiChatScreen> {
                 const SizedBox(width: 10),
                 Text(
                   'Gemini Gpt',
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      ),
                 ),
               ],
             ),
@@ -142,14 +144,19 @@ class _MyHomePageState extends ConsumerState<GeminiChatScreen> {
                       child: MarkdownBody(
                         data: message.text,
                         styleSheet: MarkdownStyleSheet(
-                          p: message.isUser
+                          p: !message.isUser
                               ? Theme.of(context)
                                   .textTheme
                                   .titleMedium!
                                   .copyWith(
-                                    color: Colors.white,
+                                    color: theme.colorScheme.tertiary,
                                   )
-                              : Theme.of(context).textTheme.titleMedium,
+                              : Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    color: theme.colorScheme.background,
+                                  ),
                         ),
                       ),
                     ),
@@ -179,7 +186,9 @@ class _MyHomePageState extends ConsumerState<GeminiChatScreen> {
                   Expanded(
                     child: TextField(
                       controller: _controller,
-                      style: Theme.of(context).textTheme.titleSmall,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            color: theme.colorScheme.tertiary,
+                          ),
                       decoration: InputDecoration(
                         hintText: 'Write your message',
                         hintStyle: Theme.of(context)

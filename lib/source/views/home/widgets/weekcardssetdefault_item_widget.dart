@@ -26,13 +26,12 @@ class WeekcardssetdefaultItemWidget extends StatelessWidget {
           horizontal: 25.h,
           vertical: 17.v,
         ),
-        decoration: selected
-            ? AppDecoration.fillPrimary.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder12,
-              )
-            : AppDecoration.fillBluegray80004.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder12,
-              ),
+        decoration: BoxDecoration(
+          color: selected
+              ? theme.colorScheme.primary
+              : theme.colorScheme.onPrimaryContainer,
+          borderRadius: BorderRadius.circular(10.h),
+        ),
         width: 90.h,
         child: Column(
           mainAxisSize: MainAxisSize.min,

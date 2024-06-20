@@ -31,7 +31,9 @@ class DietPlansScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 26.h, vertical: 32.v),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadiusStyle.customBorderTL24),
+                          borderRadius: BorderRadiusStyle.customBorderTL24,
+                          color: theme.colorScheme.onPrimaryContainer,
+                        ),
                         child: ListView(children: [
                           SizedBox(height: SizeUtils.height * .28),
                           _buildMealSection(
@@ -137,8 +139,10 @@ class DietPlansScreen extends StatelessWidget {
       int? totalCalories}) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 32.h, vertical: 30.v),
-        decoration: AppDecoration.fillBluegray80004
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+        decoration: AppDecoration.fillBluegray80004.copyWith(
+          borderRadius: BorderRadiusStyle.roundedBorder8,
+          color: theme.colorScheme.onPrimaryContainer,
+        ),
         child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -180,7 +184,9 @@ class DietPlansScreen extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 32.v),
-        decoration: AppDecoration.fillBluegray80004,
+        decoration: AppDecoration.fillBluegray80004.copyWith(
+          color: theme.colorScheme.onPrimaryContainer,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,18 +196,24 @@ class DietPlansScreen extends StatelessWidget {
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomImageView(
-                          imagePath: ImageConstant.imgArrowLeft,
-                          height: 24.v,
-                          width: 16.h,
-                          margin: EdgeInsets.only(bottom: 24.v),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: InkWell(
                           onTap: () {
                             onTapImgArrowLeft(context);
-                          }),
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                            color: theme.colorScheme.tertiary,
+                          ),
+                        ),
+                      ),
                       Padding(
                           padding: EdgeInsets.only(left: 102.h, top: 10.v),
                           child: Text("Diet plan",
-                              style: theme.textTheme.headlineLarge))
+                              style: theme.textTheme.headlineLarge!.copyWith(
+                                color: theme.colorScheme.tertiary,
+                              )))
                     ])),
             SizedBox(height: 29.v),
             _buildTopCalendar(context),

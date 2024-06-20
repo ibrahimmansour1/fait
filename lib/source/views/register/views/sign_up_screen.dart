@@ -251,9 +251,9 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
       context,
       FadePageRouteBuilder(
         // TODO: replace with chat bot view
-        // page: const HomeView(),
+        page: const HomeView(),
         // TODO: replace this after linking sign up
-        page: const ChatBotView(),
+        // page: const ChatBotView(),
         duration: const Duration(milliseconds: 800),
       ),
     );

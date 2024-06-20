@@ -1,11 +1,8 @@
 import 'package:fait/source/models/fitness/exercise_response_body_by_name_or_id/exercise_response_body_by_name_or_id.dart';
-import 'package:fait/source/providers/exercise/exercise_provider.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
-
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/custom_outlined_button.dart';
-import 'open_camera_screen/open_camera_screen.dart';
 
 // ignore: must_be_immutable
 class ExerciseInfoScreen extends StatelessWidget {
@@ -21,6 +18,7 @@ class ExerciseInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AppDecoration.fillBlueGray.copyWith(
+          color: theme.colorScheme.onPrimaryContainer,
           borderRadius: BorderRadiusStyle.roundedBorder22
               .copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero)),
       child: Column(children: [
@@ -85,19 +83,24 @@ class ExerciseInfoScreen extends StatelessWidget {
         width: double.maxFinite,
         padding: EdgeInsets.fromLTRB(32.h, 32.v, 32.h, 30.v),
         decoration: AppDecoration.fillBlueGray.copyWith(
+            color: theme.colorScheme.onPrimaryContainer,
             borderRadius: BorderRadiusStyle.roundedBorder12,
             border: Border(
                 bottom:
                     BorderSide(color: theme.colorScheme.primary, width: 1))),
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          CustomImageView(
-              imagePath: ImageConstant.imgArrowLeft,
-              height: 24.v,
-              width: 16.h,
-              margin: EdgeInsets.only(bottom: 232.v),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: InkWell(
               onTap: () {
                 onTapImgArrowLeft(context);
-              }),
+              },
+              child: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: theme.colorScheme.tertiary,
+              ),
+            ),
+          ),
           CustomImageView(
               imagePath: ImageConstant.imgExerciseAnimation,
               height: 241.v,
@@ -195,8 +198,10 @@ class ExerciseInfoScreen extends StatelessWidget {
       elevation: 2,
       borderRadius: BorderRadiusStyle.circleBorder16,
       child: Container(
-        decoration: AppDecoration.fillBluegray80004
-            .copyWith(borderRadius: BorderRadiusStyle.circleBorder16),
+        decoration: AppDecoration.fillBluegray80004.copyWith(
+          borderRadius: BorderRadiusStyle.circleBorder16,
+          color: theme.colorScheme.onPrimaryContainer,
+        ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 3.v, horizontal: 10.h),
           child: Row(

@@ -1,3 +1,4 @@
+import 'package:fait/source/theme/theme_helper.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'replace_with_page.dart';
@@ -43,9 +44,9 @@ class ReplaceWithTabContainerScreenState
                     alignment: AlignmentDirectional.centerStart,
                     child: IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios_new,
-                        color: Colors.white,
+                        color: theme.colorScheme.tertiary,
                         size: 24,
                       ),
                     ),

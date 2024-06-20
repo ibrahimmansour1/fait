@@ -96,14 +96,18 @@ class ProfileScreen extends ConsumerWidget {
             width: 16.h,
             margin: EdgeInsets.fromLTRB(32.h, 15.v, 380.h, 15.v),
             child: Stack(alignment: Alignment.topCenter, children: [
-              CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 25.v,
-                  width: 16.h,
-                  alignment: Alignment.center,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: InkWell(
                   onTap: () {
                     onTapImgArrowLeft(context);
-                  }),
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: theme.colorScheme.tertiary,
+                  ),
+                ),
+              ),
             ])));
   }
 
@@ -145,8 +149,13 @@ class ProfileScreen extends ConsumerWidget {
                 children: [
                   Padding(
                       padding: EdgeInsets.only(top: 1.v, bottom: 3.v),
-                      child: Text("lbl_my_goals".tr,
-                          style: CustomTextStyles.headlineSmallRobotoSemiBold)),
+                      child: Text(
+                        "lbl_my_goals".tr,
+                        style: CustomTextStyles.headlineSmallRobotoSemiBold!
+                            .copyWith(
+                          color: theme.colorScheme.tertiary,
+                        ),
+                      )),
                   CustomIconButton(
                       height: 26.adaptSize,
                       width: 26.adaptSize,
@@ -154,6 +163,7 @@ class ProfileScreen extends ConsumerWidget {
                           .fillOnPrimaryContainerTL12
                           .copyWith(
                         borderRadius: BorderRadiusStyle.circleBorder16,
+                        color: theme.colorScheme.onPrimaryContainer,
                       ),
                       onTap: () {
                         onTapImgFloatingIcon(context);

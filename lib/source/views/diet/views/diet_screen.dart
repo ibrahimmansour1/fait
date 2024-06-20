@@ -1,19 +1,13 @@
 import 'package:fait/source/views/diet/views/bookmark_screen.dart';
-import 'package:fait/source/views/fitness/views/exercises_favourites_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../utils/app_export.dart';
 import '../../../../utils/transitions/fade_transition.dart';
-import '../../../widgets/custom_search_view.dart';
 import '../../../widgets/info_popup.dart';
 import '../widgets/diet_program_widget.dart';
-import '../widgets/recipe_card_widget.dart';
 import '../widgets/recipes_widget.dart';
-import 'recipe_info_screen.dart';
-import 'recipes_filter_screen.dart';
 
 class DietScreen extends StatelessWidget {
   DietScreen({super.key});
@@ -55,7 +49,7 @@ class DietScreen extends StatelessWidget {
                           isProgramsTab ? 'Diet Program' : 'Select Recipes',
                           style: TextStyle(
                             fontSize: 32.fSize,
-                            color: Colors.white,
+                            color: theme.colorScheme.tertiary,
                           ),
                         ),
                         InkWell(
@@ -182,7 +176,8 @@ class DietScreen extends StatelessWidget {
                                   physics: const NeverScrollableScrollPhysics(),
                                   controller: tabController,
                                   children: [
-                                    RecipesWidget(searchController: searchController),
+                                    RecipesWidget(
+                                        searchController: searchController),
                                     const DietProgramWidget(),
                                   ],
                                 ),

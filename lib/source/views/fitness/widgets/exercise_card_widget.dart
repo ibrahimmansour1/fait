@@ -39,8 +39,10 @@ class ExerciseCardWidget extends StatelessWidget {
                 height: 32.adaptSize,
                 width: 32.adaptSize,
                 margin: EdgeInsets.only(left: 16.h, top: 36.v, bottom: 36.v),
-                decoration: AppDecoration.fillOnPrimaryContainer
-                    .copyWith(borderRadius: BorderRadiusStyle.circleBorder16),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.onPrimaryContainer,
+                  borderRadius: BorderRadius.circular(16.h),
+                ),
                 child: CustomImageView(
                     imagePath: ImageConstant.imgCloseDeepPurpleA200,
                     height: 32.adaptSize,
@@ -74,8 +76,10 @@ class ExerciseCardWidget extends StatelessWidget {
           onTap: onTap,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 27.h, vertical: 16.v),
-            decoration: AppDecoration.fillBluegray80004
-                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.onPrimaryContainer,
+              borderRadius: BorderRadius.circular(16.h),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -109,11 +113,15 @@ class ExerciseCardWidget extends StatelessWidget {
                                           BorderRadius.circular(2.h))),
                               SizedBox(height: 9.v),
                               Text(exerciseModel!.name!,
-                                  style: theme.textTheme.titleSmall),
+                                  style: theme.textTheme.titleSmall!.copyWith(
+                                    color: theme.colorScheme.tertiary,
+                                  )),
                               SizedBox(height: 6.v),
                               Text(exerciseModel!.steps.toString(),
                                   // "null",
-                                  style: theme.textTheme.titleSmall)
+                                  style: theme.textTheme.titleSmall!.copyWith(
+                                    color: theme.colorScheme.tertiary,
+                                  ))
                             ])),
                   ],
                 ),
@@ -129,9 +137,9 @@ class ExerciseCardWidget extends StatelessWidget {
                       width: 20.h,
                       color:
                           // ref.watch(isFavouriteProvider!)
-                          exerciseModel!.isInFavorite!
+                          ref.watch(isFavouriteProvider!)
                               ? theme.colorScheme.primary
-                              : null,
+                              : Colors.white,
                       margin: EdgeInsets.symmetric(vertical: 27.v)),
                 )
               ],

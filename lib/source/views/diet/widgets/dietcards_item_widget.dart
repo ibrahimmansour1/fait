@@ -41,8 +41,10 @@ class DietcardsItemWidget extends StatelessWidget {
           children: [
             Container(
                 margin: EdgeInsets.only(left: 16.h, top: 36.v, bottom: 36.v),
-                decoration: AppDecoration.fillOnPrimaryContainer
-                    .copyWith(borderRadius: BorderRadiusStyle.circleBorder64),
+                decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
+                  borderRadius: BorderRadiusStyle.circleBorder64,
+                  color: theme.colorScheme.onPrimaryContainer,
+                ),
                 child: CustomImageView(
                     imagePath: ImageConstant.imgCloseDeepPurpleA200,
                     height: 32.adaptSize,

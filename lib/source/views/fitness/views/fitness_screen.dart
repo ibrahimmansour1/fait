@@ -1,14 +1,10 @@
-import 'package:fait/source/views/fitness/views/exercise_info_screen.dart';
+import 'package:fait/source/theme/theme_helper.dart';
 import 'package:fait/source/views/fitness/views/exercises_favourites_screen.dart';
-import 'package:fait/source/views/fitness/views/filter_screen/exercises_filter_screen.dart';
-import 'package:fait/source/views/fitness/widgets/exercise_card_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../utils/app_export.dart';
-import '../../../widgets/custom_search_view.dart';
 import '../../../widgets/info_popup.dart';
 import '../widgets/exercise_tab_bar_widget.dart';
 import '../widgets/exercises_program_widget.dart';
@@ -55,7 +51,7 @@ class FitnessScreen extends StatelessWidget {
                               : 'Select Exercises',
                           style: TextStyle(
                             fontSize: 32.fSize,
-                            color: Colors.white,
+                            color: theme.colorScheme.tertiary,
                           ),
                         ),
                         InkWell(
@@ -138,8 +134,9 @@ class FitnessScreen extends StatelessWidget {
                                           style: CustomTextStyles
                                               .headlineSmallRoboto
                                               .copyWith(
-                                                  fontWeight:
-                                                      FontWeight.normal),
+                                            fontWeight: FontWeight.normal,
+                                            color: theme.colorScheme.background,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -160,8 +157,9 @@ class FitnessScreen extends StatelessWidget {
                                           style: CustomTextStyles
                                               .headlineSmallRoboto
                                               .copyWith(
-                                                  fontWeight:
-                                                      FontWeight.normal),
+                                            fontWeight: FontWeight.normal,
+                                            color: theme.colorScheme.background,
+                                          ),
                                         ),
                                       ),
                                     ),

@@ -211,19 +211,27 @@ class RecipeInfoScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 25.v),
-                  child: CustomImageView(
-                      imagePath: ImageConstant.imgArrowLeft,
-                      height: 24.v,
-                      width: 16.h,
-                      margin: EdgeInsets.only(bottom: 24.v),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: InkWell(
                       onTap: () {
                         onTapImgArrowLeft(context);
-                      }),
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: theme.colorScheme.tertiary,
+                      ),
+                    ),
+                  ),
                 ),
                 Padding(
                     padding: EdgeInsets.only(left: 85.h, top: 10.v),
-                    child: Text("Recipe Info",
-                        style: theme.textTheme.headlineLarge))
+                    child: Text(
+                      "Recipe Info",
+                      style: theme.textTheme.headlineLarge!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      ),
+                    ))
               ],
             ),
           ),

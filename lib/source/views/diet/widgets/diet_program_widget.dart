@@ -22,7 +22,7 @@ class DietProgramWidget extends ConsumerWidget {
           'My Program',
           style: TextStyle(
             fontSize: 32.fSize,
-            color: Colors.white,
+            color: theme.colorScheme.tertiary,
           ),
         ),
         const SizedBox(height: 20),

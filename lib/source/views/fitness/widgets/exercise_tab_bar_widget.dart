@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../models/fitness/exercise_response_body/exercise_response_body.dart';
+import '../../../theme/theme_helper.dart';
 import '../../../widgets/custom_search_view.dart';
 import '../views/filter_screen/exercises_filter_screen.dart';
 import '../views/fitness_screen.dart';
@@ -59,9 +60,9 @@ class _ExerciseTabBarWidgetState extends ConsumerState<ExerciseTabBarWidget> {
                     isScrollControlled: true,
                     builder: (_) => ExercisesFilterScreen());
               },
-              child: const Icon(
+              child: Icon(
                 Icons.filter_alt_rounded,
-                color: Colors.white,
+                color: theme.colorScheme.tertiary,
               ),
             )
           ],
