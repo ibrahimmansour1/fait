@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../utils/size_utils.dart';
 import '../providers/theme/theme_provider.dart';
+import '../theme/theme_helper.dart';
 
 class LoadingScreen extends ConsumerStatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
@@ -49,28 +50,28 @@ class _LoadingScreenState extends ConsumerState<LoadingScreen> {
             ),
             Center(
               child: LoadingAnimationWidget.dotsTriangle(
-                color: Colors.white,
+                color: theme.colorScheme.tertiary,
                 size: 200,
               ),
             ),
             SizedBox(
               height: 150.v,
             ),
-            const Text(
+            Text(
               'Wait',
               style: TextStyle(
-                color: Colors.white,
+                color: theme.colorScheme.tertiary,
                 fontSize: 35,
               ),
             ),
             SizedBox(
               height: 20.v,
             ),
-            const Text(
+            Text(
               'Your Programs Are Generating',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
+                color: theme.colorScheme.tertiary,
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),

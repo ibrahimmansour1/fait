@@ -75,9 +75,7 @@ class AppRoutes {
   static const String wrongExercisesStepsScreen =
       '/wrong_exercises_steps_screen';
 
-  static const String dietInfoScreen =
-      '/diet_info_screen';
-
+  static const String dietInfoScreen = '/diet_info_screen';
 }
 
 class RouteGenerator {
@@ -179,13 +177,11 @@ class RouteGenerator {
             builder: (context) => const LoadingScreen(),
             fullscreenDialog: true);
 
-      default:
       case AppRoutes.wrongExercisesStepsScreen:
         return MaterialPageRoute(
             builder: (context) => const WrongExercisesStepScreen());
       case AppRoutes.dietInfoScreen:
-        return MaterialPageRoute(
-            builder: (context) => const DietInfoScreen());
+        return MaterialPageRoute(builder: (context) => const DietInfoScreen());
 
       // default:
       //   return MaterialPageRoute(
