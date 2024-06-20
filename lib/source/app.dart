@@ -36,7 +36,7 @@ class MyApp extends ConsumerWidget {
               Locale('en', 'US'),
               Locale('ar'),
             ],
-            initialRoute: '/diet_info_screen',
+            initialRoute: '/main_onboarding_screen',
             onGenerateRoute: RouteGenerator.generateRoute,
           );
         },
