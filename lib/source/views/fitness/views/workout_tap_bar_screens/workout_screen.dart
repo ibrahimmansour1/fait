@@ -36,27 +36,25 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final fitnessPlanWorkoutsViewModel =
-    //     ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse;
-    // return fitnessPlanWorkoutsViewModel.status != Status.completed
-    //     ? const Center(
-    //         child: CircularProgressIndicator(),
-    //       )
-    //     :
 
-    return Column(
-      children: [
-        SizedBox(
-          child: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 22.h),
-              child: Column(
-                children: [
-                  _buildChart(context),
-                  SizedBox(height: 31.v),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
+    // TODO: Just for testing
+    if (ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse.message ==
+        "No data found") {
+      ref.read(fitnessPlanProvider).generateWorkoutsDummyData();
+    }
+    final fitnessPlanWorkoutsViewModel =
+        ref.watch(fitnessPlanProvider).fitnessPlanWorkoutsResponse;
+    return fitnessPlanWorkoutsViewModel.status != Status.completed
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Column(
+            children: [
+              SizedBox(
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 22.h),
+                    child: Column(
                       children: [
                         CustomImageView(
                             imagePath: ImageConstant.imgTelevisionPrimary,
@@ -69,6 +67,51 @@ class _WorkoutScreenState extends ConsumerState<WorkoutScreen> {
                               style:
                                   CustomTextStyles.headlineSmallRobotoSemiBold),
                         ),
+
+                        SizedBox(height: 32.v),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text("Program Workouts",
+                                style: CustomTextStyles
+                                    .headlineSmallRobotoSemiBold)),
+                        SizedBox(height: 30.v),
+                        WorkoutCard(
+                          onTap: () {
+                            onTapWorkoutCard(context);
+                          },
+                          imagePath:
+                              ImageConstant.imgThumbsUpOnprimarycontainer,
+                          title: "Full Body A",
+                          date: "Nov 16",
+                          exercises: "3 exercises",
+                          textKg: "3 281 kg",
+                          duration: "32 min",
+                        ),
+                        SizedBox(height: 24.v),
+                        ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final FitnessPlanWorkoutModel workout =
+                                  fitnessPlanWorkoutsViewModel.data![index];
+                              return WorkoutCard(
+                                onTap: () {
+                                  onTapWorkoutCard(context);
+                                },
+                                imagePath: ImageConstant.imgInbox,
+                                title: workout.name!,
+                                date: DateFormat('MMM dd')
+                                    .format(DateTime.parse(workout.playDate!)),
+                                exercises:
+                                    "${workout.numberOfExercises} exercise",
+                                textKg: "${workout.weightLifted} kg",
+                                duration: "${workout.durationInMinutes} min",
+                              );
+                            },
+                            separatorBuilder: (context, index) =>
+                                SizedBox(height: 24.v),
+                            itemCount:
+                                fitnessPlanWorkoutsViewModel.data!.length),
                       ],
                     ),
                   ),

@@ -1,6 +1,7 @@
 import 'package:fait/source/api/api_response.dart';
 import 'package:fait/source/views/fitness/views/overview_screen/overview_screen.dart';
 import 'package:fait/source/views/fitness/views/workout_tap_bar_screens/workout_group_screen.dart';
+import 'package:fait/source/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -53,10 +54,11 @@ class _ExercisesProgramWidgetState
                     borderRadius: BorderRadius.circular(20),
                     child: Stack(
                       children: [
-                        Image.network(
+                        CustomImageView(
+                          imagePath: fitnessPlanViewModel.data!.image ??
+                              ImageConstant.imgBodyBalance,
                           height: 310.v,
                           width: 500.h,
-                          fitnessPlanViewModel.data!.image!,
                           fit: BoxFit.cover,
                         ),
                         Positioned.fill(

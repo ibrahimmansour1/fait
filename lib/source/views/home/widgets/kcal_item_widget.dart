@@ -151,6 +151,7 @@ class KcalItemWidget extends StatelessWidget {
                   SizedBox(
                     width: 10.h,
                   ),
+
                   Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 4.h,

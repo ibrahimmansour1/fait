@@ -51,8 +51,8 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
-        // extendBody: true,
-        // extendBodyBehindAppBar: true,
+        extendBody: true,
+        extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         body: Padding(
           padding:

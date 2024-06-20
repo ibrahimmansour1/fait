@@ -225,9 +225,10 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
         CarouselSlider(
           items: carouselItems,
           options: CarouselOptions(
-            height: 170.v,
+            height: 176.v,
             enlargeCenterPage: true, // Increase the size of the center item
             enableInfiniteScroll: true,
+            viewportFraction: 0.5,
             onPageChanged: (index, reason) {
               // Optional callback when the page changes
               // You can use it to update any additional UI components
