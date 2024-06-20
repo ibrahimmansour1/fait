@@ -5,6 +5,7 @@ import 'package:fait/source/views/fitness/widgets/program_card_info.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
 
+import '../../../../../utils/transitions/down_to_top_transition.dart';
 import '../../../../../utils/transitions/fade_transition.dart';
 
 class OverviewScreen extends StatefulWidget {
@@ -95,30 +96,37 @@ class _OverviewScreenState extends State<OverviewScreen> {
                     bottom: 30.v,
                     left: 0.h,
                     right: 0.h,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.h,
-                      ),
-                      child: Column(
-                        children: [
-                          const OverviewPercentagesWidget(
-                            cardioText: "Cardio",
-                            cardioPercentageText: "18 %",
-                            strengthText: "Strength",
-                            strengthPercentageText: "53 %",
-                            stretchText: "Stretch",
-                            stretchPercentageText: "35 %",
-                            cardioPercentageIndicator: 18,
-                            strengthPercentageIndicator: 53,
-                            stretchPercentageIndicator: 35,
-                          ),
-                          SizedBox(height: 70.v),
-                          GestureDetector(
-                            onPanStart: (_) {
-                              Navigator.pushNamed(
-                                  context, '/my_activity_screen');
-                            },
-                            child: Row(
+                    child: GestureDetector(
+                      onVerticalDragUpdate: (details) {
+                        int sensitivity = 8;
+                        if (details.delta.dy < -sensitivity) {
+                          Navigator.push(
+                            context,
+                            SlideDownToTopPageRouteBuilder(
+                              page: const MyActivityScreen(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.h,
+                        ),
+                        child: Column(
+                          children: [
+                            const OverviewPercentagesWidget(
+                              cardioText: "Cardio",
+                              cardioPercentageText: "18 %",
+                              strengthText: "Strength",
+                              strengthPercentageText: "53 %",
+                              stretchText: "Stretch",
+                              stretchPercentageText: "35 %",
+                              cardioPercentageIndicator: 18,
+                              strengthPercentageIndicator: 53,
+                              stretchPercentageIndicator: 35,
+                            ),
+                            SizedBox(height: 70.v),
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 AnimatedContainer(
@@ -139,9 +147,9 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                 ),
                               ],
                             ),
-                          ),
-                          SizedBox(height: 20.v),
-                        ],
+                            SizedBox(height: 20.v),
+                          ],
+                        ),
                       ),
                     ),
                   ),
