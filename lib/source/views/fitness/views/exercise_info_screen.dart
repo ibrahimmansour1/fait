@@ -157,8 +157,7 @@ class ExerciseInfoScreen extends StatelessWidget {
             onPressed: () {
               getPermissionStatus(context, Permission.microphone, "Microphone")
                   .then((microphonePermission) {
-                getPermissionStatus(
-                        context, Permission.camera, "Camera")
+                getPermissionStatus(context, Permission.camera, "Camera")
                     .then((cameraPermission) {
                   if (microphonePermission && cameraPermission) {
                     Navigator.pushNamed(context, '/open_camera_screen');

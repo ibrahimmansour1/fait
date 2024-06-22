@@ -28,6 +28,7 @@ class InProgressExerciseCardWidget extends StatelessWidget {
           ),
           decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
             borderRadius: BorderRadiusStyle.circleBorder16,
+            // color: theme.colorScheme.onPrimaryContainer,
           ),
           child: CustomImageView(
             imagePath: ImageConstant.imgCloseDeepPurpleA200,
@@ -76,7 +77,7 @@ class InProgressExerciseCardWidget extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: appTheme.blueGray80004,
+            color: theme.colorScheme.onPrimaryContainer,
             borderRadius: BorderRadius.circular(
               8.h,
             ),

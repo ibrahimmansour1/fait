@@ -22,8 +22,11 @@ class RecipesFilterScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Container(
           decoration: AppDecoration.fillBlueGray.copyWith(
-              borderRadius: BorderRadiusStyle.roundedBorder22
-                  .copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero)),
+              color: theme.colorScheme.background,
+              borderRadius: BorderRadiusStyle.roundedBorder22.copyWith(
+                bottomLeft: Radius.zero,
+                bottomRight: Radius.zero,
+              )),
           padding: const EdgeInsets.all(8),
           child: Consumer(builder: (context, ref, child) {
             return Column(
@@ -35,9 +38,9 @@ class RecipesFilterScreen extends StatelessWidget {
                         alignment: AlignmentDirectional.centerStart,
                         child: IconButton(
                           onPressed: () => onTapArrowLeft(context),
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.arrow_back_ios_new,
-                            color: Colors.white,
+                            color: theme.colorScheme.tertiary,
                             size: 24,
                           ),
                         ),
@@ -107,15 +110,18 @@ class RecipesFilterScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("Fat Quantity:", style: theme.textTheme.titleLarge),
+          Text("Fat Quantity:",
+              style: theme.textTheme.titleLarge!.copyWith(
+                color: theme.colorScheme.tertiary,
+              )),
           SizedBox(height: 14.v),
           CustomTextFormField(
-              controller: fatTextController,
-              textInputType: TextInputType.number,
-              textStyle:
-                  theme.textTheme.bodyLarge!.copyWith(color: Colors.white),
-              borderDecoration: TextFormFieldStyleHelper.fillBlueGrayTL8,
-              fillColor: appTheme.blueGray80004)
+            controller: fatTextController,
+            textInputType: TextInputType.number,
+            textStyle: theme.textTheme.bodyLarge!.copyWith(color: Colors.white),
+            borderDecoration: TextFormFieldStyleHelper.fillBlueGrayTL8,
+            fillColor: theme.colorScheme.onPrimaryContainer,
+          )
         ]));
   }
 
@@ -124,15 +130,18 @@ class RecipesFilterScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("Protien Quantity:", style: theme.textTheme.titleLarge),
+          Text("Protien Quantity:",
+              style: theme.textTheme.titleLarge!.copyWith(
+                color: theme.colorScheme.tertiary,
+              )),
           SizedBox(height: 14.v),
           CustomTextFormField(
-              controller: protienTextController,
-              textInputType: TextInputType.number,
-              textStyle:
-                  theme.textTheme.bodyLarge!.copyWith(color: Colors.white),
-              borderDecoration: TextFormFieldStyleHelper.fillBlueGrayTL8,
-              fillColor: appTheme.blueGray80004)
+            controller: protienTextController,
+            textInputType: TextInputType.number,
+            textStyle: theme.textTheme.bodyLarge!.copyWith(color: Colors.white),
+            borderDecoration: TextFormFieldStyleHelper.fillBlueGrayTL8,
+            fillColor: theme.colorScheme.onPrimaryContainer,
+          )
         ]));
   }
 
@@ -141,16 +150,19 @@ class RecipesFilterScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("Carbs Quantity:", style: theme.textTheme.titleLarge),
+          Text("Carbs Quantity:",
+              style: theme.textTheme.titleLarge!.copyWith(
+                color: theme.colorScheme.tertiary,
+              )),
           SizedBox(height: 14.v),
           CustomTextFormField(
-              controller: carbsTextController,
-              textInputAction: TextInputAction.done,
-              textInputType: TextInputType.number,
-              textStyle:
-                  theme.textTheme.bodyLarge!.copyWith(color: Colors.white),
-              borderDecoration: TextFormFieldStyleHelper.fillBlueGrayTL8,
-              fillColor: appTheme.blueGray80004)
+            controller: carbsTextController,
+            textInputAction: TextInputAction.done,
+            textInputType: TextInputType.number,
+            textStyle: theme.textTheme.bodyLarge!.copyWith(color: Colors.white),
+            borderDecoration: TextFormFieldStyleHelper.fillBlueGrayTL8,
+            fillColor: theme.colorScheme.onPrimaryContainer,
+          )
         ]));
   }
 

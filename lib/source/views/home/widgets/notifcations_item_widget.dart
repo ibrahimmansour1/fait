@@ -82,10 +82,10 @@ class NotifcationsItemWidget extends StatelessWidget {
                 duration: animationDuration,
                 child: Visibility(
                   visible: ref.watch(showNotificationDateTimeProvider),
-                  child: const Text(
+                  child: Text(
                     "Sat,12th May 10:30 am",
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: theme.colorScheme.tertiary),
                   ),
                 ),
               ),

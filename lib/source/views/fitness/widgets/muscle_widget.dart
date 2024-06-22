@@ -13,7 +13,7 @@ class MuscleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: appTheme.blueA40003,
+      backgroundColor: theme.colorScheme.onPrimaryContainer,
       radius: 60.adaptSize,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -107,16 +107,18 @@ class FitnessScreen extends StatelessWidget {
                                 controller: tabController,
                                 onTap: (index) {
                                   tabController.animateTo(index);
-
                                   ref
                                       .watch(isProgramsTabProvider.notifier)
-                                      .update(
-                                          (state) => index == 1 ? true : false);
+                                      .update((state) => index == 1);
                                 },
-                                dividerHeight: 0,
-                                indicator: AppDecoration.fillPrimary.copyWith(
-                                    borderRadius:
-                                        BorderRadiusStyle.roundedBorder22),
+                                indicator: BoxDecoration(
+                                  color: theme.colorScheme.primary,
+                                  borderRadius:
+                                      BorderRadiusStyle.roundedBorder22,
+                                ),
+                                labelColor: theme.colorScheme.background,
+                                unselectedLabelColor:
+                                    theme.colorScheme.tertiary,
                                 tabs: [
                                   Tab(
                                     height: 72.v,
@@ -126,6 +128,8 @@ class FitnessScreen extends StatelessWidget {
                                               .copyWith(
                                               borderRadius: BorderRadiusStyle
                                                   .roundedBorder22,
+                                              color: theme.colorScheme
+                                                  .onPrimaryContainer,
                                             )
                                           : null,
                                       child: Center(
@@ -135,7 +139,6 @@ class FitnessScreen extends StatelessWidget {
                                               .headlineSmallRoboto
                                               .copyWith(
                                             fontWeight: FontWeight.normal,
-                                            color: theme.colorScheme.background,
                                           ),
                                         ),
                                       ),
@@ -149,6 +152,8 @@ class FitnessScreen extends StatelessWidget {
                                               .copyWith(
                                               borderRadius: BorderRadiusStyle
                                                   .roundedBorder22,
+                                              color: theme.colorScheme
+                                                  .onPrimaryContainer,
                                             )
                                           : null,
                                       child: Center(
@@ -158,7 +163,6 @@ class FitnessScreen extends StatelessWidget {
                                               .headlineSmallRoboto
                                               .copyWith(
                                             fontWeight: FontWeight.normal,
-                                            color: theme.colorScheme.background,
                                           ),
                                         ),
                                       ),

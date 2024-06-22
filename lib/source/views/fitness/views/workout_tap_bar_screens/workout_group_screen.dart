@@ -78,6 +78,7 @@ class _WorkoutGroupScreenState extends ConsumerState<WorkoutGroupScreen>
                         imagePath: ImageConstant.imgArrowLeft,
                         height: 24.v,
                         width: 16.h,
+                        color: theme.colorScheme.tertiary,
                         alignment: Alignment.centerLeft,
                         margin: EdgeInsets.only(left: 16.h),
                         onTap: () {
@@ -118,21 +119,27 @@ class _WorkoutGroupScreenState extends ConsumerState<WorkoutGroupScreen>
                                   padding: EdgeInsets.all(12.h),
                                   child: Text(
                                     "Overview",
-                                    style: theme.textTheme.titleLarge!,
+                                    style: theme.textTheme.titleLarge!.copyWith(
+                                      color: theme.colorScheme.tertiary,
+                                    ),
                                   ),
                                 ),
                                 ProgramView.Workout: Padding(
                                   padding: EdgeInsets.all(12.h),
                                   child: Text(
                                     "Workout",
-                                    style: theme.textTheme.titleLarge!,
+                                    style: theme.textTheme.titleLarge!.copyWith(
+                                      color: theme.colorScheme.tertiary,
+                                    ),
                                   ),
                                 ),
                                 ProgramView.Muscles: Padding(
                                   padding: EdgeInsets.all(12.h),
                                   child: Text(
                                     "Muscles",
-                                    style: theme.textTheme.titleLarge!,
+                                    style: theme.textTheme.titleLarge!.copyWith(
+                                      color: theme.colorScheme.tertiary,
+                                    ),
                                   ),
                                 ),
                               },

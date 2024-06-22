@@ -142,7 +142,7 @@ class CustomTextStyles {
       );
   static get displayMediumOnPrimaryContainerRegular =>
       theme.textTheme.displayMedium!.copyWith(
-        color: theme.colorScheme.onPrimary.withOpacity(0.75),
+        color: theme.colorScheme.tertiary,
         fontSize: 40.fSize,
         fontWeight: FontWeight.w400,
       );
@@ -150,6 +150,7 @@ class CustomTextStyles {
   static get headlineLargeAquire => theme.textTheme.headlineLarge!.aquire;
   static get headlineLargeRegular => theme.textTheme.headlineLarge!.copyWith(
         fontWeight: FontWeight.w400,
+        color: theme.colorScheme.tertiary,
       );
 
   static get headlineLargeOnPrimaryContainer =>
@@ -166,14 +167,15 @@ class CustomTextStyles {
         fontWeight: FontWeight.w400,
       );
   static get headlineLargeSemiBold => theme.textTheme.headlineLarge!.copyWith(
+        color: theme.colorScheme.primary,
         fontWeight: FontWeight.w600,
       );
   static get headlineLargebfffffff => theme.textTheme.headlineLarge!.copyWith(
-        color: const Color(0XBFFFFFFF),
+        color: theme.colorScheme.tertiary,
         fontWeight: FontWeight.w600,
       );
   static get headlineLargeffffffff => theme.textTheme.headlineLarge!.copyWith(
-        color: const Color(0XFFFFFFFF),
+        color: theme.colorScheme.tertiary,
       );
   static get headlineSmallInter =>
       theme.textTheme.headlineSmall!.inter.copyWith(
@@ -194,7 +196,7 @@ class CustomTextStyles {
   static get headlineSmallRoboto =>
       theme.textTheme.headlineSmall!.roboto.copyWith(
         fontWeight: FontWeight.w600,
-        color: theme.colorScheme.background,
+        color: theme.colorScheme.tertiary,
       );
   static get headlineSmallRobotoBlack900 =>
       theme.textTheme.headlineSmall!.roboto.copyWith(
@@ -290,6 +292,7 @@ class CustomTextStyles {
       );
   static get titleLargeBold => theme.textTheme.titleLarge!.copyWith(
         fontWeight: FontWeight.w700,
+        color: theme.colorScheme.tertiary,
       );
   static get titleLargeCairoBluegray80004 =>
       theme.textTheme.titleLarge!.cairo.copyWith(
@@ -316,6 +319,7 @@ class CustomTextStyles {
   static get titleMediumMedium18 => theme.textTheme.titleMedium!.copyWith(
         fontSize: 18.fSize,
         fontWeight: FontWeight.w500,
+        color: theme.colorScheme.tertiary,
       );
   static get titleLargeRegular => theme.textTheme.titleLarge!.copyWith(
         fontWeight: FontWeight.w400,
