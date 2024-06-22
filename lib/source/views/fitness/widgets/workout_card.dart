@@ -33,8 +33,10 @@ class WorkoutCard extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(left: 16.h),
               padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 6.v),
-              decoration: AppDecoration.fillBluegray80004
-                  .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+              decoration: AppDecoration.fillBluegray80004.copyWith(
+                borderRadius: BorderRadiusStyle.roundedBorder8,
+                // color: theme.colorScheme.onPrimaryContainer,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,

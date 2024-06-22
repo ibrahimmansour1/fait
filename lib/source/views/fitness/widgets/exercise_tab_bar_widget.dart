@@ -58,7 +58,7 @@ class _ExerciseTabBarWidgetState extends ConsumerState<ExerciseTabBarWidget> {
                     context: context,
                     useRootNavigator: true,
                     isScrollControlled: true,
-                    builder: (_) => ExercisesFilterScreen());
+                    builder: (_) => const ExercisesFilterScreen());
               },
               child: Icon(
                 Icons.filter_alt_rounded,
@@ -70,7 +70,7 @@ class _ExerciseTabBarWidgetState extends ConsumerState<ExerciseTabBarWidget> {
         SizedBox(height: 20.h),
         Text("Exercises",
             style: TextStyle(
-              color: Colors.white,
+              color: theme.colorScheme.tertiary,
               fontSize: 32.fSize,
             )),
         SizedBox(height: 20.h),

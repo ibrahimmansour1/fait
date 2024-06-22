@@ -125,6 +125,8 @@ class DietScreen extends StatelessWidget {
                                               .copyWith(
                                               borderRadius: BorderRadiusStyle
                                                   .roundedBorder22,
+                                              color: theme.colorScheme
+                                                  .onPrimaryContainer,
                                             )
                                           : null,
                                       child: Center(
@@ -133,8 +135,8 @@ class DietScreen extends StatelessWidget {
                                           style: CustomTextStyles
                                               .headlineSmallRoboto
                                               .copyWith(
-                                                  fontWeight:
-                                                      FontWeight.normal),
+                                            fontWeight: FontWeight.normal,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -147,6 +149,8 @@ class DietScreen extends StatelessWidget {
                                               .copyWith(
                                               borderRadius: BorderRadiusStyle
                                                   .roundedBorder22,
+                                              color: theme.colorScheme
+                                                  .onPrimaryContainer,
                                             )
                                           : null,
                                       child: Center(

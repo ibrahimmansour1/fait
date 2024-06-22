@@ -37,8 +37,10 @@ class RecipesResultsScreen extends StatelessWidget {
                       alignment: AlignmentDirectional.center,
                       child: Text(
                         "Results",
-                        style: CustomTextStyles.titleLargeBold
-                            .copyWith(fontSize: 24.fSize),
+                        style: CustomTextStyles.titleLargeBold.copyWith(
+                          fontSize: 24.fSize,
+                          color: theme.colorScheme.tertiary,
+                        ),
                       ),
                     ),
                   ),

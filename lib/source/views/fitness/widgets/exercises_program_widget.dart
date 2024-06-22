@@ -43,7 +43,7 @@ class _ExercisesProgramWidgetState
           'My Program',
           style: TextStyle(
             fontSize: 32.fSize,
-            color: Colors.white,
+            color: theme.colorScheme.tertiary,
           ),
         ),
         const SizedBox(height: 20),
@@ -154,8 +154,7 @@ class _ExercisesProgramWidgetState
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color:
-                                        themeHelper.themeColor().blueGray80004,
+                                    color: theme.colorScheme.onPrimaryContainer,
                                     borderRadius: BorderRadius.circular(35)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
@@ -166,12 +165,12 @@ class _ExercisesProgramWidgetState
                                         style: TextStyle(
                                           fontSize: 20.fSize,
                                           fontWeight: FontWeight.w500,
-                                          color: Colors.white,
+                                          color: theme.colorScheme.tertiary,
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         (Icons.arrow_forward_ios_rounded),
-                                        color: Colors.white,
+                                        color: theme.colorScheme.tertiary,
                                       )
                                     ],
                                   ),

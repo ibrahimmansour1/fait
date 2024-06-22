@@ -128,7 +128,7 @@ class DietProgramWidget extends ConsumerWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              color: themeHelper.themeColor().blueGray80004,
+                              color: theme.colorScheme.onPrimaryContainer,
                               borderRadius: BorderRadius.circular(35)),
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
@@ -139,12 +139,12 @@ class DietProgramWidget extends ConsumerWidget {
                                   style: TextStyle(
                                     fontSize: 20.fSize,
                                     fontWeight: FontWeight.w500,
-                                    color: Colors.white,
+                                    color: theme.colorScheme.tertiary,
                                   ),
                                 ),
-                                const Icon(
+                                Icon(
                                   (Icons.arrow_forward_ios_rounded),
-                                  color: Colors.white,
+                                  color: theme.colorScheme.tertiary,
                                 )
                               ],
                             ),

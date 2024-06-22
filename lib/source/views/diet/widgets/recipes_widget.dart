@@ -1,6 +1,7 @@
 import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
+import '../../../theme/theme_helper.dart';
 import '../../../widgets/custom_search_view.dart';
 import '../views/diet_screen.dart';
 import '../views/recipes_filter_screen.dart';
@@ -40,9 +41,9 @@ class RecipesWidget extends StatelessWidget {
                           child: RecipesFilterScreen(),
                         ));
               },
-              child: const Icon(
+              child: Icon(
                 Icons.filter_alt_rounded,
-                color: Colors.white,
+                color: theme.colorScheme.tertiary.withOpacity(0.5),
               ),
             )
           ],
@@ -50,7 +51,7 @@ class RecipesWidget extends StatelessWidget {
         SizedBox(height: 20.h),
         Text("Recipes",
             style: TextStyle(
-              color: Colors.white,
+              color: theme.colorScheme.tertiary,
               fontSize: 32.fSize,
             )),
         SizedBox(height: 20.h),

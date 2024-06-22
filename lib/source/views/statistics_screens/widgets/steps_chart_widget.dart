@@ -23,7 +23,7 @@ class _StepsChartWidgetState extends ConsumerState<StepsChartWidget> {
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     var style = TextStyle(
-      color: appTheme.white,
+      color: theme.colorScheme.tertiary,
       fontSize: 12,
     );
 

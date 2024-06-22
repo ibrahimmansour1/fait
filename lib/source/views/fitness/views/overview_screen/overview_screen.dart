@@ -97,7 +97,6 @@ class _OverviewScreenState extends State<OverviewScreen> {
                     bottom: 30.v,
                     left: 0.h,
                     right: 0.h,
-
                     child: GestureDetector(
                       onVerticalDragUpdate: (details) {
                         int sensitivity = 8;
@@ -142,6 +141,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                   child: CustomImageView(
                                     imagePath: ImageConstant.imgArrowProgram,
                                     height: 28.v,
+                                    color: theme.colorScheme.tertiary,
                                     width: 20.h,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(left: 16.h),

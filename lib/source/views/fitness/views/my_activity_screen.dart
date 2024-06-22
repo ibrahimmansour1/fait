@@ -66,8 +66,10 @@ class MyActivityScreen extends StatelessWidget {
   Widget _buildTopPart(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 26.h, vertical: 30.v),
-        decoration: AppDecoration.outlineSecondaryContainer1
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
+        decoration: AppDecoration.outlineSecondaryContainer1.copyWith(
+          borderRadius: BorderRadiusStyle.roundedBorder12,
+          color: theme.colorScheme.onPrimaryContainer,
+        ),
         child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,9 +90,14 @@ class MyActivityScreen extends StatelessWidget {
                               onTapImgArrowLeft(context);
                             }),
                         Padding(
-                            padding: EdgeInsets.only(top: 10.v),
-                            child: Text("My activity",
-                                style: theme.textTheme.headlineLarge)),
+                          padding: EdgeInsets.only(top: 10.v),
+                          child: Text(
+                            "My activity",
+                            style: theme.textTheme.headlineLarge!.copyWith(
+                              color: theme.colorScheme.tertiary,
+                            ),
+                          ),
+                        ),
                         SizedBox(
                           width: 16.h,
                         ),
@@ -103,7 +110,9 @@ class MyActivityScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 44.h, vertical: 22.v),
                         decoration: AppDecoration.fillBluegray80004.copyWith(
-                            borderRadius: BorderRadiusStyle.roundedBorder32),
+                          borderRadius: BorderRadiusStyle.roundedBorder32,
+                          color: theme.colorScheme.onPrimaryContainer,
+                        ),
                         child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.end,

@@ -161,7 +161,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 274.v,
+                                height: 270.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.amber600,
@@ -188,7 +188,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 274.v,
+                                height: 270.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.blueA40002,
@@ -215,7 +215,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 274.v,
+                                height: 270.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.deepPurpleA10001,
@@ -259,8 +259,10 @@ class StepsTrackerScreen extends StatelessWidget {
       width: 404.h,
       height: 236.v,
       padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 17.v),
-      decoration: AppDecoration.fillBluegray80004
-          .copyWith(borderRadius: BorderRadiusStyle.roundedBorder22),
+      decoration: AppDecoration.fillBluegray80004.copyWith(
+        borderRadius: BorderRadiusStyle.roundedBorder22,
+        color: theme.colorScheme.onPrimaryContainer,
+      ),
       child: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
           final selectedTimePeriod = ref.watch(selectedTimePeriodProvider);
