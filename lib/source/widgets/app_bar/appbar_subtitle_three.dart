@@ -29,7 +29,7 @@ class AppbarSubtitleThree extends StatelessWidget {
         child: Text(
           text,
           style: CustomTextStyles.bodyLargeOnPrimaryContainer.copyWith(
-            color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+            color: theme.colorScheme.onPrimary.withOpacity(1),
           ),
         ),
       ),

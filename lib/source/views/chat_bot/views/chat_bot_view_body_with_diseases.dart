@@ -1,22 +1,23 @@
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
-import '../../../widgets/custom_elevated_button.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithDiseases extends StatefulWidget {
+class ChatBotViewBodyWithDiseases extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithDiseases({super.key});
 
   @override
-  State<ChatBotViewBodyWithDiseases> createState() =>
+  ConsumerState<ChatBotViewBodyWithDiseases> createState() =>
       _ChatBotViewBodyWithDiseasesState();
 }
 
 class _ChatBotViewBodyWithDiseasesState
-    extends State<ChatBotViewBodyWithDiseases> {
+    extends ConsumerState<ChatBotViewBodyWithDiseases> {
   List<String> selectedDiseases = [];
 
   final List<String> availableDiseases = [
@@ -54,6 +55,7 @@ class _ChatBotViewBodyWithDiseasesState
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       extendBody: true,
@@ -62,7 +64,9 @@ class _ChatBotViewBodyWithDiseasesState
       body: Container(
         width: mediaQueryData.size.width,
         height: mediaQueryData.size.height,
-        decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+        decoration:  BoxDecoration(
+          color: themeHelper.getThemeData().colorScheme.background,
+        ),
         child: SafeArea(
           child: Container(
             child: Column(

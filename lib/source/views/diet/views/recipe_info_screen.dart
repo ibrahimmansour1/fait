@@ -110,7 +110,7 @@ class RecipeInfoScreen extends StatelessWidget {
                                     width: 8.adaptSize,
                                     margin: EdgeInsets.symmetric(vertical: 5.v),
                                     decoration: BoxDecoration(
-                                        color: appTheme.gray10001,
+                                        color: theme.colorScheme.tertiary,
                                         borderRadius:
                                             BorderRadius.circular(4.h))),
                                 Padding(
@@ -128,7 +128,7 @@ class RecipeInfoScreen extends StatelessWidget {
                                     width: 8.adaptSize,
                                     margin: EdgeInsets.symmetric(vertical: 5.v),
                                     decoration: BoxDecoration(
-                                        color: appTheme.gray10001,
+                                        color: theme.colorScheme.tertiary,
                                         borderRadius:
                                             BorderRadius.circular(4.h))),
                                 Padding(
@@ -153,7 +153,7 @@ class RecipeInfoScreen extends StatelessWidget {
                                   width: 8.adaptSize,
                                   margin: EdgeInsets.symmetric(vertical: 5.v),
                                   decoration: BoxDecoration(
-                                      color: appTheme.gray10001,
+                                      color: theme.colorScheme.tertiary,
                                       borderRadius:
                                           BorderRadius.circular(4.h))),
                               Padding(
@@ -172,7 +172,7 @@ class RecipeInfoScreen extends StatelessWidget {
                                   width: 8.adaptSize,
                                   margin: EdgeInsets.symmetric(vertical: 5.v),
                                   decoration: BoxDecoration(
-                                      color: appTheme.gray10001,
+                                      color: theme.colorScheme.tertiary,
                                       borderRadius:
                                           BorderRadius.circular(4.h))),
                               Padding(
@@ -211,19 +211,27 @@ class RecipeInfoScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 25.v),
-                  child: CustomImageView(
-                      imagePath: ImageConstant.imgArrowLeft,
-                      height: 24.v,
-                      width: 16.h,
-                      margin: EdgeInsets.only(bottom: 24.v),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: InkWell(
                       onTap: () {
                         onTapImgArrowLeft(context);
-                      }),
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: theme.colorScheme.tertiary,
+                      ),
+                    ),
+                  ),
                 ),
                 Padding(
                     padding: EdgeInsets.only(left: 85.h, top: 10.v),
-                    child: Text("Recipe Info",
-                        style: theme.textTheme.headlineLarge))
+                    child: Text(
+                      "Recipe Info",
+                      style: theme.textTheme.headlineLarge!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      ),
+                    ))
               ],
             ),
           ),
@@ -374,15 +382,20 @@ class RecipeInfoScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Recipe preparation steps", style: theme.textTheme.titleLarge),
+          Text("Recipe preparation steps",
+              style: theme.textTheme.titleLarge!.copyWith(
+                color: theme.colorScheme.tertiary,
+              )),
           SizedBox(height: 24.v),
           AnimatedSize(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
             child: Container(
               padding: EdgeInsets.all(16.h),
-              decoration: AppDecoration.fillBluegray80004
-                  .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+              decoration: AppDecoration.fillBluegray80004.copyWith(
+                borderRadius: BorderRadiusStyle.roundedBorder8,
+                color: theme.colorScheme.onPrimaryContainer,
+              ),
               child: AnimatedReadMoreText(
                 textForPreparation,
                 maxLines: 4,
@@ -427,14 +440,14 @@ class RecipeInfoScreen extends StatelessWidget {
               child: Text(protein,
                   style: CustomTextStyles.titleMediumOnPrimaryContainer18
                       .copyWith(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75)))),
+                          color:
+                              theme.colorScheme.onPrimary.withOpacity(0.75)))),
           Padding(
             padding: EdgeInsets.only(top: 3.v),
             child: Text(
               weight,
               style: CustomTextStyles.titleMedium18.copyWith(
-                color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+                color: theme.colorScheme.onPrimary.withOpacity(1),
               ),
             ),
           ),

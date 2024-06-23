@@ -1,4 +1,5 @@
 import 'package:fait/source/localization/app_localization.dart';
+import 'package:fait/source/theme/theme_helper.dart';
 import 'package:fait/source/views/home/widgets/goals_popup.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,10 +29,13 @@ class AddNewGoalBottomSheet extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 22.v),
-        decoration: AppDecoration.fillGray90002.copyWith(
-            borderRadius: BorderRadius.vertical(
-          top: Radius.circular(29.h),
-        )),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.onPrimaryContainer,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24.h),
+            topRight: Radius.circular(24.h),
+          ),
+        ),
         child: Consumer(
           builder: (context, ref, child) => Column(
               mainAxisSize: MainAxisSize.min,
@@ -46,13 +50,16 @@ class AddNewGoalBottomSheet extends StatelessWidget {
                       CustomIconButton(
                           height: 24.adaptSize,
                           width: 24.adaptSize,
-                          decoration:
-                              IconButtonStyleHelper.fillOnPrimaryContainerTL12,
+                          decoration: BoxDecoration(
+                              color: theme.colorScheme.primary,
+                              borderRadius: BorderRadius.circular(4.h)),
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: CustomImageView(
-                              imagePath: ImageConstant.imgClose))
+                          child: Icon(
+                            Icons.close_rounded,
+                            color: theme.colorScheme.background,
+                          ))
                     ]),
                 SizedBox(height: 48.v),
                 Padding(

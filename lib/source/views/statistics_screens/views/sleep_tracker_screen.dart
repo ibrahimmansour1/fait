@@ -3,6 +3,7 @@ import 'package:fait/source/views/statistics_screens/widgets/note_widget.dart';
 import 'package:fait/source/views/statistics_screens/widgets/total_time_info_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
+import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class SleepTrackerScreen extends StatefulWidget {
@@ -24,15 +25,17 @@ class _SleepTrackerScreenState extends State<SleepTrackerScreen> {
             padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 32.v),
             child: Column(
               children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 24.v,
-                  width: 16.h,
+                Align(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 16.h),
-                  onTap: () {
-                    onTapImgArrowLeft(context);
-                  },
+                  child: InkWell(
+                    onTap: () {
+                      onTapImgArrowLeft(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: theme.colorScheme.tertiary,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 27.v),
                 Align(
@@ -129,7 +132,10 @@ class _SleepTrackerScreenState extends State<SleepTrackerScreen> {
                   child: Padding(
                     padding: EdgeInsets.only(left: 16.h),
                     child: Text("Bio Metrices",
-                        style: CustomTextStyles.headlineSmallRobotoSemiBold),
+                        style: CustomTextStyles.headlineSmallRobotoSemiBold!
+                            .copyWith(
+                          color: theme.colorScheme.tertiary,
+                        )),
                   ),
                 ),
                 SizedBox(height: 17.v),

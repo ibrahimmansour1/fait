@@ -1,4 +1,5 @@
 import 'package:fait/source/providers/fitness/listen_and_speak_provider.dart';
+import 'package:fait/source/views/fitness/views/pose_detection/pose_detector.dart';
 import 'package:fait/source/views/fitness/widgets/arrow_bottom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -58,7 +59,8 @@ class _OpenCameraScreenState extends ConsumerState<OpenCameraScreen> {
             return Stack(
               fit: StackFit.expand,
               children: [
-                CameraPreview(_cameraController),
+                // CameraPreview(_cameraController),
+                const PoseDetectionPage(),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   padding:

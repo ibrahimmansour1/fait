@@ -27,6 +27,7 @@ class _ExercisesFilterScreenState extends ConsumerState<ExercisesFilterScreen> {
     return SingleChildScrollView(
       child: Container(
         decoration: AppDecoration.fillBlueGray.copyWith(
+            color: theme.colorScheme.background,
             borderRadius: BorderRadiusStyle.roundedBorder22
                 .copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero)),
         padding: const EdgeInsets.all(8),
@@ -39,9 +40,9 @@ class _ExercisesFilterScreenState extends ConsumerState<ExercisesFilterScreen> {
                   alignment: AlignmentDirectional.centerStart,
                   child: IconButton(
                     onPressed: () => onTapArrowLeft(context),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_back_ios_new,
-                      color: Colors.white,
+                      color: theme.colorScheme.onPrimaryContainer,
                       size: 24,
                     ),
                   ),
@@ -82,25 +83,37 @@ class _ExercisesFilterScreenState extends ConsumerState<ExercisesFilterScreen> {
             SizedBox(height: 30.v),
             Padding(
                 padding: EdgeInsets.only(left: 32.h),
-                child: Text("Muscles", style: theme.textTheme.titleLarge)),
+                child: Text("Muscles",
+                    style: theme.textTheme.titleLarge!.copyWith(
+                      color: theme.colorScheme.tertiary,
+                    ))),
             SizedBox(height: 32.v),
             _buildMusclesSet(context, exercisesFilterViewModel),
             SizedBox(height: 32.v),
             Padding(
                 padding: EdgeInsets.only(left: 32.h),
-                child: Text("Equipments", style: theme.textTheme.titleLarge)),
+                child: Text("Equipments",
+                    style: theme.textTheme.titleLarge!.copyWith(
+                      color: theme.colorScheme.tertiary,
+                    ))),
             SizedBox(height: 30.v),
             _buildEquipmentSet(context, exercisesFilterViewModel),
             SizedBox(height: 33.v),
             Padding(
                 padding: EdgeInsets.only(left: 32.h),
-                child: Text("Type", style: theme.textTheme.titleLarge)),
+                child: Text("Type",
+                    style: theme.textTheme.titleLarge!.copyWith(
+                      color: theme.colorScheme.tertiary,
+                    ))),
             SizedBox(height: 29.v),
             _buildTypeSet(context, exercisesFilterViewModel),
             SizedBox(height: 32.v),
             Padding(
                 padding: EdgeInsets.only(left: 32.h),
-                child: Text("Difficulty", style: theme.textTheme.titleLarge)),
+                child: Text("Difficulty",
+                    style: theme.textTheme.titleLarge!.copyWith(
+                      color: theme.colorScheme.tertiary,
+                    ))),
             SizedBox(height: 30.v),
             _buildDifficiltySet(context, exercisesFilterViewModel),
             SizedBox(height: 20.v),

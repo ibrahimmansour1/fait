@@ -59,7 +59,9 @@ class KcalItemWidget extends StatelessWidget {
                     ),
                     child: Text(
                       "lbl_28_02".tr,
-                      style: theme.textTheme.labelLarge,
+                      style: theme.textTheme.labelLarge!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      ),
                     ),
                   ),
                   CustomImageView(
@@ -80,7 +82,9 @@ class KcalItemWidget extends StatelessWidget {
                     ),
                     child: Text(
                       "lbl_3_34".tr,
-                      style: theme.textTheme.labelLarge,
+                      style: theme.textTheme.labelLarge!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      ),
                     ),
                   ),
                   CustomImageView(
@@ -101,7 +105,9 @@ class KcalItemWidget extends StatelessWidget {
                     ),
                     child: Text(
                       "lbl_6_63".tr,
-                      style: theme.textTheme.labelLarge,
+                      style: theme.textTheme.labelLarge!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      ),
                     ),
                   ),
                   // Container(
@@ -137,12 +143,15 @@ class KcalItemWidget extends StatelessWidget {
                   //   ),
                   //   child: Text(
                   //     "lbl_40_0_gram".tr,
-                  //     style: theme.textTheme.labelMedium,
+                  //     style: theme.textTheme.labelMedium!.copyWith(
+                  //       color: theme.colorScheme.tertiary,
+                  //     ),
                   //   ),
                   // ),
                   // SizedBox(
                   //   width: 10.h,
                   // ),
+
                   Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 4.h,
@@ -153,7 +162,9 @@ class KcalItemWidget extends StatelessWidget {
                     ),
                     child: Text(
                       "lbl_151_kcal".tr,
-                      style: theme.textTheme.labelMedium,
+                      style: theme.textTheme.labelMedium!.copyWith(
+                        color: theme.colorScheme.tertiary,
+                      ),
                     ),
                   ),
                 ],

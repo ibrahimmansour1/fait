@@ -1,3 +1,5 @@
+import 'package:fait/source/models/fitness/exercise_response_body/exercise_response_body.dart';
+import 'package:fait/source/models/fitness/exercise_response_body_by_name_or_id/exercise_response_body_by_name_or_id.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,13 +9,19 @@ import '../../../widgets/replace_with_screen/replace_with_tab_container_screen.d
 
 // ignore: must_be_immutable
 class ExerciseCardWidget extends StatelessWidget {
+  ExerciseResponseBody? exerciseModel;
   bool favourite;
   bool replacable;
   StateProvider<bool>? isFavouriteProvider;
   VoidCallback? onTap;
 
-  ExerciseCardWidget(
-      {super.key, this.favourite = false, this.replacable = true, this.onTap}) {
+  ExerciseCardWidget({
+    super.key,
+    this.favourite = false,
+    this.replacable = true,
+    this.onTap,
+    this.exerciseModel,
+  }) {
     isFavouriteProvider = StateProvider<bool>((ref) {
       return favourite;
     });
@@ -31,8 +39,10 @@ class ExerciseCardWidget extends StatelessWidget {
                 height: 32.adaptSize,
                 width: 32.adaptSize,
                 margin: EdgeInsets.only(left: 16.h, top: 36.v, bottom: 36.v),
-                decoration: AppDecoration.fillOnPrimaryContainer
-                    .copyWith(borderRadius: BorderRadiusStyle.circleBorder16),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.onPrimaryContainer,
+                  borderRadius: BorderRadius.circular(16.h),
+                ),
                 child: CustomImageView(
                     imagePath: ImageConstant.imgCloseDeepPurpleA200,
                     height: 32.adaptSize,
@@ -66,15 +76,21 @@ class ExerciseCardWidget extends StatelessWidget {
           onTap: onTap,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 27.h, vertical: 16.v),
-            decoration: AppDecoration.fillBluegray80004
-                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.onPrimaryContainer,
+              borderRadius: BorderRadius.circular(16.h),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     CustomImageView(
-                        imagePath: ImageConstant.imgMindBodyBalance,
+                        fit: BoxFit.cover,
+                        imagePath:
+                            // exerciseModel!.image
+                            exerciseModel?.image ??
+                                ImageConstant.imgMindBodyBalance,
                         height: 72.adaptSize,
                         width: 72.adaptSize,
                         radius: BorderRadius.circular(8.h)),
@@ -96,11 +112,16 @@ class ExerciseCardWidget extends StatelessWidget {
                                       borderRadius:
                                           BorderRadius.circular(2.h))),
                               SizedBox(height: 9.v),
-                              Text("Side Jump",
-                                  style: theme.textTheme.titleMedium),
+                              Text(exerciseModel!.name!,
+                                  style: theme.textTheme.titleSmall!.copyWith(
+                                    color: theme.colorScheme.tertiary,
+                                  )),
                               SizedBox(height: 6.v),
-                              Text("15 times",
-                                  style: theme.textTheme.titleSmall)
+                              Text(exerciseModel!.steps.toString(),
+                                  // "null",
+                                  style: theme.textTheme.titleSmall!.copyWith(
+                                    color: theme.colorScheme.tertiary,
+                                  ))
                             ])),
                   ],
                 ),
@@ -114,9 +135,11 @@ class ExerciseCardWidget extends StatelessWidget {
                       imagePath: ImageConstant.imgFavoriteBlueGray90020x20,
                       height: 18.v,
                       width: 20.h,
-                      color: ref.watch(isFavouriteProvider!)
-                          ? theme.colorScheme.primary
-                          : null,
+                      color:
+                          // ref.watch(isFavouriteProvider!)
+                          ref.watch(isFavouriteProvider!)
+                              ? theme.colorScheme.primary
+                              : Colors.white,
                       margin: EdgeInsets.symmetric(vertical: 27.v)),
                 )
               ],

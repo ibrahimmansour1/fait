@@ -1,9 +1,10 @@
-import 'package:fait/source/localization/app_localization.dart';
+import 'package:fait/source/providers/theme/theme_provider.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'routes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'localization/app_localization.dart';
+import 'routes.dart';
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
@@ -14,6 +15,7 @@ class MyApp extends ConsumerWidget {
     // final locale = ref.watch(localeProvider).currentLocale;
     // final themeMode = ref.watch(themeProvider).themeMode;
     // final primaryColor = ref.watch(themeProvider).primaryColor;
+    final themeProvider = ref.watch(themeNotifierProvider);
 
     return ProviderScope(
       child: Sizer(

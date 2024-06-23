@@ -27,15 +27,21 @@ class WaterIntakeScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 32.v),
-                CustomImageView(
-                    imagePath: ImageConstant.imgArrowLeft,
-                    height: 24.v,
-                    width: 16.h,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
                     alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(left: 32.h),
-                    onTap: () {
-                      onTapImgArrowLeft(context);
-                    }),
+                    child: InkWell(
+                      onTap: () {
+                        onTapImgArrowLeft(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: theme.colorScheme.tertiary,
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(height: 66.v),
                 Text("HYDRATION", style: CustomTextStyles.titleMediumPrimary18),
                 SizedBox(height: 9.v),

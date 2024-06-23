@@ -21,7 +21,8 @@ class _WorkoutOverviewScreenState extends ConsumerState<WorkoutOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final fitnessPlanOverviewViewModel = ref.watch(fitnessPlanProvider).fitnessPlanOverviewResponse;
+    final fitnessPlanOverviewViewModel =
+        ref.watch(fitnessPlanProvider).fitnessPlanOverviewResponse;
     return Column(
       children: [
         OverviewPercentagesWidget(
@@ -34,18 +35,12 @@ class _WorkoutOverviewScreenState extends ConsumerState<WorkoutOverviewScreen> {
           stretchText: "Stretch",
           stretchPercentageText:
               "${fitnessPlanOverviewViewModel.data?.stretch} %",
-          cardioPercentageIndicator: fitnessPlanOverviewViewModel
-                  .data?.cardio!
-                  .toDouble() ??
-              0,
-          strengthPercentageIndicator: fitnessPlanOverviewViewModel
-                  .data?.strength!
-                  .toDouble() ??
-              0,
-          stretchPercentageIndicator: fitnessPlanOverviewViewModel
-                  .data?.stretch!
-                  .toDouble() ??
-              0,
+          cardioPercentageIndicator:
+              fitnessPlanOverviewViewModel.data?.cardio!.toDouble() ?? 0,
+          strengthPercentageIndicator:
+              fitnessPlanOverviewViewModel.data?.strength!.toDouble() ?? 0,
+          stretchPercentageIndicator:
+              fitnessPlanOverviewViewModel.data?.stretch!.toDouble() ?? 0,
         ),
         SizedBox(height: 73.v),
         Padding(

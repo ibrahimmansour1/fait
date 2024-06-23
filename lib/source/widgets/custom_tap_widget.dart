@@ -24,14 +24,14 @@ class CustomTapWidget extends StatelessWidget {
       label: Text(
         label,
         style: TextStyle(
-          color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+          color: theme.colorScheme.tertiary,
           fontSize: 18.fSize,
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w400,
         ),
       ),
       selected: selected,
-      backgroundColor: appTheme.blueGray80004,
+      backgroundColor: theme.colorScheme.onPrimaryContainer,
       selectedColor: theme.colorScheme.primary,
       shape: RoundedRectangleBorder(
         side: const BorderSide(style: BorderStyle.none),

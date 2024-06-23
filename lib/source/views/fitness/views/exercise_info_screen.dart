@@ -1,19 +1,25 @@
+import 'package:fait/source/models/fitness/exercise_response_body_by_name_or_id/exercise_response_body_by_name_or_id.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/custom_outlined_button.dart';
 
 // ignore: must_be_immutable
 class ExerciseInfoScreen extends StatelessWidget {
   bool tryIt;
-  ExerciseInfoScreen({super.key, this.tryIt = false});
+  ExerciseResponseBodyByNameOrId? exercise;
+  ExerciseInfoScreen({
+    super.key,
+    this.tryIt = false,
+    this.exercise,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: AppDecoration.fillBlueGray.copyWith(
+          color: theme.colorScheme.onPrimaryContainer,
           borderRadius: BorderRadiusStyle.roundedBorder22
               .copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero)),
       child: Column(children: [
@@ -30,7 +36,7 @@ class ExerciseInfoScreen extends StatelessWidget {
                   ),
                   Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("JUMPING JACKS 20s",
+                      child: Text(exercise!.name!,
                           style: CustomTextStyles.headlineSmallRoboto_2)),
                   SizedBox(height: 46.v),
                   _buildExerciseInfoItemsSection(context),
@@ -78,19 +84,24 @@ class ExerciseInfoScreen extends StatelessWidget {
         width: double.maxFinite,
         padding: EdgeInsets.fromLTRB(32.h, 32.v, 32.h, 30.v),
         decoration: AppDecoration.fillBlueGray.copyWith(
+            color: theme.colorScheme.onPrimaryContainer,
             borderRadius: BorderRadiusStyle.roundedBorder12,
             border: Border(
                 bottom:
                     BorderSide(color: theme.colorScheme.primary, width: 1))),
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          CustomImageView(
-              imagePath: ImageConstant.imgArrowLeft,
-              height: 24.v,
-              width: 16.h,
-              margin: EdgeInsets.only(bottom: 232.v),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: InkWell(
               onTap: () {
                 onTapImgArrowLeft(context);
-              }),
+              },
+              child: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: theme.colorScheme.tertiary,
+              ),
+            ),
+          ),
           CustomImageView(
               imagePath: ImageConstant.imgExerciseAnimation,
               height: 241.v,
@@ -146,8 +157,7 @@ class ExerciseInfoScreen extends StatelessWidget {
             onPressed: () {
               getPermissionStatus(context, Permission.microphone, "Microphone")
                   .then((microphonePermission) {
-                getPermissionStatus(
-                        context, Permission.camera, "Camera")
+                getPermissionStatus(context, Permission.camera, "Camera")
                     .then((cameraPermission) {
                   if (microphonePermission && cameraPermission) {
                     Navigator.pushNamed(context, '/open_camera_screen');
@@ -178,7 +188,7 @@ class ExerciseInfoScreen extends StatelessWidget {
         Text(
           name,
           style: TextStyle(
-            color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+            color: theme.colorScheme.onPrimary.withOpacity(1),
             fontSize: 20.fSize,
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w600,
@@ -197,8 +207,10 @@ class ExerciseInfoScreen extends StatelessWidget {
       elevation: 2,
       borderRadius: BorderRadiusStyle.circleBorder16,
       child: Container(
-        decoration: AppDecoration.fillBluegray80004
-            .copyWith(borderRadius: BorderRadiusStyle.circleBorder16),
+        decoration: AppDecoration.fillBluegray80004.copyWith(
+          borderRadius: BorderRadiusStyle.circleBorder16,
+          color: theme.colorScheme.onPrimaryContainer,
+        ),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 3.v, horizontal: 10.h),
           child: Row(
@@ -216,7 +228,7 @@ class ExerciseInfoScreen extends StatelessWidget {
               Text(
                 value,
                 style: TextStyle(
-                  color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+                  color: theme.colorScheme.onPrimary.withOpacity(1),
                   fontSize: 16.fSize,
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w400,

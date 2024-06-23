@@ -17,14 +17,17 @@ class DailyIntakeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 24.v,
-                  width: 16.h,
-                  margin: EdgeInsets.only(left: 10.h),
-                  onTap: () {
-                    onTapImgArrowLeft(context);
-                  },
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: InkWell(
+                    onTap: () {
+                      onTapImgArrowLeft(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: theme.colorScheme.tertiary,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 80.v,

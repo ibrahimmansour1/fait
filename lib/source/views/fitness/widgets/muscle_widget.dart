@@ -13,7 +13,7 @@ class MuscleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: appTheme.blueA40003,
+      backgroundColor: theme.colorScheme.onPrimaryContainer,
       radius: 60.adaptSize,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,7 +25,7 @@ class MuscleWidget extends StatelessWidget {
                   muscleModel.isMain! ? appTheme.yellow900 : appTheme.brown900,
               height: 70.adaptSize,
               width: 70.adaptSize),
-          Text(muscleModel.name?? "Name",
+          Text(muscleModel.name ?? "Name",
               style: muscleModel.isMain!
                   ? CustomTextStyles.titleLargeYellow900
                   : CustomTextStyles.titleLargeBrown900),
