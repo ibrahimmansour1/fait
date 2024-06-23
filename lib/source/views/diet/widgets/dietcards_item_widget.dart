@@ -12,6 +12,9 @@ class DietcardsItemWidget extends StatelessWidget {
     this.onTap,
     this.replacable = true,
     this.favourite = false,
+    this.mealName,
+    this.mealCalory,
+    this.mealPicture,
   }) : super(
           key: key,
         ) {
@@ -24,6 +27,9 @@ class DietcardsItemWidget extends StatelessWidget {
   bool replacable;
   bool favourite;
   StateProvider<bool>? isFavouriteProvider;
+  String? mealName;
+  String? mealPicture;
+  int? mealCalory;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +41,10 @@ class DietcardsItemWidget extends StatelessWidget {
           children: [
             Container(
                 margin: EdgeInsets.only(left: 16.h, top: 36.v, bottom: 36.v),
-                decoration: AppDecoration.fillOnPrimaryContainer
-                    .copyWith(borderRadius: BorderRadiusStyle.circleBorder64),
+                decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
+                  borderRadius: BorderRadiusStyle.circleBorder64,
+                  color: theme.colorScheme.onPrimaryContainer,
+                ),
                 child: CustomImageView(
                     imagePath: ImageConstant.imgCloseDeepPurpleA200,
                     height: 32.adaptSize,
@@ -77,7 +85,8 @@ class DietcardsItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomImageView(
-                  imagePath: ImageConstant.imgImage80x80,
+                  imagePath: mealPicture ?? ImageConstant.imgImage80x80,
+                  fit: BoxFit.cover,
                   height: 72.v,
                   width: 80.h,
                   radius: BorderRadius.circular(
@@ -92,7 +101,7 @@ class DietcardsItemWidget extends StatelessWidget {
                       SizedBox(
                         width: 137.h,
                         child: Text(
-                          "Salad with wheat and white egg",
+                          mealName ?? "Salad with wheat and white egg",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: CustomTextStyles.titleMediumGray1000118,
@@ -100,7 +109,7 @@ class DietcardsItemWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 7.v),
                       Text(
-                        "200 cals",
+                        mealCalory?.toString() ?? "200 cals",
                         style: CustomTextStyles.bodyLargeGray10001,
                       ),
                     ],

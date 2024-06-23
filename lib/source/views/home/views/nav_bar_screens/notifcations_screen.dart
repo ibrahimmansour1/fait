@@ -13,25 +13,34 @@ class NotifcationsScreen extends StatelessWidget {
       child: Scaffold(
         body: Container(
           width: double.maxFinite,
-          decoration: AppDecoration.fillBlueGray,
+          decoration: AppDecoration.fillBlueGray.copyWith(
+            color: theme.colorScheme.background,
+          ),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 23.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 26.v),
-                CustomImageView(
-                    imagePath: ImageConstant.imgArrowLeft,
-                    height: 24.v,
-                    width: 16.h,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: InkWell(
                     onTap: () {
                       onTapImgArrowLeft(context);
-                    }),
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: theme.colorScheme.tertiary,
+                    ),
+                  ),
+                ),
                 SizedBox(height: 30.v),
                 Padding(
                     padding: EdgeInsets.only(left: 1.h),
                     child: Text("lbl_notification".tr,
-                        style: theme.textTheme.headlineLarge)),
+                        style: theme.textTheme.headlineLarge!.copyWith(
+                          color: theme.colorScheme.tertiary,
+                        ))),
                 SizedBox(height: 37.v),
                 Expanded(
                   child: SingleChildScrollView(

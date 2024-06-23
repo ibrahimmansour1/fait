@@ -327,7 +327,7 @@ class _WorkoutChartWidgetState extends ConsumerState<WorkoutChartWidget> {
                               width: 5.adaptSize,
                               margin: EdgeInsets.symmetric(vertical: 7.v),
                               decoration: BoxDecoration(
-                                  color: theme.colorScheme.onPrimaryContainer
+                                  color: theme.colorScheme.onPrimary
                                       .withOpacity(0.75),
                                   borderRadius: BorderRadius.circular(2.h)),
                             ),
@@ -347,7 +347,7 @@ class _WorkoutChartWidgetState extends ConsumerState<WorkoutChartWidget> {
                               width: 5.adaptSize,
                               margin: EdgeInsets.symmetric(vertical: 7.v),
                               decoration: BoxDecoration(
-                                color: theme.colorScheme.onPrimaryContainer
+                                color: theme.colorScheme.onPrimary
                                     .withOpacity(0.75),
                                 borderRadius: BorderRadius.circular(2.h),
                               ),
@@ -375,14 +375,14 @@ class _WorkoutChartWidgetState extends ConsumerState<WorkoutChartWidget> {
           Text(
             dynamicText1,
             style: CustomTextStyles.titleMediumBlack900.copyWith(
-              color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+              color: theme.colorScheme.onPrimary.withOpacity(1),
             ),
           ),
           SizedBox(height: 3.v),
           Text(
             dynamicText2,
             style: CustomTextStyles.bodyLargeOnPrimaryContainer_2.copyWith(
-              color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+              color: theme.colorScheme.onPrimary.withOpacity(0.75),
             ),
           ),
         ],

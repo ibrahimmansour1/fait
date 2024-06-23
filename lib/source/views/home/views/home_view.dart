@@ -5,6 +5,7 @@ import 'package:fait/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../diet/views/diet_screen.dart';
+import '../../gemini_chat/gemini_chat_screen.dart';
 import 'nav_bar_screens/home_screen.dart';
 import 'nav_bar_screens/notifcations_screen.dart';
 
@@ -49,6 +50,15 @@ class _HomeViewState extends State<HomeView> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          child: Image.asset('assets/icons/gpt-robot.png'),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const GeminiChatScreen(),
+            ),
+          ),
+        ),
         key: _scaffoldKey,
         drawer: Container(),
         bottomNavigationBar: _buildBottomBar(context),

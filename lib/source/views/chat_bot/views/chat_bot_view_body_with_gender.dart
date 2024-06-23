@@ -2,25 +2,28 @@ import 'package:fait/source/views/chat_bot/views/chat_bot_view_body_with_name.da
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:fait/source/views/chat_bot/widgets/select_gender_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/size_utils.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/chat_message_widget.dart';
 import '../widgets/custom_chat_bot_app_bar.dart';
 
 var messageController = TextEditingController();
 
-class ChatBotViewBodyWithGender extends StatefulWidget {
+class ChatBotViewBodyWithGender extends ConsumerStatefulWidget {
   const ChatBotViewBodyWithGender({super.key});
 
   @override
-  State<ChatBotViewBodyWithGender> createState() =>
+  ConsumerState<ChatBotViewBodyWithGender> createState() =>
       _ChatBotViewBodyWithGenderState();
 }
 
-class _ChatBotViewBodyWithGenderState extends State<ChatBotViewBodyWithGender> {
+class _ChatBotViewBodyWithGenderState extends ConsumerState<ChatBotViewBodyWithGender> {
   String selectedGender = '';
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     mediaQueryData = MediaQuery.of(context);
     return Scaffold(
         extendBody: true,
@@ -29,7 +32,9 @@ class _ChatBotViewBodyWithGenderState extends State<ChatBotViewBodyWithGender> {
         body: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+          decoration:  BoxDecoration(
+            color: themeHelper.getThemeData().colorScheme.background,
+          ),
           child: SafeArea(
             child: Container(
               child: Column(

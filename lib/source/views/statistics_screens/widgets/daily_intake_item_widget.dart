@@ -21,7 +21,12 @@ class DailyintakeItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(9.h, 15.v, 9.h, 13.v),
-      decoration: AppDecoration.outlinePrimary1,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.onPrimaryContainer,
+        borderRadius: BorderRadius.circular(
+          8.h,
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

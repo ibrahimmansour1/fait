@@ -14,7 +14,7 @@ class GoalsPopup extends StatelessWidget {
       padding: EdgeInsets.all(16.adaptSize),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
-        color: const Color(0xBF121212),
+        color: theme.colorScheme.onPrimaryContainer,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
       child: Column(
@@ -63,8 +63,9 @@ class GoalsPopup extends StatelessWidget {
                   },
                   child: Text(
                     'Water achievement',
-                    style: CustomTextStyles.bodyLargeDeeppurpleA200
-                        .copyWith(color: Colors.white),
+                    style: CustomTextStyles.bodyLargeDeeppurpleA200.copyWith(
+                      color: theme.colorScheme.tertiary,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -80,8 +81,9 @@ class GoalsPopup extends StatelessWidget {
                   },
                   child: Text(
                     'Running acievement',
-                    style: CustomTextStyles.bodyLargeDeeppurpleA200
-                        .copyWith(color: Colors.white),
+                    style: CustomTextStyles.bodyLargeDeeppurpleA200.copyWith(
+                      color: theme.colorScheme.tertiary,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -97,8 +99,9 @@ class GoalsPopup extends StatelessWidget {
                   },
                   child: Text(
                     'Calories losing',
-                    style: CustomTextStyles.bodyLargeDeeppurpleA200
-                        .copyWith(color: Colors.white),
+                    style: CustomTextStyles.bodyLargeDeeppurpleA200.copyWith(
+                      color: theme.colorScheme.tertiary,
+                    ),
                   ),
                 ),
               ],

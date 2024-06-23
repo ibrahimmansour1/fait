@@ -1,3 +1,4 @@
+import 'package:fait/source/theme/theme_helper.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'replace_with_page.dart';
@@ -43,9 +44,9 @@ class ReplaceWithTabContainerScreenState
                     alignment: AlignmentDirectional.centerStart,
                     child: IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios_new,
-                        color: Colors.white,
+                        color: theme.colorScheme.tertiary,
                         size: 24,
                       ),
                     ),
@@ -109,13 +110,12 @@ class ReplaceWithTabContainerScreenState
           child: TabBar(
               controller: tabviewController,
               labelPadding: EdgeInsets.zero,
-              labelColor: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+              labelColor: theme.colorScheme.onPrimary.withOpacity(1),
               labelStyle: TextStyle(
                   fontSize: 17.fSize,
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w600),
-              unselectedLabelColor:
-                  theme.colorScheme.onPrimaryContainer.withOpacity(1),
+              unselectedLabelColor: theme.colorScheme.onPrimary.withOpacity(1),
               unselectedLabelStyle: TextStyle(
                   fontSize: 17.fSize,
                   fontFamily: 'Roboto',

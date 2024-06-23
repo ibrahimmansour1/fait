@@ -64,8 +64,7 @@ class ProgramCardInfo extends StatelessWidget {
                         width: 5.adaptSize,
                         margin: EdgeInsets.only(top: 8.v, bottom: 10.v),
                         decoration: BoxDecoration(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75),
+                          color: theme.colorScheme.onPrimary.withOpacity(0.75),
                           borderRadius: BorderRadius.circular(2.h),
                         ),
                       ),
@@ -82,8 +81,7 @@ class ProgramCardInfo extends StatelessWidget {
                         width: 5.adaptSize,
                         margin: EdgeInsets.only(top: 8.v, bottom: 10.v),
                         decoration: BoxDecoration(
-                          color: theme.colorScheme.onPrimaryContainer
-                              .withOpacity(0.75),
+                          color: theme.colorScheme.onPrimary.withOpacity(0.75),
                           borderRadius: BorderRadius.circular(2.h),
                         ),
                       ),
@@ -99,8 +97,7 @@ class ProgramCardInfo extends StatelessWidget {
                   width: 5.adaptSize,
                   margin: EdgeInsets.only(left: 12.h, top: 8.v, bottom: 10.v),
                   decoration: BoxDecoration(
-                    color:
-                        theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+                    color: theme.colorScheme.onPrimary.withOpacity(0.75),
                     borderRadius: BorderRadius.circular(2.h),
                   ),
                 ),

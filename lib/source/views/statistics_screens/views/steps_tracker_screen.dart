@@ -30,15 +30,17 @@ class StepsTrackerScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 24.v),
             child: Column(
               children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 24.v,
-                  width: 16.h,
+                Align(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 16.h),
-                  onTap: () {
-                    onTapImgArrowLeft(context);
-                  },
+                  child: InkWell(
+                    onTap: () {
+                      onTapImgArrowLeft(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: theme.colorScheme.tertiary,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 27.v),
                 SizedBox(height: 24.v),
@@ -159,7 +161,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 274.v,
+                                height: 270.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.amber600,
@@ -186,7 +188,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 274.v,
+                                height: 270.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.blueA40002,
@@ -213,7 +215,7 @@ class StepsTrackerScreen extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 274.v,
+                                height: 270.v,
                               ),
                               CircularPercentIndicator(
                                 progressColor: appTheme.deepPurpleA10001,
@@ -257,8 +259,10 @@ class StepsTrackerScreen extends StatelessWidget {
       width: 404.h,
       height: 236.v,
       padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 17.v),
-      decoration: AppDecoration.fillBluegray80004
-          .copyWith(borderRadius: BorderRadiusStyle.roundedBorder22),
+      decoration: AppDecoration.fillBluegray80004.copyWith(
+        borderRadius: BorderRadiusStyle.roundedBorder22,
+        color: theme.colorScheme.onPrimaryContainer,
+      ),
       child: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
           final selectedTimePeriod = ref.watch(selectedTimePeriodProvider);

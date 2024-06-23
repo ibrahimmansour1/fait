@@ -43,12 +43,12 @@ class CustomOutlinedButton extends BaseButton {
     return alignment != null
         ? Align(
             alignment: alignment ?? Alignment.center,
-            child: buildOutlinedButtonWidget,
+            child: buildOutlinedButtonWidget(context),
           )
-        : buildOutlinedButtonWidget;
+        : buildOutlinedButtonWidget(context);
   }
 
-  Widget get buildOutlinedButtonWidget => Container(
+  Widget buildOutlinedButtonWidget(BuildContext context) => Container(
         height: height ?? 48.v,
         width: width ?? double.maxFinite,
         margin: margin,
@@ -63,8 +63,13 @@ class CustomOutlinedButton extends BaseButton {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text,
-                style: buttonTextStyle ??
-                    CustomTextStyles.headlineSmallRobotoRegular,
+                style: (buttonTextStyle ??
+                        CustomTextStyles.headlineSmallRobotoRegular)
+                    .copyWith(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white
+                      : Colors.black,
+                ),
               ),
               rightIcon ?? const SizedBox.shrink(),
             ],

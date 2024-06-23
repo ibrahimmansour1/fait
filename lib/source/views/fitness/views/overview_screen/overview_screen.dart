@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fait/source/routes.dart';
 import 'package:fait/source/views/fitness/views/my_activity_screen.dart';
 import 'package:fait/source/views/fitness/widgets/overview_percentages_widget.dart';
 import 'package:fait/source/views/fitness/widgets/program_card_info.dart';
@@ -140,6 +141,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                   child: CustomImageView(
                                     imagePath: ImageConstant.imgArrowProgram,
                                     height: 28.v,
+                                    color: theme.colorScheme.tertiary,
                                     width: 20.h,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(left: 16.h),

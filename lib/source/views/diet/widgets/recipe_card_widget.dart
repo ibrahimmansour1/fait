@@ -21,8 +21,10 @@ class RecipeCardWidget extends StatelessWidget {
         onTap: onTap,
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 27.h, vertical: 16.v),
-          decoration: AppDecoration.fillBluegray80004
-              .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+          decoration: AppDecoration.fillBluegray80004.copyWith(
+            borderRadius: BorderRadiusStyle.roundedBorder8,
+            color: theme.colorScheme.onPrimaryContainer,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -43,7 +45,9 @@ class RecipeCardWidget extends StatelessWidget {
                           children: [
                             Text(
                               "Salamon",
-                              style: theme.textTheme.titleMedium,
+                              style: theme.textTheme.titleMedium!.copyWith(
+                                color: theme.colorScheme.tertiary,
+                              ),
                             ),
                             SizedBox(height: 15.v),
                             SizedBox(
@@ -56,14 +60,20 @@ class RecipeCardWidget extends StatelessWidget {
                                     padding: EdgeInsets.only(top: 2.v),
                                     child: Text(
                                       "n grams",
-                                      style: theme.textTheme.titleSmall,
+                                      style:
+                                          theme.textTheme.titleSmall!.copyWith(
+                                        color: theme.colorScheme.tertiary,
+                                      ),
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(top: 2.v),
                                     child: Text(
                                       "n kcal",
-                                      style: theme.textTheme.titleSmall,
+                                      style:
+                                          theme.textTheme.titleSmall!.copyWith(
+                                        color: theme.colorScheme.tertiary,
+                                      ),
                                     ),
                                   ),
                                 ],

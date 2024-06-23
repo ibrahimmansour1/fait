@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/app_export.dart';
 import '../../../../utils/transitions/fade_transition.dart';
 import '../../../providers/fitness/fitness_plan_provider.dart';
+import '../../../providers/theme/theme_provider.dart';
 
 class ExercisesProgramWidget extends ConsumerStatefulWidget {
   const ExercisesProgramWidget({
@@ -31,6 +32,7 @@ class _ExercisesProgramWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     final fitnessPlanViewModel =
         ref.watch(fitnessPlanProvider).fitnessPlanResponse;
     return Column(
@@ -41,7 +43,7 @@ class _ExercisesProgramWidgetState
           'My Program',
           style: TextStyle(
             fontSize: 32.fSize,
-            color: Colors.white,
+            color: theme.colorScheme.tertiary,
           ),
         ),
         const SizedBox(height: 20),
@@ -89,14 +91,16 @@ class _ExercisesProgramWidgetState
                             Column(
                               children: [
                                 Text(
-                                  '${fitnessPlanViewModel.data!.numberOfWorkouts} Workout',
+                                  '1 Workout',
+                                  // '${fitnessPlanViewModel.data!.numberOfWorkouts} Workout',
                                   style: TextStyle(
                                     fontSize: 20.fSize,
                                     color: Colors.white,
                                   ),
                                 ),
                                 Text(
-                                  '${fitnessPlanViewModel.data!.numberOfExercises} Exercise',
+                                  '1 Exercise',
+                                  // '${fitnessPlanViewModel.data!.numberOfExercises} Exercise',
                                   style: TextStyle(
                                     fontSize: 18.fSize,
                                     color: Colors.white.withOpacity(0.75),
@@ -150,7 +154,7 @@ class _ExercisesProgramWidgetState
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: const Color(0xff17D1E0),
+                                    color: theme.colorScheme.onPrimaryContainer,
                                     borderRadius: BorderRadius.circular(35)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
@@ -161,12 +165,12 @@ class _ExercisesProgramWidgetState
                                         style: TextStyle(
                                           fontSize: 20.fSize,
                                           fontWeight: FontWeight.w500,
-                                          color: Colors.white,
+                                          color: theme.colorScheme.tertiary,
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         (Icons.arrow_forward_ios_rounded),
-                                        color: Colors.white,
+                                        color: theme.colorScheme.tertiary,
                                       )
                                     ],
                                   ),
