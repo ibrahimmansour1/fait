@@ -2,7 +2,7 @@ import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchView extends StatelessWidget {
-  CustomSearchView({
+  const CustomSearchView({
     Key? key,
     this.alignment,
     this.width,
@@ -105,10 +105,9 @@ class CustomSearchView extends StatelessWidget {
         prefixIcon: prefix ??
             Container(
               margin: EdgeInsets.fromLTRB(15.h, 12.v, 10.h, 12.v),
-              child: CustomImageView(
-                imagePath: ImageConstant.imgSearchBlueGray80004,
-                height: 16.adaptSize,
-                width: 16.adaptSize,
+              child: Icon(
+                Icons.search_rounded,
+                color: theme.colorScheme.tertiary,
               ),
             ),
         prefixIconConstraints: prefixConstraints ??
@@ -124,7 +123,7 @@ class CustomSearchView extends StatelessWidget {
                 onPressed: () => controller!.clear(),
                 icon: Icon(
                   Icons.clear,
-                  color: Colors.grey.shade600,
+                  color: theme.colorScheme.tertiary.withOpacity(0.4),
                 ),
               ),
             ),
@@ -139,8 +138,7 @@ class CustomSearchView extends StatelessWidget {
               right: 9.h,
               bottom: 9.v,
             ),
-        fillColor:
-            fillColor ?? theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+        fillColor: theme.colorScheme.onPrimaryContainer,
         filled: filled,
         border: borderDecoration ??
             OutlineInputBorder(

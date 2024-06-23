@@ -1,7 +1,9 @@
 import 'package:fait/source/views/chat_bot/widgets/chat_bot_button_widget.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../providers/theme/theme_provider.dart';
 import '../../../widgets/custom_future_animated_opacity_widget.dart';
 import '../widgets/build_send_message_widget.dart';
 import '../widgets/chat_message_widget.dart';
@@ -10,20 +12,22 @@ import '../widgets/custom_chat_bot_app_bar.dart';
 var messageController = TextEditingController();
 String name = "";
 
-class ChatBotViewBodyName extends StatefulWidget {
+class ChatBotViewBodyName extends ConsumerStatefulWidget {
   const ChatBotViewBodyName({super.key});
 
   @override
-  State<ChatBotViewBodyName> createState() => _ChatBotViewBodyNameState();
+  ConsumerState<ChatBotViewBodyName> createState() =>
+      _ChatBotViewBodyNameState();
 }
 
 bool isNameSubmitted = false;
 
-class _ChatBotViewBodyNameState extends State<ChatBotViewBodyName> {
+class _ChatBotViewBodyNameState extends ConsumerState<ChatBotViewBodyName> {
   FocusNode myFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
+    final themeHelper = ref.watch(themeNotifierProvider);
     Future.delayed(const Duration(seconds: 5), () {
       FocusScope.of(context).requestFocus(myFocusNode);
     });
@@ -36,7 +40,9 @@ class _ChatBotViewBodyNameState extends State<ChatBotViewBodyName> {
         child: Container(
           width: mediaQueryData.size.width,
           height: mediaQueryData.size.height,
-          decoration: const BoxDecoration(color: Color(0xFF282B4C)),
+          decoration: BoxDecoration(
+            color: themeHelper.getThemeData().colorScheme.background,
+          ),
           child: SafeArea(
             child: Container(
               child: Column(

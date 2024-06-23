@@ -32,7 +32,9 @@ class TitleDateProgram extends StatelessWidget {
                     text: TextSpan(children: [
                       TextSpan(
                           text: buildText,
-                          style: theme.textTheme.displayMedium),
+                          style: theme.textTheme.displayMedium!.copyWith(
+                            color: theme.colorScheme.tertiary.withOpacity(0.3),
+                          )),
                       const TextSpan(text: " ")
                     ]),
                     textAlign: TextAlign.left),

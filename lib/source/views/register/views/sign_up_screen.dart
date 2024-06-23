@@ -1,6 +1,5 @@
 import 'dart:io';
-
-import 'package:fait/source/views/chat_bot/views/chat_bot_view.dart';
+import 'package:fait/source/views/home/views/home_view.dart';
 import 'package:fait/source/views/register/widgets/pick_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
@@ -8,6 +7,7 @@ import 'package:fait/source/widgets/custom_elevated_button.dart';
 import 'package:fait/source/widgets/custom_text_form_field.dart';
 
 import '../../../../utils/transitions/fade_transition.dart';
+import '../../chat_bot/views/chat_bot_view.dart';
 
 // ignore_for_file: must_be_immutable
 class SignUpScreen extends StatefulWidget {
@@ -61,14 +61,8 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
               width: mediaQueryData.size.width,
               height: mediaQueryData.size.height,
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: const Alignment(0, 0.51),
-                      end: const Alignment(0.95, 0.66),
-                      colors: [
-                    theme.colorScheme.onPrimary,
-                    appTheme.blueGray800,
-                    appTheme.blueGray80001
-                  ])),
+                color: theme.colorScheme.onPrimaryContainer,
+              ),
               child: SingleChildScrollView(
                 child: Form(
                     key: _formKey,
@@ -88,7 +82,13 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
                                     radius: BorderRadius.circular(64.h)),
                                 SizedBox(height: 23.v),
                                 Text("Fitness AI Trainer",
-                                    style: theme.textTheme.headlineSmall)
+                                    style: theme.textTheme.headlineSmall!
+                                        .copyWith(
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.dark
+                                                    ? Colors.white
+                                                    : Colors.black)),
                               ])),
                           SizedBox(height: 80.v),
                           Container(
@@ -96,38 +96,45 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
                                   borderRadius:
                                       BorderRadiusStyle.roundedBorder8),
                               child: Column(children: [
-                                Padding(
-                                    padding: EdgeInsets.only(right: 5.h),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: 11.v, bottom: 7.v),
-                                              child: Text("Add your photo",
-                                                  style: CustomTextStyles
-                                                      .headlineSmallRobotoSemiBold)),
-                                          InkWell(
-                                            onTap: () => _imagePickerHandler
-                                                .showOptions(context),
-                                            child: SizedBox(
-                                              height: 48.adaptSize,
-                                              width: 48.adaptSize,
-                                              // child: CustomImageView(
-                                              //   imagePath: _image?.path ??
-                                              //       ImageConstant.imgUser,
-                                              // ),
-                                              child: _image?.path == null
-                                                  ? CustomImageView(
-                                                      imagePath:
-                                                          ImageConstant.imgUser,
-                                                    )
-                                                  : Image.file(
-                                                      File(_image!.path)),
-                                            ),
-                                          )
-                                        ])),
+                                // Padding(
+                                //     padding: EdgeInsets.only(right: 5.h),
+                                //     child: Row(
+                                //         mainAxisAlignment:
+                                //             MainAxisAlignment.spaceBetween,
+                                //         children: [
+                                //           Padding(
+                                //               padding: EdgeInsets.only(
+                                //                   top: 11.v, bottom: 7.v),
+                                //               child: Text("Add your photo",
+                                //                   style: CustomTextStyles
+                                //                       .headlineSmallRobotoSemiBold!
+                                //                       .copyWith(
+                                //                           color: Theme.of(context)
+                                //                                       .brightness ==
+                                //                                   Brightness
+                                //                                       .dark
+                                //                               ? Colors.white
+                                //                               : Colors.black))),
+                                //           InkWell(
+                                //             onTap: () => _imagePickerHandler
+                                //                 .showOptions(context),
+                                //             child: SizedBox(
+                                //               height: 48.adaptSize,
+                                //               width: 48.adaptSize,
+                                //               // child: CustomImageView(
+                                //               //   imagePath: _image?.path ??
+                                //               //       ImageConstant.imgUser,
+                                //               // ),
+                                //               child: _image?.path == null
+                                //                   ? CustomImageView(
+                                //                       imagePath:
+                                //                           ImageConstant.imgUser,
+                                //                     )
+                                //                   : Image.file(
+                                //                       File(_image!.path)),
+                                //             ),
+                                //           )
+                                //         ])),
                                 SizedBox(height: 16.v),
                                 _buildName(context),
                                 SizedBox(height: 16.v),
@@ -243,6 +250,9 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
     Navigator.push(
       context,
       FadePageRouteBuilder(
+        // TODO: replace with chat bot view
+        // page: const HomeView(),
+        // TODO: replace this after linking sign up
         page: const ChatBotView(),
         duration: const Duration(milliseconds: 800),
       ),

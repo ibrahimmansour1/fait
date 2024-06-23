@@ -9,6 +9,13 @@ const String baseUrl2 = "http://fait.runasp.net/api/v1/";
 const String bearerToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJFc2xhbTI1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMmEwZmE3ZmEtNDI4NS00YjE3LTEyZmEtMDhkYzkyYjY3MzJkIiwibmJmIjoxNzE5MDg3MTM5LCJleHAiOjE3MTkwODk4MzksImlhdCI6MTcxOTA4NzEzOX0.QxtmM-lKAazIN4iMMYLorqH57h9f5kxKPfmc0aluiTw";
 const String authUsername = "11173799";
 const String authPassword = "60-dayfreetrial";
+const String newBaseUrl = "http://fait.runasp.net/api/v1/";
+String userToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJFc2xhbTI1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMmEwZmE3ZmEtNDI4NS00YjE3LTEyZmEtMDhkYzkyYjY3MzJkIiwibmJmIjoxNzE5MDkyNzYwLCJleHAiOjE3MTkwOTU0NjAsImlhdCI6MTcxOTA5Mjc2MH0.3R3WGQ9j48jW7Gs5WfX9pJBpa2p_N0vYL_mZwNf7Xe8";
+String userId = "2a0fa7fa-4285-4b17-12fa-08dc92b6732d";
+String username = "Eslam25";
+String password = "E123456m@";
+String deviceToken = "string";
 
 // Screen Size
 // const double SCREEN_HIEGHT = 926;

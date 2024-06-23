@@ -51,7 +51,7 @@ class CustomButtonStyles {
         ),
       );
   static ButtonStyle get fillBlueGrayTL8 => ElevatedButton.styleFrom(
-        backgroundColor: appTheme.blueGray80004,
+        backgroundColor: theme.colorScheme.onPrimaryContainer,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.h),
         ),

@@ -5,9 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../utils/app_export.dart';
 import '../../../../utils/transitions/fade_transition.dart';
+import '../../../providers/theme/theme_provider.dart';
 import '../views/diet_plans_screen.dart';
 
+
 class DietProgramWidget extends ConsumerStatefulWidget {
+
   const DietProgramWidget({
     super.key,
   });
@@ -28,6 +31,7 @@ class _DietProgramWidgetState extends ConsumerState<DietProgramWidget> {
   @override
   Widget build(BuildContext context) {
     final dietViewModel = ref.watch(dietsProvider).dietResponses;
+    final themeHelper = ref.watch(themeNotifierProvider);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +41,7 @@ class _DietProgramWidgetState extends ConsumerState<DietProgramWidget> {
             'My Program',
             style: TextStyle(
               fontSize: 32.fSize,
-              color: Colors.white,
+              color: theme.colorScheme.tertiary,
             ),
           ),
           const SizedBox(height: 20),
@@ -138,64 +142,48 @@ class DietProgramCardWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 160.h),
-                  SizedBox(height: 60.h),
-                  // InkWell(
-                  //   onTap: () {
-                  //     Navigator.push(
-                  //       context,
-                  //       FadePageRouteBuilder(
-                  //         page: const WorkoutGroupScreen(),
-                  //         duration: const Duration(milliseconds: 800),
-                  //       ),
-                  //     );
-                  //   },
-                  //   child: const CircleAvatar(
-                  //     backgroundColor: Colors.white,
-                  //     child: Icon(
-                  //       Icons.menu_rounded,
-                  //       color: Colors.black,
-                  //     ),
-                  //   ),
-                  // )
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(height: 10.h),
-                  SizedBox(height: 42.h),
-                  // const Icon(
-                  //   CupertinoIcons.heart,
-                  //   color: Colors.white,
-                  // ),
-                  SizedBox(height: 160.h),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        FadePageRouteBuilder(
-                          page:
-                              DietPlansScreen(), // TODO: Navigate to recipes overView screen
-                          duration: const Duration(milliseconds: 800),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: const Color(0xff17D1E0),
-                          borderRadius: BorderRadius.circular(35)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Start',
-                              style: TextStyle(
-                                fontSize: 20.fSize,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(height: 10.h),
+                      SizedBox(height: 42.h),
+                      // const Icon(
+                      //   CupertinoIcons.heart,
+                      //   color: Colors.white,
+                      // ),
+                      SizedBox(height: 160.h),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            FadePageRouteBuilder(
+                              page:
+                                  DietPlansScreen(), // TODO: Navigate to recipes overView screen
+                              duration: const Duration(milliseconds: 800),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: theme.colorScheme.onPrimaryContainer,
+                              borderRadius: BorderRadius.circular(35)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Start',
+                                  style: TextStyle(
+                                    fontSize: 20.fSize,
+                                    fontWeight: FontWeight.w500,
+                                    color: theme.colorScheme.tertiary,
+                                  ),
+                                ),
+                                Icon(
+                                  (Icons.arrow_forward_ios_rounded),
+                                  color: theme.colorScheme.tertiary,
+                                )
+                              ],
                             ),
                             const Icon(
                               (Icons.arrow_forward_ios_rounded),
