@@ -96,45 +96,45 @@ class _OnBoardingSignUpScreenState extends State<SignUpScreen> {
                                   borderRadius:
                                       BorderRadiusStyle.roundedBorder8),
                               child: Column(children: [
-                                Padding(
-                                    padding: EdgeInsets.only(right: 5.h),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: 11.v, bottom: 7.v),
-                                              child: Text("Add your photo",
-                                                  style: CustomTextStyles
-                                                      .headlineSmallRobotoSemiBold!
-                                                      .copyWith(
-                                                          color: Theme.of(context)
-                                                                      .brightness ==
-                                                                  Brightness
-                                                                      .dark
-                                                              ? Colors.white
-                                                              : Colors.black))),
-                                          InkWell(
-                                            onTap: () => _imagePickerHandler
-                                                .showOptions(context),
-                                            child: SizedBox(
-                                              height: 48.adaptSize,
-                                              width: 48.adaptSize,
-                                              // child: CustomImageView(
-                                              //   imagePath: _image?.path ??
-                                              //       ImageConstant.imgUser,
-                                              // ),
-                                              child: _image?.path == null
-                                                  ? CustomImageView(
-                                                      imagePath:
-                                                          ImageConstant.imgUser,
-                                                    )
-                                                  : Image.file(
-                                                      File(_image!.path)),
-                                            ),
-                                          )
-                                        ])),
+                                // Padding(
+                                //     padding: EdgeInsets.only(right: 5.h),
+                                //     child: Row(
+                                //         mainAxisAlignment:
+                                //             MainAxisAlignment.spaceBetween,
+                                //         children: [
+                                //           Padding(
+                                //               padding: EdgeInsets.only(
+                                //                   top: 11.v, bottom: 7.v),
+                                //               child: Text("Add your photo",
+                                //                   style: CustomTextStyles
+                                //                       .headlineSmallRobotoSemiBold!
+                                //                       .copyWith(
+                                //                           color: Theme.of(context)
+                                //                                       .brightness ==
+                                //                                   Brightness
+                                //                                       .dark
+                                //                               ? Colors.white
+                                //                               : Colors.black))),
+                                //           InkWell(
+                                //             onTap: () => _imagePickerHandler
+                                //                 .showOptions(context),
+                                //             child: SizedBox(
+                                //               height: 48.adaptSize,
+                                //               width: 48.adaptSize,
+                                //               // child: CustomImageView(
+                                //               //   imagePath: _image?.path ??
+                                //               //       ImageConstant.imgUser,
+                                //               // ),
+                                //               child: _image?.path == null
+                                //                   ? CustomImageView(
+                                //                       imagePath:
+                                //                           ImageConstant.imgUser,
+                                //                     )
+                                //                   : Image.file(
+                                //                       File(_image!.path)),
+                                //             ),
+                                //           )
+                                //         ])),
                                 SizedBox(height: 16.v),
                                 _buildName(context),
                                 SizedBox(height: 16.v),
