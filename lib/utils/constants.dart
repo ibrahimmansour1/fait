@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 const String baseUrl = "http://fait2024-001-site1.gtempurl.com/api/v1/";
+const String baseUrl2 = "http://fait.runasp.net/api/v1/";
+const String bearerToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJFc2xhbTI1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMmEwZmE3ZmEtNDI4NS00YjE3LTEyZmEtMDhkYzkyYjY3MzJkIiwibmJmIjoxNzE5MDg3MTM5LCJleHAiOjE3MTkwODk4MzksImlhdCI6MTcxOTA4NzEzOX0.QxtmM-lKAazIN4iMMYLorqH57h9f5kxKPfmc0aluiTw";
 const String authUsername = "11173799";
 const String authPassword = "60-dayfreetrial";
 const String newBaseUrl = "http://fait.runasp.net/api/v1/";
