@@ -133,24 +133,24 @@ class KcalItemWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 4.h,
-                      vertical: 4.v,
-                    ),
-                    decoration: AppDecoration.fillPrimaryContainer.copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder8,
-                    ),
-                    child: Text(
-                      "lbl_40_0_gram".tr,
-                      style: theme.textTheme.labelMedium!.copyWith(
-                        color: theme.colorScheme.tertiary,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.h,
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(
+                  //     horizontal: 4.h,
+                  //     vertical: 4.v,
+                  //   ),
+                  //   decoration: AppDecoration.fillPrimaryContainer.copyWith(
+                  //     borderRadius: BorderRadiusStyle.roundedBorder8,
+                  //   ),
+                  //   child: Text(
+                  //     "lbl_40_0_gram".tr,
+                  //     style: theme.textTheme.labelMedium!.copyWith(
+                  //       color: theme.colorScheme.tertiary,
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   width: 10.h,
+                  // ),
 
                   Container(
                     padding: EdgeInsets.symmetric(

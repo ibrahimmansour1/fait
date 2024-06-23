@@ -1,5 +1,4 @@
 import 'package:fait/source/providers/theme/theme_provider.dart';
-import 'package:fait/source/localization/app_localization.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -17,7 +16,6 @@ class MyApp extends ConsumerWidget {
     // final themeMode = ref.watch(themeProvider).themeMode;
     // final primaryColor = ref.watch(themeProvider).primaryColor;
     final themeProvider = ref.watch(themeNotifierProvider);
-
 
     return ProviderScope(
       child: Sizer(
