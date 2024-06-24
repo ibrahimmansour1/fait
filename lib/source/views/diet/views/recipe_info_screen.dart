@@ -1,56 +1,87 @@
 import 'package:animated_read_more_text/animated_read_more_text.dart';
 import 'package:fait/source/views/diet/widgets/content4_item_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fait/utils/app_export.dart';
+import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class RecipeInfoScreen extends StatelessWidget {
-  const RecipeInfoScreen({Key? key}) : super(key: key);
+  final String? textForPreparation;
+  final num? fatsPercentage;
+  final num? carbohydratesPercentage;
+  final num? proteinsPercentage;
+  final num? proteinGrams;
+  final num? carbsGrams;
+  final num? fibersGrams;
+  final num? sugarsGrams;
+  final num? fatsGrams;
+  final num? saturatedFatGrams;
+  final num? unSaturatedFatGrams;
+  final String? category;
+  final String? timeForPreparation;
+  final String? cookTime;
+  final List<String>? ingredients;
+
+  const RecipeInfoScreen(
+      {Key? key,
+      this.textForPreparation,
+      this.fatsPercentage,
+      this.carbohydratesPercentage,
+      this.proteinsPercentage,
+      this.proteinGrams,
+      this.carbsGrams,
+      this.fibersGrams,
+      this.sugarsGrams,
+      this.fatsGrams,
+      this.saturatedFatGrams,
+      this.unSaturatedFatGrams,
+      this.category,
+      this.timeForPreparation,
+      this.cookTime,
+      this.ingredients})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String textForPreparation = """
-1- Toss 2 cups berries with sugar.Let stand for 45 minutes, stirring occasionally
-
-2-Transfer berry-sugar mixture to food processor
-
-3- Add yogurt and lemon juice
-
-4- Process until smooth
-
-5- Transfer to a serving dish""";
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
-          width: double.maxFinite,
+          // width: double.maxFinite,
           child: SingleChildScrollView(
             child: Column(
               children: [
                 _buildTopPart(context),
                 _buildTextAndColorContent(context,
-                    color: appTheme.blueA40002, text: "Protein", textG: "4 g"),
+                    color: appTheme.blueA40002,
+                    text: "Protein",
+                    textG: "${proteinGrams ?? "4"} g"),
                 _buildTextAndColorContent(context,
-                    color: appTheme.orange300, text: "Carbs", textG: "44 g"),
+                    color: appTheme.orange300,
+                    text: "Carbs",
+                    textG: "${carbsGrams ?? "44"} g"),
                 Padding(
                     padding: EdgeInsets.only(left: 32.h, right: 20.h),
                     child: _buildTextContent(context,
-                        protein: "Fibers", weight: "4 g")),
+                        protein: "Fibers", weight: "${fibersGrams ?? "4"} g")),
                 Padding(
                     padding: EdgeInsets.only(left: 32.h, right: 20.h),
                     child: _buildTextContent(context,
-                        protein: "Sugars", weight: "40 g")),
+                        protein: "Sugars", weight: "${sugarsGrams ?? 40} g")),
                 _buildTextAndColorContent(context,
                     color: theme.colorScheme.primary,
                     text: "Fats",
-                    textG: "2 g"),
+                    textG: "${fatsGrams ?? "2"} g"),
                 Padding(
                     padding: EdgeInsets.only(left: 32.h, right: 20.h),
                     child: _buildTextContent(context,
-                        protein: "Saturated Fat", weight: "1.2 g")),
+                        protein: "Saturated Fat",
+                        weight: "${saturatedFatGrams ?? "1.2"} g")),
                 Padding(
                     padding: EdgeInsets.only(left: 32.h, right: 20.h),
                     child: _buildTextContent(context,
-                        protein: "unSaturated Fat", weight: "0.8 g")),
+                        protein: "unSaturated Fat",
+                        weight: "${unSaturatedFatGrams ?? "0.8"} g")),
                 SizedBox(height: 33.v),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -62,7 +93,7 @@ class RecipeInfoScreen extends StatelessWidget {
                             style: CustomTextStyles.titleMediumMedium18),
                         Padding(
                           padding: EdgeInsets.only(left: 16.h),
-                          child: Text("Prepration time ",
+                          child: Text("Preparation time ",
                               style: CustomTextStyles.titleMediumMedium18),
                         ),
                       ],
@@ -82,8 +113,8 @@ class RecipeInfoScreen extends StatelessWidget {
                         Text("Cook time ",
                             style: CustomTextStyles.titleMediumMedium18),
                         SizedBox(height: 15.v),
-                        const Content4ItemWidget(
-                          text: "25 Minutes",
+                        Content4ItemWidget(
+                          text: cookTime ?? "15 minutes",
                         ),
                       ],
                     ),
@@ -97,98 +128,32 @@ class RecipeInfoScreen extends StatelessWidget {
                         child: Text("Recipe Ingredients",
                             style: CustomTextStyles.titleMediumMedium18))),
                 SizedBox(height: 27.v),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                        padding: EdgeInsets.only(left: 32.h),
-                        child: Row(children: [
-                          SizedBox(
-                              width: 118.h,
-                              child: Row(children: [
-                                Container(
-                                    height: 8.adaptSize,
-                                    width: 8.adaptSize,
-                                    margin: EdgeInsets.symmetric(vertical: 5.v),
-                                    decoration: BoxDecoration(
-                                        color: theme.colorScheme.tertiary,
-                                        borderRadius:
-                                            BorderRadius.circular(4.h))),
-                                Padding(
-                                    padding: EdgeInsets.only(left: 14.h),
-                                    child: Text("4 blueberries",
-                                        style: CustomTextStyles
-                                            .bodyLargeOnPrimaryContainer_3))
-                              ])),
-                          Container(
-                              width: 122.h,
-                              margin: EdgeInsets.only(left: 23.h),
-                              child: Row(children: [
-                                Container(
-                                    height: 8.adaptSize,
-                                    width: 8.adaptSize,
-                                    margin: EdgeInsets.symmetric(vertical: 5.v),
-                                    decoration: BoxDecoration(
-                                        color: theme.colorScheme.tertiary,
-                                        borderRadius:
-                                            BorderRadius.circular(4.h))),
-                                Padding(
-                                    padding: EdgeInsets.only(left: 14.h),
-                                    child: Text("A quarter cup",
-                                        style: CustomTextStyles
-                                            .bodyLargeOnPrimaryContainer_3))
-                              ]))
-                        ]))),
-                SizedBox(height: 8.v),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 32.h, right: 50.h),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                            width: 136.h,
-                            child: Row(children: [
-                              Container(
-                                  height: 8.adaptSize,
-                                  width: 8.adaptSize,
-                                  margin: EdgeInsets.symmetric(vertical: 5.v),
-                                  decoration: BoxDecoration(
-                                      color: theme.colorScheme.tertiary,
-                                      borderRadius:
-                                          BorderRadius.circular(4.h))),
-                              Padding(
-                                  padding: EdgeInsets.only(left: 14.h),
-                                  child: Text("1 vanilla yogart",
-                                      style: CustomTextStyles
-                                          .bodyLargeOnPrimaryContainer_3))
-                            ])),
+                ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => Container(
+                      width: 122.h,
+                      margin: EdgeInsets.only(left: 23.h),
+                      child: Row(children: [
                         Container(
-                          width: 176.h,
-                          margin: EdgeInsets.only(left: 8.h),
-                          child: Row(
-                            children: [
-                              Container(
-                                  height: 8.adaptSize,
-                                  width: 8.adaptSize,
-                                  margin: EdgeInsets.symmetric(vertical: 5.v),
-                                  decoration: BoxDecoration(
-                                      color: theme.colorScheme.tertiary,
-                                      borderRadius:
-                                          BorderRadius.circular(4.h))),
-                              Padding(
-                                  padding: EdgeInsets.only(left: 14.h),
-                                  child: Text("1 cup of lemon juice",
-                                      style: CustomTextStyles
-                                          .bodyLargeOnPrimaryContainer_3))
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                            height: 8.adaptSize,
+                            width: 8.adaptSize,
+                            margin: EdgeInsets.symmetric(vertical: 5.v),
+                            decoration: BoxDecoration(
+                                color: theme.colorScheme.tertiary,
+                                borderRadius: BorderRadius.circular(4.h))),
+                        Padding(
+                            padding: EdgeInsets.only(left: 14.h),
+                            child: Text(ingredients![index],
+                                style: CustomTextStyles
+                                    .bodyLargeOnPrimaryContainer_3))
+                      ])),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    height: 5,
                   ),
+                  itemCount: ingredients!.length,
                 ),
                 SizedBox(height: 32.v),
-                _buildRecipePreparation(context, textForPreparation),
+                _buildRecipePreparation(context, textForPreparation!),
               ],
             ),
           ),
@@ -252,7 +217,7 @@ class RecipeInfoScreen extends StatelessWidget {
                       percent: 0.5,
                       center: Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: Text("50%",
+                        child: Text("${fatsPercentage ?? "50"} %",
                             style:
                                 CustomTextStyles.titleMediumOnPrimaryContainer),
                       ),
@@ -274,7 +239,7 @@ class RecipeInfoScreen extends StatelessWidget {
                       lineWidth: 10.0,
                       animation: true,
                       percent: 0.95,
-                      center: Text("95%",
+                      center: Text("${proteinsPercentage ?? "95"} %",
                           style:
                               CustomTextStyles.titleMediumOnPrimaryContainer),
                       circularStrokeCap: CircularStrokeCap.round,
@@ -295,7 +260,7 @@ class RecipeInfoScreen extends StatelessWidget {
                       lineWidth: 10.0,
                       animation: true,
                       percent: 0.85,
-                      center: Text("85%",
+                      center: Text("${carbohydratesPercentage ?? "85"} %",
                           style:
                               CustomTextStyles.titleMediumOnPrimaryContainer),
                       circularStrokeCap: CircularStrokeCap.round,
@@ -363,12 +328,14 @@ class RecipeInfoScreen extends StatelessWidget {
         child: Wrap(
           runSpacing: 16.v,
           spacing: 16.h,
-          children: List<Widget>.generate(
-            2,
-            (index) => const Content4ItemWidget(
-              text: 'Beverages',
+          children: [
+            Content4ItemWidget(
+              text: category ?? "Beverage",
             ),
-          ),
+            Content4ItemWidget(
+              text: timeForPreparation ?? "15 minutes",
+            ),
+          ],
         ),
       ),
     );
@@ -376,7 +343,7 @@ class RecipeInfoScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildRecipePreparation(
-      BuildContext context, String textForPreparation) {
+      BuildContext context, String? textForPreparation) {
     return Padding(
       padding: EdgeInsets.only(left: 32.h, right: 18.h),
       child: Column(
@@ -397,16 +364,13 @@ class RecipeInfoScreen extends StatelessWidget {
                 color: theme.colorScheme.onPrimaryContainer,
               ),
               child: AnimatedReadMoreText(
-                textForPreparation,
+                textForPreparation ??
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc.",
                 maxLines: 4,
-                // Set a custom text for the expand button. Defaults to Read more
                 readMoreText: 'Show More',
-                // Set a custom text for the collapse button. Defaults to Read less
                 readLessText: 'Show Less',
-                // Set a custom text style for the main block of text
                 expandOnTextTap: true,
                 textStyle: CustomTextStyles.bodyLargeOnPrimaryContainer_3,
-                // Set a custom text style for the expand/collapse button
                 buttonTextStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
