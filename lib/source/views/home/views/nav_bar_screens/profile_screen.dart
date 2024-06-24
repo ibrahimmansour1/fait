@@ -5,6 +5,7 @@ import 'package:fait/source/localization/app_localization.dart';
 import 'package:fait/source/models/profile/profile_model.dart';
 import 'package:fait/source/providers/profile/profile_provider.dart';
 import 'package:fait/source/providers/theme/theme_provider.dart';
+import 'package:fait/source/theme/app_colors.freezed.dart';
 import 'package:fait/source/views/home/widgets/add_new_goal_bottom_sheet.dart';
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
@@ -129,8 +130,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                                   bottom: 21.v)),
                                         ),
                                         Padding(
-                                            padding:
-                                                EdgeInsets.only(left: 24.h),
+                                            padding: EdgeInsets.only(
+                                                left: 24.h, top: 18.h),
                                             child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -139,14 +140,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                                       "${profileViewModel.profileResponse.data!.firstName} ${profileViewModel.profileResponse.data!.lastName}",
                                                       style: CustomTextStyles
                                                           .titleMediumOnPrimaryContainerSemiBold18),
-                                                  SizedBox(height: 13.v),
-                                                  Text("msg_last_sync_jan_4".tr,
-                                                      style: CustomTextStyles
-                                                          .titleMediumOnPrimaryContainerSemiBold18),
-                                                  SizedBox(height: 7.v),
-                                                  Text("lbl_battery_87".tr,
-                                                      style: CustomTextStyles
-                                                          .titleMediumOnPrimaryContainerSemiBold18)
+                                                  // SizedBox(height: 13.v),
+                                                  // Text("msg_last_sync_jan_4".tr,
+                                                  //     style: CustomTextStyles
+                                                  //         .titleMediumOnPrimaryContainerSemiBold18),
+                                                  // SizedBox(height: 7.v),
+                                                  // Text("lbl_battery_87".tr,
+                                                  //     style: CustomTextStyles
+                                                  //         .titleMediumOnPrimaryContainerSemiBold18)
                                                 ]))
                                       ])),
                               SizedBox(height: 17.v),

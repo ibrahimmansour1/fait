@@ -20,7 +20,7 @@ class _MyAvatarSectionWidgetState
   }
 
   void _onAvatarImageChanged(File image) {
-    ref.read(profileProvider).getAvatarPictures(userId, image.path);
+    ref.read(profileProvider).getAvatarPictures(userId, image);
   }
 
   @override
@@ -34,17 +34,41 @@ class _MyAvatarSectionWidgetState
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.only(start: 32, bottom: 16),
+        padding:
+            const EdgeInsetsDirectional.only(start: 32, bottom: 16, end: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("My Avatar",
-                  style: CustomTextStyles.headlineSmallRobotoSemiBold),
-              SizedBox(height: 12.v),
-              Text("Level 3 Mindful walker",
-                  style: CustomTextStyles.bodyLargeOnPrimaryContainer18)
-            ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text("My Avatar",
+                      style: CustomTextStyles.headlineSmallRobotoSemiBold),
+                  SizedBox(height: 12.v),
+                  // Text("Level 3 Mindful walker",
+                  //     style: CustomTextStyles.bodyLargeOnPrimaryContainer18)
+                ]),
+                if (profileViewModel.avatarPicturesResponse.status ==
+                    Status.completed)
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: CustomElevatedButton(
+                        height: 35.v,
+                        width: SizeUtils.width / 6,
+                        text: "Try Again",
+                        buttonStyle: CustomButtonStyles.fillPrimary,
+                        buttonTextStyle: CustomTextStyles.titleSmallffffffff,
+                        onPressed: () {
+                          _avatarImagePickerHandler.showOptions(context);
+                        }),
+                  ),
+              ],
+            ),
+            SizedBox(
+              height: 30.v,
+            ),
+
             profileViewModel.avatarPicturesResponse.status == Status.loading
                 ? Align(
                     alignment: Alignment.center,
@@ -82,7 +106,8 @@ class _MyAvatarSectionWidgetState
                                 text: "Upload Picture",
                                 buttonStyle: CustomButtonStyles.fillPrimary,
                                 buttonTextStyle: CustomTextStyles
-                                    .titleMediumOnPrimaryContainer,
+                                    .titleMediumOnPrimaryContainer
+                                    .copyWith(color: Colors.white),
                                 onPressed: () {
                                   _avatarImagePickerHandler
                                       .showOptions(context);
@@ -97,31 +122,91 @@ class _MyAvatarSectionWidgetState
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          CustomImageView(
-                            imagePath: ImageConstant.imgShape1,
-                            height: 186.v,
-                            width: 63.h,
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CustomImageView(
+                                imagePath:
+                                    profileViewModel.pastAvatarPicturePath ??
+                                        profileViewModel
+                                            .avatarPicturesResponse.data ??
+                                        ImageConstant.imgShape1,
+                                height: 186.v,
+                                // width: 63.h,
+                              ),
+                              SizedBox(
+                                height: 5.v,
+                              ),
+                              Text(
+                                  profileViewModel.currentAvatarPicturePath ==
+                                          null
+                                      ? "Current"
+                                      : "Past",
+                                  style: CustomTextStyles
+                                      .bodyLargeOnPrimaryContainer18
+                                      .copyWith(color: appTheme.indigo500))
+                            ],
                           ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgShape1,
-                            height: 200.v,
-                            width: 80.h,
+                          if (profileViewModel.currentAvatarPicturePath != null)
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CustomImageView(
+                                  imagePath: profileViewModel
+                                          .currentAvatarPicturePath ??
+                                      ImageConstant.imgShape1,
+                                  height: 186.v,
+                                  // width: 63.h,
+                                ),
+                                SizedBox(
+                                  height: 5.v,
+                                ),
+                                Text("Current",
+                                    style: CustomTextStyles
+                                        .bodyLargeOnPrimaryContainer18
+                                        .copyWith(color: appTheme.indigo500))
+                              ],
+                            ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CustomImageView(
+                                imagePath: ImageConstant.imgShape1,
+                                height: 186.v,
+                                // width: 63.h,
+                              ),
+                              SizedBox(
+                                height: 5.v,
+                              ),
+                              Text("Future",
+                                  style: CustomTextStyles
+                                      .bodyLargeOnPrimaryContainer18
+                                      .copyWith(color: appTheme.indigo500))
+                            ],
                           ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgShape1,
-                            height: 220.v,
-                            width: 90.h,
-                          ),
+                          // CustomImageView(
+                          //   imagePath: ImageConstant.imgShape1,
+                          //   height: 200.v,
+                          //   // width: 80.h,
+                          // ),
+                          // CustomImageView(
+                          //   imagePath: ImageConstant.imgShape1,
+                          //   height: 220.v,
+                          //   // width: 90.h,
+                          // ),
                         ],
                       ),
-            SfLinearGauge(
-              axisTrackStyle: LinearAxisTrackStyle(color: appTheme.indigo500),
-              axisLabelStyle: TextStyle(color: appTheme.indigo500),
-              majorTickStyle: LinearTickStyle(color: appTheme.indigo500),
-              minorTickStyle: LinearTickStyle(color: appTheme.indigo500),
-              minimum: 1,
-              maximum: 12,
-            ),
+            // SfLinearGauge(
+            //   axisTrackStyle: LinearAxisTrackStyle(color: appTheme.indigo500),
+            //   axisLabelStyle: TextStyle(color: appTheme.indigo500),
+            //   majorTickStyle: LinearTickStyle(color: appTheme.indigo500),
+            //   minorTickStyle: LinearTickStyle(color: appTheme.indigo500),
+            //   minimum: 1,
+            //   maximum: 12,
+            // ),
+            SizedBox(
+              height: 35.h,
+            )
           ],
         ),
       ),
