@@ -67,8 +67,10 @@ class _ChatBotViewBodyNameState extends ConsumerState<ChatBotViewBodyName> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Text('My Name:',
-                          style: theme.textTheme.bodyLarge!
-                              .copyWith(fontSize: 32.fSize)),
+                          style: theme.textTheme.bodyLarge!.copyWith(
+                            fontSize: 32.fSize,
+                            color: theme.colorScheme.tertiary,
+                          )),
                     ),
                   ),
                   SizedBox(height: 10.v),

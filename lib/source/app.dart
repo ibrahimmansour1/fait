@@ -18,7 +18,6 @@ class MyApp extends ConsumerWidget {
     // final primaryColor = ref.watch(themeProvider).primaryColor;
     final themeProvider = ref.watch(themeNotifierProvider);
 
-
     return ProviderScope(
       child: Sizer(
         builder: (context, orientation, deviceType) {

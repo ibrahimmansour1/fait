@@ -1,14 +1,26 @@
 import 'package:fait/utils/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // ignore: must_be_immutable
 class RecipeCardWidget extends StatelessWidget {
+  final String? imageUrl;
+  final String? recipeName;
+  final num? recipeWeight;
+  final num? recipeCal;
   bool favourite;
   StateProvider<bool>? isFavouriteProvider;
   VoidCallback? onTap;
 
-  RecipeCardWidget({super.key, this.favourite = false, this.onTap}) {
+  RecipeCardWidget(
+      {super.key,
+      this.favourite = false,
+      this.onTap,
+      this.imageUrl,
+      this.recipeName,
+      this.recipeWeight,
+      this.recipeCal}) {
     isFavouriteProvider = StateProvider<bool>((ref) {
       return favourite;
     });
@@ -31,9 +43,10 @@ class RecipeCardWidget extends StatelessWidget {
               Row(
                 children: [
                   CustomImageView(
-                      imagePath: ImageConstant.imgImage80x80,
+                      imagePath: imageUrl ?? ImageConstant.imgImage80x80,
                       height: 72.adaptSize,
                       width: 72.adaptSize,
+                      fit: BoxFit.cover,
                       radius: BorderRadius.circular(8.h)),
                   SizedBox(
                     width: 30.h,
@@ -44,14 +57,15 @@ class RecipeCardWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Salamon",
+                              recipeName ?? "Salamon",
+                              overflow: TextOverflow.ellipsis,
                               style: theme.textTheme.titleMedium!.copyWith(
                                 color: theme.colorScheme.tertiary,
                               ),
                             ),
                             SizedBox(height: 15.v),
                             SizedBox(
-                              width: 105.h,
+                              width: 180.h,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -59,7 +73,7 @@ class RecipeCardWidget extends StatelessWidget {
                                   Padding(
                                     padding: EdgeInsets.only(top: 2.v),
                                     child: Text(
-                                      "n grams",
+                                      "$recipeWeight grams",
                                       style:
                                           theme.textTheme.titleSmall!.copyWith(
                                         color: theme.colorScheme.tertiary,
@@ -69,7 +83,7 @@ class RecipeCardWidget extends StatelessWidget {
                                   Padding(
                                     padding: EdgeInsets.only(top: 2.v),
                                     child: Text(
-                                      "n kcal",
+                                      "$recipeCal cal",
                                       style:
                                           theme.textTheme.titleSmall!.copyWith(
                                         color: theme.colorScheme.tertiary,
