@@ -83,34 +83,72 @@ class ProfileService {
     }
   }
 
-  Future<ApiResponse<Map<String, dynamic>>> getAvatarPictures(
-      String userId, String imagePath) async {
+  Future<ApiResponse> getAvatarPictures(String userId, String imagePath) async {
     try {
-      if (await _internetChecker.hasConnection) {
-        final formData =
-            FormData.fromMap({"File": MultipartFile.fromFileSync(imagePath)});
-        final response = await _dio.post(
-          "${newBaseUrl}User/$userId/Change-Image-Profile",
-          data: formData,
-          options: Options(
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer $userToken",
-            },
-          ),
-        );
-        log(response.toString());
-        if (response.statusCode == 200 || response.statusCode == 201) {
-          if (response.data.isEmpty) {
-            return ApiResponse.error("No data found", response.statusCode);
-          }
+      log(imagePath);
+      final formData =
+          FormData.fromMap({"image": MultipartFile.fromFileSync(imagePath)});
 
-          return ApiResponse.completed(response.data);
+      final response = await _dio.post(
+        "http://192.168.88.150:8000/body_regression_3d",
+        data: formData,
+        options: Options(
+          headers: {
+            // Add your custom headers here if needed
+          },
+          responseType: ResponseType.bytes,
+          followRedirects: false, // Disable automatic redirect following
+          validateStatus: (status) {
+            return status != null && (status == 307 || status < 400);
+          },
+        ),
+      );
+
+      if (response.statusCode == 307) {
+        // Handle the redirect manually
+        final newUrl = response.headers.value('location');
+        if (newUrl != null) {
+          final formData1 = FormData.fromMap(
+              {"image": MultipartFile.fromFileSync(imagePath)});
+          final redirectedResponse = await _dio.post(
+            newUrl,
+            data: formData1,
+            options: Options(
+              headers: {
+                // Add your custom headers here if needed
+              },
+              responseType: ResponseType.bytes,
+            ),
+          );
+
+          log(redirectedResponse.toString());
+          if (redirectedResponse.statusCode == 200 ||
+              redirectedResponse.statusCode == 201) {
+            if (redirectedResponse.data.isEmpty) {
+              return ApiResponse.error(
+                  "No data found", redirectedResponse.statusCode);
+            }
+
+            return ApiResponse.completed(redirectedResponse.data);
+          } else {
+            return ApiResponse.error(
+                "Failed to load data", redirectedResponse.statusCode);
+          }
         } else {
-          return ApiResponse.error("Failed to load data", response.statusCode);
+          return ApiResponse.error(
+              "Redirected URL not found", response.statusCode);
         }
+      }
+
+      log(response.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        if (response.data.isEmpty) {
+          return ApiResponse.error("No data found", response.statusCode);
+        }
+
+        return ApiResponse.completed(response.data);
       } else {
-        return ApiResponse.error("No Internet Connection", 503);
+        return ApiResponse.error("Failed to load data", response.statusCode);
       }
     } catch (e) {
       log(e.toString());

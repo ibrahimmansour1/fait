@@ -56,6 +56,7 @@ dependencies:
   learning_input_image:
     path: packages/learning_input_image-0.0.6+2
   web_socket_channel: ^2.4.5
+  image: ^4.2.0
 
 dev_dependencies:
   build_runner: ^2.4.9
