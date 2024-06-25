@@ -16,7 +16,7 @@ class WrongStepService {
   Future<ApiResponse<WrongStepModel>> getWrongStepData(
       {required Uint8List image}) async {
     try {
-      if (await _internetChecker.hasConnection) {
+      // if (await _internetChecker.hasConnection) {
         final formData = FormData.fromMap({
           "image": MultipartFile.fromBytes(image.toList(), filename: "image.jpg")
         });
@@ -30,22 +30,24 @@ class WrongStepService {
               // "Authorization":
               //     "Basic ${base64Encode(utf8.encode("$authUsername:$authPassword"))}",
             },
+            responseType: ResponseType.bytes,
           ),
         );
         if (response.statusCode == 200 || response.statusCode == 201) {
           if (response.data.isEmpty) {
             return ApiResponse.error("No data found", response.statusCode);
           }
-          final data = jsonDecode(response.data);
+          final data = response.data;
+
           final wrongStepModel =
-              WrongStepModel.fromJson(data[0]);
+              WrongStepModel(model3D: data);
           return ApiResponse.completed(wrongStepModel);
         } else {
           return ApiResponse.error("Failed to load data", response.statusCode);
         }
-      } else {
-        return ApiResponse.error("No Internet Connection", 503);
-      }
+      // } else {
+      //   return ApiResponse.error("No Internet Connection", 503);
+      // }
     } catch (e) {
       log(e.toString());
       return ApiResponse.error(e.toString(), 0);
