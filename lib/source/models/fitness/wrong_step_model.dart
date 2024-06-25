@@ -1,6 +1,6 @@
 class WrongStepModel {
   String? text;
-  String? model3D;
+  dynamic model3D;
 
   WrongStepModel({this.text, this.model3D});
 
