@@ -67,8 +67,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     profileViewModel.profileResponse =
         ApiResponse.completed(ProfileModel.fromJson({
       "id": "2a0fa7fa-4285-4b17-12fa-08dc92b6732d",
-      "firstName": "Eslam",
-      "lastName": "Shaban",
+      "firstName": "Mohammed",
+      "lastName": "Mamdouh",
       "nickName": "SmSm",
       "userName": "Eslam25",
       "email": "eslamshaban69815@gmail.com",
