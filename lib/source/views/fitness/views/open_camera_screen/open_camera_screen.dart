@@ -6,8 +6,15 @@ import 'package:camera/camera.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:fait/utils/app_export.dart';
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel/status.dart' as status;
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:typed_data';
 
 import '../wrong_exercises_steps_screen/wrong_exercises_step_screen.dart';
+import 'package:image/image.dart' as img;
 
 class OpenCameraScreen extends ConsumerStatefulWidget {
   const OpenCameraScreen({Key? key}) : super(key: key);
@@ -20,6 +27,7 @@ class _OpenCameraScreenState extends ConsumerState<OpenCameraScreen> {
   late CameraController _cameraController;
   late Future<void> _initializeControllerFuture;
   late final ListenAndSpeakNotifier listenAndSpeakViewModel;
+  WebSocketChannel? _channel;
 
   @override
   void initState() {
@@ -29,6 +37,7 @@ class _OpenCameraScreenState extends ConsumerState<OpenCameraScreen> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       listenAndSpeakViewModel = ref.watch(listenAndSpeakProvider);
     });
+    _initWebSocket();
   }
 
   Future<void> initializeCamera() async {
@@ -36,14 +45,137 @@ class _OpenCameraScreenState extends ConsumerState<OpenCameraScreen> {
     final firstCamera = cameras.first;
     _cameraController = CameraController(
       firstCamera,
-      ResolutionPreset.medium,
+      ResolutionPreset.low,
     );
-    return _cameraController.initialize();
+
+    await _cameraController.initialize().then((value) {
+      _cameraController.startImageStream((CameraImage image) {
+        ref.watch(framesCounter.notifier).update((state) => state++);
+        if (ref.watch(framesCounter) % 5 == 0) {
+          sendFrame(image);
+        }
+        // Uint8List imageData = image.planes[0].bytes;
+        // // Decode the image
+        // img.Image? jpgImage = img.decodeImage(imageData);
+
+        // if (jpgImage != null) {
+        //   // Encode the image to PNG
+        //   List<int> pngBytes = img.encodePng(jpgImage);
+
+        //   // Process camera image to send to the server
+        //   sendFrame(pngBytes);
+        // } else {
+        //   // Handle the error case where the image couldn't be decoded
+        //   log('Failed to decode image');
+        // }
+      });
+    });
   }
+
+  void _initWebSocket() {
+    _channel = IOWebSocketChannel.connect(
+      Uri.parse('ws://192.168.127.133:6000/joint-processing'),
+    );
+
+    _channel!.stream.listen(
+      (message) {
+        log('Message received: $message');
+      },
+      onDone: () {
+        log('Closed: ${_channel!.closeReason}');
+      },
+      onError: (error) {
+        log('Error: $error');
+        _initWebSocket();
+      },
+    );
+  }
+
+  Future<void> sendFrame(CameraImage image) async {
+    try {
+      // Convert YUV to RGB
+      final int width = image.width;
+      final int height = image.height;
+      final int yRowStride = image.planes[0].bytesPerRow;
+      final int uvRowStride = image.planes[1].bytesPerRow;
+      final int uvPixelStride = image.planes[1].bytesPerPixel!;
+
+      final Uint8List rgbBytes = Uint8List(3 * width * height);
+
+      for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+          final int uvIndex = uvPixelStride * (x ~/ 2) + uvRowStride * (y ~/ 2);
+          final int index = y * yRowStride + x;
+
+          final int yValue = image.planes[0].bytes[index];
+          final int uValue = image.planes[1].bytes[uvIndex];
+          final int vValue = image.planes[2].bytes[uvIndex];
+
+          // Compute RGB values
+          final int r =
+              (yValue + (1.370705 * (vValue - 128))).clamp(0, 255).toInt();
+          final int g = (yValue -
+                  (0.337633 * (uValue - 128)) -
+                  (0.698001 * (vValue - 128)))
+              .clamp(0, 255)
+              .toInt();
+          final int b =
+              (yValue + (1.732446 * (uValue - 128))).clamp(0, 255).toInt();
+
+          final int rgbIndex = 3 * (y * width + x);
+          rgbBytes[rgbIndex] = r;
+          rgbBytes[rgbIndex + 1] = g;
+          rgbBytes[rgbIndex + 2] = b;
+        }
+      }
+
+      // Encode the RGB byte data to a base64 string
+      final base64String = base64Encode(rgbBytes);
+
+      // Create a JSON object with the base64 string and the exercise name
+      final jsonString = jsonEncode({
+        'image_data': base64String,
+        'exercise_name': ref.read(exerciseName),
+      });
+
+      // Send the JSON string over the channel
+      _channel?.sink.add(jsonString);
+    } catch (e) {
+      // Log any errors that occur during the process
+      log(e.toString());
+    }
+  }
+
+  Future<List<int>> _convertImageToBytes(CameraImage image) async {
+    // Convert the CameraImage to an Image object
+    // final imgImage = img.Image.fromBytes(
+    //   width: image.planes[0].width ?? SizeUtils.width ~/ 3,
+    //   height: image.planes[0].height ?? SizeUtils.height ~/ 3,
+    //   bytes: image.planes[0].bytes.buffer,
+    // );
+
+    // Convert the Image object to JPEG
+
+    // final jpegBytes = img.encodeJpg(imgImage);
+    final imageData = image.planes
+        .map((plane) => plane.bytes)
+        .expand((element) => element)
+        .toList();
+    return imageData;
+  }
+
+  // Uint8List concatenatePlanes(List<Plane> planes) {
+  //   final WriteBuffer allBytes = WriteBuffer();
+  //   for (Plane plane in planes) {
+  //     allBytes.putUint8List(plane.bytes);
+  //   }
+  //   return allBytes.done().buffer.asUint8List();
+  // }
 
   @override
   void dispose() {
     _cameraController.dispose();
+    _channel?.sink.close(status.goingAway);
     super.dispose();
   }
 
@@ -59,8 +191,8 @@ class _OpenCameraScreenState extends ConsumerState<OpenCameraScreen> {
             return Stack(
               fit: StackFit.expand,
               children: [
-                // CameraPreview(_cameraController),
-                const PoseDetectionPage(),
+                CameraPreview(_cameraController),
+                // const PoseDetectionPage(),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   padding:
